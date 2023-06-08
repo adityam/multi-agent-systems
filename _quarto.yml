@@ -10,10 +10,10 @@ book:
       url: "https://cim.mcgill.ca/~adityam"
       affiliation: McGill University
       affiliation-url: "https://www.mcgill.ca/ece"
-  description: "ECES 506 (Stochastic Control and Decision Theory)"
-  site-url: "https://adityam.github.io/stochastic-control/"
+  description: "ECES 508 (Multi Agent Systems)"
+  site-url: "https://adityam.github.io/multi-agent-systems/"
 
-  repo-url: "https://github.com/adityam/stochastic-control"
+  repo-url: "https://github.com/adityam/multi-agent-systems"
   repo-actions: [edit]
   repo-branch: quarto
 
