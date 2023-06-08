@@ -15,7 +15,7 @@ book:
 
   repo-url: "https://github.com/adityam/multi-agent-systems"
   repo-actions: [edit]
-  repo-branch: quarto
+  repo-branch: master
 
   navbar:
     background: dark
