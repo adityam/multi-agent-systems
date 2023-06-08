@@ -1,0 +1,66 @@
+project:
+  type: book
+  output-dir: docs/
+  resources: 'www/geogebra/*.ggb'
+
+book:
+  title: Course Notes
+  author: 
+    - name: Aditya Mahajan
+      url: "https://cim.mcgill.ca/~adityam"
+      affiliation: McGill University
+      affiliation-url: "https://www.mcgill.ca/ece"
+  description: "ECES 506 (Stochastic Control and Decision Theory)"
+  site-url: "https://adityam.github.io/stochastic-control/"
+
+  repo-url: "https://github.com/adityam/stochastic-control"
+  repo-actions: [edit]
+  repo-branch: quarto
+
+  navbar:
+    background: dark
+    title: false
+    pinned: false
+    left:
+      # - href: ../index.html
+      #   text: Home
+    - href: ../stochastic-control/index.html
+      text: Stochastic Control
+    - href: ../multi-agent-systems/index.html
+      text: Multi-Agent Systems
+
+  sidebar:
+    # background: light
+    collapse-level: 2
+    pinned: false
+    style : floating
+
+  chapters:
+    - index.qmd
+    - part: "Strategic Games"
+      chapters:
+        - static-games/strategic-games.qmd
+    - part: "Dynamic Games"
+    - references.qmd
+    - part: "Assignments"
+
+bibliography: references.bib
+csl: _extensions/csl/acm-siggraph.csl
+
+format:
+  html:
+    theme: 
+      - yeti
+      - static/css/style.scss
+    include-in-header: 
+      - static/html/mathjax.html
+      - static/html/clicky.html
+    reference-location: margin
+      #    citation-location: margin
+    filters:
+      - _extensions/schochastics/nutshell/nutshell.lua
+    published-title: Updated
+    date: last-modified
+
+
+
