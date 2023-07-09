@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-06-08">
+<meta name="dcterms.date" content="2023-07-09">
 <meta name="description" content="ECES 508 (Multi Agent Systems)">
 
 <title>Course Notes - 1&nbsp; Introduction</title>
@@ -90,9 +90,6 @@ window.MathJax = {
       NORM: ["\\left\\lVert #1 \\right\\rVert", 1],
       ABS: ["\\left\\lvert #1 \\right\\rvert", 1]
     },
-    autoload: {
-      color: ['color'],
-    },
   },
   options: {
     ignoreHtmlClass: 'tex2jax_ignore',
@@ -101,6 +98,9 @@ window.MathJax = {
 };
 </script>
 <script async="" data-id="101261731" src="//static.getclicky.com/js"></script>
+<script type="text/javascript" src="https://www.geogebra.org/apps/deployggb.js">
+</script>
+
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -129,7 +129,7 @@ window.MathJax = {
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
-    <a href="https://github.com/adityam/multi-agent-systems" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/adityam/multi-agent-systems" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -237,7 +237,7 @@ window.MathJax = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2023</p>
+      <p class="date">July 9, 2023</p>
     </div>
   </div>
   
@@ -1170,6 +1170,11 @@ u_i(b) = \begin{cases}
 <li>Over bid, i.e., bid greater than <span class="math inline">\(v_i\)</span>, i.e., the set <span class="math inline">\((v_i,∞)\)</span>.</li>
 </ul>
 <p>We now plot the payoff for the cases separately:</p>
+<p>Note that the curve for truthful bidding (i.e., <span class="math inline">\(b_i = v_i\)</span>) weakly dominates the curves for under bidding as well as over bidding.</p>
+</div>
+</div>
+</div>
+<p>The rationalizability of truthful bidding holds in many situations. More on that later.</p>
 <figure class="figure">
 <div id="applet_container" style="width:600px;height:400px;display:block; align:center;">
 
@@ -1180,7 +1185,7 @@ The plot of <span class="math inline">\(u_i(b_i, B_{-i})\)</span> for a fixed va
 </figure>
 <script type="text/javascript">
     var params = {
-      filename: "/stochastic-control/geogebra/games/second-price-auction.ggb",
+      filename: "../www/geogebra/second-price-auction.ggb",
       enableShiftDragZoom: false,
       width: 600,
       height: 400,
@@ -1192,11 +1197,6 @@ The plot of <span class="math inline">\(u_i(b_i, B_{-i})\)</span> for a fixed va
         applet.inject('applet_container');
     }
 </script>
-<p>Note that the curve for truthful bidding (i.e., <span class="math inline">\(b_i = v_i\)</span>) weakly dominates the curves for under bidding as well as over bidding.</p>
-</div>
-</div>
-</div>
-<p>The rationalizability of truthful bidding holds in many situations. More on that later.</p>
 </section>
 <section id="dominance-by-mixed-strategies" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</h2>
@@ -1727,16 +1727,16 @@ The best response curves
 </figure>
 <script type="text/javascript">
     var params = {
-      filename: "/stochastic-control/geogebra/games/Cournot Competition.ggb",
+      filename: "../www/geogebra/Cournot Competition.ggb",
       enableShiftDragZoom: false,
       width: 600,
       height: 400,
     }
 
-    var applet = new GGBApplet(params, true);
+    var applet_2 = new GGBApplet(params, true);
 
     window.onload = function() {
-        applet.inject('applet_container_2');
+        applet_2.inject('applet_container_2');
     }
 </script>
 <p>Now we show that the game can be simplified using the elimination of never-best response strategies.</p>
