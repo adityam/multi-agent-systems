@@ -1,5 +1,9 @@
 ---
 title: Introduction
+format:
+  html:
+    include-in-header: 
+     - ../static/html/geogebra.html
 ---
 
 Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose an action $a \in \ALPHABET A$ to minimize a cost $c(a)$ (or, equivalently, receives a payoff or a utility $u(a)$). In multi-agent decision problems, different players may have different utility functions. Such settings are called **games**. We start with the simplest setting of two player games. 
@@ -680,6 +684,13 @@ Divide the set of strategies $\ALPHABET A_i = [0, ∞)$ into three sets:
 
 We now plot the payoff for the cases separately:
 
+Note that the curve for truthful bidding (i.e., $b_i = v_i$) weakly dominates
+the curves for under bidding as well as over bidding. 
+::: 
+
+The rationalizability of truthful bidding holds in many situations. More on
+that later. 
+
 <figure>
 <div style="width:600px;height:400px;display:block; align:center;" 
      id="applet_container"></div>
@@ -690,7 +701,7 @@ the bid.</figcaption>
 
 <script type="text/javascript">
     var params = {
-      filename: "/stochastic-control/geogebra/games/second-price-auction.ggb",
+      filename: "../www/geogebra/second-price-auction.ggb",
       enableShiftDragZoom: false,
       width: 600,
       height: 400,
@@ -702,13 +713,6 @@ the bid.</figcaption>
         applet.inject('applet_container');
     }
 </script>
-
-Note that the curve for truthful bidding (i.e., $b_i = v_i$) weakly dominates
-the curves for under bidding as well as over bidding. 
-::: 
-
-The rationalizability of truthful bidding holds in many situations. More on
-that later. 
 
 ## Dominance by mixed strategies
 
@@ -1115,16 +1119,16 @@ We plot the BR relationships below.
 
 <script type="text/javascript">
     var params = {
-      filename: "/stochastic-control/geogebra/games/Cournot Competition.ggb",
+      filename: "../www/geogebra/Cournot Competition.ggb",
       enableShiftDragZoom: false,
       width: 600,
       height: 400,
     }
 
-    var applet = new GGBApplet(params, true);
+    var applet_2 = new GGBApplet(params, true);
 
     window.onload = function() {
-        applet.inject('applet_container_2');
+        applet_2.inject('applet_container_2');
     }
 </script>
 
