@@ -49,6 +49,15 @@ csl: _extensions/csl/acm-siggraph.csl
 
 format:
   html:
+    author:
+      - name: Aditya Mahajan
+        url: http://www.cim.mcgill.ca/~adityam
+        affiliation: McGill University
+        affiliation-url: http://www.mcgill.ca/ece
+    citation:
+      type: webpage
+      container-title: "Course notes for ECSE 508 (Multi-agent Systems)"
+    google-scholar: true
     theme: 
       - yeti
       - static/css/style.scss
