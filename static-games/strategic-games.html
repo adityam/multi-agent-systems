@@ -1170,7 +1170,7 @@ Game <span class="math inline">\(\mathscr{G}_R\)</span>
 <p><span class="theorem-title"><strong>Proposition 1.1 </strong></span>: In sealed bid second price auctions, the bidding strategy <span class="math inline">\(b_i = v_i\)</span> weakly dominates all other strategies.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1179,7 +1179,7 @@ Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Consider a buyer <span class="math inline">\(i\)</span> with value <span class="math inline">\(v_i\)</span>. Given a bid profile <span class="math inline">\(b = (b_j)_{j \in N}\)</span>, let</p>
 <ul>
@@ -1192,21 +1192,10 @@ u_i(b) = \begin{cases}
   \dfrac{v_i - B_{-i}}{N_{-i} + 1}, &amp; \text{if $b_i = B_{-i}$} \\
   v_i - B_{-i}, &amp; \text{if $b_i &gt; B_{-i}$}
 \end{cases}\]</span></p>
-<p>Divide the set of strategies <span class="math inline">\(\ALPHABET A_i = [0, ∞)\)</span> into three sets:</p>
-<ul>
-<li>Under bid, i.e., bid less than <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\([0, v_i)\)</span>.</li>
-<li>Bid truthfully, bid equal to <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\(\{v_i\}\)</span>.</li>
-<li>Over bid, i.e., bid greater than <span class="math inline">\(v_i\)</span>, i.e., the set <span class="math inline">\((v_i,∞)\)</span>.</li>
-</ul>
-<p>We now plot the payoff for the cases separately:</p>
-<p>Note that the curve for truthful bidding (i.e., <span class="math inline">\(b_i = v_i\)</span>) weakly dominates the curves for under bidding as well as over bidding.</p>
-</div>
-</div>
-</div>
-<p>The rationalizability of truthful bidding holds in many situations. More on that later.</p>
+<!-- Diagram {{{ -->
 <div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
-<figure id="diagram" class="figure">
-  <p>
+<figure id="diagram" class="figure" style="width=100%">
+  <p style="max-width:400px; margin: 0px auto;">
   <svg class="cartesian" viewbox="-100 -300 600 500">
   <defs>
     <!-- A marker to be used as an arrowhead -->
@@ -1229,7 +1218,17 @@ u_i(b) = \begin{cases}
     <circle :cx="bid*scale" :cy="(value-bid)*scale/2" r="8" stroke="#0A0" fill="white" stroke-width="2"></circle>
     <!-- Draw the bid and value -->
     <circle :cx="bid*scale" cy="0" r="10" fill="#D00"></circle>
+    <foreignobject :x="(bid-0.5)*scale" :y="1*scale" :width="1*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $b_i$
+        </div>
+  </foreignobject>
     <circle :cy="value*scale" cx="0" r="10" fill="#000"></circle>
+    <foreignobject :x="-2*scale" :y="-(value+1)*scale" :width="2*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $v_i$
+        </div>
+  </foreignobject>
   </g>
   </svg>
   <label>
@@ -1237,7 +1236,7 @@ u_i(b) = \begin{cases}
   </label>
   </p>
   <figcaption class="figure-caption">
-  The plot of $u_i(b_i, B_{-i})$ for a fixed value of bid $b_i$.
+  Figure: The plot of $u_i(b_i, B_{-i})$ for a fixed value of bid $b_i$.
   Move the bid point around to see how utility function changes with 
 the bid.</figcaption>
 </figure>
@@ -1270,6 +1269,19 @@ the bid.</figcaption>
       }
     },
   }).mount('#diagram')</script>
+<!-- }}} End diagram -->
+<p>Divide the set of strategies <span class="math inline">\(\ALPHABET A_i = [0, ∞)\)</span> into three sets:</p>
+<ul>
+<li>Under bid, i.e., bid less than <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\([0, v_i)\)</span>.</li>
+<li>Bid truthfully, bid equal to <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\(\{v_i\}\)</span>.</li>
+<li>Over bid, i.e., bid greater than <span class="math inline">\(v_i\)</span>, i.e., the set <span class="math inline">\((v_i,∞)\)</span>.</li>
+</ul>
+<p>We now plot the payoff for the cases separately:</p>
+<p>Note that the curve for truthful bidding (i.e., <span class="math inline">\(b_i = v_i\)</span>) weakly dominates the curves for under bidding as well as over bidding.</p>
+</div>
+</div>
+</div>
+<p>The rationalizability of truthful bidding holds in many situations. More on that later.</p>
 </section>
 <section id="dominance-by-mixed-strategies" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</h2>
@@ -1424,7 +1436,7 @@ U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
 </section>
 <section id="never-best-response" class="level2" data-number="1.9">
 <h2 data-number="1.9" class="anchored" data-anchor-id="never-best-response"><span class="header-section-number">1.9</span> Never best response</h2>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1441,7 +1453,7 @@ Best Response
 </div>
 </div>
 <p>An idea related to dominance is never best response.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1820,12 +1832,19 @@ The best response curves
 </ul>
 <p>Continuing this way, we can show that the process converges to the intersection point <span class="math inline">\(\left( \frac{M-c}{3}, \frac{M-c}{3} \right)\)</span> with payoff <span class="math inline">\(\left( \frac{(M-c)^2}{9}, \frac{(M-c)^2}{9}\right)\)</span>.</p>
 <p>This example shows that we can find a rationalizable strategy for continuous action games as well.</p>
-<dl>
-<dt>Remark</dt>
-<dd>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beware of the model
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Note that if the firms collude and fix production to <span class="math inline">\((M-c)/4\)</span> (which ensures that the total production is the same as the monopoly level), it will result in a higher price and increased profits. However, this feature depends on the assumptions of the model, some of which are unrealistic. For a more realistic market model, consider the later example of Bertrand competition, where players set prices rather than production levels.</p>
-</dd>
-</dl>
+</div>
+</div>
 </section>
 </section>
 <section id="exercises" class="level2 unnumbered">
@@ -1839,6 +1858,9 @@ The best response curves
   (50,50), &amp; \text{if $a_1 + a_2 &gt; 100$ and $a_1 = a_2$}
 \end{cases}\]</span> Find the rationalizable strategies using IEWDS.</p>
 </div>
+<!-- 
+vim: foldmethod=marker
+-->
 
 
 </section>
