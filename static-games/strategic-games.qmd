@@ -719,30 +719,56 @@ u_i(b) = \begin{cases}
          :y2="(ymax-7.5)*scale" x2="0"
          stroke="black" :stroke-width="2" 
          marker-end="url(#arrow)" />
+    <!-- Draw the bid -->
+    <line
+        :x1="value*scale" :y1="-0.5*scale"
+        :x2="value*scale" :y2="0.5*scale"
+         stroke="#00A" :stroke-width="2.5" />
+
+    <foreignObject 
+         :x="(value)*scale" :y="1*scale"
+         :width="1*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $v_i$
+        </div>
+    </foreignObject>
+
+    <line
+        :x1="bid*scale" :y1="ymin*scale"
+        :x2="bid*scale" :y2="(ymax-7.5)*scale"
+         stroke="#A00" :stroke-width="1.5" />
+
+    <foreignObject 
+         :x="(bid)*scale" :y="1*scale"
+         :width="1*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $b_i$
+        </div>
+    </foreignObject>
+
     <!-- Plot the payoff -->
     <line
         x1="0" :y1="value*scale"
         :x2="bid*scale" :y2="(value - bid)*scale"
         stroke="#0A0" stroke-width="4" />
+
+    <circle
+        :cx="bid*scale" :cy="(value-bid)*scale" r="8"
+        stroke="#0A0" fill="white" stroke-width="2" />
+
     <line
         :x1="bid*scale" y1="0"
         :x2="(xmax+xmin+2)*scale" y2="0"
         stroke="#0A0" stroke-width="4" />
 
+    <circle 
+        :cx="bid*scale" cy="0" r="8" 
+        stroke="#0A0" fill="white" stroke-width="2" />
+
     <circle
         :cx="bid*scale" :cy="(value-bid)*scale/2" r="8"
-        stroke="#0A0" fill="white" stroke-width="2" />
-    <!-- Draw the bid and value -->
-    <circle 
-         :cx="bid*scale" cy="0" r="10" 
-         fill="#D00" />
-    <foreignObject 
-         :x="(bid-0.5)*scale" :y="1*scale"
-         :width="1*scale" :height="2*scale">
-        <div xmlns="http://www.w3.org/1999/xhtml">
-          $b_i$
-        </div>
-  </foreignObject>
+        fill="#0A0" />
+    <!-- Draw the value -->
     <circle 
          :cy="value*scale" cx="0" r="10" 
          fill="#000" />
@@ -761,7 +787,7 @@ u_i(b) = \begin{cases}
   </label>
   </p>
   <figcaption class="figure-caption">
-  Figure: The plot of $u_i(b_i, B_{-i})$ for a fixed value of bid $b_i$.
+  Figure: The plot of $u_i(b_i, B_{-i})$ for a fixed value of bid $b_i$ and a function of $B_{-i}$. The blue tick represents $v_i$ and the red veritical line represents the current bid.
   Move the bid point around to see how utility function changes with 
 the bid.</figcaption>
 </figure>
@@ -803,7 +829,7 @@ Divide the set of strategies $\ALPHABET A_i = [0, ∞)$ into three sets:
 * Bid truthfully, bid equal to $v_i$: i.e., the set $\{v_i\}$.
 * Over bid, i.e., bid greater than $v_i$, i.e., the set $(v_i,∞)$. 
 
-We now plot the payoff for the cases separately:
+See the plot in the figure above to see utility (as a function of $B_{-i}$ for different values of $b_i$.
 
 Note that the curve for truthful bidding (i.e., $b_i = v_i$) weakly dominates
 the curves for under bidding as well as over bidding. 
