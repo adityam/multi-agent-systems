@@ -141,3 +141,20 @@
   margin-top: 3px;
 }
 
+svg { 
+  display: block;
+  background: white;
+  border:1px solid; 
+  padding: 5px;
+}
+
+// Copied from: https://stackoverflow.com/a/38811507/193149
+/* Flip the vertical axis in <g> to emulate cartesian. */
+svg.cartesian > g {
+  transform: scaleY(-1);
+}
+
+/* Re-flip all <text> element descendants to their original side up. */
+svg.cartesian > g text {
+  transform: scaleY(-1);
+}

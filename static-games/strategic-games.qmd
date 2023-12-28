@@ -4,6 +4,7 @@ format:
   html:
     include-in-header: 
      - ../static/html/geogebra.html
+     - ../static/html/vue.html
 ---
 
 Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose an action $a \in \ALPHABET A$ to minimize a cost $c(a)$ (or, equivalently, receives a payoff or a utility $u(a)$). In multi-agent decision problems, different players may have different utility functions. Such settings are called **games**. We start with the simplest setting of two player games. 
@@ -688,31 +689,111 @@ Note that the curve for truthful bidding (i.e., $b_i = v_i$) weakly dominates
 the curves for under bidding as well as over bidding. 
 ::: 
 
-The rationalizability of truthful bidding holds in many situations. More on
-that later. 
+The rationalizability of truthful bidding holds in many situations. More on that later. 
 
-<figure>
-<div style="width:600px;height:400px;display:block; align:center;" 
-     id="applet_container"></div>
-<figcaption>The plot of $u_i(b_i, B_{-i})$ for a fixed value of bid $b_i$.
-Move the bid point around to see how utility function changes with 
+```{=html}
+<div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
+<figure id="diagram" class="figure">
+  <p>
+  <svg class="cartesian" viewBox="-100 -300 600 500">
+  <defs>
+    <!-- A marker to be used as an arrowhead -->
+    <marker
+      id="arrow"
+      viewBox="0 0 10 10"
+      refX="5"
+      refY="5"
+      markerWidth="6"
+      markerHeight="6"
+      orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs>
+  <g>
+    <!-- Draw the y-axis -->
+    <line v-for="x in (xmax-xmin)"
+          :x1="(x+xmin)*scale" :y1="ymin*scale"
+          :x2="(x+xmin)*scale" :y2="ymax*scale"
+          stroke="gray" :stroke-width="(x+xmin)%5 == 0 ? 0.75 : 0.25" />
+    <!-- Draw the x-axis -->
+    <line v-for="y in (ymax-ymin)"
+          :y1="(y+ymin)*scale" :x1="xmin*scale"
+          :y2="(y+ymin)*scale" :x2="xmax*scale"
+          stroke="gray" :stroke-width="(y+ymin)%5 == 0 ? 0.75 : 0.25" />
+    <!-- Draw the axis -->
+    <line 
+         :x1="xmin*scale" y1="0"
+         :x2="(xmax-7.5)*scale" y2="0"
+         stroke="black" :stroke-width="2" 
+         marker-end="url(#arrow)" />
+    <line 
+         :y1="ymin*scale" x1="0"
+         :y2="(ymax-7.5)*scale" x2="0"
+         stroke="black" :stroke-width="2" 
+         marker-end="url(#arrow)" />
+    <!-- Plot the payoff -->
+    <line
+        x1="0" :y1="value*scale"
+        :x2="bid*scale" :y2="(value - bid)*scale"
+        stroke="#0A0" stroke-width="4" />
+    <line
+        :x1="bid*scale" y1="0"
+        :x2="(xmax+xmin+2)*scale" y2="0"
+        stroke="#0A0" stroke-width="4" />
+
+    <circle
+        :cx="bid*scale" :cy="(value-bid)*scale/2" r="8"
+        stroke="#0A0" fill="white" stroke-width="2" />
+    <!-- Draw the bid and value -->
+    <circle 
+         :cx="bid*scale" cy="0" r="10" 
+         fill="#D00" />
+    <circle 
+         :cy="value*scale" cx="0" r="10" 
+         fill="#000" />
+  </g>
+  </svg>
+  <label>
+    bid = <input v-model.number="bid"
+                 type="range" min="0" :max="2*value" />
+  </label>
+  </p>
+  <figcaption class="figure-caption">
+  The plot of $u_i(b_i, B_{-i})$ for a fixed value of bid $b_i$.
+  Move the bid point around to see how utility function changes with 
 the bid.</figcaption>
 </figure>
+</div>
 
-<script type="text/javascript">
-    var params = {
-      filename: "../www/geogebra/second-price-auction.ggb",
-      enableShiftDragZoom: false,
-      width: 600,
-      height: 400,
-    }
+<script>
+  const { createApp, ref } = Vue
 
-    var applet = new GGBApplet(params, true);
+  createApp({
+    setup() {
+      const xmin = ref(-10);
+      const xmax = ref(30);
+      const ymin = ref(-15);
+      const ymax = ref(20);
 
-    window.onload = function() {
-        applet.inject('applet_container');
-    }
-</script>
+      const scale = ref(20);
+
+      return {
+        xmin,
+        xmax,
+        ymin,
+        ymax,
+        scale,
+      }
+    },
+    data() {
+      return {
+          bid: 5,
+          value: 10,
+      }
+    },
+  }).mount('#diagram')</script>
+```
+
 
 ## Dominance by mixed strategies
 
