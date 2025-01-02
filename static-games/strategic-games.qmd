@@ -9,12 +9,7 @@ format:
 
 Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose an action $a \in \ALPHABET A$ to minimize a cost $c(a)$ (or, equivalently, receives a payoff or a utility $u(a)$). In multi-agent decision problems, different players may have different utility functions. Such settings are called **games**. We start with the simplest setting of two player games. 
 
-Consider a decision problem where there are two players. Player 1 ($P_1$ from
-now on) chooses an action $a_1 \in \ALPHABET A_1$ and player 2 ($P_2$ from now
-on) chooses an action $a_2 \in \ALPHABET A_2$. Once both players have chosen
-their actions, $P_1$ receives a payoff of $u_1(a_1, a_2)$ and $P_2$ receives a
-payoff of $u_2(a_1,a_2)$. How should the players behave?
-
+Consider a decision problem where there are two players. Player 1 ($P_1$ from now on) chooses an action $a_1 \in \ALPHABET A_1$ and player 2 ($P_2$ from now on) chooses an action $a_2 \in \ALPHABET A_2$. Once both players have chosen their actions, $P_1$ receives a payoff of $u_1(a_1, a_2)$ and $P_2$ receives a payoff of $u_2(a_1,a_2)$. How should the players behave?
 
 ## Examples
 
@@ -23,31 +18,14 @@ We start with a few examples.
 ::: {.callout-note }
 ### Prisoner's dilemma.
 
-Two criminals are arrested for a crime but the prosecutors have evidence to
-only charge them for a lesser crime but not enough to charge them for the main
-crime. The prisoners are kept in separate cells with no means to communicate.
-The prosecutors simultaneously offer the following bargain to both prisoners:
-serve as a witness that the other criminal committed the crime and walk free;
-unless the other also confesses in which case both get sentenced. If both
-criminals confess, both get a reduced sentenced for the main crime (2 years in
-prison). If only one confesses, the criminal who confessed walks free while
-the other gets a full sentence for the main crime (10 years in prison). If
-neither prisoner takes the bargain, then both get charged for the lesser crime
-(1 year in prison).
+Two criminals are arrested for a crime but the prosecutors have evidence to only charge them for a lesser crime but not enough to charge them for the main crime. The prisoners are kept in separate cells with no means to communicate. The prosecutors simultaneously offer the following bargain to both prisoners: serve as a witness that the other criminal committed the crime and walk free; unless the other also confesses in which case both get sentenced. If both criminals confess, both get a reduced sentenced for the main crime (2 years in prison). If only one confesses, the criminal who confessed walks free while the other gets a full sentence for the main crime (10 years in prison). If neither prisoner takes the bargain, then both get charged for the lesser crime (1 year in prison).
 
 :::
 
-This example can be modeled as a two player game as follow. The action sets of
-both players are $\ALPHABET A_1 = \ALPHABET A_2 = \{ \mathsf{A}, \mathsf{R}
-\}$, where $\mathsf{A}$ means that the player accepts the bargain and
-$\mathsf{R}$ means that the player rejects the bargain. The utility functions
-can be represented compactly as follows, which is called the _bimatrix
-representation_ of the game. 
-
-
-::: {.column-margin}
+This example can be modeled as a two player game as follow. The action sets of both players are $\ALPHABET A_1 = \ALPHABET A_2 = \{ \mathsf{A}, \mathsf{R} \}$, where $\mathsf{A}$ means that the player accepts the bargain and $\mathsf{R}$ means that the player rejects the bargain. The utility functions can be represented compactly as follows, which is called the _bimatrix representation_ of the game. 
 
 <table class="game" align="center">
+<caption>Bimatrix representation of Prisoner's dilemma game</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{A}$</td>
@@ -69,20 +47,14 @@ representation_ of the game.
   </tr>
 </table>
 
-:::
 
 ::: {.callout-note } 
 ### Battle of sexes
 
-A couple wants to go out for the evening and there are two events taking
-place: a football game and an opera. One person (player 1) prefers to go to the
-football game while the other player (player 2) prefers to go the opera. But
-they want to go together and are miserable if they go to separate events.
+A couple wants to go out for the evening and there are two events taking place: a football game and an opera. One person (player 1) prefers to go to the football game while the other player (player 2) prefers to go the opera. But they want to go together and are miserable if they go to separate events.
 
-:::
-
-::: {.column-margin}
 <table class="game" align="center">
+<caption>Battle of Sexes Game</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{F}$</td>
@@ -110,15 +82,10 @@ they want to go together and are miserable if they go to separate events.
 
 ### Chicken (also called Hawk-Dove)
 
-_Two drivers are headed for a single lane bridge from opposite directions. The
-first to swerve away yields the bridge to the other and is called 'chicken'
-(i.e., a coward). If neither swerve, both are involved in a head-on
-collision._
+_Two drivers are headed for a single lane bridge from opposite directions. The first to swerve away yields the bridge to the other and is called 'chicken' (i.e., a coward). If neither swerve, both are involved in a head-on collision._
 
-:::
-
-::: {.column-margin}
 <table class="game" align="center">
+<caption>Battle of Hawk-Dove Game</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{C}$</td>
@@ -144,14 +111,10 @@ collision._
 ::: {.callout-note } 
 ### Matching pennies
 
-Consider a parlour game among two players. Each player has a penny
-and must secretly turn the penny to heads or tails. The players reveal their
-choices simultaneously. If the pennies match (both heads or both tails),
-player 1 wins. If they don't player 2 wins.
-:::
+Consider a parlour game among two players. Each player has a penny and must secretly turn the penny to heads or tails. The players reveal their choices simultaneously. If the pennies match (both heads or both tails), player 1 wins. If they don't player 2 wins.
 
-::: {.column-margin}
 <table class="game" align="center">
+<caption>Battle of matching pennies game</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{H}$</td>
@@ -227,39 +190,27 @@ $$
 We will also use the phrase "$b_i$ is (strongly or weakly) dominated by $a_i$" to denote the same fact. 
 :::
 
-A strategy $a_i \in \ALPHABET A_i$ is called (strongly or weakly) __dominant
-strategy__ if it (strongly or weakly) dominates all other strategies $b_i \in
-\ALPHABET A_i \setminus \{a_i\}$.
+A strategy $a_i \in \ALPHABET A_i$ is called (strongly or weakly) __dominant strategy__ if it (strongly or weakly) dominates all other strategies $b_i \in \ALPHABET A_i \setminus \{a_i\}$.
 
 We now impose some assumptions on the players. 
 
-::: highlight :::
+::: theorem :::
 
-Assumption #ass:strict
-
-:   A rational player will not choose a strictly dominated strategy.
-
-:::
-
-Note that we have not formally defined rationality. That is more of a
-philosophical discussion, and for the purpose of this course, we will not
-present a formal definition but rather go with the colloquial meaning of the
-word. 
-
-::: highlight :::
-
-Assumption #
-
-:   All players in a game are rational.
+**Assumption (Strict Rationality)**
+A rational player will not choose a strictly dominated strategy.
 
 :::
 
-Irrespective of the definition of rationality, this assumption is often
-violated in practice. Human decision makers are almost never rational. Even
-when decisions are made by algorithms, the decisions may not be rational.
-There is a whole branch of decision theory which considers players with
-bounded rationality. However, in this course, we will make the simplifying
-assumption that the players are rational. 
+Note that we have not formally defined rationality. That is more of a philosophical discussion, and for the purpose of this course, we will not present a formal definition but rather go with the colloquial meaning of the word. 
+
+::: theorem :::
+
+**Assumption (Rationality of Players)**
+All players in a game are rational.
+
+:::
+
+Irrespective of the definition of rationality, this assumption is often violated in practice. Human decision makers are almost never rational. Even when decisions are made by algorithms, the decisions may not be rational. There is a whole branch of decision theory which considers players with bounded rationality. However, in this course, we will make the simplifying assumption that the players are rational. 
 
 ## Dominant strategy equilibrium
 
@@ -275,6 +226,8 @@ For example, consider the game of prisoner's dilemma. Note that, for $P_1$,
   u_1(\mathsf{A}, \cdot) &= \begin{bmatrix} -2 & 0 \end{bmatrix}, \\
   u_1(\mathsf{R}, \cdot) &= \begin{bmatrix} -3 & -1 \end{bmatrix}.
 \end{align*}
+Note that 
+$$ u_1(\mathsf{A}, ⋅) > u_1(\mathsf{R}, ⋅). $$
 Thus $\mathsf{A}$ is a dominant strategy for $P_1$. 
 
 Similarly, for $P_2$, 
@@ -283,6 +236,8 @@ Similarly, for $P_2$,
   & 
   u_2(\cdot, \mathsf{R}) &= \begin{bmatrix} -3 \\ -1 \end{bmatrix}.
 \end{align*}
+Note that 
+$$ u_2(⋅,\mathsf{A}) > u_2(⋅,\mathsf{R}). $$
 Thus, $\mathsf{A}$ is a dominant strategy for $P_2$. 
 
 Therefore, $(\mathsf{A}, \mathsf{A})$ is a dominant strategy equilibrium. Note
@@ -354,25 +309,19 @@ Continuing this way, we can argue that we we need to assume that
 * $P_1$ knows that $P_2$ knows that $P_1$ knows that $P_2$ is rational. 
 * and so on. 
 
-If statements of this type hold for infinite depth, we say that the fact that
-$P_2$ is rational is __common knowledge__. We will revisit common knowledge
-later in the course. For now, we assume the following.
+If statements of this type hold for infinite depth, we say that the fact that $P_2$ is rational is __common knowledge__. We will revisit common knowledge later in the course. For now, we assume the following.
 
-::: highlight :::
+::: theorem :::
 
-Assumption #
-
-:  It is common knowledge that all players are rational.
+**Assumption (Common knowledge of rationality)**
+It is common knowledge that all players are rational.
 
 :::
 
-Under the assumption of common knowledge of rationality, we can assume that
-the players will eliminate strictly dominated strategies. For example, in the
-previous example, both players can eliminate strategy $\mathsf{R}$ from
-consideration and simplify the original game $\mathscr{G}$ to game
-$\mathscr{G}_1$ shown below. 
+Under the assumption of common knowledge of rationality, we can assume that the players will eliminate strictly dominated strategies. For example, in the previous example, both players can eliminate strategy $\mathsf{R}$ from consideration and simplify the original game $\mathscr{G}$ to game $\mathscr{G}_1$ shown below. 
 
 <table class="game" align="center">
+<caption>Original game $\mathscr{G}$</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
@@ -398,11 +347,9 @@ $\mathscr{G}_1$ shown below.
     <td>$0$</td>
   </tr>
 </table>
-<figcaption>
-Original game $\mathscr{G}$
-</figcaption>
 
 <table class="game" align="center">
+<caption>Reduced game $\mathscr{G}_1$</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
@@ -423,15 +370,11 @@ Original game $\mathscr{G}$
     <td>$1$</td>
   </tr>
 </table>
-<figcaption>
-Reduced game $\mathscr{G}_1$
-</figcaption>
 
-We can continue this reasoning. In the reduced game $\mathscr{G}_1$, strategy
-$\mathsf{B}$ for $P_1$ is dominated by strategy $\mathsf{T}$. So, we obtain
-the reduced game $\mathscr{G}_2$ shown below.
+We can continue this reasoning. In the reduced game $\mathscr{G}_1$, strategy $\mathsf{B}$ for $P_1$ is dominated by strategy $\mathsf{T}$. So, we obtain the reduced game $\mathscr{G}_2$ shown below.
 
 <table class="game" align="center">
+<caption>Reduced game $\mathscr{G}_2$</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
@@ -445,14 +388,11 @@ the reduced game $\mathscr{G}_2$ shown below.
     <td>$2$</td>
   </tr>
 </table>
-<figcaption>
-Reduced game $\mathscr{G}_2$
-</figcaption>
 
-Finally, we can eliminate strategy $\mathsf{L}$ for $P_1$, which is strictly
-dominated by $\mathsf{M}$ to obtain game $\mathscr{G}_3$ shown below.
+Finally, we can eliminate strategy $\mathsf{L}$ for $P_1$, which is strictly dominated by $\mathsf{M}$ to obtain game $\mathscr{G}_3$ shown below.
 
 <table class="game" align="center">
+<caption>Reduced game $\mathscr{G}_3$</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{M}$</td>
@@ -463,31 +403,24 @@ dominated by $\mathsf{M}$ to obtain game $\mathscr{G}_3$ shown below.
     <td>$2$</td>
   </tr>
 </table>
-<figcaption>
-Reduced game $\mathscr{G}_3$
-</figcaption>
 
-This procedure is called **IEDS (Iterative elimination of dominated
-strategies)**. If the procedure gives a unique strategy, that strategy is
-called a **rationalizable strategy**.
+This procedure is called **IEDS (Iterative elimination of dominated strategies)**. If the procedure gives a unique strategy, that strategy is called a **rationalizable strategy**.
 
 Remarks
 
-:  * In general, IEDS may not lead to a solution (i.e., we may be left with a
-game which is not $1 × 1$ where no strategy is dominated). 
-* At each step, there may be more than one strictly dominated strategy. If
- so, we can simultaneously eliminate all of them. 
-* Irrespective of the order in which strategies are eliminated, IEDS gives
- the same simplified game. 
+:  * In general, IEDS may not lead to a solution (i.e., we may be left with a game which is not $1 × 1$ where no strategy is dominated). 
+* At each step, there may be more than one strictly dominated strategy. If so, we can simultaneously eliminate all of them. 
+* Irrespective of the order in which strategies are eliminated, IEDS gives the same simplified game. 
 
 
-Rationalizable equilibrium are derived under the assumption of common
-knowledge of rationality, which appears to be a benign assumption but is not.
-To see why common knowledge of rationality is a strong assumption, consider
-the following example, which is known as the _beauty contest game_.
+Rationalizable equilibrium are derived under the assumption of common knowledge of rationality, which appears to be a benign assumption but is not. To see why common knowledge of rationality is a strong assumption, consider the following example, which is known as the _beauty contest game_.
 
-_Each player picks a real number between 0 and 100. The person who was closest
-to the average of the group wins a prize_. 
+:::{.callout-note}
+### Beauty contest game
+
+Each player picks a real number between 0 and 100. The person who was closest to the average of the group wins a prize. 
+
+:::
 
 How will you play this game?
     
@@ -496,18 +429,14 @@ How will you play this game?
 We can extend the notion of IEDS to IE**W**DS (Iterative elimination of
 _weakly_ dominated strategies) if we make the following assumption.
 
-::: highlight :::
+::: theorem :::
 
-Assumption #ass:weak
-
-:  A rational player never plays a weakly dominated strategy.
+**Assumption (Weak rationality)
+A rational player never plays a weakly dominated strategy.
 
 :::
 
-@ass:weak is less compelling than @ass:strict. Nonetheless, it allows us to
-find solutions of games where IEDS doesn't work (see the second price auction
-example below). If IEWDS gives us a unique solution, we call the resulting
-strategy as a **rationalizable strategy**
+The weak rationality assumption is less compelling than the strict rationality assumption. Nonetheless, it allows us to find solutions of games where IEDS doesn't work (see the [second price auction](#second-price-auction) example below). If IEWDS gives us a unique solution, we call the resulting strategy as a **rationalizable strategy**
 
 
 However, unlike IEDS where the order of elimination of
@@ -542,8 +471,9 @@ following game:
   </tr>
 </table>
 
-Note that both strategies $\mathsf{L}$ and $\mathsf{R}$ are weakly dominated
-by $\mathsf{M}$. 
+Note that both strategies $\mathsf{L}$ and $\mathsf{R}$ are weakly dominated by $\mathsf{M}$. 
+
+#### Case 1: Eliminate $\mathsf{L}$ {-}
 
 If we eliminate $\mathsf{L}$, we obtain the following reduction.
 
@@ -569,10 +499,10 @@ If we eliminate $\mathsf{L}$, we obtain the following reduction.
   </tr>
 </table>
 
-Now, for $P_1$, strategy $\mathsf{T}$ is dominated by strategy $\mathsf{B}$.
-Eliminating $\mathsf{T}$ we get
+Now, for $P_1$, strategy $\mathsf{T}$ is dominated by strategy $\mathsf{B}$. Eliminating $\mathsf{T}$ we get
 
 <table class="game" align="center">
+<caption>Game $\mathscr{G}_L$</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{M}$</td>
@@ -586,10 +516,12 @@ Eliminating $\mathsf{T}$ we get
     <td>$2$</td>
   </tr>
 </table>
-<figcaption>Game $\mathscr{G}_L$</figcaption>
+
+#### Case 2: Eliminate $\mathsf{R}$ {-}
 
 If we eliminate $\mathsf{R}$ in the original game, we get the following
 reduction.
+
 <table class="game" align="center">
   <tr>
     <td></td>
@@ -616,6 +548,7 @@ Here, for $P_1$, strategy $\mathsf{B}$ is weakly dominated by strategy
 $\mathsf{T}$. Eliminating $\mathsf{B}$, we get
 
 <table class="game" align="center">
+<caption>Game $\mathscr{G}_R$</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
@@ -629,30 +562,29 @@ $\mathsf{T}$. Eliminating $\mathsf{B}$, we get
     <td>$1$</td>
   </tr>
 </table>
-<figcaption>Game $\mathscr{G}_R$</figcaption>
 
 Note that games $\mathscr{G}_L$ and $\mathscr{G}_R$ cannot be reduced further.
 The resulting payoffs are also different.
 
-## Second price auction
+## Second price auction 
 
 We will study auctions in detail later in the course, but here we use the
 concept of dominance to identify a rationalizable strategy in what are
 knows as sealed bid, second price auctions. This is an example of a game with
 continuous action spaces. 
 
+:::{.callout-note}
+### Sealed bid auctions
+
 Sealed bid second price auctions work as follows:
 
 * An indivisible object is for sale. 
-* The set of buyers is known as $N$. Each buyer $i$ attaches a value $v_i$ to
-  the object, i.e., he is willing to pay at most $v_i$ for the object. The
-  value $v_i$ is the buyer's internal assessment.
+* The set of buyers is known as $N$. Each buyer $i$ attaches a value $v_i$ to the object, i.e., he is willing to pay at most $v_i$ for the object. The value $v_i$ is the buyer's internal assessment.
 * Each buyer $i$ bids $b_i$, presented to the auctioneer in a sealed envelop.
-* The buyer with the highest bid wins the object. If more than one buyer have
-  the same highest bid, then the object goes to one of them at random.
-* The key feature of second price auction is that, unlike the standard auctions,
-  the winner does not pay what he bid. Instead, he pays the second highest bid
-  offered (and hence the name, second price auctions). 
+* The buyer with the highest bid wins the object. If more than one buyer have the same highest bid, then the object goes to one of them at random.
+* The key feature of second price auction is that, unlike the standard auctions, the winner does not pay what he bid. Instead, he pays the second highest bid offered (and hence the name, second price auctions). 
+
+:::
 
 How should a rational player act in such an auction. 
 
@@ -957,7 +889,7 @@ An idea related to dominance is never best response.
 ::: {.callout-tip } 
 ### Never best response
 
-A pure strategy $a_i$ is never best response if for all mixed strategies $α_{-i}$ there exists a mixed strategy $α_i$ such that
+A pure strategy $a_i$ is never best response if for all mixed strategies $α_{-i}$ of other players there exists a mixed strategy $α_i$ such that
  $$ U_i(α_i, α_{-i}) > U_i(a_i, α_{-i}). $$
 :::
 

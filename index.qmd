@@ -1,1 +1,11 @@
 # About the course {.unnumbered}
+
+These are lecture notes for ECSE 508 (Multi-Agent Systems) that I teach in the Winter term of every odd year. These notes are not meant to be exhaustive; rather my focus is to convey the key ideas in their simplest form. For a more exhaustive treatment of the subject, please refer to the reference books mentioned below.
+
+If you find any typos/mistakes in the notes, please let me know. [Pull requests are welcome](https://github.com/adityam/multi-agent-systems).
+
+## Reference books
+
+- Osborne and Rubinstein, [*A Course in Game Theory*](https://mcgill.on.worldcat.org/oclc/44963976), MIT Press, 1994
+
+- Zamir, Maschler, Solan, [*Game Theory*](https://mcgill.on.worldcat.org/oclc/813858402), Cambridge University Press, 2013.

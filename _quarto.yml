@@ -4,13 +4,13 @@ project:
   resources: 'www/geogebra/*.ggb'
 
 book:
-  title: Course Notes
+  title: Multi-Agent Systems
   author: 
     - name: Aditya Mahajan
-      url: "https://cim.mcgill.ca/~adityam"
+      url: "https://adityam.github.io"
       affiliation: McGill University
       affiliation-url: "https://www.mcgill.ca/ece"
-  description: "ECES 508 (Multi Agent Systems)"
+  description: "Course Notes for ECSE 508 (McGill University)"
   site-url: "https://adityam.github.io/multi-agent-systems/"
 
   repo-url: "https://github.com/adityam/multi-agent-systems"
@@ -40,6 +40,7 @@ book:
     - part: "Strategic Games"
       chapters:
         - static-games/strategic-games.qmd
+        - static-games/correlated-equilibrium.qmd
     - part: "Dynamic Games"
     - references.qmd
     - part: "Assignments"
