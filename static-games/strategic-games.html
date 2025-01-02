@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2023-12-28">
-<meta name="description" content="ECES 508 (Multi Agent Systems)">
+<meta name="dcterms.date" content="2025-01-02">
+<meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>Course Notes - 1&nbsp; Introduction</title>
+<title>1&nbsp; Introduction – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,19 +33,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
+<link href="../static-games/correlated-equilibrium.html" rel="next">
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-d8982497a26acaab05a2a197b0b368ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d5ff69d9dbb64b66a8ef03b624867974.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -53,7 +53,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -62,6 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -106,71 +113,103 @@ window.MathJax = {
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Introduction]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2023-12-28">
-<meta name="citation_cover_date" content="2023-12-28">
-<meta name="citation_year" content="2023">
-<meta name="citation_online_date" content="2023-12-28">
-<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems//static-games/strategic-games.html">
+<meta name="citation_publication_date" content="2025-01-02">
+<meta name="citation_cover_date" content="2025-01-02">
+<meta name="citation_year" content="2025">
+<meta name="citation_online_date" content="2025-01-02">
+<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
+<meta name="citation_reference" content="citation_title=Correlated equilibrium as an expression of bayesian rationality;,citation_author=Robert J. Aumann;,citation_publication_date=1987-01;,citation_cover_date=1987-01;,citation_year=1987;,citation_issue=1;,citation_doi=10.2307/1911154;,citation_volume=55;,citation_journal_title=Econometrica;,citation_publisher=JSTOR;">
+<meta name="citation_reference" content="citation_title=Subjectivity and correlation in randomized strategies;,citation_author=Robert J. Aumann;,citation_publication_date=1974-03;,citation_cover_date=1974-03;,citation_year=1974;,citation_issue=1;,citation_doi=10.1016/0304-4068(74)90037-8;,citation_volume=1;,citation_journal_title=Journal of Mathematical Economics;,citation_publisher=Elsevier BV;">
+<meta name="citation_reference" content="citation_title=Agreeing to disagree;,citation_author=Robert J. Aumann;,citation_publication_date=1976-11;,citation_cover_date=1976-11;,citation_year=1976;,citation_issue=6;,citation_doi=10.1214/aos/1176343654;,citation_volume=4;,citation_journal_title=The Annals of Statistics;,citation_publisher=Institute of Mathematical Statistics;">
+<meta name="citation_reference" content="citation_title=Computing correlated equilibria in multi-player games;,citation_author=Christos H. Papadimitriou;,citation_author=Tim Roughgarden;,citation_publication_date=2008-07;,citation_cover_date=2008-07;,citation_year=2008;,citation_issue=3;,citation_doi=10.1145/1379759.1379762;,citation_volume=55;,citation_journal_title=Journal of the ACM;,citation_publisher=Association for Computing Machinery (ACM);">
+<meta name="citation_reference" content="citation_title=Games with incomplete information played by &amp;amp;amp;quot;bayesian&amp;quot; players, iIII part i. The basic model;,citation_author=John C. Harsanyi;,citation_publication_date=1967-11;,citation_cover_date=1967-11;,citation_year=1967;,citation_issue=3;,citation_doi=10.1287/mnsc.14.3.159;,citation_volume=14;,citation_journal_title=Management Science;,citation_publisher=Institute for Operations Research; the Management Sciences (INFORMS);">
+<meta name="citation_reference" content="citation_title=Games with incomplete information played by &amp;amp;amp;quot;bayesian&amp;quot; players part II. Bayesian equilibrium points;,citation_author=John C. Harsanyi;,citation_publication_date=1968-01;,citation_cover_date=1968-01;,citation_year=1968;,citation_issue=5;,citation_doi=10.1287/mnsc.14.5.320;,citation_volume=14;,citation_journal_title=Management Science;,citation_publisher=Institute for Operations Research; the Management Sciences (INFORMS);">
+<meta name="citation_reference" content="citation_title=Games with incomplete information played by “bayesian” players, part III. The basic probability distribution of the game;,citation_author=John C. Harsanyi;,citation_publication_date=1968-03;,citation_cover_date=1968-03;,citation_year=1968;,citation_issue=7;,citation_doi=10.1287/mnsc.14.7.486;,citation_volume=14;,citation_journal_title=Management Science;,citation_publisher=Institute for Operations Research; the Management Sciences (INFORMS);">
+<meta name="citation_reference" content="citation_title=Game theory for applied economists;,citation_author=Robert Gibbons;,citation_publication_date=1992;,citation_cover_date=1992;,citation_year=1992;,citation_isbn=0691043086;">
+<meta name="citation_reference" content="citation_title=Supermodularity and complementarity in economics: An elementary survey;,citation_author=Rabah Amir;,citation_publication_date=2005;,citation_cover_date=2005;,citation_year=2005;,citation_issue=3;,citation_doi=10.2307/20062066;,citation_issn=00384038;,citation_volume=71;,citation_journal_title=Southern Economic Journal;,citation_publisher=Southern Economic Association;">
+<meta name="citation_reference" content="citation_title=Supermodularity and complementarity;,citation_author=Donald M. Topkis;,citation_publication_date=1998;,citation_cover_date=1998;,citation_year=1998;,citation_isbn=9780691032443;">
+<meta name="citation_reference" content="citation_title=Correlated equilibrium in a nutshell;,citation_author=Rabah Amir;,citation_author=Sergei Belkov;,citation_author=Igor V. Evstigneev;,citation_publication_date=2017-06;,citation_cover_date=2017-06;,citation_year=2017;,citation_issue=4;,citation_doi=10.1007/s11238-017-9609-9;,citation_volume=83;,citation_journal_title=Theory and Decision;,citation_publisher=Springer Science; Business Media LLC;">
+<meta name="citation_reference" content="citation_title=Game theory;,citation_author=Michael Maschler;,citation_author=Shmuel Zamir;,citation_author=Eilon Solan;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
+<meta name="citation_reference" content="citation_title=Game theory;,citation_author=Michael Maschler;,citation_author=Shmuel Zamir;,citation_author=Eilon Solan;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../stochastic-control/index.html" rel="" target="">
- <span class="menu-text">Stochastic Control</span></a>
+    <a class="nav-link" href="../../stochastic-control/index.html"> 
+<span class="menu-text">Stochastic Control</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../multi-agent-systems/index.html" rel="" target="">
- <span class="menu-text">Multi-Agent Systems</span></a>
+    <a class="nav-link" href="../../multi-agent-systems/index.html"> 
+<span class="menu-text">Multi-Agent Systems</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-    <a href="https://github.com/adityam/multi-agent-systems" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/adityam/multi-agent-systems" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -181,9 +220,9 @@ window.MathJax = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Strategic Games</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -192,6 +231,12 @@ window.MathJax = {
   <div class="sidebar-item-container"> 
   <a href="../static-games/strategic-games.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +258,7 @@ window.MathJax = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -233,12 +278,12 @@ window.MathJax = {
   <li><a href="#cournot-competition" id="toc-cournot-competition" class="nav-link" data-scroll-target="#cournot-competition"><span class="header-section-number">1.11</span> Cournot competition</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/strategic-games.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/strategic-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
 </div>
@@ -251,14 +296,14 @@ window.MathJax = {
     <div class="quarto-title-meta-contents">
     <p class="author"><a href="http://www.cim.mcgill.ca/~adityam">Aditya Mahajan</a> </p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             <a href="http://www.mcgill.ca/ece">
             McGill University
             </a>
           </p>
       </div>
-    </div>
+  </div>
 
 <div class="quarto-title-meta">
 
@@ -266,7 +311,7 @@ window.MathJax = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 28, 2023</p>
+      <p class="date">January 2, 2025</p>
     </div>
   </div>
   
@@ -274,11 +319,13 @@ window.MathJax = {
   </div>
   
 
+
 </header>
+
 
 <p>Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose an action <span class="math inline">\(a \in \ALPHABET A\)</span> to minimize a cost <span class="math inline">\(c(a)\)</span> (or, equivalently, receives a payoff or a utility <span class="math inline">\(u(a)\)</span>). In multi-agent decision problems, different players may have different utility functions. Such settings are called <strong>games</strong>. We start with the simplest setting of two player games.</p>
 <p>Consider a decision problem where there are two players. Player 1 (<span class="math inline">\(P_1\)</span> from now on) chooses an action <span class="math inline">\(a_1 \in \ALPHABET A_1\)</span> and player 2 (<span class="math inline">\(P_2\)</span> from now on) chooses an action <span class="math inline">\(a_2 \in \ALPHABET A_2\)</span>. Once both players have chosen their actions, <span class="math inline">\(P_1\)</span> receives a payoff of <span class="math inline">\(u_1(a_1, a_2)\)</span> and <span class="math inline">\(P_2\)</span> receives a payoff of <span class="math inline">\(u_2(a_1,a_2)\)</span>. How should the players behave?</p>
-<section id="examples" class="level2 page-columns page-full" data-number="1.1">
+<section id="examples" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">1.1</span> Examples</h2>
 <p>We start with a few examples.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -295,10 +342,10 @@ Prisoner’s dilemma.
 </div>
 </div>
 <p>This example can be modeled as a two player game as follow. The action sets of both players are <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \{ \mathsf{A}, \mathsf{R} \}\)</span>, where <span class="math inline">\(\mathsf{A}\)</span> means that the player accepts the bargain and <span class="math inline">\(\mathsf{R}\)</span> means that the player rejects the bargain. The utility functions can be represented compactly as follows, which is called the <em>bimatrix representation</em> of the game.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-
 <table class="game" align="center">
+<caption>
+Bimatrix representation of Prisoner’s dilemma game
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -343,9 +390,8 @@ Prisoner’s dilemma.
 <span class="math inline">\(-1\)</span>
 </td>
 </tr>
-
 </tbody></table>
-</div></div><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -356,12 +402,10 @@ Battle of sexes
 </div>
 <div class="callout-body-container callout-body">
 <p>A couple wants to go out for the evening and there are two events taking place: a football game and an opera. One person (player 1) prefers to go to the football game while the other player (player 2) prefers to go the opera. But they want to go together and are miserable if they go to separate events.</p>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-
 <table class="game" align="center">
+<caption>
+Battle of Sexes Game
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -406,9 +450,10 @@ Battle of sexes
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
-</div></div><div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -419,12 +464,10 @@ Chicken (also called Hawk-Dove)
 </div>
 <div class="callout-body-container callout-body">
 <p><em>Two drivers are headed for a single lane bridge from opposite directions. The first to swerve away yields the bridge to the other and is called ‘chicken’ (i.e., a coward). If neither swerve, both are involved in a head-on collision.</em></p>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-
 <table class="game" align="center">
+<caption>
+Battle of Hawk-Dove Game
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -469,9 +512,10 @@ Chicken (also called Hawk-Dove)
 <span class="math inline">\(0\)</span>
 </td>
 </tr>
-
 </tbody></table>
-</div></div><div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -482,12 +526,10 @@ Matching pennies
 </div>
 <div class="callout-body-container callout-body">
 <p>Consider a parlour game among two players. Each player has a penny and must secretly turn the penny to heads or tails. The players reveal their choices simultaneously. If the pennies match (both heads or both tails), player 1 wins. If they don’t player 2 wins.</p>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-
 <table class="game" align="center">
+<caption>
+Battle of matching pennies game
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -532,15 +574,16 @@ Matching pennies
 <span class="math inline">\(-1\)</span>
 </td>
 </tr>
-
 </tbody></table>
-</div></div><p>In the games described above, there is a conflict between the players. We cannot simply assert that the players should take an action which maximizes their utility because the utility of a player depends on the actions of other players, who have different incentives. The objective of game theory is to understand how to make decisions in such scenarios.</p>
+</div>
+</div>
+<p>In the games described above, there is a conflict between the players. We cannot simply assert that the players should take an action which maximizes their utility because the utility of a player depends on the actions of other players, who have different incentives. The objective of game theory is to understand how to make decisions in such scenarios.</p>
 </section>
 <section id="modeling-strategic-games" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="modeling-strategic-games"><span class="header-section-number">1.2</span> Modeling Strategic Games</h2>
 <p>The above examples described games between two players. General <span class="math inline">\(n\)</span>-player games can be modeled as follows.</p>
 <div id="def-strategic-games" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.1 (Strategic game) </strong></span>A strategic game is described by a tuple <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET A_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span>, where</p>
+<p><span class="theorem-title"><strong>Definition 1.1 (Strategic game)</strong></span> A strategic game is described by a tuple <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET A_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span>, where</p>
 <ul>
 <li><span class="math inline">\(N\)</span> is a (finite) set of players</li>
 <li><span class="math inline">\(\ALPHABET A_i\)</span> is a non-empty set of actions for player <span class="math inline">\(i\)</span>, <span class="math inline">\(i \in N\)</span>. Define <span class="math inline">\(\ALPHABET A = \prod_{i \in N}\)</span> as the strategy space of the game <span class="math inline">\(\mathscr{G}\)</span>.</li>
@@ -552,9 +595,11 @@ Matching pennies
 <dd>
 <ul>
 <li>When all <span class="math inline">\(\ALPHABET A_i\)</span> are finite, the game is called a <em>finite game</em>.</li>
-<li>To play the game, each player chooses a (pure) <em>strategy</em> <span class="math inline">\(a_i \in \ALPHABET A_i\)</span>.</li>
+<li>To play the game, each player chooses a (pure) <em>strategy</em> <span class="math inline">\(a_i \in
+\ALPHABET A_i\)</span>.</li>
 <li>The collection <span class="math inline">\(a = (a_i)_{i \in N}\)</span> is called the <em>strategy profile</em>.</li>
-<li>Given a profile <span class="math inline">\(x = (x_i)_{i \in N}\)</span> (not necessarily strategy profile, but any list of elements, one for each player), <span class="math inline">\(x_{-i}\)</span> denotes the list <span class="math inline">\((x_j)_{j \in N \setminus \{i\}}\)</span>. We will write <span class="math inline">\(x = (x_i, x_{-i})\)</span>.</li>
+<li>Given a profile <span class="math inline">\(x = (x_i)_{i \in N}\)</span> (not necessarily strategy profile, but any list of elements, one for each player), <span class="math inline">\(x_{-i}\)</span> denotes the list <span class="math inline">\((x_j)_{j \in N \setminus \{i\}}\)</span>. We will write <span class="math inline">\(x = (x_i,
+x_{-i})\)</span>.</li>
 </ul>
 </dd>
 </dl>
@@ -563,7 +608,7 @@ Matching pennies
 <h2 data-number="1.3" class="anchored" data-anchor-id="dominated-strategies"><span class="header-section-number">1.3</span> Dominated strategies</h2>
 <p>We now define the notion of dominance, which can be used to provide a solution concept for some games.</p>
 <div id="def-dominance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.2 (Dominance) </strong></span>Consider a game <span class="math inline">\(\mathscr{G}\)</span> with standard notation. Let <span class="math inline">\(a_i, b_i \in \ALPHABET A_i\)</span> be two strategies of player <span class="math inline">\(i\)</span>. We say, strategy <span class="math inline">\(a_i\)</span> <em>strictly dominates</em> <span class="math inline">\(b_i\)</span> if <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 1.2 (Dominance)</strong></span> Consider a game <span class="math inline">\(\mathscr{G}\)</span> with standard notation. Let <span class="math inline">\(a_i, b_i \in \ALPHABET A_i\)</span> be two strategies of player <span class="math inline">\(i\)</span>. We say, strategy <span class="math inline">\(a_i\)</span> <em>strictly dominates</em> <span class="math inline">\(b_i\)</span> if <span class="math display">\[
   u_i(a_i, a_{-i}) \mathbin{\color{red}&gt;} u_i(b_i, a_{-i}),
   \quad \forall a_{-i} \in \ALPHABET A_{-i}.
 \]</span> We say that <span class="math inline">\(a_i\)</span> <em>weakly dominates</em> <span class="math inline">\(b_i\)</span> if <span class="math display">\[
@@ -574,22 +619,12 @@ Matching pennies
 </div>
 <p>A strategy <span class="math inline">\(a_i \in \ALPHABET A_i\)</span> is called (strongly or weakly) <strong>dominant strategy</strong> if it (strongly or weakly) dominates all other strategies <span class="math inline">\(b_i \in \ALPHABET A_i \setminus \{a_i\}\)</span>.</p>
 <p>We now impose some assumptions on the players.</p>
-<div class="highlight">
-<dl>
-<dt>Assumption #ass:strict</dt>
-<dd>
-<p>A rational player will not choose a strictly dominated strategy.</p>
-</dd>
-</dl>
+<div class="theorem">
+<p><strong>Assumption (Strict Rationality)</strong> A rational player will not choose a strictly dominated strategy.</p>
 </div>
 <p>Note that we have not formally defined rationality. That is more of a philosophical discussion, and for the purpose of this course, we will not present a formal definition but rather go with the colloquial meaning of the word.</p>
-<div class="highlight">
-<dl>
-<dt>Assumption #</dt>
-<dd>
-<p>All players in a game are rational.</p>
-</dd>
-</dl>
+<div class="theorem">
+<p><strong>Assumption (Rationality of Players)</strong> All players in a game are rational.</p>
 </div>
 <p>Irrespective of the definition of rationality, this assumption is often violated in practice. Human decision makers are almost never rational. Even when decisions are made by algorithms, the decisions may not be rational. There is a whole branch of decision theory which considers players with bounded rationality. However, in this course, we will make the simplifying assumption that the players are rational.</p>
 </section>
@@ -612,12 +647,12 @@ Dominant strategy equilibrium
 <p>For example, consider the game of prisoner’s dilemma. Note that, for <span class="math inline">\(P_1\)</span>, <span class="math display">\[\begin{align*}
   u_1(\mathsf{A}, \cdot) &amp;= \begin{bmatrix} -2 &amp; 0 \end{bmatrix}, \\
   u_1(\mathsf{R}, \cdot) &amp;= \begin{bmatrix} -3 &amp; -1 \end{bmatrix}.
-\end{align*}\]</span> Thus <span class="math inline">\(\mathsf{A}\)</span> is a dominant strategy for <span class="math inline">\(P_1\)</span>.</p>
+\end{align*}\]</span> Note that <span class="math display">\[ u_1(\mathsf{A}, ⋅) &gt; u_1(\mathsf{R}, ⋅). \]</span> Thus <span class="math inline">\(\mathsf{A}\)</span> is a dominant strategy for <span class="math inline">\(P_1\)</span>.</p>
 <p>Similarly, for <span class="math inline">\(P_2\)</span>, <span class="math display">\[\begin{align*}
   u_2(\cdot, \mathsf{A}) &amp;= \begin{bmatrix} -2 \\ 0 \end{bmatrix},
   &amp;
   u_2(\cdot, \mathsf{R}) &amp;= \begin{bmatrix} -3 \\ -1 \end{bmatrix}.
-\end{align*}\]</span> Thus, <span class="math inline">\(\mathsf{A}\)</span> is a dominant strategy for <span class="math inline">\(P_2\)</span>.</p>
+\end{align*}\]</span> Note that <span class="math display">\[ u_2(⋅,\mathsf{A}) &gt; u_2(⋅,\mathsf{R}). \]</span> Thus, <span class="math inline">\(\mathsf{A}\)</span> is a dominant strategy for <span class="math inline">\(P_2\)</span>.</p>
 <p>Therefore, <span class="math inline">\((\mathsf{A}, \mathsf{A})\)</span> is a dominant strategy equilibrium. Note that both players play <span class="math inline">\(\mathsf{A}\)</span> even though <span class="math inline">\((\mathsf{R}, \mathsf{R})\)</span> gives a better outcome for both of them!</p>
 <hr>
 <p>A game may not have a dominant strategy equilibrium. For example, there are no dominant strategies in the battle of sexes and matching pennies. So, dominant strategy equilibrium is not a useful solution concept because it does not always exist. One option is to generalize the notion of dominance as explained next.</p>
@@ -625,7 +660,6 @@ Dominant strategy equilibrium
 <section id="rationalizable-equilibrium" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="rationalizable-equilibrium"><span class="header-section-number">1.5</span> Rationalizable equilibrium</h2>
 <p>First, we return to the assumptions imposed on the players. Consider the following game.</p>
-
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -686,7 +720,6 @@ Dominant strategy equilibrium
 <span class="math inline">\(0\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>Strategy <span class="math inline">\(\mathsf{R}\)</span> is strictly dominated for player 2 (by strategy <span class="math inline">\(\mathsf{M}\)</span>). So, if <span class="math inline">\(P_2\)</span> is rational, he will never choose <span class="math inline">\(\mathsf{R}\)</span>. Can we eliminate strategy <span class="math inline">\(\mathsf{R}\)</span> from consideration?</p>
 <p>The argument is not so simple. If <span class="math inline">\(P_1\)</span> does not know that <span class="math inline">\(P_2\)</span> is rational, he is liable to believe that <span class="math inline">\(P_2\)</span> might choose strategy <span class="math inline">\(\mathsf{R}\)</span>, in which case it would be in <span class="math inline">\(P_1\)</span>’s interest to player strategy <span class="math inline">\(\mathsf{B}\)</span>.</p>
@@ -705,17 +738,14 @@ Dominant strategy equilibrium
 <li>and so on.</li>
 </ul>
 <p>If statements of this type hold for infinite depth, we say that the fact that <span class="math inline">\(P_2\)</span> is rational is <strong>common knowledge</strong>. We will revisit common knowledge later in the course. For now, we assume the following.</p>
-<div class="highlight">
-<dl>
-<dt>Assumption #</dt>
-<dd>
-<p>It is common knowledge that all players are rational.</p>
-</dd>
-</dl>
+<div class="theorem">
+<p><strong>Assumption (Common knowledge of rationality)</strong> It is common knowledge that all players are rational.</p>
 </div>
 <p>Under the assumption of common knowledge of rationality, we can assume that the players will eliminate strictly dominated strategies. For example, in the previous example, both players can eliminate strategy <span class="math inline">\(\mathsf{R}\)</span> from consideration and simplify the original game <span class="math inline">\(\mathscr{G}\)</span> to game <span class="math inline">\(\mathscr{G}_1\)</span> shown below.</p>
-
 <table class="game" align="center">
+<caption>
+Original game <span class="math inline">\(\mathscr{G}\)</span>
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -775,13 +805,11 @@ Dominant strategy equilibrium
 <span class="math inline">\(0\)</span>
 </td>
 </tr>
-
 </tbody></table>
-<figcaption>
-Original game <span class="math inline">\(\mathscr{G}\)</span>
-</figcaption>
-
 <table class="game" align="center">
+<caption>
+Reduced game <span class="math inline">\(\mathscr{G}_1\)</span>
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -826,14 +854,12 @@ Original game <span class="math inline">\(\mathscr{G}\)</span>
 <span class="math inline">\(1\)</span>
 </td>
 </tr>
-
 </tbody></table>
-<figcaption>
-Reduced game <span class="math inline">\(\mathscr{G}_1\)</span>
-</figcaption>
 <p>We can continue this reasoning. In the reduced game <span class="math inline">\(\mathscr{G}_1\)</span>, strategy <span class="math inline">\(\mathsf{B}\)</span> for <span class="math inline">\(P_1\)</span> is dominated by strategy <span class="math inline">\(\mathsf{T}\)</span>. So, we obtain the reduced game <span class="math inline">\(\mathscr{G}_2\)</span> shown below.</p>
-
 <table class="game" align="center">
+<caption>
+Reduced game <span class="math inline">\(\mathscr{G}_2\)</span>
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -861,14 +887,12 @@ Reduced game <span class="math inline">\(\mathscr{G}_1\)</span>
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
-<figcaption>
-Reduced game <span class="math inline">\(\mathscr{G}_2\)</span>
-</figcaption>
 <p>Finally, we can eliminate strategy <span class="math inline">\(\mathsf{L}\)</span> for <span class="math inline">\(P_1\)</span>, which is strictly dominated by <span class="math inline">\(\mathsf{M}\)</span> to obtain game <span class="math inline">\(\mathscr{G}_3\)</span> shown below.</p>
-
 <table class="game" align="center">
+<caption>
+Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -887,11 +911,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_2\)</span>
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
-<figcaption>
-Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
-</figcaption>
 <p>This procedure is called <strong>IEDS (Iterative elimination of dominated strategies)</strong>. If the procedure gives a unique strategy, that strategy is called a <strong>rationalizable strategy</strong>.</p>
 <dl>
 <dt>Remarks</dt>
@@ -904,23 +924,29 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 </dd>
 </dl>
 <p>Rationalizable equilibrium are derived under the assumption of common knowledge of rationality, which appears to be a benign assumption but is not. To see why common knowledge of rationality is a strong assumption, consider the following example, which is known as the <em>beauty contest game</em>.</p>
-<p><em>Each player picks a real number between 0 and 100. The person who was closest to the average of the group wins a prize</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beauty contest game
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each player picks a real number between 0 and 100. The person who was closest to the average of the group wins a prize.</p>
+</div>
+</div>
 <p>How will you play this game?</p>
 </section>
 <section id="iterative-elimination-of-weakly-dominated-strategies" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="iterative-elimination-of-weakly-dominated-strategies"><span class="header-section-number">1.6</span> Iterative elimination of weakly dominated strategies</h2>
 <p>We can extend the notion of IEDS to IE<strong>W</strong>DS (Iterative elimination of <em>weakly</em> dominated strategies) if we make the following assumption.</p>
-<div class="highlight">
-<dl>
-<dt>Assumption #ass:weak</dt>
-<dd>
-<p>A rational player never plays a weakly dominated strategy.</p>
-</dd>
-</dl>
+<div class="theorem">
+<p>**Assumption (Weak rationality) A rational player never plays a weakly dominated strategy.</p>
 </div>
-<p><span class="citation" data-cites="ass:weak">(<a href="../references.html#ref-ass:weak" role="doc-biblioref"><strong>ass:weak?</strong></a>)</span> is less compelling than <span class="citation" data-cites="ass:strict">(<a href="../references.html#ref-ass:strict" role="doc-biblioref"><strong>ass:strict?</strong></a>)</span>. Nonetheless, it allows us to find solutions of games where IEDS doesn’t work (see the second price auction example below). If IEWDS gives us a unique solution, we call the resulting strategy as a <strong>rationalizable strategy</strong></p>
+<p>The weak rationality assumption is less compelling than the strict rationality assumption. Nonetheless, it allows us to find solutions of games where IEDS doesn’t work (see the <a href="#second-price-auction">second price auction</a> example below). If IEWDS gives us a unique solution, we call the resulting strategy as a <strong>rationalizable strategy</strong></p>
 <p>However, unlike IEDS where the order of elimination of strategies does not matter, in IEWDS we can end up with different games depending on the order of elimination of strategies. For example, consider the following game:</p>
-
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -981,11 +1007,11 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>Note that both strategies <span class="math inline">\(\mathsf{L}\)</span> and <span class="math inline">\(\mathsf{R}\)</span> are weakly dominated by <span class="math inline">\(\mathsf{M}\)</span>.</p>
+<section id="case-1-eliminate-mathsfl" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="case-1-eliminate-mathsfl">Case 1: Eliminate <span class="math inline">\(\mathsf{L}\)</span></h4>
 <p>If we eliminate <span class="math inline">\(\mathsf{L}\)</span>, we obtain the following reduction.</p>
-
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -1031,11 +1057,12 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>Now, for <span class="math inline">\(P_1\)</span>, strategy <span class="math inline">\(\mathsf{T}\)</span> is dominated by strategy <span class="math inline">\(\mathsf{B}\)</span>. Eliminating <span class="math inline">\(\mathsf{T}\)</span> we get</p>
-
 <table class="game" align="center">
+<caption>
+Game <span class="math inline">\(\mathscr{G}_L\)</span>
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -1063,13 +1090,11 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
-<figcaption>
-Game <span class="math inline">\(\mathscr{G}_L\)</span>
-</figcaption>
-If we eliminate <span class="math inline">\(\mathsf{R}\)</span> in the original game, we get the following reduction.
-
+</section>
+<section id="case-2-eliminate-mathsfr" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="case-2-eliminate-mathsfr">Case 2: Eliminate <span class="math inline">\(\mathsf{R}\)</span></h4>
+<p>If we eliminate <span class="math inline">\(\mathsf{R}\)</span> in the original game, we get the following reduction.</p>
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -1115,11 +1140,12 @@ If we eliminate <span class="math inline">\(\mathsf{R}\)</span> in the original 
 <span class="math inline">\(2\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>Here, for <span class="math inline">\(P_1\)</span>, strategy <span class="math inline">\(\mathsf{B}\)</span> is weakly dominated by strategy <span class="math inline">\(\mathsf{T}\)</span>. Eliminating <span class="math inline">\(\mathsf{B}\)</span>, we get</p>
-
 <table class="game" align="center">
+<caption>
+Game <span class="math inline">\(\mathscr{G}_R\)</span>
+</caption>
 <tbody><tr>
 <td>
 </td>
@@ -1147,16 +1173,23 @@ If we eliminate <span class="math inline">\(\mathsf{R}\)</span> in the original 
 <span class="math inline">\(1\)</span>
 </td>
 </tr>
-
 </tbody></table>
-<figcaption>
-Game <span class="math inline">\(\mathscr{G}_R\)</span>
-</figcaption>
 <p>Note that games <span class="math inline">\(\mathscr{G}_L\)</span> and <span class="math inline">\(\mathscr{G}_R\)</span> cannot be reduced further. The resulting payoffs are also different.</p>
+</section>
 </section>
 <section id="second-price-auction" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="second-price-auction"><span class="header-section-number">1.7</span> Second price auction</h2>
 <p>We will study auctions in detail later in the course, but here we use the concept of dominance to identify a rationalizable strategy in what are knows as sealed bid, second price auctions. This is an example of a game with continuous action spaces.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sealed bid auctions
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Sealed bid second price auctions work as follows:</p>
 <ul>
 <li>An indivisible object is for sale.</li>
@@ -1165,12 +1198,14 @@ Game <span class="math inline">\(\mathscr{G}_R\)</span>
 <li>The buyer with the highest bid wins the object. If more than one buyer have the same highest bid, then the object goes to one of them at random.</li>
 <li>The key feature of second price auction is that, unlike the standard auctions, the winner does not pay what he bid. Instead, he pays the second highest bid offered (and hence the name, second price auctions).</li>
 </ul>
+</div>
+</div>
 <p>How should a rational player act in such an auction.</p>
 <div id="prp-2nd-price-weakly-dominant" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.1 </strong></span>: In sealed bid second price auctions, the bidding strategy <span class="math inline">\(b_i = v_i\)</span> weakly dominates all other strategies.</p>
+<p><span class="theorem-title"><strong>Proposition 1.1</strong></span> : In sealed bid second price auctions, the bidding strategy <span class="math inline">\(b_i = v_i\)</span> weakly dominates all other strategies.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1179,9 +1214,10 @@ Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Consider a buyer <span class="math inline">\(i\)</span> with value <span class="math inline">\(v_i\)</span>. Given a bid profile <span class="math inline">\(b = (b_j)_{j \in N}\)</span>, let</p>
+<p>Consider a buyer <span class="math inline">\(i\)</span> with value <span class="math inline">\(v_i\)</span>. Given a bid profile <span class="math inline">\(b = (b_j)_{j \in
+N}\)</span>, let</p>
 <ul>
 <li><span class="math inline">\(B_{-i}\)</span> be the highest bid by buyers other than <span class="math inline">\(i\)</span>.</li>
 <li><span class="math inline">\(N_{-i}\)</span> be the number of buyers (excluding <span class="math inline">\(i\)</span>) who bid <span class="math inline">\(B_{-i}\)</span></li>
@@ -1301,7 +1337,8 @@ the bid.</figcaption>
 </section>
 <section id="dominance-by-mixed-strategies" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</h2>
-<p>Consider a strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET A_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span> where <span class="math inline">\(\ALPHABET A_i = \{a_{i1}, \dots, a_{ik}\}\)</span>. Then a mixed strategy for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math display">\[
+<p>Consider a strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET A_i)_{i \in N},
+(u_i)_{i \in N} \rangle\)</span> where <span class="math inline">\(\ALPHABET A_i = \{a_{i1}, \dots, a_{ik}\}\)</span>. Then a mixed strategy for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math display">\[
   α_i = (α_{i1}, \dots, α_{ik}),
   \quad
   α_{i\ell} \in [0,1],
@@ -1318,7 +1355,6 @@ U_1(α_1, H) &amp;= p - (1-p) = 2p - 1, \\
 U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
 \end{align*}\]</span></p>
 <p>We can think of a mixed strategy as a <em>virtual row</em> or <em>virtual column</em> in the bimatrix representation of the game as follows:</p>
-
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -1381,10 +1417,8 @@ U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
 <span class="math inline">\(\bullet\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>We will revisit mixed strategies later in the course. For now, we will simply use the idea of mixed strategies to extend the notion of IEDS and IEWDS. For example consider the game shown below (where <span class="math inline">\(\bullet\)</span> means that the value is not specified because it is not important for the discussion)</p>
-
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -1445,7 +1479,6 @@ U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
 <span class="math inline">\(3\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>Note that none of the strategies of <span class="math inline">\(P_2\)</span> are dominated. However, if we consider the mixed strategy <span class="math inline">\(α_2 = (0.5, 0, 0.5)\)</span>, then</p>
 <p><span class="math display">\[ U_2(\cdot, α_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} \]</span> which dominates <span class="math inline">\(\mathsf{M}\)</span>. So we can eliminate strategy <span class="math inline">\(\mathsf{M}\)</span>.</p>
@@ -1479,11 +1512,10 @@ Never best response
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A pure strategy <span class="math inline">\(a_i\)</span> is never best response if for all mixed strategies <span class="math inline">\(α_{-i}\)</span> there exists a mixed strategy <span class="math inline">\(α_i\)</span> such that <span class="math display">\[ U_i(α_i, α_{-i}) &gt; U_i(a_i, α_{-i}). \]</span></p>
+<p>A pure strategy <span class="math inline">\(a_i\)</span> is never best response if for all mixed strategies <span class="math inline">\(α_{-i}\)</span> of other players there exists a mixed strategy <span class="math inline">\(α_i\)</span> such that <span class="math display">\[ U_i(α_i, α_{-i}) &gt; U_i(a_i, α_{-i}). \]</span></p>
 </div>
 </div>
 <p>Let’s reconsider the game discussed above</p>
-
 <table class="game" align="center">
 <tbody><tr>
 <td>
@@ -1544,7 +1576,6 @@ Never best response
 <span class="math inline">\(3\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <p>Now consider a mixed strategy <span class="math inline">\(α_1 = (p, 1-p)\)</span> for player 1. Then, the payoff to player 2 is <span class="math display">\[ U_2(α_1, \cdot) = \begin{bmatrix} 3p &amp; 1 &amp; 3(1-p) \end{bmatrix} \]</span></p>
 <p>Note that <span class="math inline">\(\max\{ 3p, 3(1-p) \} \ge \frac 32\)</span>. Thus, for all values of <span class="math inline">\(p\)</span>, either <span class="math inline">\(\mathsf{L}\)</span> or <span class="math inline">\(\mathsf{R}\)</span> is better than <span class="math inline">\(M\)</span>.</p>
@@ -1554,11 +1585,9 @@ Never best response
 <h2 data-number="1.10" class="anchored" data-anchor-id="relationship-between-dominated-strategies-and-never-br-strategies"><span class="header-section-number">1.10</span> Relationship between dominated strategies and never BR strategies</h2>
 <p>By definition, a strictly dominated strategy is never BR. In general, the converse is not true when there are more than 3 players. We illustrate this via an example.</p>
 <p>Consider the following three player game. Player one is the row player, player 2 is the column player, and player 3 chooses the game matrix. We only show the payoffs for player 3.</p>
-
 <table style="border:none;" align="center">
 <tbody><tr>
 <td style="padding-right:1.5em;">
-
 <table class="game1" style="display:inline;">
 <tbody><tr>
 <td>
@@ -1592,11 +1621,9 @@ Never best response
 <span class="math inline">\(0\)</span>
 </td>
 </tr>
-
 </tbody></table>
 </td>
 <td style="padding-right:1.5em;">
-
 <table class="game1" style="display:inline;">
 <tbody><tr>
 <td>
@@ -1630,11 +1657,9 @@ Never best response
 <span class="math inline">\(4\)</span>
 </td>
 </tr>
-
 </tbody></table>
 </td>
 <td style="padding-right:1.5em;">
-
 <table class="game1" style="display:inline;">
 <tbody><tr>
 <td>
@@ -1668,11 +1693,9 @@ Never best response
 <span class="math inline">\(8\)</span>
 </td>
 </tr>
-
 </tbody></table>
 </td>
 <td style="padding-right:1.5em;">
-
 <table class="game1" style="display:inline;">
 <tbody><tr>
 <td>
@@ -1706,7 +1729,6 @@ Never best response
 <span class="math inline">\(3\)</span>
 </td>
 </tr>
-
 </tbody></table>
 </td>
 </tr>
@@ -1724,16 +1746,15 @@ Never best response
 <span class="math inline">\(\mathsf{Z}\)</span>
 </td>
 </tr>
-
 </tbody></table>
 <figcaption style="padding-bottom:2em">
 A three player game. Player 1 chooses the row, player 2 chooses the column, and player 3 chooses <span class="math inline">\(\mathsf{W}\)</span>, <span class="math inline">\(\mathsf{X}\)</span>, <span class="math inline">\(\mathsf{Y}\)</span>, <span class="math inline">\(\mathsf{Z}\)</span>. Only the payoffs of player 3 are shown.
 </figcaption>
 <div id="prp-NBR" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.2 </strong></span>Strategy <span class="math inline">\(\mathsf{X}\)</span> is never a best response and can therefore be eliminated.</p>
+<p><span class="theorem-title"><strong>Proposition 1.2</strong></span> Strategy <span class="math inline">\(\mathsf{X}\)</span> is never a best response and can therefore be eliminated.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1742,7 +1763,7 @@ Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Let <span class="math inline">\(α_1 = [p 1-p]\)</span> and <span class="math inline">\(α_2 = [q 1-q]\)</span> be strategies for <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span>, respectively. Then, <span class="math display">\[\begin{align*}
   U_3(α_1, α_2, \mathsf{W}) &amp;= 8pq \\
@@ -1750,7 +1771,8 @@ Proof
   U_3(α_1, α_2, \mathsf{Y}) &amp;= 8(1-p)(1-q) = 8 + 8pq - 8(p+q) \\
   U_3(α_1, α_2, \mathsf{Z}) &amp;= 3
 \end{align*}\]</span></p>
-<p>If there is some <span class="math inline">\(α_1\)</span> and <span class="math inline">\(α_2\)</span> such that <span class="math inline">\(\mathsf{X}\)</span> is a BR to <span class="math inline">\((α_1, α_2)\)</span>, then, <span class="math display">\[\begin{align}
+<p>If there is some <span class="math inline">\(α_1\)</span> and <span class="math inline">\(α_2\)</span> such that <span class="math inline">\(\mathsf{X}\)</span> is a BR to <span class="math inline">\((α_1,
+α_2)\)</span>, then, <span class="math display">\[\begin{align}
    u_3(α_1, α_2, \mathsf{X}) \ge U_3(α_1, α_2, \mathsf{W})
    &amp;\implies
    8pq + 4 - 4(p+q) \ge 8pq
@@ -1777,7 +1799,8 @@ pq \le \left(\frac{a+b}{2}\right)^2 = \frac 14.
 <h2 data-number="1.11" class="anchored" data-anchor-id="cournot-competition"><span class="header-section-number">1.11</span> Cournot competition</h2>
 <p>This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interaction between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly).</p>
 <p>Formally, the Cournot competition model considers a <em>homogeneous-goods</em> market with <span class="math inline">\(n\)</span> first. A homogeneous-goods market is a market where all firms produce a homogeneous product which are perfect substitutes (e.g., consider a commodities market such as metal or oil or electricity).</p>
-<p>Each firm decides how much to produce. Let <span class="math inline">\(a_i \in \reals_{\ge 0}\)</span> denote the production of firm <span class="math inline">\(i\)</span> and <span class="math inline">\(a = \sum_{i = 1}^n a_i\)</span> denote aggregate production. The price of the product depends on the aggregate production. We capture this relationship using a generic function <span class="math inline">\(p \colon \reals_{\ge 0} \to \reals_{\ge 0}\)</span>, i.e., price of product is <span class="math inline">\(p(a)\)</span> when the aggregate production is <span class="math inline">\(a\)</span>.</p>
+<p>Each firm decides how much to produce. Let <span class="math inline">\(a_i \in \reals_{\ge 0}\)</span> denote the production of firm <span class="math inline">\(i\)</span> and <span class="math inline">\(a = \sum_{i = 1}^n a_i\)</span> denote aggregate production. The price of the product depends on the aggregate production. We capture this relationship using a generic function <span class="math inline">\(p \colon \reals_{\ge 0}
+\to \reals_{\ge 0}\)</span>, i.e., price of product is <span class="math inline">\(p(a)\)</span> when the aggregate production is <span class="math inline">\(a\)</span>.</p>
 <p>Furthermore, there is a cost <span class="math inline">\(c\)</span> to produce one unit of goods. For simplicity, we assume that the cost is the same for all firms, though it is possible to consider the model this cost depends on the firm. Thus, the utility of firm <span class="math inline">\(i\)</span> is <span class="math display">\[
   u_i(a_i, a_{-i}) = a_i \cdot p(a) - a_i \cdot c.
 \]</span> We will analyze this game in the special case when the price function is <span class="math display">\[
@@ -1799,7 +1822,8 @@ pq \le \left(\frac{a+b}{2}\right)^2 = \frac 14.
 <h4 class="unnumbered anchored" data-anchor-id="case-n-2">Case <span class="math inline">\(n = 2\)</span></h4>
 <p>Now, let’s consider the case when <span class="math inline">\(n = 2\)</span> (a duopoly). In this case, <span class="math display">\[
    u_i(a_1, a_2) = a_i( p(a_1 + a_2) - c).
-\]</span> Again, we can verify that for a fixed <span class="math inline">\(a_2\)</span>, <span class="math inline">\(u_1(a_1, a_2)\)</span> is concave in <span class="math inline">\(a_1\)</span> and for a fixed <span class="math inline">\(a_1\)</span>, <span class="math inline">\(u_2(a_1, a_2)\)</span> is concave in <span class="math inline">\(a_2\)</span>. So, the BR can be obtained by the first order optimality condition <span class="math inline">\(∂ u_i(a_1, a_2)/∂ a_i = 0\)</span>.</p>
+\]</span> Again, we can verify that for a fixed <span class="math inline">\(a_2\)</span>, <span class="math inline">\(u_1(a_1, a_2)\)</span> is concave in <span class="math inline">\(a_1\)</span> and for a fixed <span class="math inline">\(a_1\)</span>, <span class="math inline">\(u_2(a_1, a_2)\)</span> is concave in <span class="math inline">\(a_2\)</span>. So, the BR can be obtained by the first order optimality condition <span class="math inline">\(∂ u_i(a_1, a_2)/∂ a_i
+= 0\)</span>.</p>
 <p>Note that <span class="math display">\[ p(a_1 + a_2) = \begin{cases}
     M - (a_1 + a_2), &amp; \text{if $a_1 + a_2 \le M$} \\
     0, &amp; \text{otherwise}
@@ -1822,7 +1846,7 @@ pq \le \left(\frac{a+b}{2}\right)^2 = \frac 14.
 <div id="applet_container_2" style="width:600px;height:400px;display:block; align:center;">
 
 </div>
-<figcaption class="figure-caption">
+<figcaption>
 The best response curves
 </figcaption>
 </figure>
@@ -1842,8 +1866,10 @@ The best response curves
 </script>
 <p>Now we show that the game can be simplified using the elimination of never-best response strategies.</p>
 <ul>
-<li>After first round of elimination, we have <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \left[ 0, \frac{M-c}{2} \right]\)</span>.</li>
-<li>After second round of elimination, we have <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \left[ \frac{M-c}{4}, \frac{M-c}{4} \right]\)</span>.</li>
+<li>After first round of elimination, we have <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 =
+\left[ 0, \frac{M-c}{2} \right]\)</span>.</li>
+<li>After second round of elimination, we have <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 =
+\left[ \frac{M-c}{4}, \frac{M-c}{4} \right]\)</span>.</li>
 <li>…</li>
 </ul>
 <p>Continuing this way, we can show that the process converges to the intersection point <span class="math inline">\(\left( \frac{M-c}{3}, \frac{M-c}{3} \right)\)</span> with payoff <span class="math inline">\(\left( \frac{(M-c)^2}{9}, \frac{(M-c)^2}{9}\right)\)</span>.</p>
@@ -1866,7 +1892,7 @@ Beware of the model
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-iewds-game" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.1 </strong></span>Consider the following two player game: <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
   u(a_1, a_2) = \begin{cases}
   (a_1, a_2), &amp; \text{if $a_1 + a_2 &lt; 100$} \\
   (a_1, 100-a_1), &amp; \text{if $a_1 + a_2 &gt; 100$ and $a_1 &lt; a_2$}\\
@@ -1923,6 +1949,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1991,13 +2044,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2032,18 +2087,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2075,11 +2119,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/adityam\.github\.io\/multi-agent-systems\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2089,8 +2170,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2102,7 +2192,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2146,6 +2358,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2171,6 +2384,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2232,13 +2471,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link">
+      <a href="../index.html" class="pagination-link" aria-label="About the course">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About the course</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2246,4 +2485,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/strategic-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

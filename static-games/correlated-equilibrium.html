@@ -7,10 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2023-06-08">
+<meta name="dcterms.date" content="2025-01-02">
+<meta name="keywords" content="correlated equilibrium, coarse correlated equilibrium">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>References – Multi-Agent Systems</title>
+<title>2&nbsp; Correlated equilibrium – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -45,26 +46,27 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./static-games/correlated-equilibrium.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d8982497a26acaab05a2a197b0b368ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d5ff69d9dbb64b66a8ef03b624867974.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
+<link href="../static-games/strategic-games.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d8982497a26acaab05a2a197b0b368ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d5ff69d9dbb64b66a8ef03b624867974.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,14 +129,44 @@ window.MathJax = {
 </script>
 <script async="" data-id="101261731" src="//static.getclicky.com/js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="citation_title" content="References">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Correlated equilibrium]{.chapter-title}">
+<meta name="citation_keywords" content="correlated equilibrium,coarse correlated equilibrium">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2023-06-08">
-<meta name="citation_cover_date" content="2023-06-08">
-<meta name="citation_year" content="2023">
-<meta name="citation_online_date" content="2023-06-08">
-<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/references.html">
+<meta name="citation_publication_date" content="2025-01-02">
+<meta name="citation_cover_date" content="2025-01-02">
+<meta name="citation_year" content="2025">
+<meta name="citation_online_date" content="2025-01-02">
+<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/correlated-equilibrium.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
 <meta name="citation_reference" content="citation_title=Correlated equilibrium as an expression of bayesian rationality;,citation_author=Robert J. Aumann;,citation_publication_date=1987-01;,citation_cover_date=1987-01;,citation_year=1987;,citation_issue=1;,citation_doi=10.2307/1911154;,citation_volume=55;,citation_journal_title=Econometrica;,citation_publisher=JSTOR;">
@@ -165,11 +197,11 @@ window.MathJax = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../stochastic-control/index.html"> 
+    <a class="nav-link" href="../../stochastic-control/index.html"> 
 <span class="menu-text">Stochastic Control</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../multi-agent-systems/index.html"> 
+    <a class="nav-link" href="../../multi-agent-systems/index.html"> 
 <span class="menu-text">Multi-Agent Systems</span></a>
   </li>  
 </ul>
@@ -185,7 +217,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/correlated-equilibrium.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -199,7 +231,7 @@ window.MathJax = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About the course</span></a>
   </div>
 </li>
@@ -214,13 +246,13 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./static-games/strategic-games.html" class="sidebar-item-text sidebar-link">
+  <a href="../static-games/strategic-games.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
+  <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
@@ -232,7 +264,7 @@ window.MathJax = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -245,15 +277,26 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#correlated-equilibrium" id="toc-correlated-equilibrium" class="nav-link active" data-scroll-target="#correlated-equilibrium"><span class="header-section-number">2.1</span> Correlated equilibrium</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">2.2</span> Examples</a>
+  <ul class="collapse">
+  <li><a href="#a-hawk-dove-game" id="toc-a-hawk-dove-game" class="nav-link" data-scroll-target="#a-hawk-dove-game"><span class="header-section-number">2.2.1</span> A Hawk-Dove game</a></li>
+  </ul></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/correlated-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/correlated-equilibrium.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></h1>
 </div>
 
 
@@ -279,7 +322,7 @@ window.MathJax = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2023</p>
+      <p class="date">January 2, 2025</p>
     </div>
   </div>
   
@@ -287,38 +330,369 @@ window.MathJax = {
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>correlated equilibrium, coarse correlated equilibrium</p>
+  </div>
+</div>
 
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<blockquote class="blockquote">
+<p><em>“If there is intelligent life on other planets, in a majority of them, they would have discovered correlated equilibrium before Nash equilibrium.” – Roger Myerson</em></p>
+</blockquote>
+<p>Cosider the following “traffic stop” game:</p>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{Stop}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{Go}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{Stop}\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{Go}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(-100\)</span>
+</td>
+<td>
+<span class="math inline">\(-100\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>There are two pure strategy Nash equilibria: <span class="math inline">\((\mathsf{Stop}, \mathsf{Go})\)</span> and <span class="math inline">\((\mathsf{Go}, \mathsf{Stop})\)</span>. In both equilibria, one player gets a payoff of&nbsp;<span class="math inline">\(1\)</span> and the other gets a payoff of&nbsp;<span class="math inline">\(0\)</span>.</p>
+<p>In addition, there is a mixed strategy Nash equilibrium <span class="math inline">\((\tfrac {100}{101}, \tfrac{1}{101})\)</span>. The mixed strategy equilibrium seems to be worse off for both players: on average <em>both</em> of them get a payoff of <span class="math inline">\(0\)</span> but risk a huge negative penalty of <span class="math inline">\(-100\)</span>.</p>
+<p>The mixed strategy Nash equilibrium induces the following probability distribution on the action profiles</p>
+<table class="game1" align="center">
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathsf{Stop}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathsf{Go}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{Stop}\)</span>
+</td>
+<td>
+<span class="math inline">\(0.98\)</span>
+</td>
+<td>
+<span class="math inline">\(0.1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{Go}\)</span>
+</td>
+<td>
+<span class="math inline">\(0.1\)</span>
+</td>
+<td>
+<span class="math inline">\(0.01\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>A better solution is to do a randomization between the pure Nash equilibrium strategies, i.e., use the following probability distribution on the action profiles:</p>
+<table class="game1" align="center">
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathsf{Stop}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathsf{Go}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{Stop}\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(0.5\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{Go}\)</span>
+</td>
+<td>
+<span class="math inline">\(0.5\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>This is consistent with how we resolve the conflict in real-life: by using a traffic light which tells which user should go and which should stop. Once a traffic light makes a joint recommendation to both players, it is in the best interest of the players to follow that recommendation.</p>
+<p>It is not always possible to achieve such a “coordination” via mixed strategies. The reason is that, in mixed strategies, the players are randomizing independently: so the joint distribution of the form above cannot be achieved.</p>
+<section id="correlated-equilibrium" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="correlated-equilibrium"><span class="header-section-number">2.1</span> Correlated equilibrium</h2>
+<p>One way to interpret correlated equilibrium is as follows:</p>
+<ul>
+<li>There is an omniscient observer (who may be viewed as an <em>information designer</em>) who recommends strategies to the players.</li>
+<li>The observer randomizes to choose his recommendations based on a probability distribution that is known to the players.</li>
+<li>The recommendations are private, with each player knows only the recommendation addressed to him.</li>
+<li>The mechanism is common knowledge among the players: each plaoer knows that this mechanism is being used; each player knows that the other players know that this mechanism is being used, and so on.</li>
+</ul>
+<p>Now consider a strategic game <span class="math inline">\(\mathscr{G} = \langle \ALPHABET N, (\ALPHABET A_i)_{i \in \ALPHABET N}, (u_i)_{i \in \ALPHABET N} \rangle\)</span>. Let <span class="math inline">\(\ALPHABET A = \prod_{i \in \ALPHABET N} \ALPHABET A_i\)</span> be the strategy space of all players. Consider a probability distribution <span class="math inline">\(π\)</span> over <span class="math inline">\(\ALPHABET A\)</span>. Define an extensive form game <span class="math inline">\(Γ(π)\)</span> with imperfect information as follows:</p>
+<ul>
+<li>An outside observer (i.e., the information designer) probabilistically chooses an action profile <span class="math inline">\(a \in \ALPHABET A\)</span> according to <span class="math inline">\(π\)</span>.</li>
+<li>The observer reveals the coordinate <span class="math inline">\(a_i\)</span> (but not <span class="math inline">\(a_{-i}\)</span>) to each player <span class="math inline">\(i \in \ALPHABET N\)</span>. We may interpret this as the observer <em>recommending</em> strategy <span class="math inline">\(a_i\)</span> to player <span class="math inline">\(i\)</span>.</li>
+<li>The recommendation of the observer is non-binding. Each player chooses an action <span class="math inline">\(b_i \in \ALPHABET A_i\)</span>, where <span class="math inline">\(b_i\)</span> may be different from <span class="math inline">\(a_i\)</span>.</li>
+<li>The payoff of each player <span class="math inline">\(i\)</span> is <span class="math inline">\(u_i(b_1, \dots, b_n)\)</span>.</li>
+</ul>
+<div id="def-strategy-correlated-extension" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.1</strong></span> A (pure) strategy of player <span class="math inline">\(i\)</span> in game <span class="math inline">\(Γ(π)\)</span> is a function <span class="math inline">\(s_i \colon \ALPHABET A_i \to \ALPHABET A_i\)</span>, mapping every recommendation <span class="math inline">\(a_i\)</span> of the observer to an action <span class="math inline">\(s_i(a_i)\)</span>.</p>
+</div>
+<p>A <strong>correlated strategy</strong> <span class="math inline">\(π\)</span> is a joint probability distribution on all the pure strategies of the game. For example, consider any <span class="math inline">\(2×2\)</span> two-player game. Then, a correlated strategy is of the form <span class="math display">\[
+  π = \begin{bmatrix} π_{11} &amp; π_{12} \\ π_{21} &amp; π_{22} \end{bmatrix},
+  \quad π_{ij} \ge 0,
+  \quad \sum_{i,j} π_{ij} = 1.
+\]</span></p>
+<div id="def-correlated-equil" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.2</strong></span> Given a strategic game <span class="math inline">\(\mathscr{G} = \langle \ALPHABET N, (\ALPHABET A_i)_{i
+\in \ALPHABET N}, (u_i)_{i \in \ALPHABET N} \rangle\)</span>, a correlated equilibrium is a is a correlated strategy <span class="math inline">\(π\)</span> such that <span class="math display">\[\begin{equation}\label{eq:corr}
+   \EXP^{π}[ u(a_i, A_{-i}) \mid A_i = a_i ]
+   \ge
+   \EXP^{π}[ u(a_i, A_{-i}) \mid A_i = b_i ]
+   , \quad
+   \forall b_i \in \ALPHABET A_i,
+   \forall i \in \ALPHABET N.
+\end{equation}\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that Nash equilibria are special case of correlated equilibria in which the mediator recommends actions via independent randomizations. So, correlated equilibria always exist.</p>
+<p>It can also be shown that any convex combination of Nash equilibira is a correlated equilibirum.</p>
+</div>
+</div>
+<p>To understand this definition, we restrict attetion to two player games. Consider a correlated strategy <span class="math inline">\(π\)</span>. Then the conditional distribution of <span class="math inline">\(A_2\)</span> given <span class="math inline">\(A_1 = a_1\)</span> is <span class="math display">\[
+  \PR(A_2 = a_2 \mid A_1 = a_1) =
+  \frac{π(a_1, a_2)}{\sum_{b_2 \in \ALPHABET A_2} π(a_1, b_2)}.
+\]</span> Note that the denominator is the same for both sides of the expectation in \eqref{eq:corr}. So, we can rewrite \eqref{eq:corr} as <span class="math display">\[\begin{equation}\label{eq:corr2}
+  \sum_{a_j \in \ALPHABET A_j} π(a_i, a_j)
+  \bigl[ u_i(a_i, a_j) - u_i(b_i, a_j) \bigr] \ge 0,
+  \quad \forall a_i, b_i \in \ALPHABET A_i,
+  \quad \forall i \in \{1,2\}.
+\end{equation}\]</span></p>
+<p>Note that \eqref{eq:corr2} are a set of linear inequalities. Therefore, the set of all correlated equilibria is convex and can be obtained by identifying the feasibility region of a linear program.</p>
+</section>
+<section id="examples" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="examples"><span class="header-section-number">2.2</span> Examples</h2>
+<section id="a-hawk-dove-game" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="a-hawk-dove-game"><span class="header-section-number">2.2.1</span> A Hawk-Dove game</h3>
+<p>Consider the following variation of “hawk-dove” game:</p>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{D}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{H}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{D}\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{H}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(-10\)</span>
+</td>
+<td>
+<span class="math inline">\(-10\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>We can verify that this game has two pure strategies Nash equilibria <span class="math inline">\((\mathsf{D}, \mathsf{H})\)</span> and <span class="math inline">\((\mathsf{H}, \mathsf{D})\)</span>. In addition, there is a symmetric mixed strategy Nash equilibrium <span class="math inline">\((\tfrac {10}{11},
+\tfrac{1}{11})\)</span> which has a payoff of <span class="math inline">\((\tfrac{20}{11}, \tfrac{20}{11})\)</span>.</p>
+<p><span class="math display">\[
+\def\D{\mathsf{D}}
+\def\H{\mathsf{H}}
+\]</span></p>
+<p>We claim that the following is a correlated equilibrium for the game: <span class="math display">\[
+  π = \begin{bmatrix}
+    \frac {10}{12} &amp; \frac{1}{12} \\ \frac{1}{12} &amp; 0
+  \end{bmatrix}
+\]</span></p>
+<p>We first verify the conditions in \eqref{eq:corr} and then verify the conditions in \eqref{eq:corr2}.</p>
+<section id="verification-of-eqrefeqcorr" class="level4" data-number="2.2.1.1">
+<h4 data-number="2.2.1.1" class="anchored" data-anchor-id="verification-of-eqrefeqcorr"><span class="header-section-number">2.2.1.1</span> Verification of \eqref{eq:corr}</h4>
+<p>We consider the analysis from the point of view of player 1. By symmetry, the argument is the same for player 1.</p>
+<ul>
+<li><p>Suppose the mediator recommends strategy <span class="math inline">\(\D\)</span> to player~<span class="math inline">\(1\)</span>. The conditional payoff if player 1 follows the recommendation is <span class="math display">\[
+  \frac{2 π(\D, \D) + 0 π(\D, \H)}{ π(\D, \D) + π(\D, \H) }
+  = \frac{2 \frac{10}{12}}{\frac{11}{12}}
+  = \frac{20}{11}.
+\]</span> The player’s payoff if they deviate is <span class="math display">\[
+  \frac{3 π(\D, \D) - 10 π(\D, \H)}{ π(\D, \D) + π(\D, \H) }
+  = \frac{3 \frac{10}{12} - 10\frac{1}{12}}{\frac{11}{12}}
+  = \frac{20}{11}.
+\]</span> Thus, the player has no incentive to deviate.</p></li>
+<li><p>Now suppose the mediator recommends strategy <span class="math inline">\(\H\)</span> to player <span class="math inline">\(1\)</span>. Then the player knows that player <span class="math inline">\(2\)</span> has received a recommendation of <span class="math inline">\(\D\)</span>. Since <span class="math inline">\((\H, \D)\)</span> is a Nash equilibrium, there is no incentive to deviate.</p></li>
+</ul>
+</section>
+<section id="verification-of-eqrefeqcorr2" class="level4" data-number="2.2.1.2">
+<h4 data-number="2.2.1.2" class="anchored" data-anchor-id="verification-of-eqrefeqcorr2"><span class="header-section-number">2.2.1.2</span> Verification of \eqref{eq:corr2}</h4>
+<p>We consider each case separately:</p>
+<ul>
+<li><p><span class="math inline">\(i = 1\)</span>, <span class="math inline">\(a_1 = \D\)</span>, <span class="math inline">\(b_1 = \H\)</span>: <span class="math display">\[\begin{align*}
+    \hskip 2em &amp; \hskip -2em
+    π(\D,\D)[ u_1(\D,\D) - u_1(\H,\D) ] +
+    π(\D,\H)[ u_1(\D,\H) - u_1(\H,\H) ]
+    \\
+    &amp;=
+    \frac{10}{12}[ 2 - 3 ] + \frac{1}{12}[ 0 + 10]
+    \\
+    &amp;= 0 \ge 0.
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(i = 1\)</span>, <span class="math inline">\(a_1 = \H\)</span>, <span class="math inline">\(b_1 = \D\)</span>: <span class="math display">\[\begin{align*}
+    \hskip 2em &amp; \hskip -2em
+    π(\H,\D)[ u_1(\H,\D) - u_1(\D,\D) ] +
+    π(\H,\H)[ u_1(\H,\H) - u_1(\D,\H) ]
+    \\
+    &amp;=
+    \frac{1}{12}[ 3 - 2 ] + 0 [ -10 + 0]
+    \\
+    &amp;= \frac{1}{12} \ge 0.
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(i = 2\)</span>, <span class="math inline">\(a_2 = \D\)</span>, <span class="math inline">\(b_2 = \H\)</span>: <span class="math display">\[\begin{align*}
+    \hskip 2em &amp; \hskip -2em
+    π(\D,\D)[ u_2(\D,\D) - u_2(\D,\H) ] +
+    π(\H,\D)[ u_2(\H,\D) - u_2(\H,\H) ]
+    \\
+    &amp;=
+    \frac{10}{12}[ 2 - 3 ] + \frac{1}{12}[ 0 + 10]
+    \\
+    &amp;= 0 \ge 0.
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(i = 2\)</span>, <span class="math inline">\(a_2 = \H\)</span>, <span class="math inline">\(b_2 = \D\)</span>: <span class="math display">\[\begin{align*}
+    \hskip 2em &amp; \hskip -2em
+    π(\D,\H)[ u_2(\D,\H) - u_2(\D,\D) ] +
+    π(\H,\H)[ u_2(\H,\H) - u_2(\H,\D) ]
+    \\
+    &amp;=
+    \frac{1}{12}[ 3 - 2 ] + 0 [ -10 + 0]
+    \\
+    &amp;= \frac{1}{12} \ge 0.
+\end{align*}\]</span></p></li>
+</ul>
+<p>Thus in all cases, neither player has an incentive to deviate.</p>
+<p>Note that the calculation for verifying \eqref{eq:corr2} are the same as the calculations in the numerator of verifying \eqref{eq:corr}.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The social payoff of the correlated equilibrium strategy is <span class="math display">\[
+    4 \frac{10}{12} + 3 \frac{1}{12} + 3 \frac{1}{12}
+    = \frac{46}{12}
+\]</span> which is higher than the social welfare of <span class="math inline">\(40/11\)</span> for the mixed strategy Nash equilibrium but is worse than the team optimal payoff of <span class="math inline">\(4\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="notes" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="notes">Notes</h2>
+<p>The notion of correlated equilibrium is due to <span class="citation" data-cites="Aumann1974">Aumann (<a href="../references.html#ref-Aumann1974" role="doc-biblioref">1974</a>)</span>. Also see <span class="citation" data-cites="Aumann1987">Aumann (<a href="../references.html#ref-Aumann1987" role="doc-biblioref">1987</a>)</span>. See <span class="citation" data-cites="Amir2017">Amir et al. (<a href="../references.html#ref-Amir2017" role="doc-biblioref">2017</a>)</span> for discussion of correlated equilibrium from <span class="math inline">\(2×2\)</span> games. Some of the discussion in this section is adapted from <span class="citation" data-cites="Maschler2020">Maschler et al. (<a href="../references.html#ref-Maschler2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>See <span class="citation" data-cites="Papadimitriou2008">Papadimitriou and Roughgarden (<a href="../references.html#ref-Papadimitriou2008" role="doc-biblioref">2008</a>)</span> for algorithmic aspects of computing correlated equilibrium.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Amir2017" class="csl-entry" role="listitem">
-<span class="smallcaps">Amir, R., Belkov, S., and Evstigneev,
-I.V.</span> 2017. Correlated equilibrium in a nutshell. <em>Theory and
-Decision</em> <em>83</em>, 4, 457–468. DOI: <a href="https://doi.org/10.1007/s11238-017-9609-9">10.1007/s11238-017-9609-9</a>.
+<span class="smallcaps">Amir, R., Belkov, S., and Evstigneev, I.V.</span> 2017. Correlated equilibrium in a nutshell. <em>Theory and Decision</em> <em>83</em>, 4, 457–468. DOI: <a href="https://doi.org/10.1007/s11238-017-9609-9">10.1007/s11238-017-9609-9</a>.
 </div>
 <div id="ref-Aumann1974" class="csl-entry" role="listitem">
-<span class="smallcaps">Aumann, R.J.</span> 1974. Subjectivity and
-correlation in randomized strategies. <em>Journal of Mathematical
-Economics</em> <em>1</em>, 1, 67–96. DOI: <a href="https://doi.org/10.1016/0304-4068(74)90037-8">10.1016/0304-4068(74)90037-8</a>.
+<span class="smallcaps">Aumann, R.J.</span> 1974. Subjectivity and correlation in randomized strategies. <em>Journal of Mathematical Economics</em> <em>1</em>, 1, 67–96. DOI: <a href="https://doi.org/10.1016/0304-4068(74)90037-8">10.1016/0304-4068(74)90037-8</a>.
 </div>
 <div id="ref-Aumann1987" class="csl-entry" role="listitem">
-<span class="smallcaps">Aumann, R.J.</span> 1987. Correlated equilibrium
-as an expression of bayesian rationality. <em>Econometrica</em>
-<em>55</em>, 1, 1. DOI: <a href="https://doi.org/10.2307/1911154">10.2307/1911154</a>.
+<span class="smallcaps">Aumann, R.J.</span> 1987. Correlated equilibrium as an expression of bayesian rationality. <em>Econometrica</em> <em>55</em>, 1, 1. DOI: <a href="https://doi.org/10.2307/1911154">10.2307/1911154</a>.
 </div>
 <div id="ref-Maschler2020" class="csl-entry" role="listitem">
-<span class="smallcaps">Maschler, M., Zamir, S., and Solan, E.</span>
-2020. <em>Game theory</em>. Cambridge University Press.
+<span class="smallcaps">Maschler, M., Zamir, S., and Solan, E.</span> 2020. <em>Game theory</em>. Cambridge University Press.
 </div>
 <div id="ref-Papadimitriou2008" class="csl-entry" role="listitem">
-<span class="smallcaps">Papadimitriou, C.H. and Roughgarden, T.</span>
-2008. Computing correlated equilibria in multi-player games. <em>Journal
-of the <span>ACM</span></em> <em>55</em>, 3, 1–29. DOI: <a href="https://doi.org/10.1145/1379759.1379762">10.1145/1379759.1379762</a>.
+<span class="smallcaps">Papadimitriou, C.H. and Roughgarden, T.</span> 2008. Computing correlated equilibria in multi-player games. <em>Journal of the <span>ACM</span></em> <em>55</em>, 3, 1–29. DOI: <a href="https://doi.org/10.1145/1379759.1379762">10.1145/1379759.1379762</a>.
 </div>
 </div>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -884,11 +1258,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span>
+      <a href="../static-games/strategic-games.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -896,4 +1273,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/references.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/correlated-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
