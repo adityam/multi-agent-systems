@@ -634,14 +634,14 @@ Battle of matching pennies game
 \]</span> and the inequality is strict for at least one <span class="math inline">\(s_{-i}\)</span>.</p>
 <p>We will also use the phrase “<span class="math inline">\(t_i\)</span> is (strongly or weakly) dominated by <span class="math inline">\(s_i\)</span>” to denote the same fact.</p>
 </div>
-<p>A strategy <span class="math inline">\(s_i \in \ALPHABET S_i\)</span> is called (strongly or weakly) <strong>dominant strategy</strong> if it (strongly or weakly) dominates all other strategies <span class="math inline">\(b_i \in \ALPHABET S_i \setminus \{s_i\}\)</span>.</p>
+<p>A strategy <span class="math inline">\(s_i \in \ALPHABET S_i\)</span> is called (strongly or weakly) <strong>dominant strategy</strong> if it (strongly or weakly) dominates all other strategies <span class="math inline">\(t_i \in \ALPHABET S_i \setminus \{s_i\}\)</span>.</p>
 <p>We now impose some assumptions on the players.</p>
 <div class="theorem">
-<p><strong>Assumption</strong> A rational player will not choose a strictly dominated strategy.</p>
+<p><strong>Assumption.</strong> A rational player will not choose a strictly dominated strategy.</p>
 </div>
 <p>Note that we have not formally defined rationality. That is more of a philosophical discussion, and for the purpose of this course, we will not present a formal definition but rather go with the colloquial meaning of the word.</p>
 <div class="theorem">
-<p><strong>Assumption</strong> All players in a game are rational.</p>
+<p><strong>Assumption.</strong> All players in a game are rational.</p>
 </div>
 <p>Irrespective of the definition of rationality, this assumption is often violated in practice. Human decision makers are almost never rational. Even when decisions are made by algorithms, the decisions may not be rational. There is a whole branch of decision theory which considers players with bounded rationality. However, in this course, we will make the simplifying assumption that the players are rational.</p>
 </section>
@@ -960,7 +960,7 @@ Beauty contest game
 <h2 data-number="1.6" class="anchored" data-anchor-id="iterative-elimination-of-weakly-dominated-strategies"><span class="header-section-number">1.6</span> Iterative elimination of weakly dominated strategies</h2>
 <p>We can extend the notion of IEDS to IE<strong>W</strong>DS (Iterative elimination of <em>weakly</em> dominated strategies) if we make the following assumption.</p>
 <div class="theorem">
-<p><strong>Assumption</strong> A rational player never plays a weakly dominated strategy.</p>
+<p><strong>Assumption.</strong> A rational player never plays a weakly dominated strategy.</p>
 </div>
 <p>The assumption that a player never plays a weakly domainted strategy is less compelling than the assumption of never playing a strictly dominated strategy.</p>
 <p>One way to justify the assumption of never playing a weakly dominated strategy is the concept of <strong>trembling hand principle</strong>, which is due to <span class="citation" data-cites="Selten1975">Selten (<a href="../references.html#ref-Selten1975" role="doc-biblioref">1975</a>)</span>. The key idea of this principle is that the player may make mistakes when executing its strategy (hence the metaphor of <em>trembling hand</em>): thus all possible strategies may be used with positive probability. In such a scenario, it is never optimal to play weakly dominated strategies.</p>

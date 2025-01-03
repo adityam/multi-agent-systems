@@ -4,17 +4,77 @@
     "href": "index.html",
     "title": "Multi-Agent Systems",
     "section": "",
-    "text": "About the course\nThese are lecture notes for ECSE 508 (Multi-Agent Systems) that I teach in the Winter term of every odd year. These notes are not meant to be exhaustive; rather my focus is to convey the key ideas in their simplest form. For a more exhaustive treatment of the subject, please refer to the reference books mentioned below.\nIf you find any typos/mistakes in the notes, please let me know. Pull requests are welcome.",
+    "text": "About the course",
     "crumbs": [
       "About the course"
     ]
   },
   {
-    "objectID": "index.html#reference-books",
-    "href": "index.html#reference-books",
+    "objectID": "index.html#general-information",
+    "href": "index.html#general-information",
     "title": "Multi-Agent Systems",
-    "section": "Reference books",
-    "text": "Reference books\n\nOsborne and Rubinstein, A Course in Game Theory, MIT Press, 1994\nZamir, Maschler, Solan, Game Theory, Cambridge University Press, 2013.",
+    "section": "General Information (Winter 2025)",
+    "text": "General Information (Winter 2025)\n\nInstructor\n\n\nAditya Mahajan\nOffice Hours: TBD\n\n\nTeaching Assistants\n\n\nTBD\n\n\nLectures\n\n\n2:35pm–3:55pm Monday, Wednesday (ENGTR 2120)\n\n\nPrerequisites\n\n\nECSE 205 (Probability and Random Signals I)\nYou are expected to know the following concepts from basic undergraduate probability: Probability of events, independence, random variables, probability distributions (PDFs and CDFs), expectation, conditional probability, and conditional expectation.\n\n\nCommunication\n\nUse the discussion board on myCourses for all questions related to the course. Only personal emails related to medical exceptions for missing a deliverable will be answered.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#course-content",
+    "href": "index.html#course-content",
+    "title": "Multi-Agent Systems",
+    "section": "Course Content",
+    "text": "Course Content\n\nRational decision making; Strategic games and Bayesian games; Solution concepts: iterated elimination of dominated strategies, Nash equilibrium, Correlated equilibrium, Bayesian equilibrium; Common knowledge.\nExtensive form games with perfect information, sub-game perfect equilibrium, Markov perfect equilibrium.\nGames with imperfect information, sequential equilibrium, common information based refinements of sequential equilibrium.\nMechanism design, market equilibrium, pricing, resource allocation; Application to communication networks and power systems\n\nIn the event of extraordinary circumstances beyond the University’s control, the content and/or evaluation scheme in this course is subject to change.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#course-material",
+    "href": "index.html#course-material",
+    "title": "Multi-Agent Systems",
+    "section": "Course Material",
+    "text": "Course Material\n\nReference books\nI will loosely follow the following two books, though I present the material in a different order/style than the books.\n\nZamir, Maschler, Solan, Game Theory, Cambridge University Press, 2013.\nOsborne and Rubinstein, A Course in Game Theory, MIT Press, 1994\n\n\n\nOnline Course Notes\nThis semesmter, I will be attempting to type my notes and make them available on this website. Most definitely, I will fall behind and the notes for the material covered during the end of the term will not be avaiable. Even for the earlier material, the notes are not meant to be exhaustive; rather my focus is to convey the key ideas in their simplest form. For a more exhaustive treatment of the subject, please refer to the reference books mentioned above.\nIf you find any typos/mistakes in the notes, please let me know. Pull requests are welcome.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#evaluation",
+    "href": "index.html#evaluation",
+    "title": "Multi-Agent Systems",
+    "section": "Evaluation",
+    "text": "Evaluation\n\nAssignments (40%) Weekly homework assignments. Typically, each assignment will consist of four questions, out of which one or two randomly selected questions will be grader.\nMid Term (40%) Closed book in-class exam. March 12 (during class time)\nTerm Project (20%) A month long term project to be done in groups of two. Present one paper on any topic of your interest related to the material covered in the class.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#marking-policy",
+    "href": "index.html#marking-policy",
+    "title": "Multi-Agent Systems",
+    "section": "Marking policy",
+    "text": "Marking policy\n\nAssignments must be submitted electronically on myCourses as a PDF. You may write the assignments on paper and then scan them as a PDF (there are several such apps available for all phone platforms), or write on a tablet and convert to PDF, or type using a word processor.\nThere will no make-up examination for students who miss a mid-term.\n\nStudent who miss the exam due to a valid reason (see Faculty of Engineering policy) should notify the instructor within a week of the exam and provide necessary documentation.\nIf, and only if, proper documentation for a missed exam is presented, the marks for the missed exam will be shifted to the final exam.\nStudents who miss the mid-term exam for any other reason (e.g., no medical note, going to the exam at the wrong time, or on the wrong day, etc.) will get zero marks on the exam.\n\nAny request for reevaluation of a mid-term or an assignment must be made in writing within a week of its return. Note that requesting a re-grade will mean that you WHOLE assignment or exam will be re-graded.\nDue to paucity of grading hours, only one or two randomly selected questions will be graded in each assignment.\nThe lowest two assignments and labs will be dropped. There will be no make-up for missed assignments and labs, even if it is for a valid reason. The whole point of dropping the lowest two assignments/labs is to reduce the administrative overhead of keeping track of such missed assignments/labs.\n\n\nRight to submit in English or French written work that is to be graded.\n\nIn accord with McGill University’s Charter of Students’ Rights, students in this course have the right to submit in English or in French any written work that is to be graded.\n\nAcademic Integrity\n\nMcGill University values academic integrity. Therefore all students must understand the meaning and consequences of cheating, plagiarism and other academic offences under the Code of Student Conduct and Disciplinary Procedures (see McGill’s guide to academic honesty for more information).\nL’université McGill attache une haute importance à l’honnêteté académique. Il incombe par conséquent à tous les étudiants de comprendre ce que l’on entend par tricherie, plagiat et autres infractions académiques, ainsi que les conséquences que peuvent avoir de telles actions, selon le Code de conduite de l’étudiant et des procédures disciplinaires (pour de plus amples renseignements, veuillez consulter le guide pour l’honnêteté académique de McGill.)",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#course-delivery",
+    "href": "index.html#course-delivery",
+    "title": "Multi-Agent Systems",
+    "section": "Course delivery",
+    "text": "Course delivery\nThe course is taught in a “chalk and board” style; there will be no power point presentations. All students are expected to attend lectures and take notes. Partial notes on some of the material will be provided, but are not a substitute for the material covered in class.\n© Instructor-generated course materials (e.g., handouts, notes, summaries, exam questions) are protected by law and may not be copied or distributed in any form or in any medium without explicit permission of the instructor. Note that infringements of copyright can be subject to follow up by the University under the Code of Student Conduct and Disciplinary Procedures.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#additional-notes",
+    "href": "index.html#additional-notes",
+    "title": "Multi-Agent Systems",
+    "section": "Additional Notes",
+    "text": "Additional Notes\n\nAs the instructor of this course I endeavor to provide an inclusive learning environment. However, if you experience barriers to learning in this course, do not hesitate to discuss them with me or contact the office of Student Accessibility and Achievement.\nEnd-of-course evaluations are one of the ways that McGill works towards maintaining and improving the quality of courses and the student’s learning experience. You will be notified by e-mail when the evaluations are available. Please note that a minimum number of responses must be received for results to be available to students.",
     "crumbs": [
       "About the course"
     ]
@@ -57,7 +117,7 @@
     "href": "static-games/strategic-games.html#dominated-strategies",
     "title": "1  Introduction",
     "section": "1.3 Dominated strategies",
-    "text": "1.3 Dominated strategies\nWe now define the notion of dominance, which can be used to provide a solution concept for some games.\n\nDefinition 1.2 (Dominance) Consider a game \\(\\mathscr{G}\\) with standard notation. Let \\(s_i, t_i \\in \\ALPHABET S_i\\) be two strategies of player \\(i\\). We say, strategy \\(s_i\\) strictly dominates \\(t_i\\) if \\[\n  u_i(s_i, s_{-i}) \\mathbin{\\color{red}&gt;} u_i(t_i, s_{-i}),\n  \\quad \\forall s_{-i} \\in \\ALPHABET S_{-i}.\n\\] We say that \\(s_i\\) weakly dominates \\(t_i\\) if \\[\n  u_i(s_i, s_{-i}) \\mathbin{\\color{red}\\ge} u_i(t_i, s_{-i}),\n  \\quad \\forall s_{-i} \\in \\ALPHABET S_{-i}\n\\] and the inequality is strict for at least one \\(s_{-i}\\).\nWe will also use the phrase “\\(t_i\\) is (strongly or weakly) dominated by \\(s_i\\)” to denote the same fact.\n\nA strategy \\(s_i \\in \\ALPHABET S_i\\) is called (strongly or weakly) dominant strategy if it (strongly or weakly) dominates all other strategies \\(b_i \\in \\ALPHABET S_i \\setminus \\{s_i\\}\\).\nWe now impose some assumptions on the players.\n\nAssumption A rational player will not choose a strictly dominated strategy.\n\nNote that we have not formally defined rationality. That is more of a philosophical discussion, and for the purpose of this course, we will not present a formal definition but rather go with the colloquial meaning of the word.\n\nAssumption All players in a game are rational.\n\nIrrespective of the definition of rationality, this assumption is often violated in practice. Human decision makers are almost never rational. Even when decisions are made by algorithms, the decisions may not be rational. There is a whole branch of decision theory which considers players with bounded rationality. However, in this course, we will make the simplifying assumption that the players are rational.",
+    "text": "1.3 Dominated strategies\nWe now define the notion of dominance, which can be used to provide a solution concept for some games.\n\nDefinition 1.2 (Dominance) Consider a game \\(\\mathscr{G}\\) with standard notation. Let \\(s_i, t_i \\in \\ALPHABET S_i\\) be two strategies of player \\(i\\). We say, strategy \\(s_i\\) strictly dominates \\(t_i\\) if \\[\n  u_i(s_i, s_{-i}) \\mathbin{\\color{red}&gt;} u_i(t_i, s_{-i}),\n  \\quad \\forall s_{-i} \\in \\ALPHABET S_{-i}.\n\\] We say that \\(s_i\\) weakly dominates \\(t_i\\) if \\[\n  u_i(s_i, s_{-i}) \\mathbin{\\color{red}\\ge} u_i(t_i, s_{-i}),\n  \\quad \\forall s_{-i} \\in \\ALPHABET S_{-i}\n\\] and the inequality is strict for at least one \\(s_{-i}\\).\nWe will also use the phrase “\\(t_i\\) is (strongly or weakly) dominated by \\(s_i\\)” to denote the same fact.\n\nA strategy \\(s_i \\in \\ALPHABET S_i\\) is called (strongly or weakly) dominant strategy if it (strongly or weakly) dominates all other strategies \\(t_i \\in \\ALPHABET S_i \\setminus \\{s_i\\}\\).\nWe now impose some assumptions on the players.\n\nAssumption. A rational player will not choose a strictly dominated strategy.\n\nNote that we have not formally defined rationality. That is more of a philosophical discussion, and for the purpose of this course, we will not present a formal definition but rather go with the colloquial meaning of the word.\n\nAssumption. All players in a game are rational.\n\nIrrespective of the definition of rationality, this assumption is often violated in practice. Human decision makers are almost never rational. Even when decisions are made by algorithms, the decisions may not be rational. There is a whole branch of decision theory which considers players with bounded rationality. However, in this course, we will make the simplifying assumption that the players are rational.",
     "crumbs": [
       "Strategic Games",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
@@ -90,7 +150,7 @@
     "href": "static-games/strategic-games.html#iterative-elimination-of-weakly-dominated-strategies",
     "title": "1  Introduction",
     "section": "1.6 Iterative elimination of weakly dominated strategies",
-    "text": "1.6 Iterative elimination of weakly dominated strategies\nWe can extend the notion of IEDS to IEWDS (Iterative elimination of weakly dominated strategies) if we make the following assumption.\n\nAssumption A rational player never plays a weakly dominated strategy.\n\nThe assumption that a player never plays a weakly domainted strategy is less compelling than the assumption of never playing a strictly dominated strategy.\nOne way to justify the assumption of never playing a weakly dominated strategy is the concept of trembling hand principle, which is due to Selten (1975). The key idea of this principle is that the player may make mistakes when executing its strategy (hence the metaphor of trembling hand): thus all possible strategies may be used with positive probability. In such a scenario, it is never optimal to play weakly dominated strategies.\nSimilar to IEDS, we may consider an iterative procedure to eliminate weakly dominated strategies (abbreviated as IEWDS). IEWDS allows us to find solutions of games where IEDS doesn’t work (see the second price auction example below). If IEWDS gives us a unique solution, we call the resulting strategy as a rationalizable strategy\nHowever, unlike IEDS where the order of elimination of strategies does not matter, in IEWDS we can end up with different games depending on the order of elimination of strategies. For example, consider the following game:\n\n\n\n\n\n\\(\\mathsf{L}\\)\n\n\n\\(\\mathsf{M}\\)\n\n\n\\(\\mathsf{R}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\nNote that both strategies \\(\\mathsf{L}\\) and \\(\\mathsf{R}\\) are weakly dominated by \\(\\mathsf{M}\\).\n\nCase 1: Eliminate \\(\\mathsf{L}\\)\nIf we eliminate \\(\\mathsf{L}\\), we obtain the following reduction.\n\n\n\n\n\n\\(\\mathsf{M}\\)\n\n\n\\(\\mathsf{R}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\nNow, for \\(P_1\\), strategy \\(\\mathsf{T}\\) is dominated by strategy \\(\\mathsf{B}\\). Eliminating \\(\\mathsf{T}\\) we get\n\n\nGame \\(\\mathscr{G}_L\\)\n\n\n\n\n\n\\(\\mathsf{M}\\)\n\n\n\\(\\mathsf{R}\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\n\n\nCase 2: Eliminate \\(\\mathsf{R}\\)\nIf we eliminate \\(\\mathsf{R}\\) in the original game, we get the following reduction.\n\n\n\n\n\n\\(\\mathsf{L}\\)\n\n\n\\(\\mathsf{M}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\nHere, for \\(P_1\\), strategy \\(\\mathsf{B}\\) is weakly dominated by strategy \\(\\mathsf{T}\\). Eliminating \\(\\mathsf{B}\\), we get\n\n\nGame \\(\\mathscr{G}_R\\)\n\n\n\n\n\n\\(\\mathsf{L}\\)\n\n\n\\(\\mathsf{M}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\nNote that games \\(\\mathscr{G}_L\\) and \\(\\mathscr{G}_R\\) cannot be reduced further. The resulting payoffs are also different.",
+    "text": "1.6 Iterative elimination of weakly dominated strategies\nWe can extend the notion of IEDS to IEWDS (Iterative elimination of weakly dominated strategies) if we make the following assumption.\n\nAssumption. A rational player never plays a weakly dominated strategy.\n\nThe assumption that a player never plays a weakly domainted strategy is less compelling than the assumption of never playing a strictly dominated strategy.\nOne way to justify the assumption of never playing a weakly dominated strategy is the concept of trembling hand principle, which is due to Selten (1975). The key idea of this principle is that the player may make mistakes when executing its strategy (hence the metaphor of trembling hand): thus all possible strategies may be used with positive probability. In such a scenario, it is never optimal to play weakly dominated strategies.\nSimilar to IEDS, we may consider an iterative procedure to eliminate weakly dominated strategies (abbreviated as IEWDS). IEWDS allows us to find solutions of games where IEDS doesn’t work (see the second price auction example below). If IEWDS gives us a unique solution, we call the resulting strategy as a rationalizable strategy\nHowever, unlike IEDS where the order of elimination of strategies does not matter, in IEWDS we can end up with different games depending on the order of elimination of strategies. For example, consider the following game:\n\n\n\n\n\n\\(\\mathsf{L}\\)\n\n\n\\(\\mathsf{M}\\)\n\n\n\\(\\mathsf{R}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\nNote that both strategies \\(\\mathsf{L}\\) and \\(\\mathsf{R}\\) are weakly dominated by \\(\\mathsf{M}\\).\n\nCase 1: Eliminate \\(\\mathsf{L}\\)\nIf we eliminate \\(\\mathsf{L}\\), we obtain the following reduction.\n\n\n\n\n\n\\(\\mathsf{M}\\)\n\n\n\\(\\mathsf{R}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\nNow, for \\(P_1\\), strategy \\(\\mathsf{T}\\) is dominated by strategy \\(\\mathsf{B}\\). Eliminating \\(\\mathsf{T}\\) we get\n\n\nGame \\(\\mathscr{G}_L\\)\n\n\n\n\n\n\\(\\mathsf{M}\\)\n\n\n\\(\\mathsf{R}\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\n\n\nCase 2: Eliminate \\(\\mathsf{R}\\)\nIf we eliminate \\(\\mathsf{R}\\) in the original game, we get the following reduction.\n\n\n\n\n\n\\(\\mathsf{L}\\)\n\n\n\\(\\mathsf{M}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\n\n\\(\\mathsf{B}\\)\n\n\n\\(0\\)\n\n\n\\(0\\)\n\n\n\\(1\\)\n\n\n\\(2\\)\n\n\n\nHere, for \\(P_1\\), strategy \\(\\mathsf{B}\\) is weakly dominated by strategy \\(\\mathsf{T}\\). Eliminating \\(\\mathsf{B}\\), we get\n\n\nGame \\(\\mathscr{G}_R\\)\n\n\n\n\n\n\\(\\mathsf{L}\\)\n\n\n\\(\\mathsf{M}\\)\n\n\n\n\n\\(\\mathsf{T}\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\\(1\\)\n\n\n\nNote that games \\(\\mathscr{G}_L\\) and \\(\\mathscr{G}_R\\) cannot be reduced further. The resulting payoffs are also different.",
     "crumbs": [
       "Strategic Games",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
