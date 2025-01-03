@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-02">
+<meta name="dcterms.date" content="2025-01-03">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>1&nbsp; Introduction – Multi-Agent Systems</title>
@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -145,10 +164,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Introduction]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-02">
-<meta name="citation_cover_date" content="2025-01-02">
+<meta name="citation_publication_date" content="2025-01-03">
+<meta name="citation_cover_date" content="2025-01-03">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-02">
+<meta name="citation_online_date" content="2025-01-03">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -164,7 +183,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Supermodularity and complementarity;,citation_author=Donald M. Topkis;,citation_publication_date=1998;,citation_cover_date=1998;,citation_year=1998;,citation_isbn=9780691032443;">
 <meta name="citation_reference" content="citation_title=Correlated equilibrium in a nutshell;,citation_author=Rabah Amir;,citation_author=Sergei Belkov;,citation_author=Igor V. Evstigneev;,citation_publication_date=2017-06;,citation_cover_date=2017-06;,citation_year=2017;,citation_issue=4;,citation_doi=10.1007/s11238-017-9609-9;,citation_volume=83;,citation_journal_title=Theory and Decision;,citation_publisher=Springer Science; Business Media LLC;">
 <meta name="citation_reference" content="citation_title=Game theory;,citation_author=Michael Maschler;,citation_author=Shmuel Zamir;,citation_author=Eilon Solan;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
-<meta name="citation_reference" content="citation_title=Game theory;,citation_author=Michael Maschler;,citation_author=Shmuel Zamir;,citation_author=Eilon Solan;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
+<meta name="citation_reference" content="citation_title=Reexamination of the perfectness concept for equilibrium points in extensive games;,citation_author=R. Selten;,citation_publication_date=1975-03;,citation_cover_date=1975-03;,citation_year=1975;,citation_issue=1;,citation_doi=10.1007/bf01766400;,citation_issn=1432-1270;,citation_volume=4;,citation_journal_title=International Journal of Game Theory;,citation_publisher=Springer Science; Business Media LLC;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -273,9 +292,7 @@ window.Quarto = {
   <li><a href="#iterative-elimination-of-weakly-dominated-strategies" id="toc-iterative-elimination-of-weakly-dominated-strategies" class="nav-link" data-scroll-target="#iterative-elimination-of-weakly-dominated-strategies"><span class="header-section-number">1.6</span> Iterative elimination of weakly dominated strategies</a></li>
   <li><a href="#second-price-auction" id="toc-second-price-auction" class="nav-link" data-scroll-target="#second-price-auction"><span class="header-section-number">1.7</span> Second price auction</a></li>
   <li><a href="#dominance-by-mixed-strategies" id="toc-dominance-by-mixed-strategies" class="nav-link" data-scroll-target="#dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</a></li>
-  <li><a href="#never-best-response" id="toc-never-best-response" class="nav-link" data-scroll-target="#never-best-response"><span class="header-section-number">1.9</span> Never best response</a></li>
-  <li><a href="#relationship-between-dominated-strategies-and-never-br-strategies" id="toc-relationship-between-dominated-strategies-and-never-br-strategies" class="nav-link" data-scroll-target="#relationship-between-dominated-strategies-and-never-br-strategies"><span class="header-section-number">1.10</span> Relationship between dominated strategies and never BR strategies</a></li>
-  <li><a href="#cournot-competition" id="toc-cournot-competition" class="nav-link" data-scroll-target="#cournot-competition"><span class="header-section-number">1.11</span> Cournot competition</a></li>
+  <li><a href="#cournot-competition" id="toc-cournot-competition" class="nav-link" data-scroll-target="#cournot-competition"><span class="header-section-number">1.9</span> Cournot competition</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/strategic-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -311,7 +328,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 2, 2025</p>
+      <p class="date">January 3, 2025</p>
     </div>
   </div>
   
@@ -323,8 +340,8 @@ window.Quarto = {
 </header>
 
 
-<p>Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose an action <span class="math inline">\(a \in \ALPHABET A\)</span> to minimize a cost <span class="math inline">\(c(a)\)</span> (or, equivalently, receives a payoff or a utility <span class="math inline">\(u(a)\)</span>). In multi-agent decision problems, different players may have different utility functions. Such settings are called <strong>games</strong>. We start with the simplest setting of two player games.</p>
-<p>Consider a decision problem where there are two players. Player 1 (<span class="math inline">\(P_1\)</span> from now on) chooses an action <span class="math inline">\(a_1 \in \ALPHABET A_1\)</span> and player 2 (<span class="math inline">\(P_2\)</span> from now on) chooses an action <span class="math inline">\(a_2 \in \ALPHABET A_2\)</span>. Once both players have chosen their actions, <span class="math inline">\(P_1\)</span> receives a payoff of <span class="math inline">\(u_1(a_1, a_2)\)</span> and <span class="math inline">\(P_2\)</span> receives a payoff of <span class="math inline">\(u_2(a_1,a_2)\)</span>. How should the players behave?</p>
+<p>Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose a strategy <span class="math inline">\(s \in \ALPHABET S\)</span> and receives a payoff or <strong>utility</strong> <span class="math inline">\(u(s)\)</span> (or, equivalently, incurs a cost <span class="math inline">\(c(s)\)</span>). In multi-agent decision problems, the utility received by an agent may depend on the strategies of other agents. Such settings are called <strong>games</strong>. We start with the simplest setting of two player games.</p>
+<p>Consider a decision problem where there are two players. Player 1 (<span class="math inline">\(P_1\)</span> from now on) chooses an strategy <span class="math inline">\(s_1 \in \ALPHABET S_1\)</span> and player 2 (<span class="math inline">\(P_2\)</span> from now on) chooses an strategy <span class="math inline">\(s_2 \in \ALPHABET S_2\)</span>. Once both players have chosen their strategies, <span class="math inline">\(P_1\)</span> receives a payoff of <span class="math inline">\(u_1(s_1, s_2)\)</span> and <span class="math inline">\(P_2\)</span> receives a payoff of <span class="math inline">\(u_2(s_1,s_2)\)</span>. How should the players behave?</p>
 <section id="examples" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">1.1</span> Examples</h2>
 <p>We start with a few examples.</p>
@@ -341,7 +358,7 @@ Prisoner’s dilemma.
 <p>Two criminals are arrested for a crime but the prosecutors have evidence to only charge them for a lesser crime but not enough to charge them for the main crime. The prisoners are kept in separate cells with no means to communicate. The prosecutors simultaneously offer the following bargain to both prisoners: serve as a witness that the other criminal committed the crime and walk free; unless the other also confesses in which case both get sentenced. If both criminals confess, both get a reduced sentenced for the main crime (2 years in prison). If only one confesses, the criminal who confessed walks free while the other gets a full sentence for the main crime (10 years in prison). If neither prisoner takes the bargain, then both get charged for the lesser crime (1 year in prison).</p>
 </div>
 </div>
-<p>This example can be modeled as a two player game as follow. The action sets of both players are <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \{ \mathsf{A}, \mathsf{R} \}\)</span>, where <span class="math inline">\(\mathsf{A}\)</span> means that the player accepts the bargain and <span class="math inline">\(\mathsf{R}\)</span> means that the player rejects the bargain. The utility functions can be represented compactly as follows, which is called the <em>bimatrix representation</em> of the game.</p>
+<p>This example can be modeled as a two player game as follow. The strategy sets of both players are <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{ \mathsf{A}, \mathsf{R} \}\)</span>, where <span class="math inline">\(\mathsf{A}\)</span> means that the player accepts the bargain and <span class="math inline">\(\mathsf{R}\)</span> means that the player rejects the bargain. The utility functions can be represented compactly as follows, which is called the <em>bimatrix representation</em> of the game.</p>
 <table class="game" align="center">
 <caption>
 Bimatrix representation of Prisoner’s dilemma game
@@ -577,29 +594,29 @@ Battle of matching pennies game
 </tbody></table>
 </div>
 </div>
-<p>In the games described above, there is a conflict between the players. We cannot simply assert that the players should take an action which maximizes their utility because the utility of a player depends on the actions of other players, who have different incentives. The objective of game theory is to understand how to make decisions in such scenarios.</p>
+<p>In the games described above, there is a conflict between the players. We cannot simply assert that the players should take an strategy which maximizes their utility because the utility of a player depends on the strategies of other players, who have different incentives. The objective of game theory is to understand how to make decisions in such scenarios.</p>
 </section>
 <section id="modeling-strategic-games" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="modeling-strategic-games"><span class="header-section-number">1.2</span> Modeling Strategic Games</h2>
 <p>The above examples described games between two players. General <span class="math inline">\(n\)</span>-player games can be modeled as follows.</p>
 <div id="def-strategic-games" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.1 (Strategic game)</strong></span> A strategic game is described by a tuple <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET A_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span>, where</p>
+<p><span class="theorem-title"><strong>Definition 1.1 (Strategic game)</strong></span> A strategic game is described by a tuple <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span>, where</p>
 <ul>
 <li><span class="math inline">\(N\)</span> is a (finite) set of players</li>
-<li><span class="math inline">\(\ALPHABET A_i\)</span> is a non-empty set of actions for player <span class="math inline">\(i\)</span>, <span class="math inline">\(i \in N\)</span>. Define <span class="math inline">\(\ALPHABET A = \prod_{i \in N}\)</span> as the strategy space of the game <span class="math inline">\(\mathscr{G}\)</span>.</li>
-<li><span class="math inline">\(u_i \colon \ALPHABET A \to \reals\)</span> is the utility function of player <span class="math inline">\(i\)</span>, <span class="math inline">\(i \in N\)</span>.</li>
+<li><span class="math inline">\(\ALPHABET S_i\)</span> is a non-empty set of strategies for player <span class="math inline">\(i\)</span>, <span class="math inline">\(i \in N\)</span>. Define <span class="math inline">\(\ALPHABET S = \prod_{i \in N} \ALPHABET S_i\)</span> as the strategy space of the game <span class="math inline">\(\mathscr{G}\)</span>.</li>
+<li><span class="math inline">\(u_i \colon \ALPHABET S \to \reals\)</span> is the utility function of player <span class="math inline">\(i\)</span>, <span class="math inline">\(i \in N\)</span>.</li>
 </ul>
 </div>
 <dl>
 <dt>Remarks</dt>
 <dd>
 <ul>
-<li>When all <span class="math inline">\(\ALPHABET A_i\)</span> are finite, the game is called a <em>finite game</em>.</li>
-<li>To play the game, each player chooses a (pure) <em>strategy</em> <span class="math inline">\(a_i \in
-\ALPHABET A_i\)</span>.</li>
-<li>The collection <span class="math inline">\(a = (a_i)_{i \in N}\)</span> is called the <em>strategy profile</em>.</li>
-<li>Given a profile <span class="math inline">\(x = (x_i)_{i \in N}\)</span> (not necessarily strategy profile, but any list of elements, one for each player), <span class="math inline">\(x_{-i}\)</span> denotes the list <span class="math inline">\((x_j)_{j \in N \setminus \{i\}}\)</span>. We will write <span class="math inline">\(x = (x_i,
-x_{-i})\)</span>.</li>
+<li>The utlity of player <span class="math inline">\(i\)</span> depends on the strategies of all players and not just the strategy of player <span class="math inline">\(i\)</span>. This is the defining feature of a <em>game</em>.</li>
+<li>When all <span class="math inline">\(\ALPHABET S_i\)</span> are finite, the game is called a <em>finite game</em>. Such games are also sometimes called <em>matrix games</em> because they can be described by a matrix, as seen in the above examples.</li>
+<li>To play the game, each player chooses a (pure) <em>strategy</em> <span class="math inline">\(s_i \in
+\ALPHABET S_i\)</span>.</li>
+<li>The collection <span class="math inline">\(s = (s_i)_{i \in N}\)</span> is called the <em>strategy profile</em>.</li>
+<li>Given a profile <span class="math inline">\(x = (x_i)_{i \in N}\)</span> (not necessarily strategy profile, but any list of elements, one for each player), <span class="math inline">\(x_{-i}\)</span> denotes the list <span class="math inline">\((x_j)_{j \in N \setminus \{i\}}\)</span>. We will write <span class="math inline">\(x = (x_i, x_{-i})\)</span>.</li>
 </ul>
 </dd>
 </dl>
@@ -608,23 +625,23 @@ x_{-i})\)</span>.</li>
 <h2 data-number="1.3" class="anchored" data-anchor-id="dominated-strategies"><span class="header-section-number">1.3</span> Dominated strategies</h2>
 <p>We now define the notion of dominance, which can be used to provide a solution concept for some games.</p>
 <div id="def-dominance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.2 (Dominance)</strong></span> Consider a game <span class="math inline">\(\mathscr{G}\)</span> with standard notation. Let <span class="math inline">\(a_i, b_i \in \ALPHABET A_i\)</span> be two strategies of player <span class="math inline">\(i\)</span>. We say, strategy <span class="math inline">\(a_i\)</span> <em>strictly dominates</em> <span class="math inline">\(b_i\)</span> if <span class="math display">\[
-  u_i(a_i, a_{-i}) \mathbin{\color{red}&gt;} u_i(b_i, a_{-i}),
-  \quad \forall a_{-i} \in \ALPHABET A_{-i}.
-\]</span> We say that <span class="math inline">\(a_i\)</span> <em>weakly dominates</em> <span class="math inline">\(b_i\)</span> if <span class="math display">\[
-  u_i(a_i, a_{-i}) \mathbin{\color{red}\ge} u_i(b_i, a_{-i}),
-  \quad \forall a_{-i} \in \ALPHABET A_{-i}.
-\]</span></p>
-<p>We will also use the phrase “<span class="math inline">\(b_i\)</span> is (strongly or weakly) dominated by <span class="math inline">\(a_i\)</span>” to denote the same fact.</p>
+<p><span class="theorem-title"><strong>Definition 1.2 (Dominance)</strong></span> Consider a game <span class="math inline">\(\mathscr{G}\)</span> with standard notation. Let <span class="math inline">\(s_i, t_i \in \ALPHABET S_i\)</span> be two strategies of player <span class="math inline">\(i\)</span>. We say, strategy <span class="math inline">\(s_i\)</span> <em>strictly dominates</em> <span class="math inline">\(t_i\)</span> if <span class="math display">\[
+  u_i(s_i, s_{-i}) \mathbin{\color{red}&gt;} u_i(t_i, s_{-i}),
+  \quad \forall s_{-i} \in \ALPHABET S_{-i}.
+\]</span> We say that <span class="math inline">\(s_i\)</span> <em>weakly dominates</em> <span class="math inline">\(t_i\)</span> if <span class="math display">\[
+  u_i(s_i, s_{-i}) \mathbin{\color{red}\ge} u_i(t_i, s_{-i}),
+  \quad \forall s_{-i} \in \ALPHABET S_{-i}
+\]</span> and the inequality is strict for at least one <span class="math inline">\(s_{-i}\)</span>.</p>
+<p>We will also use the phrase “<span class="math inline">\(t_i\)</span> is (strongly or weakly) dominated by <span class="math inline">\(s_i\)</span>” to denote the same fact.</p>
 </div>
-<p>A strategy <span class="math inline">\(a_i \in \ALPHABET A_i\)</span> is called (strongly or weakly) <strong>dominant strategy</strong> if it (strongly or weakly) dominates all other strategies <span class="math inline">\(b_i \in \ALPHABET A_i \setminus \{a_i\}\)</span>.</p>
+<p>A strategy <span class="math inline">\(s_i \in \ALPHABET S_i\)</span> is called (strongly or weakly) <strong>dominant strategy</strong> if it (strongly or weakly) dominates all other strategies <span class="math inline">\(b_i \in \ALPHABET S_i \setminus \{s_i\}\)</span>.</p>
 <p>We now impose some assumptions on the players.</p>
 <div class="theorem">
-<p><strong>Assumption (Strict Rationality)</strong> A rational player will not choose a strictly dominated strategy.</p>
+<p><strong>Assumption</strong> A rational player will not choose a strictly dominated strategy.</p>
 </div>
 <p>Note that we have not formally defined rationality. That is more of a philosophical discussion, and for the purpose of this course, we will not present a formal definition but rather go with the colloquial meaning of the word.</p>
 <div class="theorem">
-<p><strong>Assumption (Rationality of Players)</strong> All players in a game are rational.</p>
+<p><strong>Assumption</strong> All players in a game are rational.</p>
 </div>
 <p>Irrespective of the definition of rationality, this assumption is often violated in practice. Human decision makers are almost never rational. Even when decisions are made by algorithms, the decisions may not be rational. There is a whole branch of decision theory which considers players with bounded rationality. However, in this course, we will make the simplifying assumption that the players are rational.</p>
 </section>
@@ -739,7 +756,7 @@ Dominant strategy equilibrium
 </ul>
 <p>If statements of this type hold for infinite depth, we say that the fact that <span class="math inline">\(P_2\)</span> is rational is <strong>common knowledge</strong>. We will revisit common knowledge later in the course. For now, we assume the following.</p>
 <div class="theorem">
-<p><strong>Assumption (Common knowledge of rationality)</strong> It is common knowledge that all players are rational.</p>
+<p><strong>Assumption</strong> It is common knowledge that all players are rational.</p>
 </div>
 <p>Under the assumption of common knowledge of rationality, we can assume that the players will eliminate strictly dominated strategies. For example, in the previous example, both players can eliminate strategy <span class="math inline">\(\mathsf{R}\)</span> from consideration and simplify the original game <span class="math inline">\(\mathscr{G}\)</span> to game <span class="math inline">\(\mathscr{G}_1\)</span> shown below.</p>
 <table class="game" align="center">
@@ -943,9 +960,11 @@ Beauty contest game
 <h2 data-number="1.6" class="anchored" data-anchor-id="iterative-elimination-of-weakly-dominated-strategies"><span class="header-section-number">1.6</span> Iterative elimination of weakly dominated strategies</h2>
 <p>We can extend the notion of IEDS to IE<strong>W</strong>DS (Iterative elimination of <em>weakly</em> dominated strategies) if we make the following assumption.</p>
 <div class="theorem">
-<p>**Assumption (Weak rationality) A rational player never plays a weakly dominated strategy.</p>
+<p><strong>Assumption</strong> A rational player never plays a weakly dominated strategy.</p>
 </div>
-<p>The weak rationality assumption is less compelling than the strict rationality assumption. Nonetheless, it allows us to find solutions of games where IEDS doesn’t work (see the <a href="#second-price-auction">second price auction</a> example below). If IEWDS gives us a unique solution, we call the resulting strategy as a <strong>rationalizable strategy</strong></p>
+<p>The assumption that a player never plays a weakly domainted strategy is less compelling than the assumption of never playing a strictly dominated strategy.</p>
+<p>One way to justify the assumption of never playing a weakly dominated strategy is the concept of <strong>trembling hand principle</strong>, which is due to <span class="citation" data-cites="Selten1975">Selten (<a href="../references.html#ref-Selten1975" role="doc-biblioref">1975</a>)</span>. The key idea of this principle is that the player may make mistakes when executing its strategy (hence the metaphor of <em>trembling hand</em>): thus all possible strategies may be used with positive probability. In such a scenario, it is never optimal to play weakly dominated strategies.</p>
+<p>Similar to IEDS, we may consider an iterative procedure to eliminate <em>weakly</em> dominated strategies (abbreviated as IEWDS). IEWDS allows us to find solutions of games where IEDS doesn’t work (see the <a href="#second-price-auction">second price auction</a> example below). If IEWDS gives us a unique solution, we call the resulting strategy as a <strong>rationalizable strategy</strong></p>
 <p>However, unlike IEDS where the order of elimination of strategies does not matter, in IEWDS we can end up with different games depending on the order of elimination of strategies. For example, consider the following game:</p>
 <table class="game" align="center">
 <tbody><tr>
@@ -1179,7 +1198,7 @@ Game <span class="math inline">\(\mathscr{G}_R\)</span>
 </section>
 <section id="second-price-auction" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="second-price-auction"><span class="header-section-number">1.7</span> Second price auction</h2>
-<p>We will study auctions in detail later in the course, but here we use the concept of dominance to identify a rationalizable strategy in what are knows as sealed bid, second price auctions. This is an example of a game with continuous action spaces.</p>
+<p>We will study auctions in detail later in the course, but here we use the concept of dominance to identify a rationalizable strategy in what are knows as sealed bid, second price auctions. This is an example of a game with continuous strategy spaces.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1322,7 +1341,7 @@ the bid.</figcaption>
     },
   }).mount('#diagram')</script>
 <!-- }}} End diagram -->
-<p>Divide the set of strategies <span class="math inline">\(\ALPHABET A_i = [0, ∞)\)</span> into three sets:</p>
+<p>Divide the set of strategies <span class="math inline">\(\ALPHABET S_i = [0, ∞)\)</span> into three sets:</p>
 <ul>
 <li>Under bid, i.e., bid less than <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\([0, v_i)\)</span>.</li>
 <li>Bid truthfully, bid equal to <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\(\{v_i\}\)</span>.</li>
@@ -1337,22 +1356,22 @@ the bid.</figcaption>
 </section>
 <section id="dominance-by-mixed-strategies" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</h2>
-<p>Consider a strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET A_i)_{i \in N},
-(u_i)_{i \in N} \rangle\)</span> where <span class="math inline">\(\ALPHABET A_i = \{a_{i1}, \dots, a_{ik}\}\)</span>. Then a mixed strategy for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math display">\[
-  α_i = (α_{i1}, \dots, α_{ik}),
+<p>Consider a strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N},
+(u_i)_{i \in N} \rangle\)</span> where <span class="math inline">\(\ALPHABET S_i = \{s_{i1}, \dots, s_{ik}\}\)</span>. Then a mixed strategy for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math display">\[
+  σ_i = (σ_{i1}, \dots, σ_{ik}),
   \quad
-  α_{i\ell} \in [0,1],
+  σ_{i\ell} \in [0,1],
   \quad
-  \sum_{\ell=1}^k α_{i\ell} = 1
+  \sum_{\ell=1}^k σ_{i\ell} = 1
 \]</span> over the (pure) strategies of player <span class="math inline">\(i\)</span>.</p>
-<p>For example, suppose <span class="math inline">\(\ALPHABET A = \{1,2,3\}\)</span> and <span class="math inline">\(α_i = (0.2, 0.3, 0.5)\)</span>. This means that player <span class="math inline">\(i\)</span> chooses action <span class="math inline">\(1\)</span> with probability <span class="math inline">\(0.2\)</span>, action <span class="math inline">\(2\)</span> with probability <span class="math inline">\(0.3\)</span>, and action <span class="math inline">\(3\)</span> with probability <span class="math inline">\(0.5\)</span>.</p>
-<p>When other players are playing pure strategies <span class="math inline">\(a_{-i}\)</span> and player <span class="math inline">\(i\)</span> is playing a mixed strategy <span class="math inline">\(α_i\)</span>, then the <strong>expected payoff</strong> to player <span class="math inline">\(i\)</span> is <span class="math display">\[
-  U_i(α_i, a_{-i}) = \sum_{\ell=1}^k α_{i\ell} u_i(a_{i\ell}, a_{-i}).
+<p>For example, suppose <span class="math inline">\(\ALPHABET A = \{1,2,3\}\)</span> and <span class="math inline">\(σ_i = (0.2, 0.3, 0.5)\)</span>. This means that player <span class="math inline">\(i\)</span> chooses strategy <span class="math inline">\(1\)</span> with probability <span class="math inline">\(0.2\)</span>, strategy <span class="math inline">\(2\)</span> with probability <span class="math inline">\(0.3\)</span>, and strategy <span class="math inline">\(3\)</span> with probability <span class="math inline">\(0.5\)</span>.</p>
+<p>When other players are playing pure strategies <span class="math inline">\(s_{-i}\)</span> and player <span class="math inline">\(i\)</span> is playing a mixed strategy <span class="math inline">\(σ_i\)</span>, then the <strong>expected payoff</strong> to player <span class="math inline">\(i\)</span> is <span class="math display">\[
+  U_i(σ_i, s_{-i}) = \sum_{\ell=1}^k σ_{i\ell} u_i(s_{i\ell}, s_{-i}).
 \]</span></p>
-<p>For example, consider the matching pennies game where <span class="math inline">\(α_1 = (p, 1-p)\)</span>. Then,</p>
+<p>For example, consider the matching pennies game where <span class="math inline">\(σ_1 = (p, 1-p)\)</span>. Then,</p>
 <p><span class="math display">\[\begin{align*}
-U_1(α_1, H) &amp;= p - (1-p) = 2p - 1, \\
-U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
+U_1(σ_1, H) &amp;= p - (1-p) = 2p - 1, \\
+U_1(σ_1, T) &amp;= -q + (1-p) = 1 - 2p.
 \end{align*}\]</span></p>
 <p>We can think of a mixed strategy as a <em>virtual row</em> or <em>virtual column</em> in the bimatrix representation of the game as follows:</p>
 <table class="game" align="center">
@@ -1402,7 +1421,7 @@ U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
 </tr>
 <tr>
 <td>
-<span class="math inline">\(α_1\)</span>
+<span class="math inline">\(σ_1\)</span>
 </td>
 <td>
 <span class="math inline">\(2q-1\)</span>
@@ -1480,367 +1499,276 @@ U_1(α_1, T) &amp;= -q + (1-p) = 1 - 2p.
 </td>
 </tr>
 </tbody></table>
-<p>Note that none of the strategies of <span class="math inline">\(P_2\)</span> are dominated. However, if we consider the mixed strategy <span class="math inline">\(α_2 = (0.5, 0, 0.5)\)</span>, then</p>
-<p><span class="math display">\[ U_2(\cdot, α_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} \]</span> which dominates <span class="math inline">\(\mathsf{M}\)</span>. So we can eliminate strategy <span class="math inline">\(\mathsf{M}\)</span>.</p>
-</section>
-<section id="never-best-response" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="never-best-response"><span class="header-section-number">1.9</span> Never best response</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Best Response
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The best response (in pure strategies) of player <span class="math inline">\(i\)</span> to strategy profile <span class="math inline">\(a_{-i}\)</span> is a strategy <span class="math inline">\(a_i\)</span> that yields the highest utility, i.e., <span class="math display">\[
-  u_i(a_i, a_{-i}) \ge u_i(b_i, a_{-i}), \quad \forall b_i \in \ALPHABET
-  A_i.
-\]</span> We say that <span class="math inline">\(a_i\)</span> is <em>strongly</em> best response if the inequality is strict for all <span class="math inline">\(b_i \neq a_i\)</span>.</p>
-</div>
-</div>
-<p>An idea related to dominance is never best response.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Never best response
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A pure strategy <span class="math inline">\(a_i\)</span> is never best response if for all mixed strategies <span class="math inline">\(α_{-i}\)</span> of other players there exists a mixed strategy <span class="math inline">\(α_i\)</span> such that <span class="math display">\[ U_i(α_i, α_{-i}) &gt; U_i(a_i, α_{-i}). \]</span></p>
-</div>
-</div>
-<p>Let’s reconsider the game discussed above</p>
-<table class="game" align="center">
-<tbody><tr>
-<td>
-</td>
-<td colspan="2">
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
-</td>
-<td colspan="2">
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
+<p>Note that none of the strategies of <span class="math inline">\(P_2\)</span> are dominated. However, if we consider the mixed strategy <span class="math inline">\(σ_2 = (0.5, 0, 0.5)\)</span>, then</p>
+<p><span class="math display">\[ U_2(\cdot, σ_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} \]</span> which dominates <span class="math inline">\(\mathsf{M}\)</span>. So we can eliminate strategy <span class="math inline">\(\mathsf{M}\)</span>.</p>
+<!-- Something is missing here
+## Never best response
+
+::: {.callout-tip }
+### Best Response
+The best response (in pure strategies) of player $i$ to strategy profile $s_{-i}$ is a strategy $s_i$ that yields the highest utility, i.e.,
+$$
+  u_i(s_i, s_{-i}) \ge u_i(b_i, s_{-i}), \quad \forall b_i \in \ALPHABET
+  S_i.
+$$
+We say that $s_i$ is _strongly_ best response if the inequality is strict
+for all $b_i \neq s_i$. 
+::: 
+
+An idea related to dominance is never best response. 
+
+::: {.callout-tip } 
+### Never best response
+
+A pure strategy $s_i$ is never best response if for all mixed strategies $σ_{-i}$ of other players there exists a mixed strategy $σ_i$ such that
+ $$ U_i(σ_i, σ_{-i}) > U_i(s_i, σ_{-i}). $$
+:::
+
+Let's reconsider the game discussed above
+
+
+<table class="game caption-top" data-quarto-postprocess="true" data-align="center">
+<tbody>
+<tr class="odd">
+<td></td>
+<td colspan="2">$\mathsf{L}$</td>
+<td colspan="2">$\mathsf{M}$</td>
+<td colspan="2">$\mathsf{R}$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(\bullet\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-<td>
-<span class="math inline">\(\bullet\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-<td>
-<span class="math inline">\(\bullet\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
+<tr class="even">
+<td>$\mathsf{T}$</td>
+<td>$\bullet$</td>
+<td>$3$</td>
+<td>$\bullet$</td>
+<td>$1$</td>
+<td>$\bullet$</td>
+<td>$0$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(\bullet\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(\bullet\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-<td>
-<span class="math inline">\(\bullet\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
+<tr class="odd">
+<td>$\mathsf{B}$</td>
+<td>$\bullet$</td>
+<td>$0$</td>
+<td>$\bullet$</td>
+<td>$1$</td>
+<td>$\bullet$</td>
+<td>$3$</td>
 </tr>
-</tbody></table>
-<p>Now consider a mixed strategy <span class="math inline">\(α_1 = (p, 1-p)\)</span> for player 1. Then, the payoff to player 2 is <span class="math display">\[ U_2(α_1, \cdot) = \begin{bmatrix} 3p &amp; 1 &amp; 3(1-p) \end{bmatrix} \]</span></p>
-<p>Note that <span class="math inline">\(\max\{ 3p, 3(1-p) \} \ge \frac 32\)</span>. Thus, for all values of <span class="math inline">\(p\)</span>, either <span class="math inline">\(\mathsf{L}\)</span> or <span class="math inline">\(\mathsf{R}\)</span> is better than <span class="math inline">\(M\)</span>.</p>
-<p>We can generalize IEDS to eliminate neverBR strategies to obtain rationalizable strategies (in some cases).</p>
-</section>
-<section id="relationship-between-dominated-strategies-and-never-br-strategies" class="level2" data-number="1.10">
-<h2 data-number="1.10" class="anchored" data-anchor-id="relationship-between-dominated-strategies-and-never-br-strategies"><span class="header-section-number">1.10</span> Relationship between dominated strategies and never BR strategies</h2>
-<p>By definition, a strictly dominated strategy is never BR. In general, the converse is not true when there are more than 3 players. We illustrate this via an example.</p>
-<p>Consider the following three player game. Player one is the row player, player 2 is the column player, and player 3 chooses the game matrix. We only show the payoffs for player 3.</p>
-<table style="border:none;" align="center">
-<tbody><tr>
-<td style="padding-right:1.5em;">
-<table class="game1" style="display:inline;">
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
+</tbody>
+</table>
+
+
+
+Now consider a mixed strategy $σ_1 = (p, 1-p)$ for player 1. Then, the payoff
+to player 2 is
+$$ U_2(σ_1, \cdot) = \begin{bmatrix} 3p & 1 & 3(1-p) \end{bmatrix} $$
+
+Note that $\max\{ 3p, 3(1-p) \} \ge \frac 32$. Thus, for all values of $p$,
+either $\mathsf{L}$ or $\mathsf{R}$ is better than $M$. 
+
+We can generalize IEDS to eliminate neverBR strategies to obtain
+rationalizable strategies (in some cases). 
+
+## Relationship between dominated strategies and never BR strategies
+
+By definition, a strictly dominated strategy is never BR. In general, the
+converse is not true when there are more than 3 players. We illustrate this
+via an example.
+
+Consider the following three player game. Player one is the row player, player
+2 is the column player, and player 3 chooses the game matrix. We only show the
+payoffs for player 3.
+
+
+<table class="caption-top" data-quarto-postprocess="true" style="border:none;" data-align="center">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$\mathsf{L}$</td>
+<td>$\mathsf{R}$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(8\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
+<tr class="even">
+<td>$\mathsf{T}$</td>
+<td>$8$</td>
+<td>$0$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
+<tr class="odd">
+<td>$\mathsf{B}$</td>
+<td>$0$</td>
+<td>$0$</td>
 </tr>
-</tbody></table>
-</td>
-<td style="padding-right:1.5em;">
-<table class="game1" style="display:inline;">
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
+</tbody>
+</table></td>
+<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$\mathsf{L}$</td>
+<td>$\mathsf{R}$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(4\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
+<tr class="even">
+<td>$\mathsf{T}$</td>
+<td>$4$</td>
+<td>$0$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(4\)</span>
-</td>
+<tr class="odd">
+<td>$\mathsf{B}$</td>
+<td>$0$</td>
+<td>$4$</td>
 </tr>
-</tbody></table>
-</td>
-<td style="padding-right:1.5em;">
-<table class="game1" style="display:inline;">
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
+</tbody>
+</table></td>
+<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$\mathsf{L}$</td>
+<td>$\mathsf{R}$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
+<tr class="even">
+<td>$\mathsf{T}$</td>
+<td>$0$</td>
+<td>$0$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(8\)</span>
-</td>
+<tr class="odd">
+<td>$\mathsf{B}$</td>
+<td>$0$</td>
+<td>$8$</td>
 </tr>
-</tbody></table>
-</td>
-<td style="padding-right:1.5em;">
-<table class="game1" style="display:inline;">
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
+</tbody>
+</table></td>
+<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$\mathsf{L}$</td>
+<td>$\mathsf{R}$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
+<tr class="even">
+<td>$\mathsf{T}$</td>
+<td>$3$</td>
+<td>$3$</td>
 </tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
+<tr class="odd">
+<td>$\mathsf{B}$</td>
+<td>$3$</td>
+<td>$3$</td>
 </tr>
-</tbody></table>
-</td>
+</tbody>
+</table></td>
 </tr>
-<tr>
-<td align="center">
-<span class="math inline">\(\mathsf{W}\)</span>
-</td>
-<td align="center">
-<span class="math inline">\(\mathsf{X}\)</span>
-</td>
-<td align="center">
-<span class="math inline">\(\mathsf{Y}\)</span>
-</td>
-<td align="center">
-<span class="math inline">\(\mathsf{Z}\)</span>
-</td>
+<tr class="even">
+<td style="text-align: center;">$\mathsf{W}$</td>
+<td style="text-align: center;">$\mathsf{X}$</td>
+<td style="text-align: center;">$\mathsf{Y}$</td>
+<td style="text-align: center;">$\mathsf{Z}$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+
 <figcaption style="padding-bottom:2em">
-A three player game. Player 1 chooses the row, player 2 chooses the column, and player 3 chooses <span class="math inline">\(\mathsf{W}\)</span>, <span class="math inline">\(\mathsf{X}\)</span>, <span class="math inline">\(\mathsf{Y}\)</span>, <span class="math inline">\(\mathsf{Z}\)</span>. Only the payoffs of player 3 are shown.
+  A three player game. Player 1 chooses the row, player 2 chooses the column,
+  and player 3 chooses $\mathsf{W}$, $\mathsf{X}$, $\mathsf{Y}$, $\mathsf{Z}$.
+  Only the payoffs of player 3 are shown.
 </figcaption>
-<div id="prp-NBR" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.2</strong></span> Strategy <span class="math inline">\(\mathsf{X}\)</span> is never a best response and can therefore be eliminated.</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Proof
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(α_1 = [p 1-p]\)</span> and <span class="math inline">\(α_2 = [q 1-q]\)</span> be strategies for <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span>, respectively. Then, <span class="math display">\[\begin{align*}
-  U_3(α_1, α_2, \mathsf{W}) &amp;= 8pq \\
-  U_3(α_1, α_2, \mathsf{X}) &amp;= 4pq + 4(1-p)(1-q) = 8pq + 4 - 4(p+q) \\
-  U_3(α_1, α_2, \mathsf{Y}) &amp;= 8(1-p)(1-q) = 8 + 8pq - 8(p+q) \\
-  U_3(α_1, α_2, \mathsf{Z}) &amp;= 3
-\end{align*}\]</span></p>
-<p>If there is some <span class="math inline">\(α_1\)</span> and <span class="math inline">\(α_2\)</span> such that <span class="math inline">\(\mathsf{X}\)</span> is a BR to <span class="math inline">\((α_1,
-α_2)\)</span>, then, <span class="math display">\[\begin{align}
-   u_3(α_1, α_2, \mathsf{X}) \ge U_3(α_1, α_2, \mathsf{W})
-   &amp;\implies
+
+::: {#prp-NBR}
+Strategy $\mathsf{X}$ is never a best response and can therefore be eliminated.
+:::
+
+::: {.callout-note collapse="true"}
+#### Proof 
+Let $σ_1 = [p 1-p]$ and $σ_2 = [q 1-q]$ be strategies for $P_1$ and $P_2$,
+respectively. Then,
+\begin{align*}
+  U_3(σ_1, σ_2, \mathsf{W}) &= 8pq \\
+  U_3(σ_1, σ_2, \mathsf{X}) &= 4pq + 4(1-p)(1-q) = 8pq + 4 - 4(p+q) \\
+  U_3(σ_1, σ_2, \mathsf{Y}) &= 8(1-p)(1-q) = 8 + 8pq - 8(p+q) \\
+  U_3(σ_1, σ_2, \mathsf{Z}) &= 3 
+\end{align*}
+
+If there is some $σ_1$ and $σ_2$ such that $\mathsf{X}$ is a BR to $(σ_1,
+σ_2)$, then,
+\begin{align}
+   u_3(σ_1, σ_2, \mathsf{X}) \ge U_3(σ_1, σ_2, \mathsf{W}) 
+   &\implies
    8pq + 4 - 4(p+q) \ge 8pq
    \label{eq:1}
    \\
-   u_3(α_1, α_2, \mathsf{X}) \ge U_3(α_1, α_2, \mathsf{Y})
-   &amp;\implies
+   u_3(σ_1, σ_2, \mathsf{X}) \ge U_3(σ_1, σ_2, \mathsf{Y}) 
+   &\implies
    8pq + 4 - 4(p+q) \ge 8 + 8pq - 8 (p+q)
    \label{eq:2}
    \\
-   u_3(α_1, α_2, \mathsf{X}) \ge U_3(α_1, α_2, \mathsf{Z})
-   &amp;\implies
+   u_3(σ_1, σ_2, \mathsf{X}) \ge U_3(σ_1, σ_2, \mathsf{Z}) 
+   &\implies
    8pq + 4 - 4(p+q) \ge 3
    \label{eq:3}
-\end{align}\]</span></p>
-<p>Eq. \eqref{eq:1} and \eqref{eq:2} imply that <span class="math inline">\(p+q = 1\)</span>. From AM-GM inequality, we know that <span class="math display">\[
-pq \le \left(\frac{a+b}{2}\right)^2 = \frac 14.
-\]</span> Therefore, Eq. \eqref{eq:3} cannot be satisfied.</p>
-</div>
-</div>
-</div>
+\end{align}   
+  
+Eq. \\eqref{eq:1} and \\eqref{eq:2} imply that $p+q = 1$. From AM-GM
+inequality, we know that 
+$$
+ pq \le \left(\frac{a+b}{2}\right)^2 = \frac 14.
+$$
+Therefore, Eq. \\eqref{eq:3} cannot be satisfied. 
+:::
+
+-->
 </section>
-<section id="cournot-competition" class="level2" data-number="1.11">
-<h2 data-number="1.11" class="anchored" data-anchor-id="cournot-competition"><span class="header-section-number">1.11</span> Cournot competition</h2>
-<p>This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interaction between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly).</p>
+<section id="cournot-competition" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="cournot-competition"><span class="header-section-number">1.9</span> Cournot competition</h2>
+<p>This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interstrategy between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly).</p>
 <p>Formally, the Cournot competition model considers a <em>homogeneous-goods</em> market with <span class="math inline">\(n\)</span> first. A homogeneous-goods market is a market where all firms produce a homogeneous product which are perfect substitutes (e.g., consider a commodities market such as metal or oil or electricity).</p>
-<p>Each firm decides how much to produce. Let <span class="math inline">\(a_i \in \reals_{\ge 0}\)</span> denote the production of firm <span class="math inline">\(i\)</span> and <span class="math inline">\(a = \sum_{i = 1}^n a_i\)</span> denote aggregate production. The price of the product depends on the aggregate production. We capture this relationship using a generic function <span class="math inline">\(p \colon \reals_{\ge 0}
-\to \reals_{\ge 0}\)</span>, i.e., price of product is <span class="math inline">\(p(a)\)</span> when the aggregate production is <span class="math inline">\(a\)</span>.</p>
+<p>Each firm decides how much to produce. Let <span class="math inline">\(s_i \in \reals_{\ge 0}\)</span> denote the production of firm <span class="math inline">\(i\)</span> and <span class="math inline">\(a = \sum_{i = 1}^n s_i\)</span> denote aggregate production. The price of the product depends on the aggregate production. We capture this relationship using a generic function <span class="math inline">\(p \colon \reals_{\ge 0} \to \reals_{\ge 0}\)</span>, i.e., price of product is <span class="math inline">\(p(a)\)</span> when the aggregate production is <span class="math inline">\(a\)</span>.</p>
 <p>Furthermore, there is a cost <span class="math inline">\(c\)</span> to produce one unit of goods. For simplicity, we assume that the cost is the same for all firms, though it is possible to consider the model this cost depends on the firm. Thus, the utility of firm <span class="math inline">\(i\)</span> is <span class="math display">\[
-  u_i(a_i, a_{-i}) = a_i \cdot p(a) - a_i \cdot c.
+  u_i(s_i, s_{-i}) = s_i \cdot p(a) - s_i \cdot c.
 \]</span> We will analyze this game in the special case when the price function is <span class="math display">\[
   p(a) = \max \{ M - a, 0 \}
 \]</span> where <span class="math inline">\(M\)</span> is the market capacity. Thus, we are assuming that prices are proportional to marginal demand.</p>
 <section id="case-n-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="case-n-1">Case <span class="math inline">\(n = 1\)</span></h4>
-<p>To fix ideas, we consider the special case of <span class="math inline">\(n=1\)</span> (i.e., a monopoly). In this case, for <span class="math inline">\(a_1 \in [0, M]\)</span>, <span class="math display">\[
-  u_1(a_1) = a_1(M - a_1) - c a_1 = M - c -a_1) a_1.
-\]</span> To find the optimal value of <span class="math inline">\(a_1\)</span>, note that <span class="math inline">\(u_1(a_1)\)</span> is concave in <span class="math inline">\(a_1\)</span>. Thus, we pick <span class="math inline">\(a_1\)</span> such that <span class="math inline">\(∂u_1(a_1)/∂a_1 = 0\)</span>, i.e., <span class="math display">\[
-  \frac{∂u_1(a_1)}{∂a_1} = (M - c -a_1) - a_1 = 0.
+<p>To fix ideas, we consider the special case of <span class="math inline">\(n=1\)</span> (i.e., a monopoly). In this case, for <span class="math inline">\(s_1 \in [0, M]\)</span>, <span class="math display">\[
+  u_1(s_1) = s_1(M - s_1) - c s_1 = M - c -s_1) s_1.
+\]</span> To find the optimal value of <span class="math inline">\(s_1\)</span>, note that <span class="math inline">\(u_1(s_1)\)</span> is concave in <span class="math inline">\(s_1\)</span>. Thus, we pick <span class="math inline">\(s_1\)</span> such that <span class="math inline">\(∂u_1(s_1)/∂s_1 = 0\)</span>, i.e., <span class="math display">\[
+  \frac{∂u_1(s_1)}{∂s_1} = (M - c -s_1) - s_1 = 0.
 \]</span> Thus, <span class="math display">\[
-  a_1 = \frac{M - c}{2}
+  s_1 = \frac{M - c}{2}
   \quad\text{and}\quad
-  u_1(a_1) = \frac{(M-c)^2}{4}.
+  u_1(s_1) = \frac{(M-c)^2}{4}.
 \]</span></p>
 </section>
 <section id="case-n-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="case-n-2">Case <span class="math inline">\(n = 2\)</span></h4>
 <p>Now, let’s consider the case when <span class="math inline">\(n = 2\)</span> (a duopoly). In this case, <span class="math display">\[
-   u_i(a_1, a_2) = a_i( p(a_1 + a_2) - c).
-\]</span> Again, we can verify that for a fixed <span class="math inline">\(a_2\)</span>, <span class="math inline">\(u_1(a_1, a_2)\)</span> is concave in <span class="math inline">\(a_1\)</span> and for a fixed <span class="math inline">\(a_1\)</span>, <span class="math inline">\(u_2(a_1, a_2)\)</span> is concave in <span class="math inline">\(a_2\)</span>. So, the BR can be obtained by the first order optimality condition <span class="math inline">\(∂ u_i(a_1, a_2)/∂ a_i
+   u_i(s_1, s_2) = s_i( p(s_1 + s_2) - c).
+\]</span> Again, we can verify that for a fixed <span class="math inline">\(s_2\)</span>, <span class="math inline">\(u_1(s_1, s_2)\)</span> is concave in <span class="math inline">\(s_1\)</span> and for a fixed <span class="math inline">\(s_1\)</span>, <span class="math inline">\(u_2(s_1, s_2)\)</span> is concave in <span class="math inline">\(s_2\)</span>. So, the BR can be obtained by the first order optimality condition <span class="math inline">\(∂ u_i(s_1, s_2)/∂ s_i
 = 0\)</span>.</p>
-<p>Note that <span class="math display">\[ p(a_1 + a_2) = \begin{cases}
-    M - (a_1 + a_2), &amp; \text{if $a_1 + a_2 \le M$} \\
+<p>Note that <span class="math display">\[ p(s_1 + s_2) = \begin{cases}
+    M - (s_1 + s_2), &amp; \text{if $s_1 + s_2 \le M$} \\
     0, &amp; \text{otherwise}
-\end{cases}\]</span> Therefore, (ignoring the non-differentiable point <span class="math inline">\(a_1 + a_2 = M\)</span>), we have <span class="math display">\[ \frac{∂p(a_1 + a_2)}{∂a_i} = \begin{cases}
-    -1, &amp; \text{if $a_1 + a_2 &lt; M$} \\
+\end{cases}\]</span> Therefore, (ignoring the non-differentiable point <span class="math inline">\(s_1 + s_2 = M\)</span>), we have <span class="math display">\[ \frac{∂p(s_1 + s_2)}{∂s_i} = \begin{cases}
+    -1, &amp; \text{if $s_1 + s_2 &lt; M$} \\
     0, &amp; \text{otherwise}
 \end{cases}\]</span> So, <span class="math display">\[\begin{align*}
-\frac{∂ u_i(a_1, a_2)}{∂ a_i}
-&amp;= p(a_1 + a_2) - c + a_i \frac{∂ p(a_1 + a_2)}{∂ a_i} \\
+\frac{∂ u_i(s_1, s_2)}{∂ s_i}
+&amp;= p(s_1 + s_2) - c + s_i \frac{∂ p(s_1 + s_2)}{∂ s_i} \\
 &amp;= \begin{cases}
-    M - (a_1 + a_2) - c - a_i,  &amp; \text{if $a_1 + a_2 \le M$} \\
+    M - (s_1 + s_2) - c - s_i,  &amp; \text{if $s_1 + s_2 \le M$} \\
     0, &amp; \text{otherwise}.
   \end{cases}
-\end{align*}\]</span> So, if <span class="math inline">\(a_1 + a_2 &lt; M\)</span>, the BR of firm 1 and firm 2 are: <span class="math display">\[
-  B_1(a_2) = \frac{M - c -a_2}{2}
+\end{align*}\]</span> So, if <span class="math inline">\(s_1 + s_2 &lt; M\)</span>, the BR of firm 1 and firm 2 are: <span class="math display">\[
+  B_1(s_2) = \frac{M - c -s_2}{2}
   \quad\text{and}\quad
-  B_2(a_1) = \frac{M - c - a_1}{2}.
+  B_2(s_1) = \frac{M - c - s_1}{2}.
 \]</span> We plot the BR relationships below.</p>
 <figure class="figure">
 <div id="applet_container_2" style="width:600px;height:400px;display:block; align:center;">
@@ -1866,14 +1794,14 @@ The best response curves
 </script>
 <p>Now we show that the game can be simplified using the elimination of never-best response strategies.</p>
 <ul>
-<li>After first round of elimination, we have <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 =
+<li>After first round of elimination, we have <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 =
 \left[ 0, \frac{M-c}{2} \right]\)</span>.</li>
-<li>After second round of elimination, we have <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 =
+<li>After second round of elimination, we have <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 =
 \left[ \frac{M-c}{4}, \frac{M-c}{4} \right]\)</span>.</li>
 <li>…</li>
 </ul>
 <p>Continuing this way, we can show that the process converges to the intersection point <span class="math inline">\(\left( \frac{M-c}{3}, \frac{M-c}{3} \right)\)</span> with payoff <span class="math inline">\(\left( \frac{(M-c)^2}{9}, \frac{(M-c)^2}{9}\right)\)</span>.</p>
-<p>This example shows that we can find a rationalizable strategy for continuous action games as well.</p>
+<p>This example shows that we can find a rationalizable strategy for continuous strategy games as well.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1892,12 +1820,12 @@ Beware of the model
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-iewds-game" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET A_1 = \ALPHABET A_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
-  u(a_1, a_2) = \begin{cases}
-  (a_1, a_2), &amp; \text{if $a_1 + a_2 &lt; 100$} \\
-  (a_1, 100-a_1), &amp; \text{if $a_1 + a_2 &gt; 100$ and $a_1 &lt; a_2$}\\
-  (100-a_2, a_2), &amp; \text{if $a_1 + a_2 &gt; 100$ and $a_2 &lt; a_1$}\\
-  (50,50), &amp; \text{if $a_1 + a_2 &gt; 100$ and $a_1 = a_2$}
+<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
+  u(s_1, s_2) = \begin{cases}
+  (s_1, s_2), &amp; \text{if $s_1 + s_2 &lt; 100$} \\
+  (s_1, 100-s_1), &amp; \text{if $s_1 + s_2 &gt; 100$ and $s_1 &lt; s_2$}\\
+  (100-s_2, s_2), &amp; \text{if $s_1 + s_2 &gt; 100$ and $s_2 &lt; s_1$}\\
+  (50,50), &amp; \text{if $s_1 + s_2 &gt; 100$ and $s_1 = s_2$}
 \end{cases}\]</span> Find the rationalizable strategies using IEWDS.</p>
 </div>
 <!-- 
@@ -1905,6 +1833,11 @@ vim: foldmethod=marker
 -->
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Selten1975" class="csl-entry" role="listitem">
+<span class="smallcaps">Selten, R.</span> 1975. Reexamination of the perfectness concept for equilibrium points in extensive games. <em>International Journal of Game Theory</em> <em>4</em>, 1, 25–55. DOI: <a href="https://doi.org/10.1007/bf01766400">10.1007/bf01766400</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
