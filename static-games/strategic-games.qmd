@@ -259,7 +259,7 @@ following game.
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
@@ -283,7 +283,7 @@ following game.
 </table>
 
 Strategy $\mathsf{R}$ is strictly dominated for player 2 (by strategy
-$\mathsf{M}$). So, if $P_2$ is rational, he will never choose $\mathsf{R}$.
+$\mathsf{C}$). So, if $P_2$ is rational, he will never choose $\mathsf{R}$.
 Can we eliminate strategy $\mathsf{R}$ from consideration?
 
 The argument is not so simple. If $P_1$ does not know that $P_2$ is rational,
@@ -323,7 +323,7 @@ Under the assumption of common knowledge of rationality, we can assume that the 
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
@@ -351,7 +351,7 @@ Under the assumption of common knowledge of rationality, we can assume that the 
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
   </tr>
   <tr>
     <td>$\mathsf{T}$</td>
@@ -376,7 +376,7 @@ We can continue this reasoning. In the reduced game $\mathscr{G}_1$, strategy $\
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
   </tr>
   <tr>
     <td>$\mathsf{T}$</td>
@@ -387,13 +387,13 @@ We can continue this reasoning. In the reduced game $\mathscr{G}_1$, strategy $\
   </tr>
 </table>
 
-Finally, we can eliminate strategy $\mathsf{L}$ for $P_1$, which is strictly dominated by $\mathsf{M}$ to obtain game $\mathscr{G}_3$ shown below.
+Finally, we can eliminate strategy $\mathsf{L}$ for $P_1$, which is strictly dominated by $\mathsf{C}$ to obtain game $\mathscr{G}_3$ shown below.
 
 <table class="game" align="center">
 <caption>Reduced game $\mathscr{G}_3$</caption>
   <tr>
     <td></td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
   </tr>
   <tr>
     <td>$\mathsf{T}$</td>
@@ -449,7 +449,7 @@ following game:
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
@@ -472,7 +472,7 @@ following game:
   </tr>
 </table>
 
-Note that both strategies $\mathsf{L}$ and $\mathsf{R}$ are weakly dominated by $\mathsf{M}$. 
+Note that both strategies $\mathsf{L}$ and $\mathsf{R}$ are weakly dominated by $\mathsf{C}$. 
 
 #### Case 1: Eliminate $\mathsf{L}$ {-}
 
@@ -481,7 +481,7 @@ If we eliminate $\mathsf{L}$, we obtain the following reduction.
 <table class="game" align="center">
   <tr>
     <td></td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
@@ -506,7 +506,7 @@ Now, for $P_1$, strategy $\mathsf{T}$ is dominated by strategy $\mathsf{B}$. Eli
 <caption>Game $\mathscr{G}_L$</caption>
   <tr>
     <td></td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
@@ -527,7 +527,7 @@ reduction.
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
   </tr>
   <tr>
     <td>$\mathsf{T}$</td>
@@ -553,7 +553,7 @@ $\mathsf{T}$. Eliminating $\mathsf{B}$, we get
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
   </tr>
   <tr>
     <td>$\mathsf{T}$</td>
@@ -843,7 +843,7 @@ not specified because it is not important for the discussion)
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
@@ -870,7 +870,7 @@ Note that none of the strategies of $P_2$ are dominated. However, if we
 consider the mixed strategy $σ_2 = (0.5, 0, 0.5)$, then
 
 $$ U_2(\cdot, σ_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} $$
-which dominates $\mathsf{M}$. So we can eliminate strategy $\mathsf{M}$. 
+which dominates $\mathsf{C}$. So we can eliminate strategy $\mathsf{C}$. 
 
 <!-- Something is missing here
 ## Never best response
@@ -901,7 +901,7 @@ Let's reconsider the game discussed above
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{L}$</td>
-    <td colspan="2">$\mathsf{M}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
     <td colspan="2">$\mathsf{R}$</td>
   </tr>
   <tr>
