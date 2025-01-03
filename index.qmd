@@ -1,11 +1,126 @@
+---
+course:
+  term: "Winter 2025"
+  office-hours: "TBD"
+  teaching-assistants: "TBD"
+  mid-term: "March 12"
+  lectures:
+    - "2:35pm–3:55pm Monday, Wednesday (ENGTR 2120)"
+format: 
+  html: 
+    number-sections: false
+---
+
 # About the course {.unnumbered}
 
-These are lecture notes for ECSE 508 (Multi-Agent Systems) that I teach in the Winter term of every odd year. These notes are not meant to be exhaustive; rather my focus is to convey the key ideas in their simplest form. For a more exhaustive treatment of the subject, please refer to the reference books mentioned below.
+## General Information ({{< meta course.term >}})
 
-If you find any typos/mistakes in the notes, please let me know. [Pull requests are welcome](https://github.com/adityam/multi-agent-systems).
+Instructor
+: -  Aditya Mahajan 
+- *Office Hours*: {{< meta course.office-hours >}}
 
-## Reference books
+Teaching Assistants
+: - {{< meta course.teaching-assistants >}} 
+
+Lectures
+: - {{< meta course.lectures >}} 
+
+
+Prerequisites
+: - ECSE 205 (Probability and Random Signals I)
+
+      You are expected to know the following concepts from basic undergraduate probability: Probability of events, independence, random variables, probability distributions (PDFs and CDFs), expectation, conditional probability, and conditional expectation. 
+
+
+Communication
+: [Use the discussion board on myCourses]{.text-info} for all questions related to the course. Only personal emails related to medical exceptions for missing a deliverable will be answered.
+
+## Course Content
+
+- Rational decision making; Strategic games and Bayesian games; Solution concepts: iterated elimination of dominated strategies, Nash equilibrium, Correlated equilibrium, Bayesian equilibrium; Common knowledge.
+
+- Extensive form games with perfect information, sub-game perfect equilibrium, Markov perfect equilibrium.
+
+- Games with imperfect information, sequential equilibrium, common information based refinements of sequential equilibrium.
+
+- Mechanism design, market equilibrium, pricing, resource allocation; Application to communication networks and power systems
+
+In the event of extraordinary circumstances beyond the University’s control, the content and/or evaluation scheme in this course is subject to change.
+
+## Course Material
+
+### Reference books
+
+I will loosely follow the following two books, though I present the material in a different order/style than the books. 
 
 - Zamir, Maschler, Solan, [*Game Theory*](https://mcgill.on.worldcat.org/oclc/813858402), Cambridge University Press, 2013.
 
 - Osborne and Rubinstein, [*A Course in Game Theory*](https://mcgill.on.worldcat.org/oclc/44963976), MIT Press, 1994
+
+### Online Course Notes
+
+This semesmter, I will be attempting to type my notes and make them available on this website. Most definitely, I will fall behind and the notes for the material covered during the end of the term will not be avaiable. Even for the earlier material, the notes are not meant to be exhaustive; rather my focus is to convey the key ideas in their simplest form. For a more exhaustive treatment of the subject, please refer to the reference books mentioned above.
+
+If you find any typos/mistakes in the notes, please let me know. [Pull requests are welcome](https://github.com/adityam/multi-agent-systems).
+
+## Evaluation
+
+- **Assignments (40%)** Weekly homework assignments. Typically, each assignment will consist of four questions, out of which one or two randomly selected questions will be grader. 
+
+- **Mid Term (40%)** Closed book in-class exam.
+  [**{{< meta course.mid-term >}}**]{.text-danger} (during class time)
+
+- **Term Project (20%)** A month long term project to be done in groups of two. Present one paper on any topic of your interest related to the material covered in the class.
+
+## Marking policy
+
+- Assignments must be submitted electronically on myCourses as a PDF. You may write the assignments on paper and then scan them as a PDF (there are several such apps available for all phone platforms), or write on a tablet and convert to PDF, or type using a word processor.
+
+- **There will no make-up examination** for students who miss a mid-term.
+
+  - Student who miss the exam due to a valid reason (see [Faculty of Engineering policy][policy]) should **notify the instructor within a week** of the exam and provide **necessary documentation**.
+
+  - If, and only if, proper documentation for a missed exam is presented, the marks for the missed exam will be shifted to the final exam.
+
+  - Students who miss the mid-term exam for any other reason (e.g., no medical note, going to the exam at the wrong time, or on the wrong day, etc.) will get zero marks on the exam.
+
+- Any request for reevaluation of a mid-term or an assignment must be made **in writing within a week of its return**. Note that requesting a re-grade will mean that you **WHOLE** assignment or exam will be re-graded.
+
+- [Due to paucity of grading hours, only one or two randomly selected questions will be graded in each assignment.]{.text-danger}
+
+- The lowest two assignments and labs will be dropped. There will be no make-up for missed assignments and labs, _even if it is for a valid reason._ The whole point of dropping the lowest two assignments/labs is to reduce the administrative overhead of keeping track of such missed assignments/labs.
+
+
+Right to submit in English or French written work that is to be graded.
+: In accord with McGill University’s [Charter of Students’ Rights][charter], students in this course have the right to submit in English or in French any written work that is to be graded.
+
+Academic Integrity
+: McGill University values academic integrity. Therefore all students must understand the meaning and consequences of cheating, plagiarism and other academic offences under the [Code of Student Conduct and Disciplinary Procedures][code] (see McGill’s [guide to academic honesty][guide] for more information).
+
+    L’université McGill attache une haute importance à l’honnêteté académique. Il incombe par conséquent à tous les étudiants de comprendre ce que l’on entend par tricherie, plagiat et autres infractions académiques, ainsi que les conséquences que peuvent avoir de telles actions, selon le [Code de conduite de l’étudiant et des procédures disciplinaires][code] (pour de plus amples renseignements, veuillez consulter le [guide pour l’honnêteté académique][guide] de McGill.)
+
+## Course delivery
+
+The course is taught in a “chalk and board” style; there will be no power point presentations. All students are expected to attend lectures and take notes. Partial notes on some of the material will be provided, but are not a substitute for the material covered in class.
+
+© Instructor-generated course materials (e.g., handouts, notes, summaries, exam questions) are protected by law and may not be copied or distributed in any form or in any medium without explicit permission of the instructor. Note that infringements of copyright can be subject to follow up by the University under the Code of Student Conduct and Disciplinary Procedures.
+
+## Additional Notes
+
+- As the instructor of this course I endeavor to provide an inclusive learning environment. However, if you experience barriers to learning in this course, do not hesitate to discuss them with me or contact the office of [Student Accessibility and Achievement][OSD].
+
+- [End-of-course evaluations][evaluations] are one of the ways that McGill works towards maintaining and improving the quality of courses and the student’s learning experience. You will be notified by e-mail when the evaluations are available. Please note that a minimum number of responses must be received for results to be available to students.
+
+
+[policy]: https://www.mcgill.ca/engineering/students/undergraduate/courses-registration/exams-assessment/midterms-and-class-tests/adjustments-missed-midterms-and-class-tests
+
+[charter]: https://www.mcgill.ca/secretariat/files/secretariat/charter_of_student_rights_last_approved_october_262017.pdf
+
+[code]: https://www.mcgill.ca/secretariat/files/secretariat/code_of_student_conduct_and_disciplinary_procedures.pdf
+
+[guide]: http://www.mcgill.ca/students/srr/honest/
+
+[evaluations]: http://www.mcgill.ca/mercury/
+
+[OSD]: https://www.mcgill.ca/access-achieve/
+
