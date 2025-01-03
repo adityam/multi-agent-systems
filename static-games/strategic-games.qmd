@@ -188,13 +188,13 @@ and the inequality is strict for at least one $s_{-i}$.
 We will also use the phrase "$t_i$ is (strongly or weakly) dominated by $s_i$" to denote the same fact. 
 :::
 
-A strategy $s_i \in \ALPHABET S_i$ is called (strongly or weakly) __dominant strategy__ if it (strongly or weakly) dominates all other strategies $b_i \in \ALPHABET S_i \setminus \{s_i\}$.
+A strategy $s_i \in \ALPHABET S_i$ is called (strongly or weakly) __dominant strategy__ if it (strongly or weakly) dominates all other strategies $t_i \in \ALPHABET S_i \setminus \{s_i\}$.
 
 We now impose some assumptions on the players. 
 
 ::: theorem :::
 
-**Assumption**
+**Assumption.**
 A rational player will not choose a strictly dominated strategy.
 
 :::
@@ -203,7 +203,7 @@ Note that we have not formally defined rationality. That is more of a philosophi
 
 ::: theorem :::
 
-**Assumption**
+**Assumption.**
 All players in a game are rational.
 
 :::
@@ -429,7 +429,7 @@ _weakly_ dominated strategies) if we make the following assumption.
 
 ::: theorem :::
 
-**Assumption** 
+**Assumption.** 
 A rational player never plays a weakly dominated strategy.
 
 :::

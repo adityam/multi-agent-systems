@@ -6,6 +6,6 @@ If you find any typos/mistakes in the notes, please let me know. [Pull requests 
 
 ## Reference books
 
-- Osborne and Rubinstein, [*A Course in Game Theory*](https://mcgill.on.worldcat.org/oclc/44963976), MIT Press, 1994
-
 - Zamir, Maschler, Solan, [*Game Theory*](https://mcgill.on.worldcat.org/oclc/813858402), Cambridge University Press, 2013.
+
+- Osborne and Rubinstein, [*A Course in Game Theory*](https://mcgill.on.worldcat.org/oclc/44963976), MIT Press, 1994
