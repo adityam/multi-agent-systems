@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-01-03">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>1&nbsp; Introduction – Multi-Agent Systems</title>
+<title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-d8982497a26acaab05a2a197b0b368ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -162,7 +162,7 @@ window.Quarto = {
 };
 </script>
 
-<meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Introduction]{.chapter-title}">
+<meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Rationalizable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
 <meta name="citation_publication_date" content="2025-01-03">
 <meta name="citation_cover_date" content="2025-01-03">
@@ -199,11 +199,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../stochastic-control/index.html"> 
-<span class="menu-text">Stochastic Control</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../multi-agent-systems/index.html"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Multi-Agent Systems</span></a>
   </li>  
 </ul>
@@ -219,7 +215,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -249,7 +245,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/strategic-games.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -270,10 +266,6 @@ window.Quarto = {
  <span class="menu-text">References</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Assignments</span></span>
-  </li>
     </ul>
     </div>
 </nav>
@@ -300,9 +292,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></h1>
 </div>
 
 
@@ -685,7 +677,7 @@ Dominant strategy equilibrium
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 <td colspan="2">
 <span class="math inline">\(\mathsf{R}\)</span>
@@ -738,7 +730,7 @@ Dominant strategy equilibrium
 </td>
 </tr>
 </tbody></table>
-<p>Strategy <span class="math inline">\(\mathsf{R}\)</span> is strictly dominated for player 2 (by strategy <span class="math inline">\(\mathsf{M}\)</span>). So, if <span class="math inline">\(P_2\)</span> is rational, he will never choose <span class="math inline">\(\mathsf{R}\)</span>. Can we eliminate strategy <span class="math inline">\(\mathsf{R}\)</span> from consideration?</p>
+<p>Strategy <span class="math inline">\(\mathsf{R}\)</span> is strictly dominated for player 2 (by strategy <span class="math inline">\(\mathsf{C}\)</span>). So, if <span class="math inline">\(P_2\)</span> is rational, he will never choose <span class="math inline">\(\mathsf{R}\)</span>. Can we eliminate strategy <span class="math inline">\(\mathsf{R}\)</span> from consideration?</p>
 <p>The argument is not so simple. If <span class="math inline">\(P_1\)</span> does not know that <span class="math inline">\(P_2\)</span> is rational, he is liable to believe that <span class="math inline">\(P_2\)</span> might choose strategy <span class="math inline">\(\mathsf{R}\)</span>, in which case it would be in <span class="math inline">\(P_1\)</span>’s interest to player strategy <span class="math inline">\(\mathsf{B}\)</span>.</p>
 <p>However, if we postulate that</p>
 <ul>
@@ -756,7 +748,7 @@ Dominant strategy equilibrium
 </ul>
 <p>If statements of this type hold for infinite depth, we say that the fact that <span class="math inline">\(P_2\)</span> is rational is <strong>common knowledge</strong>. We will revisit common knowledge later in the course. For now, we assume the following.</p>
 <div class="theorem">
-<p><strong>Assumption</strong> It is common knowledge that all players are rational.</p>
+<p><strong>Assumption.</strong> It is common knowledge that all players are rational.</p>
 </div>
 <p>Under the assumption of common knowledge of rationality, we can assume that the players will eliminate strictly dominated strategies. For example, in the previous example, both players can eliminate strategy <span class="math inline">\(\mathsf{R}\)</span> from consideration and simplify the original game <span class="math inline">\(\mathscr{G}\)</span> to game <span class="math inline">\(\mathscr{G}_1\)</span> shown below.</p>
 <table class="game" align="center">
@@ -770,7 +762,7 @@ Original game <span class="math inline">\(\mathscr{G}\)</span>
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 <td colspan="2">
 <span class="math inline">\(\mathsf{R}\)</span>
@@ -834,7 +826,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_1\)</span>
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 </tr>
 <tr>
@@ -884,7 +876,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_2\)</span>
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 </tr>
 <tr>
@@ -905,7 +897,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_2\)</span>
 </td>
 </tr>
 </tbody></table>
-<p>Finally, we can eliminate strategy <span class="math inline">\(\mathsf{L}\)</span> for <span class="math inline">\(P_1\)</span>, which is strictly dominated by <span class="math inline">\(\mathsf{M}\)</span> to obtain game <span class="math inline">\(\mathscr{G}_3\)</span> shown below.</p>
+<p>Finally, we can eliminate strategy <span class="math inline">\(\mathsf{L}\)</span> for <span class="math inline">\(P_1\)</span>, which is strictly dominated by <span class="math inline">\(\mathsf{C}\)</span> to obtain game <span class="math inline">\(\mathscr{G}_3\)</span> shown below.</p>
 <table class="game" align="center">
 <caption>
 Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
@@ -914,7 +906,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 <td>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 </tr>
 <tr>
@@ -974,7 +966,7 @@ Beauty contest game
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 <td colspan="2">
 <span class="math inline">\(\mathsf{R}\)</span>
@@ -1027,7 +1019,7 @@ Beauty contest game
 </td>
 </tr>
 </tbody></table>
-<p>Note that both strategies <span class="math inline">\(\mathsf{L}\)</span> and <span class="math inline">\(\mathsf{R}\)</span> are weakly dominated by <span class="math inline">\(\mathsf{M}\)</span>.</p>
+<p>Note that both strategies <span class="math inline">\(\mathsf{L}\)</span> and <span class="math inline">\(\mathsf{R}\)</span> are weakly dominated by <span class="math inline">\(\mathsf{C}\)</span>.</p>
 <section id="case-1-eliminate-mathsfl" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="case-1-eliminate-mathsfl">Case 1: Eliminate <span class="math inline">\(\mathsf{L}\)</span></h4>
 <p>If we eliminate <span class="math inline">\(\mathsf{L}\)</span>, we obtain the following reduction.</p>
@@ -1036,7 +1028,7 @@ Beauty contest game
 <td>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 <td colspan="2">
 <span class="math inline">\(\mathsf{R}\)</span>
@@ -1086,7 +1078,7 @@ Game <span class="math inline">\(\mathscr{G}_L\)</span>
 <td>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 <td colspan="2">
 <span class="math inline">\(\mathsf{R}\)</span>
@@ -1122,7 +1114,7 @@ Game <span class="math inline">\(\mathscr{G}_L\)</span>
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 </tr>
 <tr>
@@ -1172,7 +1164,7 @@ Game <span class="math inline">\(\mathscr{G}_R\)</span>
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 </tr>
 <tr>
@@ -1446,7 +1438,7 @@ U_1(σ_1, T) &amp;= -q + (1-p) = 1 - 2p.
 <span class="math inline">\(\mathsf{L}\)</span>
 </td>
 <td colspan="2">
-<span class="math inline">\(\mathsf{M}\)</span>
+<span class="math inline">\(\mathsf{C}\)</span>
 </td>
 <td colspan="2">
 <span class="math inline">\(\mathsf{R}\)</span>
@@ -1500,7 +1492,7 @@ U_1(σ_1, T) &amp;= -q + (1-p) = 1 - 2p.
 </tr>
 </tbody></table>
 <p>Note that none of the strategies of <span class="math inline">\(P_2\)</span> are dominated. However, if we consider the mixed strategy <span class="math inline">\(σ_2 = (0.5, 0, 0.5)\)</span>, then</p>
-<p><span class="math display">\[ U_2(\cdot, σ_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} \]</span> which dominates <span class="math inline">\(\mathsf{M}\)</span>. So we can eliminate strategy <span class="math inline">\(\mathsf{M}\)</span>.</p>
+<p><span class="math display">\[ U_2(\cdot, σ_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} \]</span> which dominates <span class="math inline">\(\mathsf{C}\)</span>. So we can eliminate strategy <span class="math inline">\(\mathsf{C}\)</span>.</p>
 <!-- Something is missing here
 ## Never best response
 
@@ -1532,7 +1524,7 @@ Let's reconsider the game discussed above
 <tr class="odd">
 <td></td>
 <td colspan="2">$\mathsf{L}$</td>
-<td colspan="2">$\mathsf{M}$</td>
+<td colspan="2">$\mathsf{C}$</td>
 <td colspan="2">$\mathsf{R}$</td>
 </tr>
 <tr class="even">
@@ -1819,8 +1811,471 @@ Beware of the model
 </section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
+<div id="exr-ieds" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Find the solution of the following games using iterative elimitation of <em>strongly</em> dominated strategies. Explicitly state the strategy that you are eliminating at each step and write the corresponding reduced game.</p>
+<ol type="a">
+<li>Game <span class="math inline">\(\mathscr{G}_a\)</span></li>
+</ol>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(73\)</span>
+</td>
+<td>
+<span class="math inline">\(30\)</span>
+</td>
+<td>
+<span class="math inline">\(57\)</span>
+</td>
+<td>
+<span class="math inline">\(36\)</span>
+</td>
+<td>
+<span class="math inline">\(66\)</span>
+</td>
+<td>
+<span class="math inline">\(32\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{M}\)</span>
+</td>
+<td>
+<span class="math inline">\(80\)</span>
+</td>
+<td>
+<span class="math inline">\(26\)</span>
+</td>
+<td>
+<span class="math inline">\(35\)</span>
+</td>
+<td>
+<span class="math inline">\(12\)</span>
+</td>
+<td>
+<span class="math inline">\(32\)</span>
+</td>
+<td>
+<span class="math inline">\(54\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(28\)</span>
+</td>
+<td>
+<span class="math inline">\(27\)</span>
+</td>
+<td>
+<span class="math inline">\(63\)</span>
+</td>
+<td>
+<span class="math inline">\(31\)</span>
+</td>
+<td>
+<span class="math inline">\(54\)</span>
+</td>
+<td>
+<span class="math inline">\(29\)</span>
+</td>
+</tr>
+</tbody></table>
+<ol start="2" type="a">
+<li>Game <span class="math inline">\(\mathscr{G}_b\)</span></li>
+</ol>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(-5\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{M}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(10\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div id="exr-iewds" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.2</strong></span> Find the solution of the following games using iterative elimitation of <em>weakly</em> dominated strategies. Explicitly state the strategy that you are eliminating at each step and write the corresponding reduced game. At each step, eliminate <strong>all</strong> weakly dominated strategies for a player.</p>
+<ol type="a">
+<li>Game <span class="math inline">\(\mathscr{G}_a\)</span></li>
+</ol>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{A}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{D}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(7\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(8\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(8\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(9\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(7\)</span>
+</td>
+</tr>
+</tbody></table>
+<ol start="2" type="a">
+<li>Game <span class="math inline">\(\mathscr{G}_b\)</span></li>
+</ol>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{W}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{X}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{Y}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{Z}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{A}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(7\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(13\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(7\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(7\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{D}\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div id="exr-ieds-mixed" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3</strong></span> Find the solution of the following games using iterative elimitation of <em>strongly</em> dominated <strong>mixed</strong> strategies. Explicitly state the strategy that you are eliminating at each step and write the corresponding reduced game.</p>
+<ol type="a">
+<li>Game <span class="math inline">\(\mathscr{G}_a\)</span></li>
+</ol>
+<table class="game" align="center">
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
 <div id="exr-iewds-game" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
   u(s_1, s_2) = \begin{cases}
   (s_1, s_2), &amp; \text{if $s_1 + s_2 &lt; 100$} \\
   (s_1, 100-s_1), &amp; \text{if $s_1 + s_2 &gt; 100$ and $s_1 &lt; s_2$}\\
