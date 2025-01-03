@@ -24,9 +24,7 @@ book:
     left:
       # - href: ../index.html
       #   text: Home
-    - href: ../stochastic-control/index.html
-      text: Stochastic Control
-    - href: ../multi-agent-systems/index.html
+    - href: index.html
       text: Multi-Agent Systems
 
   sidebar:
@@ -43,7 +41,6 @@ book:
         - static-games/correlated-equilibrium.qmd
     - part: "Dynamic Games"
     - references.qmd
-    - part: "Assignments"
 
 bibliography: references.bib
 csl: _extensions/csl/acm-siggraph.csl

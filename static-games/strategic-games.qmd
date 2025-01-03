@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Rationalizable strategies
 format:
   html:
     include-in-header: 
@@ -311,7 +311,7 @@ If statements of this type hold for infinite depth, we say that the fact that $P
 
 ::: theorem :::
 
-**Assumption**
+**Assumption.**
 It is common knowledge that all players are rational.
 
 :::
@@ -1206,6 +1206,215 @@ Note that if the firms collude and fix production to $(M-c)/4$ (which ensures th
 
 ## Exercises {-}
 
+::: {#exr-ieds}
+
+Find the solution of the following games using iterative elimitation of _strongly_ dominated strategies. Explicitly state the strategy that you are eliminating at each step and write the corresponding reduced game. 
+
+a. Game $\mathscr{G}_a$
+
+<table class="game" align="center">
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{L}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$73$</td>
+    <td>$30$</td>
+    <td>$57$</td>
+    <td>$36$</td>
+    <td>$66$</td>
+    <td>$32$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{M}$</td>
+    <td>$80$</td>
+    <td>$26$</td>
+    <td>$35$</td>
+    <td>$12$</td>
+    <td>$32$</td>
+    <td>$54$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$28$</td>
+    <td>$27$</td>
+    <td>$63$</td>
+    <td>$31$</td>
+    <td>$54$</td>
+    <td>$29$</td>
+  </tr>
+</table>
+
+b. Game $\mathscr{G}_b$
+
+<table class="game" align="center">
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{L}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$-5$</td>
+    <td>$-1$</td>
+    <td>$2$</td>
+    <td>$2$</td>
+    <td>$3$</td>
+    <td>$3$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{M}$</td>
+    <td>$1$</td>
+    <td>$-3$</td>
+    <td>$1$</td>
+    <td>$2$</td>
+    <td>$1$</td>
+    <td>$1$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$0$</td>
+    <td>$10$</td>
+    <td>$0$</td>
+    <td>$0$</td>
+    <td>$0$</td>
+    <td>$3$</td>
+  </tr>
+</table>
+:::
+
+::: {#exr-iewds}
+
+Find the solution of the following games using iterative elimitation of _weakly_ dominated strategies. Explicitly state the strategy that you are eliminating at each step and write the corresponding reduced game. At each step, eliminate **all** weakly dominated strategies for a player.
+
+a. Game $\mathscr{G}_a$
+
+<table class="game" align="center">
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{A}$</td>
+    <td colspan="2">$\mathsf{B}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
+    <td colspan="2">$\mathsf{D}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$6$</td>
+    <td>$2$</td>
+    <td>$6$</td>
+    <td>$3$</td>
+    <td>$7$</td>
+    <td>$6$</td>
+    <td>$2$</td>
+    <td>$8$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$8$</td>
+    <td>$5$</td>
+    <td>$6$</td>
+    <td>$9$</td>
+    <td>$4$</td>
+    <td>$6$</td>
+    <td>$4$</td>
+    <td>$7$</td>
+  </tr>
+</table>
+
+b. Game $\mathscr{G}_b$
+
+<table class="game" align="center">
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{W}$</td>
+    <td colspan="2">$\mathsf{X}$</td>
+    <td colspan="2">$\mathsf{Y}$</td>
+    <td colspan="2">$\mathsf{Z}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{A}$</td>
+    <td>$3$</td>
+    <td>$7$</td>
+    <td>$0$</td>
+    <td>$13$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$5$</td>
+    <td>$3$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$5$</td>
+    <td>$3$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$3$</td>
+    <td>$7$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{C}$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$3$</td>
+    <td>$7$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$5$</td>
+    <td>$3$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{D}$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+    <td>$4$</td>
+    <td>$5$</td>
+  </tr>
+</table>
+:::
+
+::: {#exr-ieds-mixed}
+
+Find the solution of the following games using iterative elimitation of _strongly_ dominated **mixed** strategies. Explicitly state the strategy that you are eliminating at each step and write the corresponding reduced game. 
+
+a. Game $\mathscr{G}_a$
+
+<table class="game" align="center">
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{L}$</td>
+    <td colspan="2">$\mathsf{C}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$2$</td>
+    <td>$5$</td>
+    <td>$4$</td>
+    <td>$3$</td>
+    <td>$6$</td>
+    <td>$0$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$1$</td>
+    <td>$1$</td>
+    <td>$5$</td>
+    <td>$2$</td>
+    <td>$1$</td>
+    <td>$4$</td>
+  </tr>
+</table>
+:::
 
 ::: {#exr-iewds-game}
 Consider the following two player game: $\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, 100 \}$ and
