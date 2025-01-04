@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-03">
+<meta name="dcterms.date" content="2025-01-04">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
+<title>Cournot competition – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,10 +127,11 @@ window.MathJax = {
 };
 </script>
 <script async="" data-id="101261731" src="//static.getclicky.com/js"></script>
-<script type="text/javascript" src="https://www.geogebra.org/apps/deployggb.js">
-</script>
-
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+<script>
+  const { createApp, ref } = Vue
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -164,10 +165,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Rationalizable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-03">
-<meta name="citation_cover_date" content="2025-01-03">
+<meta name="citation_publication_date" content="2025-01-04">
+<meta name="citation_cover_date" content="2025-01-04">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-03">
+<meta name="citation_online_date" content="2025-01-04">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -294,7 +295,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></h1>
+<h1 class="title">Cournot competition</h1>
 </div>
 
 
@@ -320,7 +321,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 3, 2025</p>
+      <p class="date">January 4, 2025</p>
     </div>
   </div>
   
@@ -1239,9 +1240,8 @@ u_i(b) = \begin{cases}
   \dfrac{v_i - B_{-i}}{N_{-i} + 1}, &amp; \text{if $b_i = B_{-i}$} \\
   v_i - B_{-i}, &amp; \text{if $b_i &gt; B_{-i}$}
 \end{cases}\]</span></p>
-<!-- Diagram {{{ -->
 <div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
-<figure id="diagram" class="figure" style="width=100%">
+<figure id="second-price" class="figure" style="width=100%">
   <p style="max-width:400px; margin: 0px auto;">
   <svg class="cartesian" viewbox="-100 -300 600 500">
   <defs>
@@ -1306,8 +1306,6 @@ the bid.</figcaption>
 </div>
 
 <script>
-  const { createApp, ref } = Vue
-
   createApp({
     setup() {
       const xmin = ref(-10);
@@ -1331,8 +1329,7 @@ the bid.</figcaption>
           value: 10,
       }
     },
-  }).mount('#diagram')</script>
-<!-- }}} End diagram -->
+  }).mount('#second-price')</script>
 <p>Divide the set of strategies <span class="math inline">\(\ALPHABET S_i = [0, ∞)\)</span> into three sets:</p>
 <ul>
 <li>Under bid, i.e., bid less than <span class="math inline">\(v_i\)</span>: i.e., the set <span class="math inline">\([0, v_i)\)</span>.</li>
@@ -1762,28 +1759,131 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
   \quad\text{and}\quad
   B_2(s_1) = \frac{M - c - s_1}{2}.
 \]</span> We plot the BR relationships below.</p>
-<figure class="figure">
-<div id="applet_container_2" style="width:600px;height:400px;display:block; align:center;">
+<div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
+<figure id="cournot" class="figure" style="width=100%">
+  <p style="max-width:400px; margin: 0px auto;">
+  <svg class="cartesian" viewbox="-100 -400 600 500">
+  <defs>
+    <!-- A marker to be used as an arrowhead -->
+    <marker id="arrow" viewbox="0 0 10 10" refx="5" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z"></path>
+    </marker>
+  </defs>
+  <g>
+    <!-- Draw the y-axis -->
+    <line v-for="x in (xmax-xmin)" :x1="(x+xmin)*scale" :y1="ymin*scale" :x2="(x+xmin)*scale" :y2="ymax*scale" stroke="gray" :stroke-width="(x+xmin)%5 == 0 ? 0.75 : 0.25"></line>
+    <!-- Draw the x-axis -->
+    <line v-for="y in (ymax-ymin)" :y1="(y+ymin)*scale" :x1="xmin*scale" :y2="(y+ymin)*scale" :x2="xmax*scale" stroke="gray" :stroke-width="(y+ymin)%5 == 0 ? 0.75 : 0.25"></line>
+    <!-- Draw the axis -->
+    <line :x1="xmin*scale" y1="0" :x2="(xmax-7.5)*scale" y2="0" stroke="black" :stroke-width="2" marker-end="url(#arrow)"></line>
+    <line :y1="ymin*scale" x1="0" :y2="(ymax-7.5)*scale" x2="0" stroke="black" :stroke-width="2" marker-end="url(#arrow)"></line>
 
-</div>
-<figcaption>
-The best response curves
-</figcaption>
+    <!-- Plot the BR for P1 -->
+    <line v-if="step === 0" :x1="0" :y1="(M-c)*scale" :x2="(M-c)/2*scale" :y2="0" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step >= 1" :x1="0" :y1="(M-c)*scale" :x2="(M-c)/2*scale" :y2="0" stroke="lightgray" stroke-width="4"></line>
+
+    <line v-if="step === 1" :x1="(M-c)/4*scale" :y1="(M-c)/2*scale" :x2="(M-c)/2*scale" :y2="0*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step === 2" :x1="(M-c)/4*scale" :y1="(M-c)/2*scale" :x2="(M-c)*3/8*scale" :y2="(M-c)/4*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <circle :cx="0*scale" :cy="(M-c)*scale" r="8" fill="#0A0"></circle>
+
+    <circle :cx="(M-c)/2*scale" :cy="0*scale" r="8" fill="#0A0"></circle>
+
+    <foreignobject :x="-4*scale" :y="-(M-c+0.5)*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $M-c$
+        </div>
+    </foreignobject>
+
+    <foreignobject :x="((M-c)/2-2)*scale" :y="-0.5*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $\frac{M-c}{2}$
+        </div>
+    </foreignobject>
+
+    <!-- Plot the BR for P2 -->
+    <line v-if="step === 0" :y1="0" :x1="(M-c)*scale" :y2="(M-c)/2*scale" :x2="0" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step >= 1" :y1="0" :x1="(M-c)*scale" :y2="(M-c)/2*scale" :x2="0" stroke="lightgray" stroke-width="4"></line>
+
+    <line v-if="step === 1" :y1="(M-c)/4*scale" :x1="(M-c)/2*scale" :y2="(M-c)/2*scale" :x2="0*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step === 2" :y1="(M-c)/4*scale" :x1="(M-c)/2*scale" :y2="(M-c)*3/8*scale" :x2="(M-c)/4*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <circle :cy="0*scale" :cx="(M-c)*scale" r="8" fill="#0A0"></circle>
+
+    <circle :cy="(M-c)/2*scale" :cx="0*scale" r="8" fill="#0A0"></circle>
+
+    <foreignobject :x="-4*scale" :y="-((M-c)/2+0.5)*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $\frac{M-c}{2}$
+        </div>
+    </foreignobject>
+
+    <foreignobject :x="((M-c)-2)*scale" :y="-0.5*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $M-c$
+        </div>
+    </foreignobject>
+
+    <!-- Clip the range -->
+    <line v-if="step >= 1" :x1="(M-c)/2*scale" :y1="ymin*scale" :x2="(M-c)/2*scale" :y2="(ymax-7.5)*scale" stroke="#A00" :stroke-width="1"></line>
+
+    <line v-if="step >= 1" :y1="(M-c)/2*scale" :x1="xmin*scale" :y2="(M-c)/2*scale" :x2="(xmax-7.5)*scale" stroke="#A00" :stroke-width="1"></line>
+
+    <line v-if="step === 1" :x1="0" :y1="0" :x2="0" :y2="(M-c)/2*scale" stroke="#A00" :stroke-width="3"></line>
+
+    <line v-if="step === 1" :y1="0" :x1="0" :y2="0" :x2="(M-c)/2*scale" stroke="#A00" :stroke-width="3"></line>
+
+    <line v-if="step >= 2" :x1="(M-c)/4*scale" :y1="ymin*scale" :x2="(M-c)/4*scale" :y2="(ymax-7.5)*scale" stroke="#00A" :stroke-width="1"></line>
+
+    <line v-if="step >= 2" :y1="(M-c)/4*scale" :x1="xmin*scale" :y2="(M-c)/4*scale" :x2="(xmax-7.5)*scale" stroke="#00A" :stroke-width="1"></line>
+
+    <line v-if="step === 2" :x1="0" :y1="(M-c)/4*scale" :x2="0" :y2="(M-c)/2*scale" stroke="#00A" :stroke-width="4"></line>
+
+    <line v-if="step === 2" :y1="0" :x1="(M-c)/4*scale" :y2="0" :x2="(M-c)/2*scale" stroke="#00A" :stroke-width="4"></line>
+  </g>
+  </svg>
+  <label>
+   Iteration = {{ step }}
+   <button v-on:click="step=Math.max(step-1,0)">Prev</button>
+   <button v-on:click="step=Math.min(step+1,2)">Next</button>
+  </label>
+  </p>
+  <figcaption class="figure-caption">
+  Figure: Best response curves for Cournot competition.
+  </figcaption>
 </figure>
-<script type="text/javascript">
-    var params = {
-      filename: "../www/geogebra/Cournot Competition.ggb",
-      enableShiftDragZoom: false,
-      width: 600,
-      height: 400,
-    }
+</div>
 
-    var applet_2 = new GGBApplet(params, true);
+<script>
+  createApp({
+    setup() {
+      const xmin = ref(-10);
+      const xmax = ref(30);
+      const ymin = ref(-10);
+      const ymax = ref(25);
 
-    window.onload = function() {
-        applet_2.inject('applet_container_2');
-    }
-</script>
+      const scale = ref(20);
+
+      return {
+        xmin,
+        xmax,
+        ymin,
+        ymax,
+        scale,
+      }
+    },
+    data() {
+      return {
+          M: 17,
+          c: 2,
+          step: 0,
+      }
+    },
+  }).mount('#cournot')</script>
 <p>Now we show that the game can be simplified using the elimination of never-best response strategies.</p>
 <ul>
 <li>After first round of elimination, we have <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 =
