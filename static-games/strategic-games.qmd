@@ -3,7 +3,6 @@ title: Rationalizable strategies
 format:
   html:
     include-in-header: 
-     - ../static/html/geogebra.html
      - ../static/html/vue.html
 ---
 
@@ -611,7 +610,7 @@ u_i(b) = \begin{cases}
   v_i - B_{-i}, & \text{if $b_i > B_{-i}$}
 \end{cases}$$
 
-{{< include diagrams/second-price.qmd >}}
+{{< include diagrams/second-price-auctions.qmd >}}
 
 Divide the set of strategies $\ALPHABET S_i = [0, ∞)$ into three sets:
 
@@ -1015,27 +1014,7 @@ $$
 $$
 We plot the BR relationships below.
 
-<figure>
-<div style="width:600px;height:400px;display:block; align:center;" 
-     id="applet_container_2"></div>
-<figcaption>The best response curves</figcaption>
-</figure>
-
-<script type="text/javascript">
-    var params = {
-      filename: "../www/geogebra/Cournot Competition.ggb",
-      enableShiftDragZoom: false,
-      width: 600,
-      height: 400,
-    }
-
-    var applet_2 = new GGBApplet(params, true);
-
-    window.onload = function() {
-        applet_2.inject('applet_container_2');
-    }
-</script>
-
+{{< include diagrams/cournot-competition.qmd >}}
 
 Now we show that the game can be simplified using the elimination of
 never-best response strategies. 

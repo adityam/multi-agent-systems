@@ -1,0 +1,219 @@
+---
+title: Cournot competition
+format:
+  html:
+    include-in-header: 
+     - ../../static/html/vue.html
+---
+```{=html}
+<div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
+<figure id="cournot" class="figure" style="width=100%">
+  <p style="max-width:400px; margin: 0px auto;">
+  <svg class="cartesian" viewBox="-100 -400 600 500">
+  <defs>
+    <!-- A marker to be used as an arrowhead -->
+    <marker
+      id="arrow"
+      viewBox="0 0 10 10"
+      refX="5"
+      refY="5"
+      markerWidth="6"
+      markerHeight="6"
+      orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs>
+  <g>
+    <!-- Draw the y-axis -->
+    <line v-for="x in (xmax-xmin)"
+          :x1="(x+xmin)*scale" :y1="ymin*scale"
+          :x2="(x+xmin)*scale" :y2="ymax*scale"
+          stroke="gray" :stroke-width="(x+xmin)%5 == 0 ? 0.75 : 0.25" />
+    <!-- Draw the x-axis -->
+    <line v-for="y in (ymax-ymin)"
+          :y1="(y+ymin)*scale" :x1="xmin*scale"
+          :y2="(y+ymin)*scale" :x2="xmax*scale"
+          stroke="gray" :stroke-width="(y+ymin)%5 == 0 ? 0.75 : 0.25" />
+    <!-- Draw the axis -->
+    <line 
+         :x1="xmin*scale" y1="0"
+         :x2="(xmax-7.5)*scale" y2="0"
+         stroke="black" :stroke-width="2" 
+         marker-end="url(#arrow)" />
+    <line 
+         :y1="ymin*scale" x1="0"
+         :y2="(ymax-7.5)*scale" x2="0"
+         stroke="black" :stroke-width="2" 
+         marker-end="url(#arrow)" />
+
+    <!-- Plot the BR for P1 -->
+    <line v-if="step === 0"
+        :x1="0" :y1="(M-c)*scale"
+        :x2="(M-c)/2*scale" :y2="0"
+        stroke="#0A0" stroke-width="4" />
+
+    <line v-if="step >= 1"
+        :x1="0" :y1="(M-c)*scale"
+        :x2="(M-c)/2*scale" :y2="0"
+        stroke="lightgray" stroke-width="4" />
+
+    <line v-if="step === 1"
+        :x1="(M-c)/4*scale" :y1="(M-c)/2*scale"
+        :x2="(M-c)/2*scale" :y2="0*scale"
+        stroke="#0A0" stroke-width="4" />
+
+    <line v-if="step === 2"
+        :x1="(M-c)/4*scale" :y1="(M-c)/2*scale"
+        :x2="(M-c)*3/8*scale" :y2="(M-c)/4*scale"
+        stroke="#0A0" stroke-width="4" />
+
+    <circle
+        :cx="0*scale" :cy="(M-c)*scale" r="8"
+        fill="#0A0" />
+
+    <circle
+        :cx="(M-c)/2*scale" :cy="0*scale" r="8"
+        fill="#0A0" />
+
+    <foreignObject 
+         :x="-4*scale" :y="-(M-c+0.5)*scale"
+         :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $M-c$
+        </div>
+    </foreignObject>
+
+    <foreignObject 
+         :x="((M-c)/2-2)*scale" :y="-0.5*scale"
+         :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $\frac{M-c}{2}$
+        </div>
+    </foreignObject>
+
+    <!-- Plot the BR for P2 -->
+    <line v-if="step === 0"
+        :y1="0" :x1="(M-c)*scale"
+        :y2="(M-c)/2*scale" :x2="0"
+        stroke="#0A0" stroke-width="4" />
+
+    <line v-if="step >= 1"
+        :y1="0" :x1="(M-c)*scale"
+        :y2="(M-c)/2*scale" :x2="0"
+        stroke="lightgray" stroke-width="4" />
+
+    <line v-if="step === 1"
+        :y1="(M-c)/4*scale" :x1="(M-c)/2*scale"
+        :y2="(M-c)/2*scale" :x2="0*scale"
+        stroke="#0A0" stroke-width="4" />
+
+    <line v-if="step === 2"
+        :y1="(M-c)/4*scale"   :x1="(M-c)/2*scale"
+        :y2="(M-c)*3/8*scale" :x2="(M-c)/4*scale"
+        stroke="#0A0" stroke-width="4" />
+
+    <circle
+        :cy="0*scale" :cx="(M-c)*scale" r="8"
+        fill="#0A0" />
+
+    <circle
+        :cy="(M-c)/2*scale" :cx="0*scale" r="8"
+        fill="#0A0" />
+
+    <foreignObject 
+         :x="-4*scale" :y="-((M-c)/2+0.5)*scale"
+         :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $\frac{M-c}{2}$
+        </div>
+    </foreignObject>
+
+    <foreignObject 
+         :x="((M-c)-2)*scale" :y="-0.5*scale"
+         :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $M-c$
+        </div>
+    </foreignObject>
+
+    <!-- Clip the range -->
+    <line v-if="step >= 1"
+       :x1="(M-c)/2*scale" :y1="ymin*scale"
+       :x2="(M-c)/2*scale" :y2="(ymax-7.5)*scale" 
+       stroke="#A00" :stroke-width="1" />
+
+    <line v-if="step >= 1"
+       :y1="(M-c)/2*scale" :x1="xmin*scale"
+       :y2="(M-c)/2*scale" :x2="(xmax-7.5)*scale" 
+       stroke="#A00" :stroke-width="1" />
+
+    <line v-if="step === 1"
+       :x1="0" :y1="0"
+       :x2="0" :y2="(M-c)/2*scale"
+       stroke="#A00" :stroke-width="3" />
+
+    <line v-if="step === 1"
+       :y1="0" :x1="0"
+       :y2="0" :x2="(M-c)/2*scale"
+       stroke="#A00" :stroke-width="3" />
+
+    <line v-if="step >= 2"
+       :x1="(M-c)/4*scale" :y1="ymin*scale"
+       :x2="(M-c)/4*scale" :y2="(ymax-7.5)*scale" 
+       stroke="#00A" :stroke-width="1" />
+
+    <line v-if="step >= 2"
+       :y1="(M-c)/4*scale" :x1="xmin*scale"
+       :y2="(M-c)/4*scale" :x2="(xmax-7.5)*scale" 
+       stroke="#00A" :stroke-width="1" />
+
+    <line v-if="step === 2"
+       :x1="0" :y1="(M-c)/4*scale"
+       :x2="0" :y2="(M-c)/2*scale"
+       stroke="#00A" :stroke-width="4" />
+
+    <line v-if="step === 2"
+       :y1="0" :x1="(M-c)/4*scale"
+       :y2="0" :x2="(M-c)/2*scale"
+       stroke="#00A" :stroke-width="4" />
+  </g>
+  </svg>
+  <label>
+   Iteration = {{ step }}
+   <button v-on:click="step=Math.max(step-1,0)">Prev</button>
+   <button v-on:click="step=Math.min(step+1,2)">Next</button>
+  </label>
+  </p>
+  <figcaption class="figure-caption">
+  Figure: Best response curves for Cournot competition.
+  </figcaption>
+</figure>
+</div>
+
+<script>
+  createApp({
+    setup() {
+      const xmin = ref(-10);
+      const xmax = ref(30);
+      const ymin = ref(-10);
+      const ymax = ref(25);
+
+      const scale = ref(20);
+
+      return {
+        xmin,
+        xmax,
+        ymin,
+        ymax,
+        scale,
+      }
+    },
+    data() {
+      return {
+          M: 17,
+          c: 2,
+          step: 0,
+      }
+    },
+  }).mount('#cournot')</script>
+```

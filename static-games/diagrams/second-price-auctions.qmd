@@ -3,11 +3,11 @@ title: Second Price Auctions
 format:
   html:
     include-in-header: 
-     - ../static/html/vue.html
+     - ../../static/html/vue.html
 ---
 ```{=html}
 <div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
-<figure id="diagram" class="figure" style="width=100%">
+<figure id="second-price" class="figure" style="width=100%">
   <p style="max-width:400px; margin: 0px auto;">
   <svg class="cartesian" viewBox="-100 -300 600 500">
   <defs>
@@ -120,8 +120,6 @@ the bid.</figcaption>
 </div>
 
 <script>
-  const { createApp, ref } = Vue
-
   createApp({
     setup() {
       const xmin = ref(-10);
@@ -145,5 +143,5 @@ the bid.</figcaption>
           value: 10,
       }
     },
-  }).mount('#diagram')</script>
+  }).mount('#second-price')</script>
 ```
