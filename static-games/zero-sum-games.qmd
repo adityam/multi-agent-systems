@@ -6,3 +6,322 @@ format:
      - ../static/html/vue.html
 ---
 
+Recall the game of matching pennies.
+
+<table class="game" align="center">
+<caption>Matching pennies game</caption>
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{H}$</td>
+    <td colspan="2">$\mathsf{T}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{H}$</td>
+    <td>$1$</td>
+    <td>$-1$</td>
+    <td>$-1$</td>
+    <td>$1$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$-1$</td>
+    <td>$1$</td>
+    <td>$1$</td>
+    <td>$-1$</td>
+  </tr>
+</table>
+
+This game has the property that for any strategy profile $(s_1, s_2) \in \ALPHABET S$,
+$$
+u_1(s_1, s_2) + u_2(s_1, s_2) = 0.
+$$
+Games with such property are called **zero-sum games**. In this course, we will focus on two player zero sum games (ZSG). 
+
+Some remarks
+
+: - Many classical games such sa chess, checkers, Go, etc. are two player ZSGs.
+
+- ZSGs are a highly restrictive and are, therefore, much easier to analyze as compared to general-sum games.
+
+- ZSGs emerge in many engineering applications when we consider worst case performance. Such scenarios can be considered as games against nature. 
+
+- When we consider the maxmin value (or the security level) of player in general-sum game, we are effectively doing worst case analysis. This means that each player is considering an auxiliary ZSG in which all other players collude and act as a single opponnet who try to minimize the payff of the player. Thus, ZSGs can be useful even when analyzing non-zero-sum games. 
+
+## Simplified notation
+
+For two player ZSGs, we can simplify the notation. Since $u_2(s_1, s_2) = -u_1(s_1, s_2)$, we can just specify the payoff of player 1 instead of specifying the payoff of both players. For instance, the matching pennies game can be represented as
+
+<table class="game1" align="center">
+<caption>Simplified notation for ZSGs</caption>
+  <tr>
+    <td></td>
+    <td>$\mathsf{H}$</td>
+    <td>$\mathsf{T}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{H}$</td>
+    <td>$1$</td>
+    <td>$-1$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$-1$</td>
+    <td>$1$</td>
+  </tr>
+</table>
+
+Here we can think of $P_1$ as the **maximizing player** and $P_2$ as the **minimizing player**. Thus, instead of a bimatrix representation, we will specify the payoffs by a matrix and assume that the row player is the maximizer and the column player is the minimizer. 
+
+Moreover, we will use $u(s_1, s_2)$ to denote $u_1(s_1, s_2)$ and $-u_2(s_1, s_2)$. 
+
+Now recall that the maxmin levels of the two players:
+\begin{align*}
+  \underline v_1
+  &= \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2} 
+     u_1(s_1, s_2)
+  = \textcolor{red}{
+    \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2} 
+     u(s_1, s_2)}
+  \\
+  \underline v_2
+  &= \max_{s_2 \in \ALPHABET S_2} \min_{s_1 \in \ALPHABET S_1} 
+     u_2(s_1, s_2)
+  = \textcolor{red}{
+    - \min_{s_2 \in \ALPHABET S_2} \max_{s_1 \in \ALPHABET S_1} 
+     u(s_1, s_2)}
+\end{align*}
+
+For ZSGs we use a simpler notation and define
+\begin{align*}
+  \text{Maxmin value:} && \underline v
+  &= \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2} 
+     u(s_1, s_2)
+  \\
+  \text{Minmax value:} && \bar v
+  &= \min_{s_2 \in \ALPHABET S_2} \max_{s_1 \in \ALPHABET S_1}
+     u(s_1, s_2)
+\end{align*}
+
+:::{#exm-matching-pennies}
+Find the maxmin and minmax value of matching pennies.
+:::
+
+:::{#thm-maxmin-zsg}
+In a two player ZSG, $$\underline v \le \bar v.$$
+:::
+
+:::{.callout-note collapse="true"}
+#### Proof
+
+Let $s_1^*$ be a maxmin strategy for $P_1$ and $s_2^*$ be a minmax strategy for $P_2$. Then, by definition of maxmin strategy, we have
+$$
+\underline v 
+  = \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2} 
+     u(s_1, s_2)
+  = \min_{s_2 \in \ALPHABET S_2} u(\textcolor{red}{s^*_1}, s_2).
+$$
+Thus, for any $s_2 \in \ALPHABET S_2$, we have
+$$ \underline v \le u(s_1^*, s_2). $$
+Hence, by taking $s_2 = s_2^*$, we get
+\begin{equation}\label{eq:maxmin-bound}
+\underline v \le u(s_1^*, s_2^*).
+\end{equation}
+
+Similarly, by the definition of minmax strategy, we have
+$$
+\bar v
+  = \min_{s_2 \in \ALPHABET S_2} \max_{s_1 \in \ALPHABET S_1}
+     u(s_1, s_2)
+  = \max_{s_1 \in \ALPHABET S_1} u(s_1, \textcolor{red}{s^*_2})
+$$
+Thus, for any $s_1 \in \ALPHABET S_1$, we have
+$$ \bar v \ge u(s_1, s_2^*). $$
+Hence, by taking $s_1 = s_1^*$, we get
+\begin{equation}\label{eq:minmax-bound}
+\bar v \ge u(s_1^*, s_2^*).
+\end{equation}
+
+Combining \eqref{eq:maxmin-bound} and \eqref{eq:minmax-bound}, we get
+$$
+\underline v \ge u(s_1^*, s_2^*) \le \bar v.
+$$
+:::
+
+As shown in @exm-matching-pennies, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.
+
+:::{#exm-value-zsg}
+Find the maxmin and minmax value of the following game.
+
+<table class="game1" align="center">
+<caption>An game where $\underline v = \bar v$</caption>
+  <tr>
+    <td></td>
+    <td>$\mathsf{L}$</td>
+    <td>$\mathsf{M}$</td>
+    <td>$\mathsf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$2$</td>
+    <td>$-1$</td>
+    <td>$-2$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{C}$</td>
+    <td>$1$</td>
+    <td>$0$</td>
+    <td>$1$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$-2$</td>
+    <td>$-1$</td>
+    <td>$2$</td>
+  </tr>
+</table>
+:::
+
+
+:::{#def-value-zsg}
+In a two player ZSG if $\underline v = \bar v$, then the quantity
+$$
+v \coloneqq \underline v = \bar v
+$$ 
+is called the **value** of the game. Any $(\text{maxmin}, \text{minmax})$ strategy of the players is called the **optimal strategy.**
+:::
+
+As we have seen earlier, a two player ZSG may not have a value _in pure strategies_. In the sequel, we will show that if we allow mixed strategies[^mixed], then every finite two player ZSG has a value!
+
+[^mixed]: We have already seen mixed strategies in the previous section. We will formally define them [below](#mixed-strategies). 
+
+## Zero sum games on the unit square
+
+As an intermediate step to mixed strategies, we consider two player ZSGs on the unit square, i.e., games on which $\ALPHABET S_1 = \ALPHABET S_2 = [0,1]$. 
+
+For the ease of notation, we will use $\ALPHABET X = [0, 1]$ and $\ALPHABET Y = [0, 1]$ to denote the strategy spaces of the player. 
+
+:::{#exm-unit-square}
+Consider a two player ZSG on the unit square with 
+$$
+u(x,y) = 4xy - 2x - y + 3, \quad \forall x \in \ALPHABET X, y \in \ALPHABET Y.
+$$
+Does this game have a value? If so, find all optimal strategies. 
+:::
+
+:::{.callout-note}
+#### Solution
+To check if the game has a value, we will compute the maxmin value
+$$
+\underline v = \max_{x \in \ALPHABET X} \min_{y \in \ALPHABET Y} u(x,y)
+$$
+and the minmax value
+$$
+\bar v = \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} u(x,y)
+$$
+and check if they are equal.
+
+Consider,
+\begin{align*}
+  \min_{y \in \ALPHABET Y} u(x,y) 
+  &= \min_{y \in [0,1]} \bigl[ 4xy - 2x - y - 4 \bigr] \\
+  &= \min_{y \in [0,1]} \bigl[ (4x -1) y - 2x + 3 \bigr].
+\end{align*}
+For a fixed $x$, this is a linear function in $y$ and the minimizer depends on the slope. 
+
+- If the slope is positive, then the function is inreasing in $y$ and the miniizer is $0$.
+- If the slope is negative, then the function is decreasing in $y$ and the minimizer is $1$. 
+
+Therefore, we have the following:
+$$
+  \min_{y \in [0,1]} u(x,y) = 
+  \begin{cases}
+    2x + 2, & \text{if } x < \tfrac 14 \\
+    2.5, & \text{if } x = \tfrac 14 \\
+   -2x + 3, & \text{if } x > \tfrac 14 
+  \end{cases}
+$$
+
+The plot of $\min_{y \in [0,1]} u(x,y)$ is shown below.
+
+<!-- TODO: Add plot -->
+
+As we can see from the plot, 
+$$
+\bbox[5pt,border: 1px solid]{
+  \underline v =
+  \max_{x \in [0,1]} \min_{y \in [0,1]} u(x,y) = 2.5.
+}
+$$
+
+Now consider 
+\begin{align*}
+  \max_{x \in \ALPHABET X} u(x,y) 
+  &= \max_{x \in [0,1]} \bigl[ 4xy - 2x - y + 3 \bigr] \\
+  &= \max_{x \in [0,1]} \bigl[ (4y - 2) x - y + 3 \bigr]
+\end{align*}
+
+By the same argument as before, we have
+$$
+  \max_{x \in [0,1]} u(x,y) = 
+  \begin{cases} 
+    -y + 3, & \text{if } y < \tfrac 12 \\
+    2.5, & \text{if } y = \tfrac 12 \\
+    3y + 1, & \text{if } y > \tfrac 12
+  \end{cases}
+$$
+
+The plot of $\max_{x \in [0,1]} u(x,y)$ is shown below.
+
+<!-- TODO: Add plot -->
+
+As we can see from the plot, 
+$$
+\bbox[5pt,border: 1px solid]{
+  \bar v =
+  \min_{y \in [0,1]} \max_{x \in [0,1]} u(x,y) = 2.5.
+}
+$$
+
+Since $\underline v = \bar v = 2.5$, the game has a value of $2.5$. The unique optimal strategy is $(\tfrac 14, \tfrac 12)$. 
+
+:::
+
+The previous example is an illustration of what is known as the [:Minimax Theorem](https://en.wikipedia.org/wiki/Minimax_theorem). One of the foundational results of Game Theory is the von Neumann minimax theorem [@vonNeumann1928].
+
+Recall that a function $f \colon \ALPHABET X × \ALPHABET Y \to \reals$ is called **bilinear** if it is linear in each argument separately, i.e.,
+
+- $$f(x_1 + x_2, y) = f(x_1,y) + f(x_2, y)$ and $f(α x, y) = α f(x,y)$;
+- $$f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2)$ and $f(x, αy) = α f(x,y)$. 
+
+Note that the utility function in @exm-unit-square is bilinear. 
+
+:::{#thm-von-Neumann}
+#### von Neumann's Minimax Theorem
+
+Let $\ALPHABET X$ and $\ALPHABET Y$ be compact (i.e., closed and bounded) subsets of Eucledian spaces and $f \colon \ALPHABET X × \ALPHABET Y \to \reals$ be a bilinear function. Then,
+$$
+  \max_{x \in \ALPHABET X} \min_{y \in \ALPHABET Y} f(x,y) =
+  \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} f(x,y).
+$$
+:::
+
+For a facinating historial discussion of this result, see @Kjeldsen2001.
+
+In @exm-unit-square, since the utility function is bilinear, we could have simply used @thm-von-Neumann to conclude that the game has a value, without doing any calculations. 
+
+A useful generalization of von Neumann's minimax theorem is the following.
+
+:::{#thm-minmax}
+Let $\ALPHABET X$ and $\ALPHABET Y$ be compact subsets of Eucledian space. If $f \colon \ALPHABET X × \ALPHABET Y \to \reals$ is concave-convex, i.e., 
+
+- for any fixed $y$, $f(⋅, y) \colon \ALPHABET X \to \reals$ is concave;
+- for any fixed $x$, $f(x, ⋅) \colon \ALPHABET Y \to \reals$ is convex.
+
+Then,
+$$
+  \max_{x \in \ALPHABET X} \min_{y \in \ALPHABET Y} f(x,y) =
+  \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} f(x,y).
+$$
+:::
+
+For a generalization that removes the compactness assumption, see @Sion1958.

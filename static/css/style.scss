@@ -22,10 +22,14 @@
   text-align: center;
 }
 
-.gamemin tr::first-child td:last-child {
+.game1 tr > td:first-child {
+  padding-right: 0.5em;
 }
 
-.gamemin tr:not(:first-child) td:last-child {
+.gamemin tr:first-child > td:last-child {
+}
+
+.gamemin tr:not(:first-child) > td:last-child {
   text-align:right;
   padding-right: 3em;
 }
