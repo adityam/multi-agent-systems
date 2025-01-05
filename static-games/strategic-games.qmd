@@ -113,7 +113,7 @@ _Two drivers are headed for a single lane bridge from opposite directions. The f
 Consider a parlour game among two players. Each player has a penny and must secretly turn the penny to heads or tails. The players reveal their choices simultaneously. If the pennies match (both heads or both tails), player 1 wins. If they don't player 2 wins.
 
 <table class="game" align="center">
-<caption>Battle of matching pennies game</caption>
+<caption>Matching pennies game</caption>
   <tr>
     <td></td>
     <td colspan="2">$\mathsf{H}$</td>
