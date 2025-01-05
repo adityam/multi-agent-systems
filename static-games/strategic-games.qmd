@@ -1039,6 +1039,240 @@ Note that if the firms collude and fix production to $(M-c)/4$ (which ensures th
 
 :::
 
+## Beyond rationalizable strategies: Maxmin strategies
+
+The concept of rationalizable strategies is attractive ut it makes strong assumption about the common knowledge of rationality of all players and even then does not always precribe a solution.
+
+We now describe a notation of rationality of a player that does not rely on the rationality of other others; in fact, it makes the most pessimistic assessment of their potential behavior. 
+
+As an example, consider the following game.
+
+<table class="game" align="center">
+<caption>An illustrative game</caption>
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{L}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$2$</td>
+    <td>$1$</td>
+    <td>$2$</td>
+    <td>$-20$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{C}$</td>
+    <td>$3$</td>
+    <td>$0$</td>
+    <td>$-10$</td>
+    <td>$1$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$-100$</td>
+    <td>$2$</td>
+    <td>$3$</td>
+    <td>$3$</td>
+  </tr>
+</table>
+
+In this game, the row player may prefer the strategy $\mathsf{T}$ because it gaurantees a payoff of $2$ and also ensures that the _"risky"_ payoffs of $-10$ and $-100$ are avoided. 
+
+Similarly, the column player may prefer the strategy $\mathsf{L}$ because it gaurantees a payoff of $1$ and avoids the _"risky"_ outcome of $-20$. 
+
+This motivates the following question: **What is the minimum payoff that player $i$ can guarantee for himself?** 
+
+If player $i$ chooses strategy $s_i$, the worst payoff that he can get is 
+$$
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s_i, s_{-i}).
+$$
+Player $i$ can then choose the strategy $s_i$ to maximize the above value. In other words, risregarding the possible rationality (or irrationality) of other players, $P_i$ can gurantee for himself a payoff of 
+$$
+\underline v_i = \max_{s_i \in \ALPHABET S_i}
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s_i, s_{-i}).
+$$
+This quantity is called the **maxmin value** of player $i$ (sometimes also called the **security level**). The strategy $s_i^*$ that gurantees this value is called a **maxmin strategy**. 
+
+The maxmin strategy satisfies 
+$$
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s^*_i, s_{-i}) 
+\ge 
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s_i, s_{-i})
+, \quad \forall s_i \in \ALPHABET S_i
+$$
+which is equivalent to 
+$$
+  u_i(s_i^*, s_{-i}) \ge \underline v_i,
+\quad \forall s_{-i} \in \ALPHABET S_{-i}.
+$$
+Thus, if a player plays his maxmin strategy, his minimum guaranteed payoff equals to his maxmin value, irrespective of what the other players do.
+
+Returning to our example, we have
+
+<table class="gamemin" align="center">
+<caption>Maxmin payoffs for the illustrative example</caption>
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{L}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+    <td>$\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$2$</td>
+    <td>$1$</td>
+    <td>$2$</td>
+    <td>$-20$</td>
+    <td>$2$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{C}$</td>
+    <td>$3$</td>
+    <td>$0$</td>
+    <td>$-10$</td>
+    <td>$1$</td>
+    <td>$-10$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$-100$</td>
+    <td>$2$</td>
+    <td>$3$</td>
+    <td>$3$</td>
+    <td>$-100$</td>
+  </tr>
+  <tr>
+    <td>$\min_{s_1 \in \ALPHABET S_1} u_2(s_1,s_2)$</td>
+    <td></td>
+    <td>$0$</td>
+    <td></td>
+    <td>$-20$</td>
+    <td>$2, 0$</td>
+  </tr>
+</table>
+
+Some remarks
+
+: - The maxmin value of $P_1$ is $2$ (guaranteed by strategy $\mathsf{T}$)
+
+- The maxmin value of $P_2$ is $0$ (guaranteed by strategy $\mathsf{L}$).
+
+- If both players play their maxmin strategies, the outcome is $(\mathsf{T}, \mathsf{L})$ which gives a payoff of $(2,1)$, in which player 2's payoff is greater than her maxmin value.
+
+In general, a player may have several maxmin strategies. In such a case, when the players play thier maxmin strategies, the payoff depends on which strategy they choose. 
+
+As an example consider the following game.
+
+<table class="gamemin" align="center">
+<caption>An example illustrating that the maxmin payoff is not unique</caption>
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{L}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+    <td>$\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$3$</td>
+    <td>$1$</td>
+    <td>$0$</td>
+    <td>$4$</td>
+    <td>$0$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$2$</td>
+    <td>$3$</td>
+    <td>$1$</td>
+    <td>$1$</td>
+    <td>$1$</td>
+  </tr>
+  <tr>
+    <td>$\min_{s_1 \in \ALPHABET S_1} u_2(s_1,s_2)$</td>
+    <td></td>
+    <td>$1$</td>
+    <td></td>
+    <td>$1$</td>
+    <td>$1, 1$</td>
+  </tr>
+</table>
+
+Some remarks
+
+: - The maxmin value of $P_1$ is $1$ (guaranteed by strategy $\mathsf{B}$)
+
+- The maxmin value of $P_2$ is $1$ (guaranteed by either strategy $\mathsf{L}$ or $\mathsf{R}$).
+
+- When both players play their maxmin strategies, the outcome is either $(\mathsf{B}, \mathsf{L})$ with a payoff of $(2,3)$ or is $(\mathsf{B}, \mathsf{R})$ with a payoff of $(1,1)$. Thus, the payoff depends on the strategy chosen by player 2.
+
+
+## Relation between maxmin strategies and dominant strategies
+
+::: {#thm-maxmin-vs-dominant-strategies}
+A (strict or weak) dominant strategy of a player is also a maxmin strategy. 
+:::
+
+:::{.callout-note}
+#### Proof
+A dominant strategy of a player is his best respose to any strategy of the other player.
+:::
+
+As an example, consider [sealed bid second price autions](strategic-games.qmd#second-price-auction). We had shown that truthful bidding is a weakly dominant strategy of each player. It can also be obsereved that truthful bidding guarantees a payoff of $0$, which is equal to the maxmin value of each player.
+
+:::{.callout-warning}
+#### Strategies obtained by iterative elimination
+
+Strategies obtained by iterative elimination are not maxmin strategies. Construct an example to show that.
+
+:::
+
+::: {#thm-maxmin-vs-dominant-equilibrium}
+A strictly dominant strategy equilibrium is the unique vector of maxmin strategies.
+:::
+:::{.callout-note}
+#### Proof
+A dominant strategy of a player is his best respose to any strategy of the other player.
+:::
+
+As an example, consider prisoner's dilemma. 
+
+<table class="gamemin" align="center">
+<caption>Maxmin strategies in prisoner's dilemma</caption>
+  <tr>
+    <td></td>
+    <td colspan="2">$\mathsf{A}$</td>
+    <td colspan="2">$\mathsf{R}$</td>
+    <td>$\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{A}$</td>
+    <td>$-2$</td>
+    <td>$-2$</td>
+    <td>$0$</td>
+    <td>$-3$</td>
+    <td>$-2$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{R}$</td>
+    <td>$-3$</td>
+    <td>$0$</td>
+    <td>$-1$</td>
+    <td>$-1$</td>
+    <td>$-3$</td>
+  </tr>
+  <tr>
+    <td>$\min_{s_1 \in \ALPHABET S_1} u_2(s_1,s_2)$</td>
+    <td></td>
+    <td>$-2$</td>
+    <td></td>
+    <td>$-3$</td>
+    <td>$-2, -2$</td>
+  </tr>
+</table>
+
+As we can see, the maxmin strategy is $(\mathsf{A}, \mathsf{A})$, which is the same as the dominant strategy equilibrium.
+
 
 ## Exercises {-}
 
@@ -1250,6 +1484,12 @@ a. Game $\mathscr{G}_a$
     <td>$4$</td>
   </tr>
 </table>
+:::
+
+:::{#exr-maxmin}
+
+For each of the games in @exr-ieds, @exr-iewds, and @exr-ieds-mixed, find the maxmin strategies and the maxmin value of both players.
+
 :::
 
 ::: {#exr-iewds-game}
