@@ -1,0 +1,8 @@
+---
+title: Zero-sum games
+format:
+  html:
+    include-in-header: 
+     - ../static/html/vue.html
+---
+

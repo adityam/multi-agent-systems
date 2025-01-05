@@ -9,12 +9,12 @@
 }
 
 /* Game tables */
-.game td, .game1 td {
+.game td, .game1 td, .gamemin td {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
 }
 
-.game td {
+.game td, .gamemin td {
   text-align: right;
 }
 
@@ -22,17 +22,30 @@
   text-align: center;
 }
 
+.gamemin tr::first-child td:last-child {
+}
+
+.gamemin tr:not(:first-child) td:last-child {
+  text-align:right;
+  padding-right: 3em;
+}
+
 .game  tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
+.gamemin  tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
 .game1 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)) {
   border-bottom: 1px solid;
 }
 
 .game tr:not(:nth-of-type(1)) > td:nth-of-type(1),
+.gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(1),
 .game1 tr:not(:nth-of-type(1)) > td:nth-of-type(1) {
   border-right : 1px solid ;
 }
 
-.game tr:not(:nth-of-type(1)) > td:nth-of-type(2n) {
+
+.game tr:not(:nth-of-type(1)) > td:nth-of-type(2n),
+.gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(2n),
+{
   padding-left: 1em;
   border-left: 1px solid;
 }
@@ -43,20 +56,26 @@
   border-left: 1px solid;
 }
 
-.game tr:not(:nth-of-type(1)) > td:nth-of-type(2n+1) {
+.game tr:not(:nth-of-type(1)) > td:nth-of-type(2n+1),
+.gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(2n+1),
+{
   padding-right: 1em;
 }
 
-.game tr:not(:nth-of-type(1)) > td:nth-of-type(2n):after {
+.game tr:not(:nth-of-type(1)) > td:nth-of-type(2n):after,
+.gamemin tr:not(:nth-of-type(1)):not(:last-child) > td:nth-of-type(2n):not(:last-child):after,
+{
   content: ', ';
 }
 
 .game tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
+.gamemin tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
 .game1 tr:not(:nth-of-type(1)) > td:nth-last-of-type(1) {
   border-right : 1px solid ;
 }
 
 .game tr:nth-of-type(1) > td:not(:nth-of-type(1)),
+.gamemin tr:nth-of-type(1) > td:not(:nth-of-type(1)),
 .game1 tr:nth-of-type(1) > td:not(:nth-of-type(1)) {
   text-align: center;
   padding-left: 1em;
@@ -64,15 +83,29 @@
 }
 
 .game tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
+.gamemin tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
 .game1 tr:nth-last-of-type(1) > td:not(:nth-of-type(1)) {
   border-bottom : 1px solid ;
 }
 
 
-.game, .game1 {
+.game, .game1, .gamemin {
   border-collapse: collapse;
   border: none;
 }
+
+.gamemin tr:not(:first-child):not(:last-child) td:last-child {
+  background-color: #90ee90;
+}
+
+.gamemin tr:last-child td:not(:first-child) {
+  background-color: #90ee90;
+}
+
+.gamemin tr:last-child td:last-child {
+  background-color: #eeee90;
+}
+
 
 // Copied from https://github.com/quarto-dev/quarto-web/blob/386ce1f654644a9db8134770c5312fe2b3c3b6b4/styles.css#L143
 @media (max-width: 575px) {

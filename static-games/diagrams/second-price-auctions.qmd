@@ -1,5 +1,4 @@
 ---
-title: Second Price Auctions
 format:
   html:
     include-in-header: 

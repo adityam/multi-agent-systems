@@ -35,10 +35,14 @@ book:
 
   chapters:
     - index.qmd
-    - part: "Strategic Games"
+    - part: "Static Games"
       chapters:
         - static-games/strategic-games.qmd
+        - static-games/zero-sum-games.qmd
+        - static-games/nash-equilibrium.qmd
+        - static-games/ESS.qmd
         - static-games/correlated-equilibrium.qmd
+        - static-games/bayesian-equilibrium.qmd
     - part: "Dynamic Games"
     - references.qmd
 
