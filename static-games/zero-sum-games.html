@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -44,8 +63,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d6d4fc54531e2c6a9993e2998e74b6b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-629c0b3518b04e8a82c7865a1bec3cac.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-3fb39a459e7a93b280bf28df6a2973b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7035e4f70e39f4c8130043979f56ecee.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -114,6 +133,35 @@ window.MathJax = {
   const { createApp, ref } = Vue
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
@@ -137,9 +185,12 @@ window.MathJax = {
 <meta name="citation_reference" content="citation_title=Correlated equilibrium in a nutshell;,citation_author=Rabah Amir;,citation_author=Sergei Belkov;,citation_author=Igor V. Evstigneev;,citation_publication_date=2017-06;,citation_cover_date=2017-06;,citation_year=2017;,citation_issue=4;,citation_doi=10.1007/s11238-017-9609-9;,citation_volume=83;,citation_journal_title=Theory and Decision;,citation_publisher=Springer Science; Business Media LLC;">
 <meta name="citation_reference" content="citation_title=Game theory;,citation_author=Michael Maschler;,citation_author=Shmuel Zamir;,citation_author=Eilon Solan;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
 <meta name="citation_reference" content="citation_title=Reexamination of the perfectness concept for equilibrium points in extensive games;,citation_author=R. Selten;,citation_publication_date=1975-03;,citation_cover_date=1975-03;,citation_year=1975;,citation_issue=1;,citation_doi=10.1007/bf01766400;,citation_issn=1432-1270;,citation_volume=4;,citation_journal_title=International Journal of Game Theory;,citation_publisher=Springer Science; Business Media LLC;">
+<meta name="citation_reference" content="citation_title=Zur theorie der gesellschaftsspiele;,citation_author=J. Neumann;,citation_publication_date=1928-12;,citation_cover_date=1928-12;,citation_year=1928;,citation_issue=1;,citation_doi=10.1007/bf01448847;,citation_issn=1432-1807;,citation_volume=100;,citation_journal_title=Mathematische Annalen;,citation_publisher=Springer Science; Business Media LLC;">
+<meta name="citation_reference" content="citation_title=John von neumann’s conception of the minimax theorem: A journey through different mathematical contexts;,citation_author=Tinne Hoff Kjeldsen;,citation_publication_date=2001;,citation_cover_date=2001;,citation_year=2001;,citation_fulltext_html_url=http://www.jstor.org/stable/41134130;,citation_issue=1;,citation_issn=00039519, 14320657;,citation_volume=56;,citation_journal_title=Archive for History of Exact Sciences;,citation_publisher=Springer;">
+<meta name="citation_reference" content="citation_title=On general minimax theorems;,citation_author=Maurice Sion;,citation_publication_date=1958-03;,citation_cover_date=1958-03;,citation_year=1958;,citation_issue=1;,citation_doi=10.2140/pjm.1958.8.171;,citation_issn=0030-8730;,citation_volume=8;,citation_journal_title=Pacific Journal of Mathematics;,citation_publisher=Mathematical Sciences Publishers;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -248,11 +299,18 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#simplified-notation" id="toc-simplified-notation" class="nav-link active" data-scroll-target="#simplified-notation"><span class="header-section-number">2.1</span> Simplified notation</a></li>
+  <li><a href="#zero-sum-games-on-the-unit-square" id="toc-zero-sum-games-on-the-unit-square" class="nav-link" data-scroll-target="#zero-sum-games-on-the-unit-square"><span class="header-section-number">2.2</span> Zero sum games on the unit square</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/zero-sum-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/zero-sum-games.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zero-sum games</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -294,7 +352,364 @@ window.MathJax = {
 </header>
 
 
+<p>Recall the game of matching pennies.</p>
+<table class="game" align="center">
+<caption>
+Matching pennies game
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{H}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{H}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>This game has the property that for any strategy profile <span class="math inline">\((s_1, s_2) \in \ALPHABET S\)</span>, <span class="math display">\[
+u_1(s_1, s_2) + u_2(s_1, s_2) = 0.
+\]</span> Games with such property are called <strong>zero-sum games</strong>. In this course, we will focus on two player zero sum games (ZSG).</p>
+<dl>
+<dt>Some remarks</dt>
+<dd>
+<ul>
+<li>Many classical games such sa chess, checkers, Go, etc. are two player ZSGs.</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li><p>ZSGs are a highly restrictive and are, therefore, much easier to analyze as compared to general-sum games.</p></li>
+<li><p>ZSGs emerge in many engineering applications when we consider worst case performance. Such scenarios can be considered as games against nature.</p></li>
+<li><p>When we consider the maxmin value (or the security level) of player in general-sum game, we are effectively doing worst case analysis. This means that each player is considering an auxiliary ZSG in which all other players collude and act as a single opponnet who try to minimize the payff of the player. Thus, ZSGs can be useful even when analyzing non-zero-sum games.</p></li>
+</ul>
+<section id="simplified-notation" class="level2 page-columns page-full" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="simplified-notation"><span class="header-section-number">2.1</span> Simplified notation</h2>
+<p>For two player ZSGs, we can simplify the notation. Since <span class="math inline">\(u_2(s_1, s_2) = -u_1(s_1, s_2)\)</span>, we can just specify the payoff of player 1 instead of specifying the payoff of both players. For instance, the matching pennies game can be represented as</p>
+<table class="game1" align="center">
+<caption>
+Simplified notation for ZSGs
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathsf{H}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{H}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>Here we can think of <span class="math inline">\(P_1\)</span> as the <strong>maximizing player</strong> and <span class="math inline">\(P_2\)</span> as the <strong>minimizing player</strong>. Thus, instead of a bimatrix representation, we will specify the payoffs by a matrix and assume that the row player is the maximizer and the column player is the minimizer.</p>
+<p>Moreover, we will use <span class="math inline">\(u(s_1, s_2)\)</span> to denote <span class="math inline">\(u_1(s_1, s_2)\)</span> and <span class="math inline">\(-u_2(s_1, s_2)\)</span>.</p>
+<p>Now recall that the maxmin levels of the two players: <span class="math display">\[\begin{align*}
+  \underline v_1
+  &amp;= \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2}
+     u_1(s_1, s_2)
+  = \textcolor{red}{
+    \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2}
+     u(s_1, s_2)}
+  \\
+  \underline v_2
+  &amp;= \max_{s_2 \in \ALPHABET S_2} \min_{s_1 \in \ALPHABET S_1}
+     u_2(s_1, s_2)
+  = \textcolor{red}{
+    - \min_{s_2 \in \ALPHABET S_2} \max_{s_1 \in \ALPHABET S_1}
+     u(s_1, s_2)}
+\end{align*}\]</span></p>
+<p>For ZSGs we use a simpler notation and define <span class="math display">\[\begin{align*}
+  \text{Maxmin value:} &amp;&amp; \underline v
+  &amp;= \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2}
+     u(s_1, s_2)
+  \\
+  \text{Minmax value:} &amp;&amp; \bar v
+  &amp;= \min_{s_2 \in \ALPHABET S_2} \max_{s_1 \in \ALPHABET S_1}
+     u(s_1, s_2)
+\end{align*}\]</span></p>
+<div id="exm-matching-pennies" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.1</strong></span> Find the maxmin and minmax value of matching pennies.</p>
+</div>
+<div id="thm-maxmin-zsg" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.1</strong></span> In a two player ZSG, <span class="math display">\[\underline v \le \bar v.\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(s_1^*\)</span> be a maxmin strategy for <span class="math inline">\(P_1\)</span> and <span class="math inline">\(s_2^*\)</span> be a minmax strategy for <span class="math inline">\(P_2\)</span>. Then, by definition of maxmin strategy, we have <span class="math display">\[
+\underline v
+  = \max_{s_1 \in \ALPHABET S_1} \min_{s_2 \in \ALPHABET S_2}
+     u(s_1, s_2)
+  = \min_{s_2 \in \ALPHABET S_2} u(\textcolor{red}{s^*_1}, s_2).
+\]</span> Thus, for any <span class="math inline">\(s_2 \in \ALPHABET S_2\)</span>, we have <span class="math display">\[ \underline v \le u(s_1^*, s_2). \]</span> Hence, by taking <span class="math inline">\(s_2 = s_2^*\)</span>, we get <span class="math display">\[\begin{equation}\label{eq:maxmin-bound}
+\underline v \le u(s_1^*, s_2^*).
+\end{equation}\]</span></p>
+<p>Similarly, by the definition of minmax strategy, we have <span class="math display">\[
+\bar v
+  = \min_{s_2 \in \ALPHABET S_2} \max_{s_1 \in \ALPHABET S_1}
+     u(s_1, s_2)
+  = \max_{s_1 \in \ALPHABET S_1} u(s_1, \textcolor{red}{s^*_2})
+\]</span> Thus, for any <span class="math inline">\(s_1 \in \ALPHABET S_1\)</span>, we have <span class="math display">\[ \bar v \ge u(s_1, s_2^*). \]</span> Hence, by taking <span class="math inline">\(s_1 = s_1^*\)</span>, we get <span class="math display">\[\begin{equation}\label{eq:minmax-bound}
+\bar v \ge u(s_1^*, s_2^*).
+\end{equation}\]</span></p>
+<p>Combining <span class="math inline">\(\eqref{eq:maxmin-bound}\)</span> and <span class="math inline">\(\eqref{eq:minmax-bound}\)</span>, we get <span class="math display">\[
+\underline v \ge u(s_1^*, s_2^*) \le \bar v.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>As shown in <a href="#exm-matching-pennies" class="quarto-xref">Example&nbsp;<span>2.1</span></a>, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.</p>
+<div id="exm-value-zsg" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.2</strong></span> Find the maxmin and minmax value of the following game.</p>
+<table class="game1" align="center">
+<caption>
+An game where <span class="math inline">\(\underline v = \bar v\)</span>
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathsf{M}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div id="def-value-zsg" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.1</strong></span> In a two player ZSG if <span class="math inline">\(\underline v = \bar v\)</span>, then the quantity <span class="math display">\[
+v \coloneqq \underline v = \bar v
+\]</span> is called the <strong>value</strong> of the game. Any <span class="math inline">\((\text{maxmin}, \text{minmax})\)</span> strategy of the players is called the <strong>optimal strategy.</strong></p>
+</div>
+<p>As we have seen earlier, a two player ZSG may not have a value <em>in pure strategies</em>. In the sequel, we will show that if we allow mixed strategies<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, then every finite two player ZSG has a value!</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;We have already seen mixed strategies in the previous section. We will formally define them <a href="#mixed-strategies">below</a>.</p></div></div></section>
+<section id="zero-sum-games-on-the-unit-square" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="zero-sum-games-on-the-unit-square"><span class="header-section-number">2.2</span> Zero sum games on the unit square</h2>
+<p>As an intermediate step to mixed strategies, we consider two player ZSGs on the unit square, i.e., games on which <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = [0,1]\)</span>.</p>
+<p>For the ease of notation, we will use <span class="math inline">\(\ALPHABET X = [0, 1]\)</span> and <span class="math inline">\(\ALPHABET Y = [0, 1]\)</span> to denote the strategy spaces of the player.</p>
+<div id="exm-unit-square" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.3</strong></span> Consider a two player ZSG on the unit square with <span class="math display">\[
+u(x,y) = 4xy - 2x - y + 3, \quad \forall x \in \ALPHABET X, y \in \ALPHABET Y.
+\]</span> Does this game have a value? If so, find all optimal strategies.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To check if the game has a value, we will compute the maxmin value <span class="math display">\[
+\underline v = \max_{x \in \ALPHABET X} \min_{y \in \ALPHABET Y} u(x,y)
+\]</span> and the minmax value <span class="math display">\[
+\bar v = \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} u(x,y)
+\]</span> and check if they are equal.</p>
+<p>Consider, <span class="math display">\[\begin{align*}
+  \min_{y \in \ALPHABET Y} u(x,y)
+  &amp;= \min_{y \in [0,1]} \bigl[ 4xy - 2x - y - 4 \bigr] \\
+  &amp;= \min_{y \in [0,1]} \bigl[ (4x -1) y - 2x + 3 \bigr].
+\end{align*}\]</span> For a fixed <span class="math inline">\(x\)</span>, this is a linear function in <span class="math inline">\(y\)</span> and the minimizer depends on the slope.</p>
+<ul>
+<li>If the slope is positive, then the function is inreasing in <span class="math inline">\(y\)</span> and the miniizer is <span class="math inline">\(0\)</span>.</li>
+<li>If the slope is negative, then the function is decreasing in <span class="math inline">\(y\)</span> and the minimizer is <span class="math inline">\(1\)</span>.</li>
+</ul>
+<p>Therefore, we have the following: <span class="math display">\[
+  \min_{y \in [0,1]} u(x,y) =
+  \begin{cases}
+    2x + 2, &amp; \text{if } x &lt; \tfrac 14 \\
+    2.5, &amp; \text{if } x = \tfrac 14 \\
+   -2x + 3, &amp; \text{if } x &gt; \tfrac 14
+  \end{cases}
+\]</span></p>
+<p>The plot of <span class="math inline">\(\min_{y \in [0,1]} u(x,y)\)</span> is shown below.</p>
+<!-- TODO: Add plot -->
+<p>As we can see from the plot, <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  \underline v =
+  \max_{x \in [0,1]} \min_{y \in [0,1]} u(x,y) = 2.5.
+}
+\]</span></p>
+<p>Now consider <span class="math display">\[\begin{align*}
+  \max_{x \in \ALPHABET X} u(x,y)
+  &amp;= \max_{x \in [0,1]} \bigl[ 4xy - 2x - y + 3 \bigr] \\
+  &amp;= \max_{x \in [0,1]} \bigl[ (4y - 2) x - y + 3 \bigr]
+\end{align*}\]</span></p>
+<p>By the same argument as before, we have <span class="math display">\[
+  \max_{x \in [0,1]} u(x,y) =
+  \begin{cases}
+    -y + 3, &amp; \text{if } y &lt; \tfrac 12 \\
+    2.5, &amp; \text{if } y = \tfrac 12 \\
+    3y + 1, &amp; \text{if } y &gt; \tfrac 12
+  \end{cases}
+\]</span></p>
+<p>The plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)</span> is shown below.</p>
+<!-- TODO: Add plot -->
+<p>As we can see from the plot, <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  \bar v =
+  \min_{y \in [0,1]} \max_{x \in [0,1]} u(x,y) = 2.5.
+}
+\]</span></p>
+<p>Since <span class="math inline">\(\underline v = \bar v = 2.5\)</span>, the game has a value of <span class="math inline">\(2.5\)</span>. The unique optimal strategy is <span class="math inline">\((\tfrac 14, \tfrac 12)\)</span>.</p>
+</div>
+</div>
+<p>The previous example is an illustration of what is known as the <a href="https://en.wikipedia.org/wiki/Minimax_theorem">:Minimax Theorem</a>. One of the foundational results of Game Theory is the von Neumann minimax theorem <span class="citation" data-cites="vonNeumann1928">(<a href="../references.html#ref-vonNeumann1928" role="doc-biblioref">von Neumann 1928</a>)</span>.</p>
+<p>Recall that a function <span class="math inline">\(f \colon \ALPHABET X × \ALPHABET Y \to \reals\)</span> is called <strong>bilinear</strong> if it is linear in each argument separately, i.e.,</p>
+<ul>
+<li>$<span class="math inline">\(f(x_1 + x_2, y) = f(x_1,y) + f(x_2, y)\)</span> and <span class="math inline">\(f(α x, y) = α f(x,y)\)</span>;</li>
+<li>$<span class="math inline">\(f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2)\)</span> and <span class="math inline">\(f(x, αy) = α f(x,y)\)</span>.</li>
+</ul>
+<p>Note that the utility function in <a href="#exm-unit-square" class="quarto-xref">Example&nbsp;<span>2.3</span></a> is bilinear.</p>
+<div id="thm-von-Neumann" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.2 (von Neumann’s Minimax Theorem)</strong></span> Let <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span> be compact (i.e., closed and bounded) subsets of Eucledian spaces and <span class="math inline">\(f \colon \ALPHABET X × \ALPHABET Y \to \reals\)</span> be a bilinear function. Then, <span class="math display">\[
+  \max_{x \in \ALPHABET X} \min_{y \in \ALPHABET Y} f(x,y) =
+  \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} f(x,y).
+\]</span></p>
+</div>
+<p>For a facinating historial discussion of this result, see <span class="citation" data-cites="Kjeldsen2001">Kjeldsen (<a href="../references.html#ref-Kjeldsen2001" role="doc-biblioref">2001</a>)</span>.</p>
+<p>In <a href="#exm-unit-square" class="quarto-xref">Example&nbsp;<span>2.3</span></a>, since the utility function is bilinear, we could have simply used <a href="#thm-von-Neumann" class="quarto-xref">Theorem&nbsp;<span>2.2</span></a> to conclude that the game has a value, without doing any calculations.</p>
+<p>A useful generalization of von Neumann’s minimax theorem is the following.</p>
+<div id="thm-minmax" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.3</strong></span> Let <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span> be compact subsets of Eucledian space. If <span class="math inline">\(f \colon \ALPHABET X × \ALPHABET Y \to \reals\)</span> is concave-convex, i.e.,</p>
+<ul>
+<li>for any fixed <span class="math inline">\(y\)</span>, <span class="math inline">\(f(⋅, y) \colon \ALPHABET X \to \reals\)</span> is concave;</li>
+<li>for any fixed <span class="math inline">\(x\)</span>, <span class="math inline">\(f(x, ⋅) \colon \ALPHABET Y \to \reals\)</span> is convex.</li>
+</ul>
+<p>Then, <span class="math display">\[
+  \max_{x \in \ALPHABET X} \min_{y \in \ALPHABET Y} f(x,y) =
+  \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} f(x,y).
+\]</span></p>
+</div>
+<p>For a generalization that removes the compactness assumption, see <span class="citation" data-cites="Sion1958">Sion (<a href="../references.html#ref-Sion1958" role="doc-biblioref">1958</a>)</span>.</p>
 
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Kjeldsen2001" class="csl-entry" role="listitem">
+<span class="smallcaps">Kjeldsen, T.H.</span> 2001. John von neumann’s conception of the minimax theorem: A journey through different mathematical contexts. <em>Archive for History of Exact Sciences</em> <em>56</em>, 1, 39–68. Available at: <a href="http://www.jstor.org/stable/41134130">http://www.jstor.org/stable/41134130</a> (Accessed: January 5, 2025).
+</div>
+<div id="ref-Sion1958" class="csl-entry" role="listitem">
+<span class="smallcaps">Sion, M.</span> 1958. On general minimax theorems. <em>Pacific Journal of Mathematics</em> <em>8</em>, 1, 171–176. DOI: <a href="https://doi.org/10.2140/pjm.1958.8.171">10.2140/pjm.1958.8.171</a>.
+</div>
+<div id="ref-vonNeumann1928" class="csl-entry" role="listitem">
+<span class="smallcaps">von Neumann, J.</span> 1928. Zur theorie der gesellschaftsspiele. <em>Mathematische Annalen</em> <em>100</em>, 1, 295–320. DOI: <a href="https://doi.org/10.1007/bf01448847">10.1007/bf01448847</a>.
+</div>
+</div>
+</section>
 
 
 </main> <!-- /main -->
@@ -876,4 +1291,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/zero-sum-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/zero-sum-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
