@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-04">
+<meta name="dcterms.date" content="2025-01-05">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>Cournot competition – Multi-Agent Systems</title>
+<title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,7 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../static-games/correlated-equilibrium.html" rel="next">
+<link href="../static-games/zero-sum-games.html" rel="next">
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -63,8 +63,8 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d8982497a26acaab05a2a197b0b368ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d5ff69d9dbb64b66a8ef03b624867974.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4d6d4fc54531e2c6a9993e2998e74b6b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-629c0b3518b04e8a82c7865a1bec3cac.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -165,10 +165,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Rationalizable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-04">
-<meta name="citation_cover_date" content="2025-01-04">
+<meta name="citation_publication_date" content="2025-01-05">
+<meta name="citation_cover_date" content="2025-01-05">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-04">
+<meta name="citation_online_date" content="2025-01-05">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -216,7 +216,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -237,7 +237,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Strategic Games</span></a>
+ <span class="menu-text">Static Games</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -251,8 +251,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../static-games/zero-sum-games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zero-sum games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../static-games/nash-equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Nash equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../static-games/ESS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -286,6 +310,8 @@ window.Quarto = {
   <li><a href="#second-price-auction" id="toc-second-price-auction" class="nav-link" data-scroll-target="#second-price-auction"><span class="header-section-number">1.7</span> Second price auction</a></li>
   <li><a href="#dominance-by-mixed-strategies" id="toc-dominance-by-mixed-strategies" class="nav-link" data-scroll-target="#dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</a></li>
   <li><a href="#cournot-competition" id="toc-cournot-competition" class="nav-link" data-scroll-target="#cournot-competition"><span class="header-section-number">1.9</span> Cournot competition</a></li>
+  <li><a href="#beyond-rationalizable-strategies-maxmin-strategies" id="toc-beyond-rationalizable-strategies-maxmin-strategies" class="nav-link" data-scroll-target="#beyond-rationalizable-strategies-maxmin-strategies"><span class="header-section-number">1.10</span> Beyond rationalizable strategies: Maxmin strategies</a></li>
+  <li><a href="#relation-between-maxmin-strategies-and-dominant-strategies" id="toc-relation-between-maxmin-strategies-and-dominant-strategies" class="nav-link" data-scroll-target="#relation-between-maxmin-strategies-and-dominant-strategies"><span class="header-section-number">1.11</span> Relation between maxmin strategies and dominant strategies</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/strategic-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -293,9 +319,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Strategic Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Cournot competition</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></h1>
 </div>
 
 
@@ -321,7 +347,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 4, 2025</p>
+      <p class="date">January 5, 2025</p>
     </div>
   </div>
   
@@ -1909,6 +1935,422 @@ Beware of the model
 </div>
 </section>
 </section>
+<section id="beyond-rationalizable-strategies-maxmin-strategies" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="beyond-rationalizable-strategies-maxmin-strategies"><span class="header-section-number">1.10</span> Beyond rationalizable strategies: Maxmin strategies</h2>
+<p>The concept of rationalizable strategies is attractive ut it makes strong assumption about the common knowledge of rationality of all players and even then does not always precribe a solution.</p>
+<p>We now describe a notation of rationality of a player that does not rely on the rationality of other others; in fact, it makes the most pessimistic assessment of their potential behavior.</p>
+<p>As an example, consider the following game.</p>
+<table class="game" align="center">
+<caption>
+An illustrative game
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(-20\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(-10\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(-100\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>In this game, the row player may prefer the strategy <span class="math inline">\(\mathsf{T}\)</span> because it gaurantees a payoff of <span class="math inline">\(2\)</span> and also ensures that the <em>“risky”</em> payoffs of <span class="math inline">\(-10\)</span> and <span class="math inline">\(-100\)</span> are avoided.</p>
+<p>Similarly, the column player may prefer the strategy <span class="math inline">\(\mathsf{L}\)</span> because it gaurantees a payoff of <span class="math inline">\(1\)</span> and avoids the <em>“risky”</em> outcome of <span class="math inline">\(-20\)</span>.</p>
+<p>This motivates the following question: <strong>What is the minimum payoff that player <span class="math inline">\(i\)</span> can guarantee for himself?</strong></p>
+<p>If player <span class="math inline">\(i\)</span> chooses strategy <span class="math inline">\(s_i\)</span>, the worst payoff that he can get is <span class="math display">\[
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s_i, s_{-i}).
+\]</span> Player <span class="math inline">\(i\)</span> can then choose the strategy <span class="math inline">\(s_i\)</span> to maximize the above value. In other words, risregarding the possible rationality (or irrationality) of other players, <span class="math inline">\(P_i\)</span> can gurantee for himself a payoff of <span class="math display">\[
+\underline v_i = \max_{s_i \in \ALPHABET S_i}
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s_i, s_{-i}).
+\]</span> This quantity is called the <strong>maxmin value</strong> of player <span class="math inline">\(i\)</span> (sometimes also called the <strong>security level</strong>). The strategy <span class="math inline">\(s_i^*\)</span> that gurantees this value is called a <strong>maxmin strategy</strong>.</p>
+<p>The maxmin strategy satisfies <span class="math display">\[
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s^*_i, s_{-i})
+\ge
+\min_{s_{-i} \in \ALPHABET S_{-i}} u_i(s_i, s_{-i})
+, \quad \forall s_i \in \ALPHABET S_i
+\]</span> which is equivalent to <span class="math display">\[
+  u_i(s_i^*, s_{-i}) \ge \underline v_i,
+\quad \forall s_{-i} \in \ALPHABET S_{-i}.
+\]</span> Thus, if a player plays his maxmin strategy, his minimum guaranteed payoff equals to his maxmin value, irrespective of what the other players do.</p>
+<p>Returning to our example, we have</p>
+<table class="gamemin" align="center">
+<caption>
+Maxmin payoffs for the illustrative example
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+<td>
+<span class="math inline">\(\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(-20\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{C}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(-10\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(-10\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(-100\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(-100\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\min_{s_1 \in \ALPHABET S_1} u_2(s_1,s_2)\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(-20\)</span>
+</td>
+<td>
+<span class="math inline">\(2, 0\)</span>
+</td>
+</tr>
+</tbody></table>
+<dl>
+<dt>Some remarks</dt>
+<dd>
+<ul>
+<li>The maxmin value of <span class="math inline">\(P_1\)</span> is <span class="math inline">\(2\)</span> (guaranteed by strategy <span class="math inline">\(\mathsf{T}\)</span>)</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li><p>The maxmin value of <span class="math inline">\(P_2\)</span> is <span class="math inline">\(0\)</span> (guaranteed by strategy <span class="math inline">\(\mathsf{L}\)</span>).</p></li>
+<li><p>If both players play their maxmin strategies, the outcome is <span class="math inline">\((\mathsf{T}, \mathsf{L})\)</span> which gives a payoff of <span class="math inline">\((2,1)\)</span>, in which player 2’s payoff is greater than her maxmin value.</p></li>
+</ul>
+<p>In general, a player may have several maxmin strategies. In such a case, when the players play thier maxmin strategies, the payoff depends on which strategy they choose.</p>
+<p>As an example consider the following game.</p>
+<table class="gamemin" align="center">
+<caption>
+An example illustrating that the maxmin payoff is not unique
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+<td>
+<span class="math inline">\(\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\min_{s_1 \in \ALPHABET S_1} u_2(s_1,s_2)\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(1, 1\)</span>
+</td>
+</tr>
+</tbody></table>
+<dl>
+<dt>Some remarks</dt>
+<dd>
+<ul>
+<li>The maxmin value of <span class="math inline">\(P_1\)</span> is <span class="math inline">\(1\)</span> (guaranteed by strategy <span class="math inline">\(\mathsf{B}\)</span>)</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li><p>The maxmin value of <span class="math inline">\(P_2\)</span> is <span class="math inline">\(1\)</span> (guaranteed by either strategy <span class="math inline">\(\mathsf{L}\)</span> or <span class="math inline">\(\mathsf{R}\)</span>).</p></li>
+<li><p>When both players play their maxmin strategies, the outcome is either <span class="math inline">\((\mathsf{B}, \mathsf{L})\)</span> with a payoff of <span class="math inline">\((2,3)\)</span> or is <span class="math inline">\((\mathsf{B}, \mathsf{R})\)</span> with a payoff of <span class="math inline">\((1,1)\)</span>. Thus, the payoff depends on the strategy chosen by player 2.</p></li>
+</ul>
+</section>
+<section id="relation-between-maxmin-strategies-and-dominant-strategies" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="relation-between-maxmin-strategies-and-dominant-strategies"><span class="header-section-number">1.11</span> Relation between maxmin strategies and dominant strategies</h2>
+<div id="thm-maxmin-vs-dominant-strategies" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1.1</strong></span> A (strict or weak) dominant strategy of a player is also a maxmin strategy.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A dominant strategy of a player is his best respose to any strategy of the other player.</p>
+</div>
+</div>
+<p>As an example, consider <a href="../static-games/strategic-games.html#second-price-auction">sealed bid second price autions</a>. We had shown that truthful bidding is a weakly dominant strategy of each player. It can also be obsereved that truthful bidding guarantees a payoff of <span class="math inline">\(0\)</span>, which is equal to the maxmin value of each player.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Strategies obtained by iterative elimination
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Strategies obtained by iterative elimination are not maxmin strategies. Construct an example to show that.</p>
+</div>
+</div>
+<div id="thm-maxmin-vs-dominant-equilibrium" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1.2</strong></span> A strictly dominant strategy equilibrium is the unique vector of maxmin strategies.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A dominant strategy of a player is his best respose to any strategy of the other player.</p>
+</div>
+</div>
+<p>As an example, consider prisoner’s dilemma.</p>
+<table class="gamemin" align="center">
+<caption>
+Maxmin strategies in prisoner’s dilemma
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{A}\)</span>
+</td>
+<td colspan="2">
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+<td>
+<span class="math inline">\(\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{A}\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\min_{s_1 \in \ALPHABET S_1} u_2(s_1,s_2)\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(-2, -2\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>As we can see, the maxmin strategy is <span class="math inline">\((\mathsf{A}, \mathsf{A})\)</span>, which is the same as the dominant strategy equilibrium.</p>
+</section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-ieds" class="theorem exercise">
@@ -2374,8 +2816,11 @@ Beware of the model
 </tr>
 </tbody></table>
 </div>
+<div id="exr-maxmin" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> For each of the games in <a href="#exr-ieds" class="quarto-xref">Exercise&nbsp;<span>1.1</span></a>, <a href="#exr-iewds" class="quarto-xref">Exercise&nbsp;<span>1.2</span></a>, and <a href="#exr-ieds-mixed" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a>, find the maxmin strategies and the maxmin value of both players.</p>
+</div>
 <div id="exr-iewds-game" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 1.5</strong></span> Consider the following two player game: <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, 100 \}\)</span> and <span class="math display">\[
   u(s_1, s_2) = \begin{cases}
   (s_1, s_2), &amp; \text{if $s_1 + s_2 &lt; 100$} \\
   (s_1, 100-s_1), &amp; \text{if $s_1 + s_2 &gt; 100$ and $s_1 &lt; s_2$}\\
@@ -2964,8 +3409,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../static-games/zero-sum-games.html" class="pagination-link" aria-label="Zero-sum games">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zero-sum games</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

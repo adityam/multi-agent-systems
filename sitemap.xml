@@ -6,11 +6,27 @@
   </url>
   <url>
     <loc>https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html</loc>
-    <lastmod>2025-01-04T22:53:09.000Z</lastmod>
+    <lastmod>2025-01-05T05:22:49.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html</loc>
+    <lastmod>2025-01-05T05:22:30.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://adityam.github.io/multi-agent-systems/static-games/nash-equilibrium.html</loc>
+    <lastmod>2025-01-05T05:22:30.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://adityam.github.io/multi-agent-systems/static-games/ESS.html</loc>
+    <lastmod>2025-01-05T05:22:30.000Z</lastmod>
   </url>
   <url>
     <loc>https://adityam.github.io/multi-agent-systems/static-games/correlated-equilibrium.html</loc>
     <lastmod>2025-01-02T18:01:26.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://adityam.github.io/multi-agent-systems/static-games/bayesian-equilibrium.html</loc>
+    <lastmod>2025-01-05T05:22:30.000Z</lastmod>
   </url>
   <url>
     <loc>https://adityam.github.io/multi-agent-systems/references.html</loc>
