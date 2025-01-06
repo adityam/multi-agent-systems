@@ -190,9 +190,8 @@ $$
 is called the **value** of the game. Any $(\text{maxmin}, \text{minmax})$ strategy of the players is called the **optimal strategy.**
 :::
 
-As we have seen earlier, a two player ZSG may not have a value _in pure strategies_. In the sequel, we will show that if we allow mixed strategies[^mixed], then every finite two player ZSG has a value!
+As we have seen earlier, a two player ZSG may not have a value _in pure strategies_. In the sequel, we will show that if we allow mixed strategies, then every finite two player ZSG has a value!
 
-[^mixed]: We have already seen mixed strategies in the previous section. We will formally define them [below](#mixed-strategies). 
 
 ## Zero sum games on the unit square
 
@@ -325,3 +324,47 @@ $$
 :::
 
 For a generalization that removes the compactness assumption, see @Sion1958.
+
+## Mixed strategies in finite games
+
+We now revist the notion of mixed strategies in finite games. Recall that given a finite game $\mathscr{G} = \lange N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ and mixed strategies $σ = (σ_i)_{i \in N}$ for the players, the expected utility is defined as
+\begin{equation} \label{eq:expected-utility}
+  U_i(σ) = \sum_{s_1 \in \ALPHABET S_1} \cdots \sum_{s_N \in \ALPHABET S_N} 
+  σ_1(s_1) \cdots σ_N(s_N) u_i(s_1, \dots, s_N)
+\end{equation}
+or more compactly for two player games
+$$
+  U_i(σ_1, σ_2) = \sum_{s_1 \in \ALPHABET S_1} \sum_{s_2 \in \ALPHABET S_2}
+  σ_1(s_1) σ_2(s_2) u_i(s_1, s_2).
+$$
+
+A game in which players are playing mixed strategies may be viewed as another game, called the **mixed extension**, in which all players have continuous action spaces and are playing pure strategies.
+
+:::{#def-mixed-extension}
+#### Mixed extension
+
+Given a game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$, its **mixed extension** is a game $\mathscr{G}^* = \langle N, ( Δ(\ALPHABET S_i) )_{i \in N}, (U_i)_{i \in N} \rangle$ where
+
+- $Δ(\ALPHABET S_i)$ denotes the set of probability distributions over $\ALPHABET S_i$
+- $U_i \colon \prod_{j \in N} Δ(\ALPHABET S_j) \to \reals$ is the expected utility function defined in \eqref{eq:expected-utility}.
+:::
+
+For a discussion of different interpretations of mixed strategies, see @Osborne1994 [Sec 3.2]. 
+
+Observe that if the original game $\mathscr{G}$ is a two player ZSG, then its mixed extension $\mathscr{G}^*$ is also a two player ZSG because for any mixed strategy $(σ_1, σ_2)$
+\begin{align*}
+U_1(σ_1, σ_2) + U_2(σ_1, σ_2) 
+&= \sum_{s_1 \in \ALPHABET S_1} \sum_{s_2 \in \ALPHABET S_2}
+σ_1(s_1) σ_2(s_2) \underbrace{\bigl[ u_1(s_1,s_2) + u_2(s_1, s_2) \bigr]}_{=0} \\
+&= 0.
+\end{align*}
+Thus, we may simply use $U$ to denote the expected utility of $P_1$ with the understanding that the expected utility of $P_2$ is $-U$. 
+
+Furthermore, observe that $U$ is bilinear. Thus, we can conclude the following from @thm-von-Nuemann.
+
+:::{#thm-ZSG-value}
+For any finite game $\mathscr{G}$, its mixed extesion $\mathscr{G}^*$ has a value, which is called **value of $\mathscr{G}$ in mixed strategies.**
+::::
+
+Thus, we finally have a solution concept that always exists, albeit for a special subclass of games. 
+
