@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-05">
+<meta name="dcterms.date" content="2025-01-08">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
@@ -165,10 +165,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Rationalizable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-05">
-<meta name="citation_cover_date" content="2025-01-05">
+<meta name="citation_publication_date" content="2025-01-08">
+<meta name="citation_cover_date" content="2025-01-08">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-05">
+<meta name="citation_online_date" content="2025-01-08">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -351,7 +351,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 5, 2025</p>
+      <p class="date">January 8, 2025</p>
     </div>
   </div>
   
@@ -1376,16 +1376,12 @@ the bid.</figcaption>
 <section id="dominance-by-mixed-strategies" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</h2>
 <p>Consider a strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N},
-(u_i)_{i \in N} \rangle\)</span> where <span class="math inline">\(\ALPHABET S_i = \{s_{i1}, \dots, s_{ik}\}\)</span>. Then a mixed strategy for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math display">\[
-  σ_i = (σ_{i1}, \dots, σ_{ik}),
-  \quad
-  σ_{i\ell} \in [0,1],
-  \quad
-  \sum_{\ell=1}^k σ_{i\ell} = 1
-\]</span> over the (pure) strategies of player <span class="math inline">\(i\)</span>.</p>
+(u_i)_{i \in N} \rangle\)</span> where <span class="math inline">\(\ALPHABET S_i = \{s_{i1}, \dots, s_{ik}\}\)</span>. Then a mixed strategy <span class="math inline">\(σ_i\)</span> for player <span class="math inline">\(i\)</span> is a probability distribution over pure strategies, i.e., <span class="math inline">\(σ_i \colon \ALPHABET S_i \to [0,1]\)</span> such that <span class="math display">\[
+  \sum_{s_i \in \ALPHABET S_i} σ_{i}(s_i) = 1
+\]</span></p>
 <p>For example, suppose <span class="math inline">\(\ALPHABET A = \{1,2,3\}\)</span> and <span class="math inline">\(σ_i = (0.2, 0.3, 0.5)\)</span>. This means that player <span class="math inline">\(i\)</span> chooses strategy <span class="math inline">\(1\)</span> with probability <span class="math inline">\(0.2\)</span>, strategy <span class="math inline">\(2\)</span> with probability <span class="math inline">\(0.3\)</span>, and strategy <span class="math inline">\(3\)</span> with probability <span class="math inline">\(0.5\)</span>.</p>
 <p>When other players are playing pure strategies <span class="math inline">\(s_{-i}\)</span> and player <span class="math inline">\(i\)</span> is playing a mixed strategy <span class="math inline">\(σ_i\)</span>, then the <strong>expected payoff</strong> to player <span class="math inline">\(i\)</span> is <span class="math display">\[
-  U_i(σ_i, s_{-i}) = \sum_{\ell=1}^k σ_{i\ell} u_i(s_{i\ell}, s_{-i}).
+  U_i(σ_i, s_{-i}) = \sum_{s_i \in \ALPHABET S_i} σ_{i}(s_i) u_i(s_{i}, s_{-i}).
 \]</span></p>
 <p>For example, consider the matching pennies game where <span class="math inline">\(σ_1 = (p, 1-p)\)</span>. Then,</p>
 <p><span class="math display">\[\begin{align*}
