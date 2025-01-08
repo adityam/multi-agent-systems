@@ -189,6 +189,10 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=John von neumann’s conception of the minimax theorem: A journey through different mathematical contexts;,citation_author=Tinne Hoff Kjeldsen;,citation_publication_date=2001;,citation_cover_date=2001;,citation_year=2001;,citation_fulltext_html_url=http://www.jstor.org/stable/41134130;,citation_issue=1;,citation_issn=00039519, 14320657;,citation_volume=56;,citation_journal_title=Archive for History of Exact Sciences;,citation_publisher=Springer;">
 <meta name="citation_reference" content="citation_title=On general minimax theorems;,citation_author=Maurice Sion;,citation_publication_date=1958-03;,citation_cover_date=1958-03;,citation_year=1958;,citation_issue=1;,citation_doi=10.2140/pjm.1958.8.171;,citation_issn=0030-8730;,citation_volume=8;,citation_journal_title=Pacific Journal of Mathematics;,citation_publisher=Mathematical Sciences Publishers;">
 <meta name="citation_reference" content="citation_title=A course in game theory;,citation_author=Martin J Osborne;,citation_author=Ariel Rubinstein;,citation_publication_date=1994;,citation_cover_date=1994;,citation_year=1994;">
+<meta name="citation_reference" content="citation_title=Modeling cournot competition in an electricity market with transmission constraints;,citation_author=Bert Willems;,citation_publication_date=2002;,citation_cover_date=2002;,citation_year=2002;,citation_issue=3;,citation_volume=23;,citation_journal_title=The Energy Journal;,citation_publisher=SAGE Publications Sage CA: Los Angeles, CA;">
+<meta name="citation_reference" content="citation_title=Competition in electricity markets with renewable energy sources;,citation_author=Daron Acemoglu;,citation_author=Ali Kakhbod;,citation_author=Asuman Ozdaglar;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_issue=1_suppl;,citation_volume=38;,citation_journal_title=The Energy Journal;,citation_publisher=SAGE Publications Sage CA: Los Angeles, CA;">
+<meta name="citation_reference" content="citation_title=Cournot competition in wholesale electricity markets: The nordic power exchange, nord pool;,citation_author=Erik Lundin;,citation_author=Thomas P Tangerås;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_volume=68;,citation_journal_title=International Journal of Industrial Organization;,citation_publisher=Elsevier;">
+<meta name="citation_reference" content="citation_title=Rationalizable strategic behavior;,citation_author=B Douglas Bernheim;,citation_publication_date=1984;,citation_cover_date=1984;,citation_year=1984;,citation_journal_title=Econometrica: Journal of the Econometric Society;,citation_publisher=JSTOR;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -952,7 +956,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 </td>
 </tr>
 </tbody></table>
-<p>This procedure is called <strong>IEDS (Iterative elimination of dominated strategies)</strong>. If the procedure gives a unique strategy, that strategy is called a <strong>rationalizable strategy</strong>.</p>
+<p>This procedure is called <strong>IEDS (Iterative elimination of dominated strategies)</strong>. If the procedure gives a unique strategy, that strategy is called a <strong>rationalizable strategy</strong>. <span class="citation" data-cites="Bernheim1984">(The formal definition of rationalizable strategies is different. But the case of two player games, rationalizable strategies are the seame as strategies obtained by IEDS, but they may different for games with more than two players. See <a href="../references.html#ref-Bernheim1984" role="doc-biblioref">Bernheim 1984</a>)</span></p>
 <dl>
 <dt>Remarks</dt>
 <dd>
@@ -1741,8 +1745,8 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
 </section>
 <section id="cournot-competition" class="level2" data-number="1.9">
 <h2 data-number="1.9" class="anchored" data-anchor-id="cournot-competition"><span class="header-section-number">1.9</span> Cournot competition</h2>
-<p>This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interstrategy between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly).</p>
-<p>Formally, the Cournot competition model considers a <em>homogeneous-goods</em> market with <span class="math inline">\(n\)</span> first. A homogeneous-goods market is a market where all firms produce a homogeneous product which are perfect substitutes (e.g., consider a commodities market such as metal or oil or electricity).</p>
+<p>This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interstrategy between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly). Cournot competition is used to model competition between energy generators in electricity markets, e.g., see <span class="citation" data-cites="Willems2002">Willems (<a href="../references.html#ref-Willems2002" role="doc-biblioref">2002</a>)</span>, <span class="citation" data-cites="Acemoglu2017">Acemoglu et al. (<a href="../references.html#ref-Acemoglu2017" role="doc-biblioref">2017</a>)</span>, <span class="citation" data-cites="Lundin2020">Lundin and Tangerås (<a href="../references.html#ref-Lundin2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Formally, the Cournot competition model considers a <em>homogeneous-goods</em> market with <span class="math inline">\(n\)</span> firms. A homogeneous-goods market is a market where all firms produce a homogeneous product which are perfect substitutes (e.g., consider a commodities market such as metal or oil or electricity).</p>
 <p>Each firm decides how much to produce. Let <span class="math inline">\(s_i \in \reals_{\ge 0}\)</span> denote the production of firm <span class="math inline">\(i\)</span> and <span class="math inline">\(a = \sum_{i = 1}^n s_i\)</span> denote aggregate production. The price of the product depends on the aggregate production. We capture this relationship using a generic function <span class="math inline">\(p \colon \reals_{\ge 0} \to \reals_{\ge 0}\)</span>, i.e., price of product is <span class="math inline">\(p(a)\)</span> when the aggregate production is <span class="math inline">\(a\)</span>.</p>
 <p>Furthermore, there is a cost <span class="math inline">\(c\)</span> to produce one unit of goods. For simplicity, we assume that the cost is the same for all firms, though it is possible to consider the model this cost depends on the firm. Thus, the utility of firm <span class="math inline">\(i\)</span> is <span class="math display">\[
   u_i(s_i, s_{-i}) = s_i \cdot p(a) - s_i \cdot c.
@@ -1752,7 +1756,7 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
 <section id="case-n-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="case-n-1">Case <span class="math inline">\(n = 1\)</span></h4>
 <p>To fix ideas, we consider the special case of <span class="math inline">\(n=1\)</span> (i.e., a monopoly). In this case, for <span class="math inline">\(s_1 \in [0, M]\)</span>, <span class="math display">\[
-  u_1(s_1) = s_1(M - s_1) - c s_1 = M - c -s_1) s_1.
+  u_1(s_1) = s_1(M - s_1) - c s_1 = (M - c -s_1) s_1.
 \]</span> To find the optimal value of <span class="math inline">\(s_1\)</span>, note that <span class="math inline">\(u_1(s_1)\)</span> is concave in <span class="math inline">\(s_1\)</span>. Thus, we pick <span class="math inline">\(s_1\)</span> such that <span class="math inline">\(∂u_1(s_1)/∂s_1 = 0\)</span>, i.e., <span class="math display">\[
   \frac{∂u_1(s_1)}{∂s_1} = (M - c -s_1) - s_1 = 0.
 \]</span> Thus, <span class="math display">\[
@@ -1926,7 +1930,7 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Beware of the model
+Implication of the model
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2834,8 +2838,20 @@ vim: foldmethod=marker
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Acemoglu2017" class="csl-entry" role="listitem">
+<span class="smallcaps">Acemoglu, D., Kakhbod, A., and Ozdaglar, A.</span> 2017. Competition in electricity markets with renewable energy sources. <em>The Energy Journal</em> <em>38</em>, 1_suppl, 137–156.
+</div>
+<div id="ref-Bernheim1984" class="csl-entry" role="listitem">
+<span class="smallcaps">Bernheim, B.D.</span> 1984. Rationalizable strategic behavior. <em>Econometrica: Journal of the Econometric Society</em>, 1007–1028.
+</div>
+<div id="ref-Lundin2020" class="csl-entry" role="listitem">
+<span class="smallcaps">Lundin, E. and Tangerås, T.P.</span> 2020. Cournot competition in wholesale electricity markets: The nordic power exchange, nord pool. <em>International Journal of Industrial Organization</em> <em>68</em>, 102536.
+</div>
 <div id="ref-Selten1975" class="csl-entry" role="listitem">
 <span class="smallcaps">Selten, R.</span> 1975. Reexamination of the perfectness concept for equilibrium points in extensive games. <em>International Journal of Game Theory</em> <em>4</em>, 1, 25–55. DOI: <a href="https://doi.org/10.1007/bf01766400">10.1007/bf01766400</a>.
+</div>
+<div id="ref-Willems2002" class="csl-entry" role="listitem">
+<span class="smallcaps">Willems, B.</span> 2002. Modeling cournot competition in an electricity market with transmission constraints. <em>The Energy Journal</em> <em>23</em>, 3, 95–125.
 </div>
 </div>
 </section>
