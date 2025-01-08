@@ -401,7 +401,7 @@ Finally, we can eliminate strategy $\mathsf{L}$ for $P_1$, which is strictly dom
   </tr>
 </table>
 
-This procedure is called **IEDS (Iterative elimination of dominated strategies)**. If the procedure gives a unique strategy, that strategy is called a **rationalizable strategy**.
+This procedure is called **IEDS (Iterative elimination of dominated strategies)**. If the procedure gives a unique strategy, that strategy is called a **rationalizable strategy**. [The formal definition of rationalizable strategies is different. But the case of two player games, rationalizable strategies are the seame as strategies obtained by IEDS, but they may different for games with more than two players. See @Bernheim1984]
 
 Remarks
 
