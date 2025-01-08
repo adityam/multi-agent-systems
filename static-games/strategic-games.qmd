@@ -631,15 +631,10 @@ The rationalizability of truthful bidding holds in many situations. More on that
 
 Consider a strategic game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N},
 (u_i)_{i \in N} \rangle$ where $\ALPHABET S_i = \{s_{i1}, \dots, s_{ik}\}$.
-Then a mixed strategy for player $i$ is a probability distribution
+Then a mixed strategy $σ_i$ for player $i$ is a probability distribution over pure strategies, i.e., $σ_i \colon \ALPHABET S_i \to [0,1]$ such that 
 $$
-  σ_i = (σ_{i1}, \dots, σ_{ik}),
-  \quad
-  σ_{i\ell} \in [0,1],
-  \quad
-  \sum_{\ell=1}^k σ_{i\ell} = 1
+  \sum_{s_i \in \ALPHABET S_i} σ_{i}(s_i) = 1
 $$
-over the (pure) strategies of player $i$. 
 
 For example, suppose $\ALPHABET A = \{1,2,3\}$ and $σ_i = (0.2, 0.3, 0.5)$.
 This means that player $i$ chooses strategy $1$ with probability $0.2$, strategy
@@ -648,7 +643,7 @@ $2$ with probability $0.3$, and strategy $3$ with probability $0.5$.
 When other players are playing pure strategies $s_{-i}$ and player $i$ is
 playing a mixed strategy $σ_i$, then the **expected payoff** to player $i$ is
 $$
-  U_i(σ_i, s_{-i}) = \sum_{\ell=1}^k σ_{i\ell} u_i(s_{i\ell}, s_{-i}).
+  U_i(σ_i, s_{-i}) = \sum_{s_i \in \ALPHABET S_i} σ_{i}(s_i) u_i(s_{i}, s_{-i}).
 $$
 
 For example, consider the matching pennies game where $σ_1 = (p, 1-p)$. Then,
