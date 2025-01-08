@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-05">
+<meta name="dcterms.date" content="2025-01-08">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -165,10 +165,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-05">
-<meta name="citation_cover_date" content="2025-01-05">
+<meta name="citation_publication_date" content="2025-01-08">
+<meta name="citation_cover_date" content="2025-01-08">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-05">
+<meta name="citation_online_date" content="2025-01-08">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -188,6 +188,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Zur theorie der gesellschaftsspiele;,citation_author=J. Neumann;,citation_publication_date=1928-12;,citation_cover_date=1928-12;,citation_year=1928;,citation_issue=1;,citation_doi=10.1007/bf01448847;,citation_issn=1432-1807;,citation_volume=100;,citation_journal_title=Mathematische Annalen;,citation_publisher=Springer Science; Business Media LLC;">
 <meta name="citation_reference" content="citation_title=John von neumann’s conception of the minimax theorem: A journey through different mathematical contexts;,citation_author=Tinne Hoff Kjeldsen;,citation_publication_date=2001;,citation_cover_date=2001;,citation_year=2001;,citation_fulltext_html_url=http://www.jstor.org/stable/41134130;,citation_issue=1;,citation_issn=00039519, 14320657;,citation_volume=56;,citation_journal_title=Archive for History of Exact Sciences;,citation_publisher=Springer;">
 <meta name="citation_reference" content="citation_title=On general minimax theorems;,citation_author=Maurice Sion;,citation_publication_date=1958-03;,citation_cover_date=1958-03;,citation_year=1958;,citation_issue=1;,citation_doi=10.2140/pjm.1958.8.171;,citation_issn=0030-8730;,citation_volume=8;,citation_journal_title=Pacific Journal of Mathematics;,citation_publisher=Mathematical Sciences Publishers;">
+<meta name="citation_reference" content="citation_title=A course in game theory;,citation_author=Martin J Osborne;,citation_author=Ariel Rubinstein;,citation_publication_date=1994;,citation_cover_date=1994;,citation_year=1994;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed slimcontent">
@@ -306,6 +307,11 @@ window.Quarto = {
   <ul>
   <li><a href="#simplified-notation" id="toc-simplified-notation" class="nav-link active" data-scroll-target="#simplified-notation"><span class="header-section-number">2.1</span> Simplified notation</a></li>
   <li><a href="#zero-sum-games-on-the-unit-square" id="toc-zero-sum-games-on-the-unit-square" class="nav-link" data-scroll-target="#zero-sum-games-on-the-unit-square"><span class="header-section-number">2.2</span> Zero sum games on the unit square</a></li>
+  <li><a href="#mixed-strategies-in-finite-games" id="toc-mixed-strategies-in-finite-games" class="nav-link" data-scroll-target="#mixed-strategies-in-finite-games"><span class="header-section-number">2.3</span> Mixed strategies in finite games</a></li>
+  <li><a href="#properties-of-optimal-strategy-profiles" id="toc-properties-of-optimal-strategy-profiles" class="nav-link" data-scroll-target="#properties-of-optimal-strategy-profiles"><span class="header-section-number">2.4</span> Properties of optimal strategy profiles</a></li>
+  <li><a href="#computing-the-value-of-zsg" id="toc-computing-the-value-of-zsg" class="nav-link" data-scroll-target="#computing-the-value-of-zsg"><span class="header-section-number">2.5</span> Computing the value of ZSG</a></li>
+  <li><a href="#computing-optimal-strategy-profile-using-linear-programming" id="toc-computing-optimal-strategy-profile-using-linear-programming" class="nav-link" data-scroll-target="#computing-optimal-strategy-profile-using-linear-programming"><span class="header-section-number">2.6</span> Computing optimal strategy profile using linear programming</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/zero-sum-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -340,7 +346,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 5, 2025</p>
+      <p class="date">January 8, 2025</p>
     </div>
   </div>
   
@@ -418,7 +424,7 @@ u_1(s_1, s_2) + u_2(s_1, s_2) = 0.
 <li><p>ZSGs emerge in many engineering applications when we consider worst case performance. Such scenarios can be considered as games against nature.</p></li>
 <li><p>When we consider the maxmin value (or the security level) of player in general-sum game, we are effectively doing worst case analysis. This means that each player is considering an auxiliary ZSG in which all other players collude and act as a single opponnet who try to minimize the payff of the player. Thus, ZSGs can be useful even when analyzing non-zero-sum games.</p></li>
 </ul>
-<section id="simplified-notation" class="level2 page-columns page-full" data-number="2.1">
+<section id="simplified-notation" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="simplified-notation"><span class="header-section-number">2.1</span> Simplified notation</h2>
 <p>For two player ZSGs, we can simplify the notation. Since <span class="math inline">\(u_2(s_1, s_2) = -u_1(s_1, s_2)\)</span>, we can just specify the payoff of player 1 instead of specifying the payoff of both players. For instance, the matching pennies game can be represented as</p>
 <table class="game1" align="center">
@@ -591,10 +597,10 @@ An game where <span class="math inline">\(\underline v = \bar v\)</span>
 <div id="def-value-zsg" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 2.1</strong></span> In a two player ZSG if <span class="math inline">\(\underline v = \bar v\)</span>, then the quantity <span class="math display">\[
 v \coloneqq \underline v = \bar v
-\]</span> is called the <strong>value</strong> of the game. Any <span class="math inline">\((\text{maxmin}, \text{minmax})\)</span> strategy of the players is called the <strong>optimal strategy.</strong></p>
+\]</span> is called the <strong>value</strong> of the game. Any <span class="math inline">\((\text{maxmin}, \text{minmax})\)</span> strategy of the players is called the <strong>optimal strategy profile.</strong></p>
 </div>
-<p>As we have seen earlier, a two player ZSG may not have a value <em>in pure strategies</em>. In the sequel, we will show that if we allow mixed strategies<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, then every finite two player ZSG has a value!</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;We have already seen mixed strategies in the previous section. We will formally define them <a href="#mixed-strategies">below</a>.</p></div></div></section>
+<p>As we have seen earlier, a two player ZSG may not have a value <em>in pure strategies</em>. In the sequel, we will show that if we allow mixed strategies, then every finite two player ZSG has a value!</p>
+</section>
 <section id="zero-sum-games-on-the-unit-square" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="zero-sum-games-on-the-unit-square"><span class="header-section-number">2.2</span> Zero sum games on the unit square</h2>
 <p>As an intermediate step to mixed strategies, we consider two player ZSGs on the unit square, i.e., games on which <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = [0,1]\)</span>.</p>
@@ -602,7 +608,7 @@ v \coloneqq \underline v = \bar v
 <div id="exm-unit-square" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.3</strong></span> Consider a two player ZSG on the unit square with <span class="math display">\[
 u(x,y) = 4xy - 2x - y + 3, \quad \forall x \in \ALPHABET X, y \in \ALPHABET Y.
-\]</span> Does this game have a value? If so, find all optimal strategies.</p>
+\]</span> Does this game have a value? If so, find all optimal strategy profiles</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -665,7 +671,7 @@ Solution
   \min_{y \in [0,1]} \max_{x \in [0,1]} u(x,y) = 2.5.
 }
 \]</span></p>
-<p>Since <span class="math inline">\(\underline v = \bar v = 2.5\)</span>, the game has a value of <span class="math inline">\(2.5\)</span>. The unique optimal strategy is <span class="math inline">\((\tfrac 14, \tfrac 12)\)</span>.</p>
+<p>Since <span class="math inline">\(\underline v = \bar v = 2.5\)</span>, the game has a value of <span class="math inline">\(2.5\)</span>. The unique optimal strategy profile is <span class="math inline">\((\tfrac 14, \tfrac 12)\)</span>.</p>
 </div>
 </div>
 <p>The previous example is an illustration of what is known as the <a href="https://en.wikipedia.org/wiki/Minimax_theorem">:Minimax Theorem</a>. One of the foundational results of Game Theory is the von Neumann minimax theorem <span class="citation" data-cites="vonNeumann1928">(<a href="../references.html#ref-vonNeumann1928" role="doc-biblioref">von Neumann 1928</a>)</span>.</p>
@@ -696,11 +702,495 @@ Solution
 \]</span></p>
 </div>
 <p>For a generalization that removes the compactness assumption, see <span class="citation" data-cites="Sion1958">Sion (<a href="../references.html#ref-Sion1958" role="doc-biblioref">1958</a>)</span>.</p>
+</section>
+<section id="mixed-strategies-in-finite-games" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="mixed-strategies-in-finite-games"><span class="header-section-number">2.3</span> Mixed strategies in finite games</h2>
+<p>We now revist the notion of mixed strategies in finite games. Recall that given a finite game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span> and mixed strategies <span class="math inline">\(σ = (σ_i)_{i \in N}\)</span> for the players, the expected utility is defined as <span class="math display">\[\begin{equation} \label{eq:expected-utility}
+  U_i(σ) = \sum_{s_1 \in \ALPHABET S_1} \cdots \sum_{s_N \in \ALPHABET S_N}
+  σ_1(s_1) \cdots σ_N(s_N) u_i(s_1, \dots, s_N)
+\end{equation}\]</span> or more compactly for two player games <span class="math display">\[
+  U_i(σ_1, σ_2) = \sum_{s_1 \in \ALPHABET S_1} \sum_{s_2 \in \ALPHABET S_2}
+  σ_1(s_1) σ_2(s_2) u_i(s_1, s_2).
+\]</span></p>
+<p>A game in which players are playing mixed strategies may be viewed as another game, called the <strong>mixed extension</strong>, in which all players have continuous action spaces and are playing pure strategies.</p>
+<div id="def-mixed-extension" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.2 (Mixed extension)</strong></span> Given a game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span>, its <strong>mixed extension</strong> is a game <span class="math inline">\(\mathscr{G}^* = \langle N, ( Δ(\ALPHABET S_i) )_{i \in N}, (U_i)_{i \in N} \rangle\)</span> where</p>
+<ul>
+<li><span class="math inline">\(Δ(\ALPHABET S_i)\)</span> denotes the set of probability distributions over <span class="math inline">\(\ALPHABET S_i\)</span></li>
+<li><span class="math inline">\(U_i \colon \prod_{j \in N} Δ(\ALPHABET S_j) \to \reals\)</span> is the expected utility function defined in <span class="math inline">\(\eqref{eq:expected-utility}\)</span>.</li>
+</ul>
+</div>
+<p>For a discussion of different interpretations of mixed strategies, see <span class="citation" data-cites="Osborne1994">Osborne and Rubinstein (<a href="../references.html#ref-Osborne1994" role="doc-biblioref">1994</a>, Sec&nbsp;3.2)</span>.</p>
+<p>Observe that if the original game <span class="math inline">\(\mathscr{G}\)</span> is a two player ZSG, then its mixed extension <span class="math inline">\(\mathscr{G}^*\)</span> is also a two player ZSG because for any mixed strategy <span class="math inline">\((σ_1, σ_2)\)</span> <span class="math display">\[\begin{align*}
+U_1(σ_1, σ_2) + U_2(σ_1, σ_2)
+&amp;= \sum_{s_1 \in \ALPHABET S_1} \sum_{s_2 \in \ALPHABET S_2}
+σ_1(s_1) σ_2(s_2) \underbrace{\bigl[ u_1(s_1,s_2) + u_2(s_1, s_2) \bigr]}_{=0} \\
+&amp;= 0.
+\end{align*}\]</span> Thus, we may simply use <span class="math inline">\(U\)</span> to denote the expected utility of <span class="math inline">\(P_1\)</span> with the understanding that the expected utility of <span class="math inline">\(P_2\)</span> is <span class="math inline">\(-U\)</span>.</p>
+<p>Furthermore, observe that <span class="math inline">\(U\)</span> is bilinear. Thus, we can conclude the following from <span class="quarto-unresolved-ref">?thm-von-Nuemann</span>.</p>
+<div id="thm-ZSG-value" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.4</strong></span> For any finite game <span class="math inline">\(\mathscr{G}\)</span>, its mixed extesion <span class="math inline">\(\mathscr{G}^*\)</span> has a value, which is called <strong>value of <span class="math inline">\(\mathscr{G}\)</span> in mixed strategies.</strong></p>
+</div>
+<p>Thus, we finally have a solution concept that always exists, albeit for a special subclass of games.</p>
+</section>
+<section id="properties-of-optimal-strategy-profiles" class="level2 page-columns page-full" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="properties-of-optimal-strategy-profiles"><span class="header-section-number">2.4</span> Properties of optimal strategy profiles</h2>
+<p>The value of a game has a nice geometric interpretation.</p>
+<div id="def-saddle-point" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.3</strong></span> Let <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span> be sets and <span class="math inline">\(f \colon \ALPHABET X × \ALPHABET  Y \to \reals\)</span>. A point <span class="math inline">\((x^*, y^*) \in \ALPHABET X × \ALPHABET  Y\)</span> is said to be a <strong>saddle point</strong> of <span class="math inline">\(f\)</span> if <span class="math display">\[\begin{align*}
+    f(x^*, y^*) &amp;\ge f(x, y^*), &amp; \forall x &amp;\in \ALPHABET X \\
+    f(x^*, y^*) &amp;\le f(x^*, y), &amp; \forall y &amp;\in \ALPHABET Y
+\end{align*}\]</span></p>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Saddle_point.svg" class="img-fluid figure-img"></p>
+<figcaption>A function with a saddle point, image taken from Wikimedia</figcaption>
+</figure>
+</div>
+</div></div><p>The term saddle point comes from the fact that the typical two dimensional example of a function with a saddle point looks like a saddle of a horse (curves up in one direction and curves down in the other).</p>
+<p>A key property of an optimal strategy profile is the following.</p>
+<div id="thm-saddle-point" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.5</strong></span> In a two player zero sum game, <span class="math inline">\((σ_1^*, σ_2^*)\)</span> is a saddle point of the expected utility function <span class="math inline">\(U\)</span> if and only if <span class="math inline">\(σ_1^*\)</span> is an optimal strategy for player 1 and <span class="math inline">\(σ_2^*\)</span> is an optimal strategy for player 2.</p>
+<p>In this case <span class="math inline">\(U(σ_1^*, σ_2^*)\)</span> is the value of the game.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This follows immediately from the definition of saddle point and that of the value of a game.</p>
+</div>
+</div>
+<p>In general, a ZSG can have more than one optimal strategy profile. Suppose <span class="math inline">\((σ_1^*, σ_2^*)\)</span> and <span class="math inline">\((τ_1^*, τ_2^*)\)</span> where <span class="math inline">\(σ_1^* \neq τ_1^*\)</span> and <span class="math inline">\(σ_2^* \neq τ_2^*\)</span> both satisfy <span class="math display">\[
+  \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)}
+  U(σ_1, σ_2) =
+  \min_{σ_2 \in Δ(\ALPHABET S_2)} \max_{σ_1 \in Δ(\ALPHABET S_1)}
+  U(σ_1, σ_2) = v.
+\]</span> Then,</p>
+<ul>
+<li><p><span class="math inline">\(U(σ_1^*, σ_2^*) = U(τ_1^*, τ_2^*)\)</span></p>
+<p>Hence, if a game has a value and multiple optimal strategy profiles, then each optimal strategy profiles gives the value of the game.</p></li>
+<li><p><span class="math inline">\(U(σ_1^*, τ_2^*) = U(τ_1^*, σ_2^*) = v\)</span></p>
+<p>Hence, it does not matter which optimal strategy is chosen by players 1 and 2. Every combination of optimal strategies is an optimal strategy profile.</p></li>
+</ul>
+<p>The proof of this statement is left as an exercise (see <a href="#exr-switched-zsg" class="quarto-xref">Exercise&nbsp;<span>2.3</span></a>).</p>
+</section>
+<section id="computing-the-value-of-zsg" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="computing-the-value-of-zsg"><span class="header-section-number">2.5</span> Computing the value of ZSG</h2>
+<p>We now consider how to compute the value of ZSG in mixed strategies. The key simplification is as follows. When computing the maxmin value <span class="math display">\[
+  \underline v = \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2),
+\]</span> consider the inner minimization problem for a fixed <span class="math inline">\(σ_1 \in Δ(\ALPHABET S_1)\)</span>. In this case, the set of best resposes of <span class="math inline">\(P_2\)</span> will always include pure strategies. This is because, we can write <span class="math display">\[
+  U(σ_1, σ_2) = \sum_{s_2 \in \ALPHABET S_2} σ_2(s_2) U(σ_1, s_2).
+\]</span> Thus, if the minimizer <span class="math inline">\(σ_2\)</span> gives positive weights to pure strategies <span class="math inline">\(s_{2,i}, s_{2,j}, s_{2,k}\)</span>, etc., each of them must have the same <span class="math inline">\(U(σ_1, s_2)\)</span>; otherwise, we can omit putting positive weight on the pure strategy which has strictly large payoff and reduce the expected utility, which is not possible because <span class="math inline">\(σ_2\)</span> is a minimizer.</p>
+<p>Therefore, when computing the maxmin value, we may consider <span class="math display">\[
+\underline v = \max_{σ_1 \in Δ(\ALPHABET S_1)}
+\textcolor{red}{ \min_{s_2 \in \ALPHABET S_2} } U(σ_1, \textcolor{red}{s_2}).
+\]</span></p>
+<p>By a similar argument, for minmax value, we may consider <span class="math display">\[
+\bar v = \min_{σ_2 \in Δ(\ALPHABET S_2)}
+\textcolor{red}{ \max_{s_1 \in \ALPHABET S_1} } U(\textcolor{red}{s_1}, σ_2).
+\]</span></p>
+<p>To illustrate how this simplification helps, we start with an example of a <span class="math inline">\(2 × 2\)</span> game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier.</p>
+<div id="exm-value-2x2" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.4</strong></span> Find the value in mixed strategies of the game below:</p>
+<table class="game1" align="center">
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathsf{L}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathsf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathsf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<p>Suppose the row player is playing <span class="math inline">\(σ_1 = (p, 1-p)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{T}\)</span> with probability <span class="math inline">\(p\)</span> and action <span class="math inline">\(\mathsf{B}\)</span> with probability <span class="math inline">\(1-p\)</span>. Then,</p>
+<p><span class="math display">\[\begin{alignat*}{2}
+  U_1(α_1, \mathsf{L}) &amp;= 3p + (1-p) &amp;&amp;= 2p + 1, \\
+  U_1(α_1, \mathsf{R}) &amp;= 2(1-p) &amp;&amp;= -2p + 2.
+\end{alignat*}\]</span></p>
+<p>[To be written]</p>
+</section>
+<section id="computing-optimal-strategy-profile-using-linear-programming" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="computing-optimal-strategy-profile-using-linear-programming"><span class="header-section-number">2.6</span> Computing optimal strategy profile using linear programming</h2>
+<p>The graphical method described in the previous section does not work if both players have more than two actions. In general, the optimal solution can be obtained using linear programming.</p>
+<p>Let <span class="math inline">\((σ_1, σ_2)\)</span> be a candidate optimal strategy profile. Then, it must satisfy <span class="math display">\[\begin{align}
+  U(σ_1, s_2) &amp;\ge v, &amp; \forall s_2 &amp;\in \ALPHABET S_2
+  \label{eq:constraint-1}
+  \\
+  U(s_1, σ_2) &amp;\le v, &amp; \forall s_1 &amp;\in \ALPHABET S_1.
+  \label{eq:constraint-2}
+\end{align}\]</span></p>
+<p>We can write <span class="math inline">\(\eqref{eq:constraint-1}\)</span>–<span class="math inline">\(\eqref{eq:constraint-2}\)</span> as two linear programs. Suppose <span class="math inline">\(\ABS{\ALPHABET S_1} = n\)</span> and <span class="math inline">\(\ABS{\ALPHABET S_2} = m\)</span>. For the ease of notation, we assume that <span class="math inline">\(\ALPHABET S_1 = \{1, \dots, n\}\)</span> and <span class="math inline">\(\ALPHABET S_2 = \{1, \dots, m\}\)</span> and use <span class="math inline">\(u(i,j)\)</span> to denote the utility of player 1 (the maximizer) when player 1 plays <span class="math inline">\(i \in \ALPHABET S_1\)</span> and player 2 plays <span class="math inline">\(j \in \ALPHABET S_2\)</span>.</p>
+<p>Let <span class="math display">\[
+  σ_1 = (p_1, \dots, p_n)
+  \quad\text{and}\quad
+  σ_2 = (q_1, \dots, q_m)
+\]</span> be an optimal strategy profile of the game and <span class="math inline">\(v\)</span> be the value. Then, <span class="math inline">\(\eqref{eq:constraint-1}\)</span> and <span class="math inline">\(\eqref{eq:constraint-2}\)</span> are equalent to the following linear programs.</p>
+<p><span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  \begin{gathered}
+    \max v \\
+    \text{s.t. }
+    \begin{aligned}[t]
+      &amp; \sum_{i=1}^n p_i u(i,j) \ge v, \quad \forall j \in \ALPHABET S_2 \\
+      &amp; p_i \ge 0, \quad \forall i \in \{1, \dots, n\} \\
+      &amp; \sum_{i=1}^n p_i = 1
+   \end{aligned}
+  \end{gathered}}
+  \qquad
+\bbox[5pt,border: 1px solid]{
+  \begin{gathered}
+    \min v \\
+    \text{s.t. }
+    \begin{aligned}[t]
+      &amp; \sum_{j=1}^m q_j u(i,j) \le v, \quad \forall i \in \ALPHABET S_1 \\
+      &amp; q_j \ge 0, \quad \forall j \in \{1, \dots, m\} \\
+      &amp; \sum_{j=1}^m q_j = 1
+   \end{aligned}
+  \end{gathered}}
+\]</span></p>
+<p>See <a href="#exr-LP" class="quarto-xref">Exercise&nbsp;<span>2.4</span></a> for an example.</p>
+</section>
+<section id="exercises" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
+<div id="exr-zsg-pure" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.1</strong></span> For each of the following games, find the value of the game and the optimal strategy profile.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game1" align="center">
+<caption>
+Game 1
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathbf{L}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game1" align="center">
+<caption>
+Game 2
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathbf{L}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(8\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-zsg-mixed" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Find the optimal strategy profile and the value of the following game.</p>
+<table class="game1" align="center">
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathbf{L}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{C}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{R}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{T}\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{M}\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(7\)</span>
+</td>
+<td>
+<span class="math inline">\(4\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{B}\)</span>
+</td>
+<td>
+<span class="math inline">\(9\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+</tbody></table>
+<p><em>Hint</em>: Use iterative elimination of strongly dominated strategies to first reduce the above to a <span class="math inline">\(2 × 2\)</span> game and then simplify the resulting game.</p>
+</div>
+<div id="exr-switched-zsg" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.3</strong></span> Suppose <span class="math inline">\((σ_1^*, σ_2^*)\)</span> and <span class="math inline">\((τ_1^*, τ_2^*)\)</span> both satisfy <span class="math display">\[
+  \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)}
+  U(σ_1, σ_2) =
+  \min_{σ_2 \in Δ(\ALPHABET S_2)} \max_{σ_1 \in Δ(\ALPHABET S_1)}
+  U(σ_1, σ_2) = v.
+\]</span> Prove that <span class="math display">\[
+  U(σ_1^*, τ_2^*) = U(τ_1^*, σ_2^*) = v.
+\]</span></p>
+<p><em>Hint</em>: Use <a href="#thm-saddle-point" class="quarto-xref">Theorem&nbsp;<span>2.5</span></a> to argue that <span class="math display">\[
+  U(τ_1^*, τ_2^*) \le U(τ_1^*, σ_2^*) \le U(σ_1^*, σ_2^*)
+  \quad\text{and}\quad
+  U(σ_1^*, σ_2^*) \le U(σ_1^*, τ_2^*) \le U(τ_1^*, τ_2^*).
+\]</span></p>
+</div>
+<div id="exr-LP" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> Use the LP formulation to find optimal strategy profile of the following games.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game1" align="center">
+<caption>
+Game 1
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathbf{1}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{2}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{3}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{1}\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{2}\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game1" align="center">
+<caption>
+Game 2
+</caption>
+<tbody><tr>
+<td>
+</td>
+<td>
+<span class="math inline">\(\mathbf{1}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{2}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{3}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbf{4}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{1}\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+<td>
+<span class="math inline">\(0\)</span>
+</td>
+<td>
+<span class="math inline">\(5\)</span>
+</td>
+<td>
+<span class="math inline">\(6\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{2}\)</span>
+</td>
+<td>
+<span class="math inline">\(-3\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+<td>
+<span class="math inline">\(-4\)</span>
+</td>
+<td>
+<span class="math inline">\(3\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathbf{3}\)</span>
+</td>
+<td>
+<span class="math inline">\(8\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<p>You may use any programming language to solve the linear program.</p>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Kjeldsen2001" class="csl-entry" role="listitem">
 <span class="smallcaps">Kjeldsen, T.H.</span> 2001. John von neumann’s conception of the minimax theorem: A journey through different mathematical contexts. <em>Archive for History of Exact Sciences</em> <em>56</em>, 1, 39–68. Available at: <a href="http://www.jstor.org/stable/41134130">http://www.jstor.org/stable/41134130</a> (Accessed: January 5, 2025).
+</div>
+<div id="ref-Osborne1994" class="csl-entry" role="listitem">
+<span class="smallcaps">Osborne, M.J. and Rubinstein, A.</span> 1994. <em>A course in game theory</em>. MIT Press.
 </div>
 <div id="ref-Sion1958" class="csl-entry" role="listitem">
 <span class="smallcaps">Sion, M.</span> 1958. On general minimax theorems. <em>Pacific Journal of Mathematics</em> <em>8</em>, 1, 171–176. DOI: <a href="https://doi.org/10.2140/pjm.1958.8.171">10.2140/pjm.1958.8.171</a>.
@@ -710,7 +1200,6 @@ Solution
 </div>
 </div>
 </section>
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
