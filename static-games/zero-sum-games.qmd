@@ -187,7 +187,7 @@ In a two player ZSG if $\underline v = \bar v$, then the quantity
 $$
 v \coloneqq \underline v = \bar v
 $$ 
-is called the **value** of the game. Any $(\text{maxmin}, \text{minmax})$ strategy of the players is called the **optimal strategy.**
+is called the **value** of the game. Any $(\text{maxmin}, \text{minmax})$ strategy of the players is called the **optimal strategy profile.**
 :::
 
 As we have seen earlier, a two player ZSG may not have a value _in pure strategies_. In the sequel, we will show that if we allow mixed strategies, then every finite two player ZSG has a value!
@@ -204,7 +204,7 @@ Consider a two player ZSG on the unit square with
 $$
 u(x,y) = 4xy - 2x - y + 3, \quad \forall x \in \ALPHABET X, y \in \ALPHABET Y.
 $$
-Does this game have a value? If so, find all optimal strategies. 
+Does this game have a value? If so, find all optimal strategy profiles 
 :::
 
 :::{.callout-note}
@@ -281,7 +281,7 @@ $$
 }
 $$
 
-Since $\underline v = \bar v = 2.5$, the game has a value of $2.5$. The unique optimal strategy is $(\tfrac 14, \tfrac 12)$. 
+Since $\underline v = \bar v = 2.5$, the game has a value of $2.5$. The unique optimal strategy profile is $(\tfrac 14, \tfrac 12)$. 
 
 :::
 
@@ -327,7 +327,7 @@ For a generalization that removes the compactness assumption, see @Sion1958.
 
 ## Mixed strategies in finite games
 
-We now revist the notion of mixed strategies in finite games. Recall that given a finite game $\mathscr{G} = \lange N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ and mixed strategies $σ = (σ_i)_{i \in N}$ for the players, the expected utility is defined as
+We now revist the notion of mixed strategies in finite games. Recall that given a finite game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ and mixed strategies $σ = (σ_i)_{i \in N}$ for the players, the expected utility is defined as
 \begin{equation} \label{eq:expected-utility}
   U_i(σ) = \sum_{s_1 \in \ALPHABET S_1} \cdots \sum_{s_N \in \ALPHABET S_N} 
   σ_1(s_1) \cdots σ_N(s_N) u_i(s_1, \dots, s_N)
@@ -368,3 +368,333 @@ For any finite game $\mathscr{G}$, its mixed extesion $\mathscr{G}^*$ has a valu
 
 Thus, we finally have a solution concept that always exists, albeit for a special subclass of games. 
 
+## Properties of optimal strategy profiles
+
+The value of a game has a nice geometric interpretation. 
+
+:::{#def-saddle-point}
+
+Let $\ALPHABET X$ and $\ALPHABET Y$ be sets and $f \colon \ALPHABET X × \ALPHABET  Y \to \reals$. A point $(x^*, y^*) \in \ALPHABET X × \ALPHABET  Y$ is said to be a **saddle point** of $f$ if
+\begin{align*}
+    f(x^*, y^*) &\ge f(x, y^*), & \forall x &\in \ALPHABET X \\
+    f(x^*, y^*) &\le f(x^*, y), & \forall y &\in \ALPHABET Y
+\end{align*}
+:::
+
+:::{.column-margin}
+![A function with a saddle point, image taken from Wikimedia](https://upload.wikimedia.org/wikipedia/commons/1/1e/Saddle_point.svg)
+:::
+The term saddle point comes from the fact that the typical two dimensional example of a function with a saddle point looks like a saddle of a horse (curves up in one direction and curves down in the other). 
+
+A key property of an optimal strategy profile is the following.
+
+:::{#thm-saddle-point}
+In a two player zero sum game, $(σ_1^*, σ_2^*)$ is a saddle point of the expected utility function $U$ if and only if $σ_1^*$ is an optimal strategy for player 1 and $σ_2^*$ is an optimal strategy for player 2. 
+
+In this case $U(σ_1^*, σ_2^*)$ is the value of the game. 
+:::
+
+:::{.callout-note}
+#### Proof
+This follows immediately from the definition of saddle point and that of the value of a game.
+:::
+
+In general, a ZSG can have more than one optimal strategy profile. Suppose $(σ_1^*, σ_2^*)$ and $(τ_1^*, τ_2^*)$ where $σ_1^* \neq τ_1^*$ and $σ_2^* \neq τ_2^*$ both satisfy
+$$
+  \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)}
+  U(σ_1, σ_2) =
+  \min_{σ_2 \in Δ(\ALPHABET S_2)} \max_{σ_1 \in Δ(\ALPHABET S_1)}
+  U(σ_1, σ_2) = v.
+$$
+Then, 
+
+- $U(σ_1^*, σ_2^*) = U(τ_1^*, τ_2^*)$
+
+    Hence, if a game has a value and multiple optimal strategy profiles, then each optimal strategy profiles gives the value of the game.
+
+- $U(σ_1^*, τ_2^*) = U(τ_1^*, σ_2^*) = v$
+
+    Hence, it does not matter which optimal strategy is chosen by players 1 and 2. Every combination of optimal strategies is an optimal strategy profile.
+
+The proof of this statement is left as an exercise (see @exr-switched-zsg).
+
+## Computing the value of ZSG
+
+We now consider how to compute the value of ZSG in mixed strategies. The key simplification is as follows. When computing the maxmin value
+$$
+  \underline v = \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2),
+$$
+consider the inner minimization problem for a fixed $σ_1 \in Δ(\ALPHABET S_1)$. In this case, the set of best resposes of $P_2$ will always include pure strategies. This is because, we can write
+$$
+  U(σ_1, σ_2) = \sum_{s_2 \in \ALPHABET S_2} σ_2(s_2) U(σ_1, s_2).
+$$
+Thus, if the minimizer $σ_2$ gives positive weights to pure strategies $s_{2,i}, s_{2,j}, s_{2,k}$, etc., each of them must have the same $U(σ_1, s_2)$; otherwise, we can omit putting positive weight on the pure strategy which has strictly large payoff and reduce the expected utility, which is not possible because $σ_2$ is a minimizer. 
+
+Therefore, when computing the maxmin value, we may consider
+$$
+\underline v = \max_{σ_1 \in Δ(\ALPHABET S_1)} 
+\textcolor{red}{ \min_{s_2 \in \ALPHABET S_2} } U(σ_1, \textcolor{red}{s_2}).
+$$
+
+By a similar argument, for minmax value, we may consider
+$$
+\bar v = \min_{σ_2 \in Δ(\ALPHABET S_2)} 
+\textcolor{red}{ \max_{s_1 \in \ALPHABET S_1} } U(\textcolor{red}{s_1}, σ_2).
+$$
+
+To illustrate how this simplification helps, we start with an example of a $2 × 2$ game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier. 
+
+:::{#exm-value-2x2}
+Find the value in mixed strategies of the game below:
+
+<table class="game1" align="center">
+  <tr>
+    <td></td>
+    <td>$\mathsf{L}$</td>
+    <td>$\mathsf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{T}$</td>
+    <td>$3$</td>
+    <td>$0$</td>
+  </tr>
+  <tr>
+    <td>$\mathsf{B}$</td>
+    <td>$1$</td>
+    <td>$2$</td>
+  </tr>
+</table>
+:::
+
+Suppose the row player is playing $σ_1 = (p, 1-p)$, i.e., it chooses action $\mathsf{T}$ with probability $p$ and action $\mathsf{B}$ with probability $1-p$. Then,
+
+\begin{alignat*}{2}
+  U_1(α_1, \mathsf{L}) &= 3p + (1-p) &&= 2p + 1, \\
+  U_1(α_1, \mathsf{R}) &= 2(1-p) &&= -2p + 2.
+\end{alignat*}
+ 
+[To be written]
+
+## Computing optimal strategy profile using linear programming
+
+The graphical method described in the previous section does not work if both players have more than two actions. In general, the optimal solution can be obtained using linear programming. 
+
+Let $(σ_1, σ_2)$ be a candidate optimal strategy profile. Then, it must satisfy
+\begin{align}
+  U(σ_1, s_2) &\ge v, & \forall s_2 &\in \ALPHABET S_2 
+  \label{eq:constraint-1}
+  \\
+  U(s_1, σ_2) &\le v, & \forall s_1 &\in \ALPHABET S_1.
+  \label{eq:constraint-2}
+\end{align}
+
+We can write \eqref{eq:constraint-1}--\eqref{eq:constraint-2} as two linear programs. Suppose $\ABS{\ALPHABET S_1} = n$ and $\ABS{\ALPHABET S_2} = m$. For the ease of notation, we assume that $\ALPHABET S_1 = \{1, \dots, n\}$ and $\ALPHABET S_2 = \{1, \dots, m\}$ and use $u(i,j)$ to denote the utility of player 1 (the maximizer) when player 1 plays $i \in \ALPHABET S_1$ and player 2 plays $j \in \ALPHABET S_2$. 
+
+Let 
+$$
+  σ_1 = (p_1, \dots, p_n)
+  \quad\text{and}\quad
+  σ_2 = (q_1, \dots, q_m)
+$$
+be an optimal strategy profile of the game and $v$ be the value. Then, \eqref{eq:constraint-1} and \eqref{eq:constraint-2} are equalent to the following linear programs.
+
+
+$$
+\bbox[5pt,border: 1px solid]{
+  \begin{gathered}
+    \max v \\
+    \text{s.t. } 
+    \begin{aligned}[t] 
+      & \sum_{i=1}^n p_i u(i,j) \ge v, \quad \forall j \in \ALPHABET S_2 \\
+      & p_i \ge 0, \quad \forall i \in \{1, \dots, n\} \\
+      & \sum_{i=1}^n p_i = 1
+   \end{aligned}
+  \end{gathered}}
+  \qquad 
+\bbox[5pt,border: 1px solid]{
+  \begin{gathered}
+    \min v \\
+    \text{s.t. } 
+    \begin{aligned}[t] 
+      & \sum_{j=1}^m q_j u(i,j) \le v, \quad \forall i \in \ALPHABET S_1 \\
+      & q_j \ge 0, \quad \forall j \in \{1, \dots, m\} \\
+      & \sum_{j=1}^m q_j = 1
+   \end{aligned}
+  \end{gathered}}
+$$ 
+
+See @exr-LP for an example.
+
+
+## Exercises {-}
+
+:::{#exr-zsg-pure}
+For each of the following games, find the value of the game and the optimal strategy profile.
+
+::::{layout-ncol=2}
+:::{.game-1}
+<table class="game1" align="center">
+<caption>Game 1</caption>
+  <tr>
+    <td></td>
+    <td>$\mathbf{L}$</td>
+    <td>$\mathbf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{T}$</td>
+    <td>$6$</td>
+    <td>$0$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{B}$</td>
+    <td>$-3$</td>
+    <td>$3$</td>
+  </tr>
+</table>
+:::
+
+:::{.game-2}
+<table class="game1" align="center">
+<caption>Game 2</caption>
+  <tr>
+    <td></td>
+    <td>$\mathbf{L}$</td>
+    <td>$\mathbf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{T}$</td>
+    <td>$-3$</td>
+    <td>$8$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{B}$</td>
+    <td>$4$</td>
+    <td>$4$</td>
+  </tr>
+</table>
+:::
+::::
+:::
+
+:::{#exr-zsg-mixed}
+Find the optimal strategy profile and the value of the following game.
+
+<table class="game1" align="center">
+  <tr>
+    <td></td>
+    <td>$\mathbf{L}$</td>
+    <td>$\mathbf{C}$</td>
+    <td>$\mathbf{R}$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{T}$</td>
+    <td>$0$</td>
+    <td>$4$</td>
+    <td>$6$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{M}$</td>
+    <td>$5$</td>
+    <td>$7$</td>
+    <td>$4$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{B}$</td>
+    <td>$9$</td>
+    <td>$6$</td>
+    <td>$3$</td>
+  </tr>
+</table>
+
+
+_Hint_: Use iterative elimination of strongly dominated strategies to first reduce the above to a $2 × 2$ game and then simplify the resulting game. 
+
+:::
+
+:::{#exr-switched-zsg}
+Suppose $(σ_1^*, σ_2^*)$ and $(τ_1^*, τ_2^*)$ both satisfy
+$$
+  \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)}
+  U(σ_1, σ_2) =
+  \min_{σ_2 \in Δ(\ALPHABET S_2)} \max_{σ_1 \in Δ(\ALPHABET S_1)}
+  U(σ_1, σ_2) = v.
+$$
+Prove that
+$$
+  U(σ_1^*, τ_2^*) = U(τ_1^*, σ_2^*) = v.
+$$
+
+_Hint_: Use @thm-saddle-point to argue that
+$$
+  U(τ_1^*, τ_2^*) \le U(τ_1^*, σ_2^*) \le U(σ_1^*, σ_2^*)
+  \quad\text{and}\quad
+  U(σ_1^*, σ_2^*) \le U(σ_1^*, τ_2^*) \le U(τ_1^*, τ_2^*).
+$$
+
+:::
+
+:::{#exr-LP}
+Use the LP formulation to find optimal strategy profile of the following games.
+
+::::{layout-ncol=2}
+:::{.game-1}
+<table class="game1" align="center">
+<caption>Game 1</caption>
+  <tr>
+    <td></td>
+    <td>$\mathbf{1}$</td>
+    <td>$\mathbf{2}$</td>
+    <td>$\mathbf{3}$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{1}$</td>
+    <td>$3$</td>
+    <td>$-1$</td>
+    <td>$2$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{2}$</td>
+    <td>$1$</td>
+    <td>$2$</td>
+    <td>$-2$</td>
+  </tr>
+</table>
+:::
+
+:::{.game-2}
+<table class="game1" align="center">
+<caption>Game 2</caption>
+  <tr>
+    <td></td>
+    <td>$\mathbf{1}$</td>
+    <td>$\mathbf{2}$</td>
+    <td>$\mathbf{3}$</td>
+    <td>$\mathbf{4}$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{1}$</td>
+    <td>$6$</td>
+    <td>$0$</td>
+    <td>$5$</td>
+    <td>$6$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{2}$</td>
+    <td>$-3$</td>
+    <td>$3$</td>
+    <td>$-4$</td>
+    <td>$3$</td>
+  </tr>
+  <tr>
+    <td>$\mathbf{3}$</td>
+    <td>$8$</td>
+    <td>$1$</td>
+    <td>$2$</td>
+    <td>$2$</td>
+  </tr>
+</table>
+:::
+::::
+
+You may use any programming language to solve the linear program.
+:::
