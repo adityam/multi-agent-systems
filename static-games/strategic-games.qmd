@@ -413,11 +413,14 @@ Remarks
 Rationalizable equilibrium are derived under the assumption of common knowledge of rationality, which appears to be a benign assumption but is not. To see why common knowledge of rationality is a strong assumption, consider the following example, which is known as the _beauty contest game_.
 
 :::{.callout-note}
-### Beauty contest game
+### $p$-Beauty contest game
 
-Each player picks a real number between 0 and 100. The person who was closest to the average of the group wins a prize. 
+Each player picks a real number between 0 and 100. The person who was closest to _half_ of the average of the group wins a prize. 
 
 :::
+
+[:Beauty contest games](https://en.wikipedia.org/wiki/Keynesian_beauty_contest) were introduced by @Keynes1936, where all participants have to guess the average. In $p$-beauty contest games, introduced by @Moulin1986, participants have to guess closest to $p$ times the average, with $p \in (0, 1)$. For a discussion of an experimental study of $p$-beauty contest games, see @Nagel1995. 
+
 
 How will you play this game?
     
