@@ -289,8 +289,8 @@ The previous example is an illustration of what is known as the [:Minimax Theore
 
 Recall that a function $f \colon \ALPHABET X × \ALPHABET Y \to \reals$ is called **bilinear** if it is linear in each argument separately, i.e.,
 
-- $$f(x_1 + x_2, y) = f(x_1,y) + f(x_2, y)$ and $f(α x, y) = α f(x,y)$;
-- $$f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2)$ and $f(x, αy) = α f(x,y)$. 
+- $f(x_1 + x_2, y) = f(x_1,y) + f(x_2, y)$ and $f(α x, y) = α f(x,y)$;
+- $f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2)$ and $f(x, αy) = α f(x,y)$. 
 
 Note that the utility function in @exm-unit-square is bilinear. 
 
@@ -360,7 +360,7 @@ U_1(σ_1, σ_2) + U_2(σ_1, σ_2)
 \end{align*}
 Thus, we may simply use $U$ to denote the expected utility of $P_1$ with the understanding that the expected utility of $P_2$ is $-U$. 
 
-Furthermore, observe that $U$ is bilinear. Thus, we can conclude the following from @thm-von-Nuemann.
+Furthermore, observe that $U$ is bilinear. Thus, we can conclude the following from @thm-von-Neumann.
 
 :::{#thm-ZSG-value}
 For any finite game $\mathscr{G}$, its mixed extesion $\mathscr{G}^*$ has a value, which is called **value of $\mathscr{G}$ in mixed strategies.**
