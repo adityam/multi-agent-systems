@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-08">
+<meta name="dcterms.date" content="2025-01-15">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -165,10 +165,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-08">
-<meta name="citation_cover_date" content="2025-01-08">
+<meta name="citation_publication_date" content="2025-01-15">
+<meta name="citation_cover_date" content="2025-01-15">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-08">
+<meta name="citation_online_date" content="2025-01-15">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -353,7 +353,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 8, 2025</p>
+      <p class="date">January 15, 2025</p>
     </div>
   </div>
   
@@ -684,8 +684,8 @@ Solution
 <p>The previous example is an illustration of what is known as the <a href="https://en.wikipedia.org/wiki/Minimax_theorem">:Minimax Theorem</a>. One of the foundational results of Game Theory is the von Neumann minimax theorem <span class="citation" data-cites="vonNeumann1928">(<a href="../references.html#ref-vonNeumann1928" role="doc-biblioref">von Neumann 1928</a>)</span>.</p>
 <p>Recall that a function <span class="math inline">\(f \colon \ALPHABET X × \ALPHABET Y \to \reals\)</span> is called <strong>bilinear</strong> if it is linear in each argument separately, i.e.,</p>
 <ul>
-<li>$<span class="math inline">\(f(x_1 + x_2, y) = f(x_1,y) + f(x_2, y)\)</span> and <span class="math inline">\(f(α x, y) = α f(x,y)\)</span>;</li>
-<li>$<span class="math inline">\(f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2)\)</span> and <span class="math inline">\(f(x, αy) = α f(x,y)\)</span>.</li>
+<li><span class="math inline">\(f(x_1 + x_2, y) = f(x_1,y) + f(x_2, y)\)</span> and <span class="math inline">\(f(α x, y) = α f(x,y)\)</span>;</li>
+<li><span class="math inline">\(f(x, y_1 + y_2) = f(x, y_1) + f(x, y_2)\)</span> and <span class="math inline">\(f(x, αy) = α f(x,y)\)</span>.</li>
 </ul>
 <p>Note that the utility function in <a href="#exm-unit-square" class="quarto-xref">Example&nbsp;<span>2.3</span></a> is bilinear.</p>
 <div id="thm-von-Neumann" class="theorem">
@@ -734,7 +734,7 @@ U_1(σ_1, σ_2) + U_2(σ_1, σ_2)
 σ_1(s_1) σ_2(s_2) \underbrace{\bigl[ u_1(s_1,s_2) + u_2(s_1, s_2) \bigr]}_{=0} \\
 &amp;= 0.
 \end{align*}\]</span> Thus, we may simply use <span class="math inline">\(U\)</span> to denote the expected utility of <span class="math inline">\(P_1\)</span> with the understanding that the expected utility of <span class="math inline">\(P_2\)</span> is <span class="math inline">\(-U\)</span>.</p>
-<p>Furthermore, observe that <span class="math inline">\(U\)</span> is bilinear. Thus, we can conclude the following from <span class="quarto-unresolved-ref">?thm-von-Nuemann</span>.</p>
+<p>Furthermore, observe that <span class="math inline">\(U\)</span> is bilinear. Thus, we can conclude the following from <a href="#thm-von-Neumann" class="quarto-xref">Theorem&nbsp;<span>2.2</span></a>.</p>
 <div id="thm-ZSG-value" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 2.4</strong></span> For any finite game <span class="math inline">\(\mathscr{G}\)</span>, its mixed extesion <span class="math inline">\(\mathscr{G}^*\)</span> has a value, which is called <strong>value of <span class="math inline">\(\mathscr{G}\)</span> in mixed strategies.</strong></p>
 </div>
