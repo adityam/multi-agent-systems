@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-15">
+<meta name="dcterms.date" content="2025-01-17">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -165,10 +165,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-15">
-<meta name="citation_cover_date" content="2025-01-15">
+<meta name="citation_publication_date" content="2025-01-17">
+<meta name="citation_cover_date" content="2025-01-17">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-15">
+<meta name="citation_online_date" content="2025-01-17">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -353,7 +353,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 15, 2025</p>
+      <p class="date">January 17, 2025</p>
     </div>
   </div>
   
@@ -532,7 +532,7 @@ Proof
 \bar v \ge u(s_1^*, s_2^*).
 \end{equation}\]</span></p>
 <p>Combining <span class="math inline">\(\eqref{eq:maxmin-bound}\)</span> and <span class="math inline">\(\eqref{eq:minmax-bound}\)</span>, we get <span class="math display">\[
-\underline v \ge u(s_1^*, s_2^*) \le \bar v.
+\underline v \le u(s_1^*, s_2^*) \le \bar v.
 \]</span></p>
 </div>
 </div>
@@ -889,7 +889,7 @@ Proof
    \end{aligned}
   \end{gathered}}
 \]</span></p>
-<p>See <a href="#exr-LP" class="quarto-xref">Exercise&nbsp;<span>2.4</span></a> for an example.</p>
+<p>See <a href="#exr-LP" class="quarto-xref">Exercise&nbsp;<span>2.5</span></a> for an example.</p>
 </section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
@@ -1057,8 +1057,19 @@ Game 2
   U(σ_1^*, σ_2^*) \le U(σ_1^*, τ_2^*) \le U(τ_1^*, τ_2^*).
 \]</span></p>
 </div>
+<div id="exr-symmetric-games" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> A zero-sum game with <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2\)</span> is called <strong>symmetric</strong> if the utlity function is skew-symmetric, i.e., <span class="math display">\[
+  u(s_1, s_2) = - u(s_2, s_1), \quad \forall s_1, s_2 \in \ALPHABET S_1.
+\]</span> An example of a symmetric game is rock-paper-scissors.</p>
+<p>Let <span class="math inline">\(\mathscr{G}\)</span> be a symmetric game. Show that:</p>
+<ol type="a">
+<li><p>The value of <span class="math inline">\(\mathscr{G}\)</span> is mixed strategies is zero.</p></li>
+<li><p>If <span class="math inline">\((σ_1^*, σ_2^*)\)</span> is an optimal (mixed) strategy for <span class="math inline">\(\mathscr{G}\)</span>, then <span class="math inline">\((σ_2^*, σ_1^*)\)</span> is also an optimal (mixed) strategy.</p></li>
+<li><p>Use part b and <a href="#exr-switched-zsg" class="quarto-xref">Exercise&nbsp;<span>2.3</span></a> to argue that a symmetric zero-sum game always has a <em>symmetric</em> optimal (mixed) strategy of the form <span class="math inline">\((σ^*, σ^*)\)</span>, where both players are playing the same mixed strategy.</p></li>
+</ol>
+</div>
 <div id="exr-LP" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> Use the LP formulation to find optimal strategy profile of the following games.</p>
+<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> Use the LP formulation to find optimal strategy profile of the following games.</p>
 <div>
 
 </div>
