@@ -143,7 +143,7 @@ Hence, by taking $s_1 = s_1^*$, we get
 
 Combining \eqref{eq:maxmin-bound} and \eqref{eq:minmax-bound}, we get
 $$
-\underline v \ge u(s_1^*, s_2^*) \le \bar v.
+\underline v \le u(s_1^*, s_2^*) \le \bar v.
 $$
 :::
 
@@ -630,6 +630,23 @@ $$
   \quad\text{and}\quad
   U(σ_1^*, σ_2^*) \le U(σ_1^*, τ_2^*) \le U(τ_1^*, τ_2^*).
 $$
+
+:::
+
+:::{#exr-symmetric-games}
+A zero-sum game with $\ALPHABET S_1 = \ALPHABET S_2$ is called **symmetric** if the utlity function is skew-symmetric, i.e.,
+$$
+  u(s_1, s_2) = - u(s_2, s_1), \quad \forall s_1, s_2 \in \ALPHABET S_1.
+$$
+An example of a symmetric game is rock-paper-scissors. 
+
+Let $\mathscr{G}$ be a symmetric game. Show that:
+
+a. The value of $\mathscr{G}$ is mixed strategies is zero.
+
+b. If $(σ_1^*, σ_2^*)$ is an optimal (mixed) strategy for $\mathscr{G}$, then $(σ_2^*, σ_1^*)$ is also an optimal (mixed) strategy. 
+
+c. Use part b and @exr-switched-zsg to argue that a symmetric zero-sum game always has a _symmetric_ optimal (mixed) strategy of the form $(σ^*, σ^*)$, where both players are playing the same mixed strategy.
 
 :::
 
