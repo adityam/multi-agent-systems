@@ -386,7 +386,7 @@ We can continue this reasoning. In the reduced game $\mathscr{G}_1$, strategy $\
   </tr>
 </table>
 
-Finally, we can eliminate strategy $\mathsf{L}$ for $P_1$, which is strictly dominated by $\mathsf{C}$ to obtain game $\mathscr{G}_3$ shown below.
+Finally, we can eliminate strategy $\mathsf{L}$ for $P_2$, which is strictly dominated by $\mathsf{C}$ to obtain game $\mathscr{G}_3$ shown below.
 
 <table class="game" align="center">
 <caption>Reduced game $\mathscr{G}_3$</caption>
@@ -653,7 +653,7 @@ For example, consider the matching pennies game where $σ_1 = (p, 1-p)$. Then,
 
 \begin{align*}
 U_1(σ_1, H) &= p - (1-p) = 2p - 1, \\
-U_1(σ_1, T) &= -q + (1-p) = 1 - 2p.
+U_1(σ_1, T) &= -p + (1-p) = 1 - 2p.
 \end{align*}
 
 We can think of a mixed strategy as a _virtual row_ or _virtual column_ in the
@@ -681,9 +681,9 @@ bimatrix representation of the game as follows:
   </tr>
   <tr>
     <td>$σ_1$</td>
-    <td>$2q-1$</td>
+    <td>$2p-1$</td>
     <td>$\bullet$</td>
-    <td>$1-2q$</td>
+    <td>$1-2p$</td>
     <td>$\bullet$</td>
   </tr>
 </table>
@@ -1020,7 +1020,7 @@ never-best response strategies.
 * After first round of elimination, we have $\ALPHABET S_1 = \ALPHABET S_2 = 
 \left[ 0, \frac{M-c}{2} \right]$. 
 * After second round of elimination, we have $\ALPHABET S_1 = \ALPHABET S_2 = 
-\left[ \frac{M-c}{4}, \frac{M-c}{4} \right]$. 
+\left[ \frac{M-c}{4}, \frac{M-c}{2} \right]$. 
 * ...
 
 Continuing this way, we can show that the process converges to the
