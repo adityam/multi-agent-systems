@@ -2,7 +2,7 @@
 course:
   term: "Winter 2025"
   office-hours: "TBD"
-  teaching-assistants: "TBD"
+  teaching-assistants: "Ziqi Huang"
   mid-term: "March 12"
   lectures:
     - "2:35pm–3:55pm Monday, Wednesday (ENGTR 2120)"
