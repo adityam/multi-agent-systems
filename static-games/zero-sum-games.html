@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-17">
+<meta name="dcterms.date" content="2025-01-18">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -45,7 +45,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -93,6 +93,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script>
 window.MathJax = {
   tex: {
@@ -132,6 +133,9 @@ window.MathJax = {
 <script>
   const { createApp, ref } = Vue
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -165,10 +169,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-17">
-<meta name="citation_cover_date" content="2025-01-17">
+<meta name="citation_publication_date" content="2025-01-18">
+<meta name="citation_cover_date" content="2025-01-18">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-17">
+<meta name="citation_online_date" content="2025-01-18">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -353,7 +357,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 17, 2025</p>
+      <p class="date">January 18, 2025</p>
     </div>
   </div>
   
@@ -540,66 +544,11 @@ Proof
 <p>As shown in <a href="#exm-matching-pennies" class="quarto-xref">Example&nbsp;<span>2.1</span></a>, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.</p>
 <div id="exm-value-zsg" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.2</strong></span> Find the maxmin and minmax value of the following game.</p>
-<table class="game1" align="center">
-<caption>
-An game where <span class="math inline">\(\underline v = \bar v\)</span>
-</caption>
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{M}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-<td>
-<span class="math inline">\(-1\)</span>
-</td>
-<td>
-<span class="math inline">\(-2\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{C}\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(-2\)</span>
-</td>
-<td>
-<span class="math inline">\(-1\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="3ba8136d" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="76">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>A game where $\underline v = \bar v$.</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
 </div>
 <div id="def-value-zsg" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 2.1</strong></span> In a two player ZSG if <span class="math inline">\(\underline v = \bar v\)</span>, then the quantity <span class="math display">\[
@@ -808,40 +757,11 @@ Proof
 <p>To illustrate how this simplification helps, we start with an example of a <span class="math inline">\(2 × 2\)</span> game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier.</p>
 <div id="exm-value-2x2" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.4</strong></span> Find the value in mixed strategies of the game below:</p>
-<table class="game1" align="center">
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathsf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathsf{R}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathsf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="d522dacf" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="77">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
 </div>
 <p>Suppose the row player is playing <span class="math inline">\(σ_1 = (p, 1-p)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{T}\)</span> with probability <span class="math inline">\(p\)</span> and action <span class="math inline">\(\mathsf{B}\)</span> with probability <span class="math inline">\(1-p\)</span>. Then,</p>
 <p><span class="math display">\[\begin{alignat*}{2}
@@ -901,145 +821,29 @@ Proof
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game1" align="center">
-<caption>
-Game 1
-</caption>
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathbf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{R}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(6\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(-3\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="f669b86b" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="78">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$6$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$-3$</td><td>$3$</td></tr></tbody></table>
+</div>
+</div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game1" align="center">
-<caption>
-Game 2
-</caption>
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathbf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{R}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(-3\)</span>
-</td>
-<td>
-<span class="math inline">\(8\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(4\)</span>
-</td>
-<td>
-<span class="math inline">\(4\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="cfea6653" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="79">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$-3$</td><td>$8$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="exr-zsg-mixed" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Find the optimal strategy profile and the value of the following game.</p>
-<table class="game1" align="center">
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathbf{L}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{C}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{R}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{T}\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(4\)</span>
-</td>
-<td>
-<span class="math inline">\(6\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{M}\)</span>
-</td>
-<td>
-<span class="math inline">\(5\)</span>
-</td>
-<td>
-<span class="math inline">\(7\)</span>
-</td>
-<td>
-<span class="math inline">\(4\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{B}\)</span>
-</td>
-<td>
-<span class="math inline">\(9\)</span>
-</td>
-<td>
-<span class="math inline">\(6\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="2ebc4980" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="80">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$4$</td><td>$6$</td></tr><tr><td>$\mathsf{M}$</td><td>$5$</td><td>$7$</td><td>$4$</td></tr><tr><td>$\mathsf{B}$</td><td>$9$</td><td>$6$</td><td>$3$</td></tr></tbody></table>
+</div>
+</div>
 <p><em>Hint</em>: Use iterative elimination of strongly dominated strategies to first reduce the above to a <span class="math inline">\(2 × 2\)</span> game and then simplify the resulting game.</p>
 </div>
 <div id="exr-switched-zsg" class="theorem exercise">
@@ -1076,126 +880,18 @@ Game 2
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game1" align="center">
-<caption>
-Game 1
-</caption>
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathbf{1}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{2}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{3}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{1}\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-<td>
-<span class="math inline">\(-1\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{2}\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-<td>
-<span class="math inline">\(-2\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="e3f636e7" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="81">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td></tr><tr><td>$\mathsf{1}$</td><td>$3$</td><td>$-1$</td><td>$2$</td></tr><tr><td>$\mathsf{2}$</td><td>$1$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
+</div>
+</div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game1" align="center">
-<caption>
-Game 2
-</caption>
-<tbody><tr>
-<td>
-</td>
-<td>
-<span class="math inline">\(\mathbf{1}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{2}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{3}\)</span>
-</td>
-<td>
-<span class="math inline">\(\mathbf{4}\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{1}\)</span>
-</td>
-<td>
-<span class="math inline">\(6\)</span>
-</td>
-<td>
-<span class="math inline">\(0\)</span>
-</td>
-<td>
-<span class="math inline">\(5\)</span>
-</td>
-<td>
-<span class="math inline">\(6\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{2}\)</span>
-</td>
-<td>
-<span class="math inline">\(-3\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-<td>
-<span class="math inline">\(-4\)</span>
-</td>
-<td>
-<span class="math inline">\(3\)</span>
-</td>
-</tr>
-<tr>
-<td>
-<span class="math inline">\(\mathbf{3}\)</span>
-</td>
-<td>
-<span class="math inline">\(8\)</span>
-</td>
-<td>
-<span class="math inline">\(1\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-<td>
-<span class="math inline">\(2\)</span>
-</td>
-</tr>
-</tbody></table>
+<div id="821bc8b4" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="82">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td><td>$\mathsf{4}$</td></tr><tr><td>$\mathsf{1}$</td><td>$6$</td><td>$0$</td><td>$5$</td><td>$6$</td></tr><tr><td>$\mathsf{2}$</td><td>$-3$</td><td>$3$</td><td>$-4$</td><td>$3$</td></tr><tr><td>$\mathsf{3}$</td><td>$8$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1798,4 +1494,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/zero-sum-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/zero-sum-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
