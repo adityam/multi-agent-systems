@@ -4,9 +4,33 @@ format:
   html:
     include-in-header: 
      - ../static/html/vue.html
+
+execute:
+  echo: false
+  freeze: true
+  cache: true
 ---
 
 Recall the game of matching pennies.
+
+```{julia}
+#| output: false
+# Install packages
+
+# using Pkg; Pkg.activate(".")
+# for pkg in ["IJulia", "Revise", "Hyperscript"]
+#    Pkg.add(pkg)
+# end
+# 
+# # Installing Jupyter Cache
+# Pkg.add("Conda")
+# using Conda
+# Conda.add("jupyter-cache")
+
+using Revise
+
+include("../julia/zero-sum-games.jl")
+```
 
 <table class="game" align="center">
 <caption>Matching pennies game</caption>
@@ -152,33 +176,10 @@ As shown in @exm-matching-pennies, in general the inequality is strict. However,
 :::{#exm-value-zsg}
 Find the maxmin and minmax value of the following game.
 
-<table class="game1" align="center">
-<caption>An game where $\underline v = \bar v$</caption>
-  <tr>
-    <td></td>
-    <td>$\mathsf{L}$</td>
-    <td>$\mathsf{M}$</td>
-    <td>$\mathsf{R}$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{T}$</td>
-    <td>$2$</td>
-    <td>$-1$</td>
-    <td>$-2$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{C}$</td>
-    <td>$1$</td>
-    <td>$0$</td>
-    <td>$1$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{B}$</td>
-    <td>$-2$</td>
-    <td>$-1$</td>
-    <td>$2$</td>
-  </tr>
-</table>
+```{julia}
+game1(["T", "M", "B"], ["L", "C", "R"], [2 -1 -2; 1 0 1; -2 -1 2];
+      caption="A game where \$\\underline v = \\bar v\$.")
+```
 :::
 
 
@@ -447,23 +448,9 @@ To illustrate how this simplification helps, we start with an example of a $2 ×
 :::{#exm-value-2x2}
 Find the value in mixed strategies of the game below:
 
-<table class="game1" align="center">
-  <tr>
-    <td></td>
-    <td>$\mathsf{L}$</td>
-    <td>$\mathsf{R}$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{T}$</td>
-    <td>$3$</td>
-    <td>$0$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{B}$</td>
-    <td>$1$</td>
-    <td>$2$</td>
-  </tr>
-</table>
+```{julia}
+game1(["T", "B"], ["L", "R"], [3 0; 1 2])
+```
 :::
 
 Suppose the row player is playing $σ_1 = (p, 1-p)$, i.e., it chooses action $\mathsf{T}$ with probability $p$ and action $\mathsf{B}$ with probability $1-p$. Then,
@@ -533,45 +520,15 @@ For each of the following games, find the value of the game and the optimal stra
 
 ::::{layout-ncol=2}
 :::{.game-1}
-<table class="game1" align="center">
-<caption>Game 1</caption>
-  <tr>
-    <td></td>
-    <td>$\mathbf{L}$</td>
-    <td>$\mathbf{R}$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{T}$</td>
-    <td>$6$</td>
-    <td>$0$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{B}$</td>
-    <td>$-3$</td>
-    <td>$3$</td>
-  </tr>
-</table>
+```{julia}
+game1(["T", "B"], ["L", "R"], [6 0; -3 3]; caption="Game 1")
+```
 :::
 
 :::{.game-2}
-<table class="game1" align="center">
-<caption>Game 2</caption>
-  <tr>
-    <td></td>
-    <td>$\mathbf{L}$</td>
-    <td>$\mathbf{R}$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{T}$</td>
-    <td>$-3$</td>
-    <td>$8$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{B}$</td>
-    <td>$4$</td>
-    <td>$4$</td>
-  </tr>
-</table>
+```{julia}
+game1(["T", "B"], ["L", "R"], [-3 8; 4 4]; caption="Game 2")
+```
 :::
 ::::
 :::
@@ -579,33 +536,9 @@ For each of the following games, find the value of the game and the optimal stra
 :::{#exr-zsg-mixed}
 Find the optimal strategy profile and the value of the following game.
 
-<table class="game1" align="center">
-  <tr>
-    <td></td>
-    <td>$\mathbf{L}$</td>
-    <td>$\mathbf{C}$</td>
-    <td>$\mathbf{R}$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{T}$</td>
-    <td>$0$</td>
-    <td>$4$</td>
-    <td>$6$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{M}$</td>
-    <td>$5$</td>
-    <td>$7$</td>
-    <td>$4$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{B}$</td>
-    <td>$9$</td>
-    <td>$6$</td>
-    <td>$3$</td>
-  </tr>
-</table>
-
+```{julia}
+game1(["T", "M", "B"], ["L", "C", "R"], [0 4 6; 5 7 4; 9 6 3])
+```
 
 _Hint_: Use iterative elimination of strongly dominated strategies to first reduce the above to a $2 × 2$ game and then simplify the resulting game. 
 
@@ -655,61 +588,15 @@ Use the LP formulation to find optimal strategy profile of the following games.
 
 ::::{layout-ncol=2}
 :::{.game-1}
-<table class="game1" align="center">
-<caption>Game 1</caption>
-  <tr>
-    <td></td>
-    <td>$\mathbf{1}$</td>
-    <td>$\mathbf{2}$</td>
-    <td>$\mathbf{3}$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{1}$</td>
-    <td>$3$</td>
-    <td>$-1$</td>
-    <td>$2$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{2}$</td>
-    <td>$1$</td>
-    <td>$2$</td>
-    <td>$-2$</td>
-  </tr>
-</table>
+```{julia}
+game1([1, 2], [1, 2, 3], [3 -1 2; 1 2 -2]; caption="Game 1")
+```
 :::
 
 :::{.game-2}
-<table class="game1" align="center">
-<caption>Game 2</caption>
-  <tr>
-    <td></td>
-    <td>$\mathbf{1}$</td>
-    <td>$\mathbf{2}$</td>
-    <td>$\mathbf{3}$</td>
-    <td>$\mathbf{4}$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{1}$</td>
-    <td>$6$</td>
-    <td>$0$</td>
-    <td>$5$</td>
-    <td>$6$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{2}$</td>
-    <td>$-3$</td>
-    <td>$3$</td>
-    <td>$-4$</td>
-    <td>$3$</td>
-  </tr>
-  <tr>
-    <td>$\mathbf{3}$</td>
-    <td>$8$</td>
-    <td>$1$</td>
-    <td>$2$</td>
-    <td>$2$</td>
-  </tr>
-</table>
+```{julia}
+game1([1, 2, 3], [1, 2, 3, 4], [6  0 5 6; -3 3 -4 3; 8 1 2 2]; caption="Game 2")
+```
 :::
 ::::
 

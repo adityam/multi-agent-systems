@@ -76,6 +76,17 @@ format:
       - _extensions/schochastics/nutshell/nutshell.lua
     published-title: Updated
     date: last-modified
+    notebook-links: inline
+
+    embed-resources: false
+    smooth-scroll: true
+
+    jupyter: julia-1.9
+    freeze: true
+
+    toc: true
+    number-sections: true
+
 
 
 
