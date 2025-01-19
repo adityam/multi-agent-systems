@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-18">
+<meta name="dcterms.date" content="2025-01-19">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -169,10 +169,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-18">
-<meta name="citation_cover_date" content="2025-01-18">
+<meta name="citation_publication_date" content="2025-01-19">
+<meta name="citation_cover_date" content="2025-01-19">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-18">
+<meta name="citation_online_date" content="2025-01-19">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -357,7 +357,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 18, 2025</p>
+      <p class="date">January 19, 2025</p>
     </div>
   </div>
   
@@ -544,7 +544,7 @@ Proof
 <p>As shown in <a href="#exm-matching-pennies" class="quarto-xref">Example&nbsp;<span>2.1</span></a>, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.</p>
 <div id="exm-value-zsg" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.2</strong></span> Find the maxmin and minmax value of the following game.</p>
-<div id="3ba8136d" class="cell" data-execution_count="2">
+<div id="3ba8136d" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="76">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>A game where $\underline v = \bar v$.</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -590,6 +590,29 @@ Solution
 <li>If the slope is positive, then the function is inreasing in <span class="math inline">\(y\)</span> and the miniizer is <span class="math inline">\(0\)</span>.</li>
 <li>If the slope is negative, then the function is decreasing in <span class="math inline">\(y\)</span> and the minimizer is <span class="math inline">\(1\)</span>.</li>
 </ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="fig-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/svg/games-on-unit-square1.svg" class="img-fluid figure-img"></p>
+<figcaption>Minimizing a linear function with positive slope</figcaption>
+</figure>
+</div>
+</div>
+<div class="fig-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/svg/games-on-unit-square2.svg" class="img-fluid figure-img"></p>
+<figcaption>Minimizing a linear function with negative slope</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p>Therefore, we have the following: <span class="math display">\[
   \min_{y \in [0,1]} u(x,y) =
   \begin{cases}
@@ -598,8 +621,17 @@ Solution
    -2x + 3, &amp; \text{if } x &gt; \tfrac 14
   \end{cases}
 \]</span></p>
-<p>The plot of <span class="math inline">\(\min_{y \in [0,1]} u(x,y)\)</span> is shown below.</p>
-<!-- TODO: Add plot -->
+<p>The plot of <span class="math inline">\(\min_{y \in [0,1]} u(x,y)\)</span> is shown below in <a href="#fig-maxmin-p1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+<div id="fig-maxmin-p1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-maxmin-p1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/games-on-unit-square3.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-maxmin-p1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Plot of <span class="math inline">\(\min_{y \in [0,1]} u(x,y)\)</span>
+</figcaption>
+</figure>
+</div>
 <p>As we can see from the plot, <span class="math display">\[
 \bbox[5pt,border: 1px solid]{
   \underline v =
@@ -619,7 +651,17 @@ Solution
     3y + 1, &amp; \text{if } y &gt; \tfrac 12
   \end{cases}
 \]</span></p>
-<p>The plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)</span> is shown below.</p>
+<p>The plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)</span> is shown below <a href="#fig-maxmin-p2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>.</p>
+<div id="fig-maxmin-p2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-maxmin-p2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/games-on-unit-square4.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-maxmin-p2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)</span>
+</figcaption>
+</figure>
+</div>
 <!-- TODO: Add plot -->
 <p>As we can see from the plot, <span class="math display">\[
 \bbox[5pt,border: 1px solid]{
@@ -757,7 +799,7 @@ Proof
 <p>To illustrate how this simplification helps, we start with an example of a <span class="math inline">\(2 × 2\)</span> game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier.</p>
 <div id="exm-value-2x2" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.4</strong></span> Find the value in mixed strategies of the game below:</p>
-<div id="d522dacf" class="cell" data-execution_count="3">
+<div id="d522dacf" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="77">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -821,14 +863,14 @@ Proof
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="f669b86b" class="cell" data-execution_count="4">
+<div id="f669b86b" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="78">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$6$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$-3$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="cfea6653" class="cell" data-execution_count="5">
+<div id="cfea6653" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="79">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$-3$</td><td>$8$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
@@ -839,7 +881,7 @@ Proof
 </div>
 <div id="exr-zsg-mixed" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Find the optimal strategy profile and the value of the following game.</p>
-<div id="2ebc4980" class="cell" data-execution_count="6">
+<div id="2ebc4980" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display" data-execution_count="80">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$4$</td><td>$6$</td></tr><tr><td>$\mathsf{M}$</td><td>$5$</td><td>$7$</td><td>$4$</td></tr><tr><td>$\mathsf{B}$</td><td>$9$</td><td>$6$</td><td>$3$</td></tr></tbody></table>
 </div>
@@ -880,14 +922,14 @@ Proof
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="e3f636e7" class="cell" data-execution_count="7">
+<div id="e3f636e7" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="81">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td></tr><tr><td>$\mathsf{1}$</td><td>$3$</td><td>$-1$</td><td>$2$</td></tr><tr><td>$\mathsf{2}$</td><td>$1$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="821bc8b4" class="cell" data-execution_count="8">
+<div id="821bc8b4" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="82">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td><td>$\mathsf{4}$</td></tr><tr><td>$\mathsf{1}$</td><td>$6$</td><td>$0$</td><td>$5$</td><td>$6$</td></tr><tr><td>$\mathsf{2}$</td><td>$-3$</td><td>$3$</td><td>$-4$</td><td>$3$</td></tr><tr><td>$\mathsf{3}$</td><td>$8$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
