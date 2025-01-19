@@ -1,0 +1,198 @@
+\setupbodyfont[lucida,8pt]
+
+\definecolor  [darkred]    [r=0.84, g=0.11, b=0.1] 
+\definecolor  [darkblue]   [r=0.1,  g=0.11, b=0.84]
+\definecolor  [darkgreen]  [g=0.7]
+
+\definecolor  [highlight]  [h=F47C00] % PMS 1505
+
+\definecolor  [lightred]    [a=1, t=0.5, r=1, g=.71, b=.75]
+\definecolor  [lightblue]   [a=1, t=0.5, h=87cefa]
+\definecolor  [lightgreen]  [a=1, t=0.5, g=0.95,b=0.8,r=0.8] 
+
+\definecolor  [lightgray]   [s=0.7]
+
+
+\startnotmode[verbose]
+\startluacode
+  local silent = {"structure", "resolvers", "source", 
+  "colors", "open source", "close source", "floatblocks", "loading",
+  "system", "publications", "mkiv lua stats", "languages"}
+  for i=1,#silent do
+      logs.disable(silent[i])
+  end
+\stopluacode
+\stopnotmode
+
+\enabletrackers[metapost.log]
+
+\startMPdefinitions
+  presetparameters "axis" [
+    xmin = 0, 
+    xmax = 1, 
+    ymin = 0,
+    ymax = 4, 
+
+    dx = 0.1,
+    dy = 1.0,
+
+    sx = 4cm,
+    sy = 0.4cm, % sx*dx/dy,
+
+    show_labels = true;
+
+    style = "\switchtobodyfont[small]",
+  ]
+
+  def startaxis = applyparameters "axis" "do_startaxis" enddef ;
+
+  def stopaxis = popparameters "axis" ; endgroup; enddef ;
+
+  def do_startaxis = 
+      begingroup ; 
+      pushparameters "axis";
+
+      newnumeric xmin, xmax, ymin, ymax;
+      xmin := getparameter "xmin";
+      xmax := getparameter "xmax";
+      ymin := getparameter "ymin";
+      ymax := getparameter "ymax";
+
+      newnumeric sx, sy;
+      sx := getparameter "sx";
+      sy := getparameter "sy";
+
+      newnumeric dx, dy;
+      dx := getparameter "dx";
+      dy := getparameter "dy";
+
+      newstring style;
+      % FIXME: Cannot read using getparameter
+      style = "\switchtobodyfont[small]";
+      % style := getparameter "style";
+
+      newboolean show_labels;
+      show_labels  := getparameter "show_labels";
+
+      newpath xaxis, yaxis;
+
+      xaxis := (xmin*sx, 0) -- (xmax*sx, 0);
+      yaxis := (0, ymin*sy) -- (0, ymax*sy);
+
+      % DRAW x-axis; 
+      for y = -dy step -dy until ymin : 
+         draw xaxis shifted (0, y*sy)
+               withpen pencircle scaled 0.25bp withcolor "lightgray";
+      endfor
+
+      for y = dy step dy until ymax : 
+         draw xaxis shifted (0, y*sy)
+               withpen pencircle scaled 0.25bp withcolor "lightgray";
+      endfor
+
+      for y = -dy step -dy until ymin : 
+         draw xaxis shifted (0, y*sy)
+               withpen pencircle scaled 0.25bp withcolor "lightgray";
+      endfor
+
+      if ymin <= 0 : draw xaxis  fi;
+      % draw xaxis shifted point 0 of yaxis ; 
+      % draw xaxis shifted point 1 of yaxis ;
+
+      % DRAW y-axis; 
+      for x = -dx step -dx until xmin : 
+          draw yaxis shifted (x*sx, 0) 
+               withpen pencircle scaled 0.25bp withcolor "lightgray";
+      endfor
+
+      for x = 0 step dx until xmax :
+          draw yaxis shifted (x*sx, 0) 
+               withpen pencircle scaled 0.25bp withcolor "lightgray";
+      endfor
+
+      draw yaxis shifted point 0 of xaxis ; 
+      draw yaxis shifted point 1 of xaxis ;
+
+      if show_labels : 
+         for y = 0 step dy until ymax : 
+            label.lft(style & decimal y, (xmin*sx, y*sy));
+            label.rt (style & decimal y, (xmax*sx, y*sy));
+         endfor
+      fi
+  enddef;
+        
+
+\stopMPdefinitions
+
+\starttext
+\startMPpage[offset=1dk]
+  startaxis [ymin = 0, ymax = 5, show_labels = false] ;
+    draw (0, 1*sy) -- (1*sx,  4*sy) withcolor "darkblue" 
+         withpen pencircle scaled 0.8bp;
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
+
+\startMPpage[offset=1dk]
+  startaxis [ymin = 0, ymax = 5, show_labels = false] ;
+    draw (0, 4*sy) -- (1*sx,  1*sy) withcolor "darkblue" 
+         withpen pencircle scaled 0.8bp;
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
+
+\startMPpage[offset=1dk]
+  startaxis [ymin = 0, ymax = 5, show_labels = true] ;
+    save u; path u[];
+
+    u[0] := (0, 2sy) -- (sx, 4sy) ;
+    u[1] := (0, 3sy) -- (sx, 1sy) ; 
+
+    newpair p;
+
+    p = u[0] intersectionpoint u[1];
+
+    linecap := butt; 
+
+    draw u[0] 
+         withpen pencircle scaled 0.5bp dashed evenly;
+    draw u[1] 
+         withpen pencircle scaled 0.5bp dashed evenly;
+
+    draw point 0 of u[0] -- p -- point 1 of u[1]
+         withpen pencircle scaled 1bp withcolor "darkblue";
+
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
+
+\startMPpage[offset=1dk]
+  startaxis [ymin = 0, ymax = 5, show_labels = true] ;
+    save u; path u[];
+
+    u[0] := (0, 3sy) -- (sx, 2sy) ;
+    u[1] := (0, 1sy) -- (sx, 4sy) ; 
+
+    newpair p;
+
+    p = u[0] intersectionpoint u[1];
+
+    linecap := butt; 
+
+    draw u[0] 
+         withpen pencircle scaled 0.5bp dashed evenly;
+    draw u[1] 
+         withpen pencircle scaled 0.5bp dashed evenly;
+
+    draw point 0 of u[0] -- p -- point 1 of u[1]
+         withpen pencircle scaled 1bp withcolor "darkblue";
+
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
+
+\stoptext

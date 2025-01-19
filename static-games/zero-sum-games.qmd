@@ -231,6 +231,16 @@ For a fixed $x$, this is a linear function in $y$ and the minimizer depends on t
 - If the slope is positive, then the function is inreasing in $y$ and the miniizer is $0$.
 - If the slope is negative, then the function is decreasing in $y$ and the minimizer is $1$. 
 
+::::{layout-ncol=2}
+:::{.fig-1}
+![Minimizing a linear function with positive slope](figures/svg/games-on-unit-square1.svg)
+:::
+
+:::{.fig-2}
+![Minimizing a linear function with negative slope](figures/svg/games-on-unit-square2.svg)
+:::
+::::
+
 Therefore, we have the following:
 $$
   \min_{y \in [0,1]} u(x,y) = 
@@ -241,9 +251,9 @@ $$
   \end{cases}
 $$
 
-The plot of $\min_{y \in [0,1]} u(x,y)$ is shown below.
+The plot of $\min_{y \in [0,1]} u(x,y)$ is shown below in @fig-maxmin-p1.
 
-<!-- TODO: Add plot -->
+![Plot of $\min_{y \in [0,1]} u(x,y)$](figures/svg/games-on-unit-square3.svg){#fig-maxmin-p1}
 
 As we can see from the plot, 
 $$
@@ -270,7 +280,10 @@ $$
   \end{cases}
 $$
 
-The plot of $\max_{x \in [0,1]} u(x,y)$ is shown below.
+The plot of $\max_{x \in [0,1]} u(x,y)$ is shown below @fig-maxmin-p2.
+
+![Plot of $\max_{x \in [0,1]} u(x,y)$](figures/svg/games-on-unit-square4.svg){#fig-maxmin-p2}
+
 
 <!-- TODO: Add plot -->
 
