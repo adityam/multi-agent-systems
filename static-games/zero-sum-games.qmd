@@ -284,9 +284,6 @@ The plot of $\max_{x \in [0,1]} u(x,y)$ is shown below @fig-maxmin-p2.
 
 ![Plot of $\max_{x \in [0,1]} u(x,y)$](figures/svg/games-on-unit-square4.svg){#fig-maxmin-p2}
 
-
-<!-- TODO: Add plot -->
-
 As we can see from the plot, 
 $$
 \bbox[5pt,border: 1px solid]{
@@ -466,14 +463,76 @@ game1(["T", "B"], ["L", "R"], [3 0; 1 2])
 ```
 :::
 
-Suppose the row player is playing $σ_1 = (p, 1-p)$, i.e., it chooses action $\mathsf{T}$ with probability $p$ and action $\mathsf{B}$ with probability $1-p$. Then,
+
+:::{.callout-note}
+#### Solution
+
+#### Strategy for row player {-}
+
+We first consider the row player. Suppose the row player is playing $σ_1 = (p, 1-p)$, i.e., it chooses action $\mathsf{T}$ with probability $p$ and action $\mathsf{B}$ with probability $1-p$. Then,
 
 \begin{alignat*}{2}
-  U_1(α_1, \mathsf{L}) &= 3p + (1-p) &&= 2p + 1, \\
-  U_1(α_1, \mathsf{R}) &= 2(1-p) &&= -2p + 2.
+  U_1(σ_1, \mathsf{L}) &= 3p + (1-p) &&= 2p + 1, \\
+  U_1(σ_1, \mathsf{R}) &= 2(1-p) &&= -2p + 2.
 \end{alignat*}
- 
-[To be written]
+
+The two payoffs are shown in @fig-2x2-payoffs-p1.
+
+![The payoffs for @exm-value-2x2](figures/svg/ZSG1.svg){#fig-2x2-payoffs-p1}
+
+We now consider
+$$
+  \underline v = \max_{p \in [0, 1]} \min \bigl{ 2p + 1, -2p + 2 \bigr\}.
+$$
+Note that the inner minimization can be easily carried out graphically. The minimization of the two curves is what is called a **lower envelop** which is shown in red in @fig-2x2-lower.
+
+![The lower envelop of the two curves of @fig-2x2-payoffs-p1](figures/svg/ZSG2.svg){#fig-2x2-lower}
+
+Since each curve is linear, the lower envelop is convex and its maximum value is the peak point, which is also the point of intersection of the two curves and is given by
+$$
+  2p + 1 - -2p + 2 \implies 
+  \bbox[5pt,border: 1px solid]{ p = \tfrac{1}{4} }.
+$$
+
+Thus, $σ_1^* = (\frac 14, \frac 34)$ and 
+$$
+  \underline v = U(σ_1^*, \mathsf{L}) = U(σ_1^*, \mathsf{R}) = \tfrac 32.
+$$
+
+#### Strategy for column player {-}
+
+Now, let's repeat the calculations for the column player. Suppose the column player is playing $σ_2 = (q, 1-q)$, i.e., it chooses action $\mathsf{L}$ with probability $q$ and action $\mathsf{R}$ with probability $1-q$. Then,
+\begin{alig*}
+  U_1(\mathsf{T}, σ_2) &= 3q , \\
+  U_1(\mathsf{B}, σ_2) &= q + 2 (1-q) = -q + 2.
+\end{alig*}
+
+The two payoffs are shown in @fig-2x2-payoffs-p2.
+
+![The payoffs for @exm-value-2x2](figures/svg/ZSG3.svg){#fig-2x2-payoffs-p2}
+
+We now consider
+$$
+  \bar v = \min_{q \in [0, 1]} \max \bigl{3q, -q + 2 \bigr\}.
+$$
+As before, the inner maximization can be easily carried out graphically. The maximization of the two curves is called an **upper envelop** which is shown in red in @fig-2x2-upper.
+
+![The upper envelop of the two curves of @fig-2x2-payoffs-p2](figures/svg/ZSG4.svg){#fig-2x2-lower}
+
+Since each curve is linear, the upper envelop is concave and its minimum value is the lowest point, which is also the point of intersection of the two curves and is given by
+$$
+  3q = -q + 2 \implies
+  \bbox[5pt,border: 1px solid]{ q = \tfrac{1}{2} }.
+$$
+
+Thus, $σ_2^* = (\frac 12, \frac 12)$ and 
+$$
+  \bar v = U(\mathsf{T}, σ_2^*) = U(\mathsf{B}, σ_2^*) = \tfrac 32.
+$$
+
+Note that, as expected, $\bar v = \underline v$. 
+
+:::
 
 ## Computing optimal strategy profile using linear programming
 
