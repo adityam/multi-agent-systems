@@ -662,7 +662,6 @@ Figure&nbsp;2.2: Plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)
 </figcaption>
 </figure>
 </div>
-<!-- TODO: Add plot -->
 <p>As we can see from the plot, <span class="math display">\[
 \bbox[5pt,border: 1px solid]{
   \bar v =
@@ -805,12 +804,93 @@ Proof
 </div>
 </div>
 </div>
-<p>Suppose the row player is playing <span class="math inline">\(σ_1 = (p, 1-p)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{T}\)</span> with probability <span class="math inline">\(p\)</span> and action <span class="math inline">\(\mathsf{B}\)</span> with probability <span class="math inline">\(1-p\)</span>. Then,</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<section id="strategy-for-row-player" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="strategy-for-row-player">Strategy for row player</h4>
+<p>We first consider the row player. Suppose the row player is playing <span class="math inline">\(σ_1 = (p, 1-p)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{T}\)</span> with probability <span class="math inline">\(p\)</span> and action <span class="math inline">\(\mathsf{B}\)</span> with probability <span class="math inline">\(1-p\)</span>. Then,</p>
 <p><span class="math display">\[\begin{alignat*}{2}
-  U_1(α_1, \mathsf{L}) &amp;= 3p + (1-p) &amp;&amp;= 2p + 1, \\
-  U_1(α_1, \mathsf{R}) &amp;= 2(1-p) &amp;&amp;= -2p + 2.
+  U_1(σ_1, \mathsf{L}) &amp;= 3p + (1-p) &amp;&amp;= 2p + 1, \\
+  U_1(σ_1, \mathsf{R}) &amp;= 2(1-p) &amp;&amp;= -2p + 2.
 \end{alignat*}\]</span></p>
-<p>[To be written]</p>
+<p>The two payoffs are shown in <a href="#fig-2x2-payoffs-p1" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</p>
+<div id="fig-2x2-payoffs-p1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2x2-payoffs-p1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/ZSG1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2x2-payoffs-p1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: The payoffs for <a href="#exm-value-2x2" class="quarto-xref">Example&nbsp;<span>2.4</span></a>
+</figcaption>
+</figure>
+</div>
+<p>We now consider <span class="math display">\[
+  \underline v = \max_{p \in [0, 1]} \min \bigl{ 2p + 1, -2p + 2 \bigr\}.
+\]</span> Note that the inner minimization can be easily carried out graphically. The minimization of the two curves is what is called a <strong>lower envelop</strong> which is shown in red in <a href="#fig-2x2-lower" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>.</p>
+<div id="fig-2x2-lower" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2x2-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/ZSG2.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2x2-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: The lower envelop of the two curves of <a href="#fig-2x2-payoffs-p1" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>
+</figcaption>
+</figure>
+</div>
+<p>Since each curve is linear, the lower envelop is convex and its maximum value is the peak point, which is also the point of intersection of the two curves and is given by <span class="math display">\[
+  2p + 1 - -2p + 2 \implies
+  \bbox[5pt,border: 1px solid]{ p = \tfrac{1}{4} }.
+\]</span></p>
+<p>Thus, <span class="math inline">\(σ_1^* = (\frac 14, \frac 34)\)</span> and <span class="math display">\[
+  \underline v = U(σ_1^*, \mathsf{L}) = U(σ_1^*, \mathsf{R}) = \tfrac 32.
+\]</span></p>
+</section>
+<section id="strategy-for-column-player" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="strategy-for-column-player">Strategy for column player</h4>
+Now, let’s repeat the calculations for the column player. Suppose the column player is playing <span class="math inline">\(σ_2 = (q, 1-q)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{L}\)</span> with probability <span class="math inline">\(q\)</span> and action <span class="math inline">\(\mathsf{R}\)</span> with probability <span class="math inline">\(1-q\)</span>. Then,
+<p>The two payoffs are shown in <a href="#fig-2x2-payoffs-p2" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>.</p>
+<div id="fig-2x2-payoffs-p2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2x2-payoffs-p2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/ZSG3.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2x2-payoffs-p2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: The payoffs for <a href="#exm-value-2x2" class="quarto-xref">Example&nbsp;<span>2.4</span></a>
+</figcaption>
+</figure>
+</div>
+<p>We now consider <span class="math display">\[
+  \bar v = \min_{q \in [0, 1]} \max \bigl{3q, -q + 2 \bigr\}.
+\]</span> As before, the inner maximization can be easily carried out graphically. The maximization of the two curves is called an <strong>upper envelop</strong> which is shown in red in <span class="quarto-unresolved-ref">?fig-2x2-upper</span>.</p>
+<div id="fig-2x2-lower" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2x2-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/ZSG4.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2x2-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoffs-p2" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>
+</figcaption>
+</figure>
+</div>
+<p>Since each curve is linear, the upper envelop is concave and its minimum value is the lowest point, which is also the point of intersection of the two curves and is given by <span class="math display">\[
+  3q = -q + 2 \implies
+  \bbox[5pt,border: 1px solid]{ q = \tfrac{1}{2} }.
+\]</span></p>
+<p>Thus, <span class="math inline">\(σ_2^* = (\frac 12, \frac 12)\)</span> and <span class="math display">\[
+  \bar v = U(\mathsf{T}, σ_2^*) = U(\mathsf{B}, σ_2^*) = \tfrac 32.
+\]</span></p>
+<p>Note that, as expected, <span class="math inline">\(\bar v = \underline v\)</span>.</p>
+</section>
+</div>
+</div>
 </section>
 <section id="computing-optimal-strategy-profile-using-linear-programming" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="computing-optimal-strategy-profile-using-linear-programming"><span class="header-section-number">2.6</span> Computing optimal strategy profile using linear programming</h2>
