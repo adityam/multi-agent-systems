@@ -517,7 +517,7 @@ $$
 $$
 As before, the inner maximization can be easily carried out graphically. The maximization of the two curves is called an **upper envelop** which is shown in red in @fig-2x2-upper.
 
-![The upper envelop of the two curves of @fig-2x2-payoffs-p2](figures/svg/ZSG4.svg){#fig-2x2-lower}
+![The upper envelop of the two curves of @fig-2x2-payoffs-p2](figures/svg/ZSG4.svg){#fig-2x2-upper}
 
 Since each curve is linear, the upper envelop is concave and its minimum value is the lowest point, which is also the point of intersection of the two curves and is given by
 $$
