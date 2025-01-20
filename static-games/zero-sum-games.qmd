@@ -765,7 +765,7 @@ An example of a symmetric game is rock-paper-scissors.
 
 Let $\mathscr{G}$ be a symmetric game. Show that:
 
-a. The value of $\mathscr{G}$ is mixed strategies is zero.
+a. The value of $\mathscr{G}$ in mixed strategies is zero.
 
 b. If $(σ_1^*, σ_2^*)$ is an optimal (mixed) strategy for $\mathscr{G}$, then $(σ_2^*, σ_1^*)$ is also an optimal (mixed) strategy. 
 
