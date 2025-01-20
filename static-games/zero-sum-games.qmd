@@ -315,7 +315,15 @@ $$
 $$
 :::
 
-For a facinating historial discussion of this result, see @Kjeldsen2001.
+Some remarks:
+
+- For a facinating historial discussion of this result, see @Kjeldsen2001. 
+
+- For a self contained proof of the result using elementary ideas from convex analysis, see @vonNeumann1944, Chapter 3 and @Hespanha2017, Chapter 5.
+
+- For a short proof based on [:Brouwer's fixed point theorem](https://en.wikipedia.org/wiki/Brouwer_fixed-point_theorem), see @Raghavan1994.
+
+- The minmax theorem is equivalent to the duality theorem of linear programming. See @Dantzig1951 and @vonStengel2024. 
 
 In @exm-unit-square, since the utility function is bilinear, we could have simply used @thm-von-Neumann to conclude that the game has a value, without doing any calculations. 
 
@@ -334,7 +342,7 @@ $$
 $$
 :::
 
-For a generalization that removes the compactness assumption, see @Sion1958.
+For a generalization that removes the compactness assumption, see @Sion1958. For a general discussion of various fixed point theorems and their relevance to zero sum games, see @Raghavan1994.
 
 ## Mixed strategies in finite games
 
