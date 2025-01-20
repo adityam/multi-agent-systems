@@ -200,6 +200,9 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=The general theory of employment, interest and money;,citation_author=John Maynard Keynes;,citation_publication_date=1936;,citation_cover_date=1936;,citation_year=1936;">
 <meta name="citation_reference" content="citation_title=Game theory for social sciences;,citation_author=Herve Moulin;,citation_publication_date=1986;,citation_cover_date=1986;,citation_year=1986;">
 <meta name="citation_reference" content="citation_title=Unraveling in guessing games: An experimental study;,citation_author=Rosemarie Nagel;,citation_publication_date=1995-12;,citation_cover_date=1995-12;,citation_year=1995;,citation_issue=5;,citation_volume=85;,citation_journal_title=The American Economic Review;">
+<meta name="citation_reference" content="citation_title=Chapter 20 zero-sum two-person games;,citation_author=T. E. S. Raghavan;,citation_publication_date=1994;,citation_cover_date=1994;,citation_year=1994;,citation_doi=10.1016/s1574-0005(05)80052-9;,citation_issn=1574-0005;,citation_inbook_title=Handbook of game theory with economic applications;">
+<meta name="citation_reference" content="citation_title=Theory of games and economic behaviour;,citation_author=John Neumann;,citation_author=Oskar Morgenstern;,citation_publication_date=1944;,citation_cover_date=1944;,citation_year=1944;">
+<meta name="citation_reference" content="citation_title=Noncooperative game theory: An introduction for engineers and computer scientists;,citation_author=João P. Hespanha;,citation_publication_date=2017-12;,citation_cover_date=2017-12;,citation_year=2017;,citation_doi=10.1515/9781400885442;,citation_isbn=9781400885442;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed slimcontent">
@@ -684,7 +687,13 @@ Figure&nbsp;2.2: Plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)
   \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} f(x,y).
 \]</span></p>
 </div>
-<p>For a facinating historial discussion of this result, see <span class="citation" data-cites="Kjeldsen2001">Kjeldsen (<a href="../references.html#ref-Kjeldsen2001" role="doc-biblioref">2001</a>)</span>.</p>
+<p>Some remarks:</p>
+<ul>
+<li><p>For a facinating historial discussion of this result, see <span class="citation" data-cites="Kjeldsen2001">Kjeldsen (<a href="../references.html#ref-Kjeldsen2001" role="doc-biblioref">2001</a>)</span>.</p></li>
+<li><p>For a self contained proof of the result using elementary ideas from convex analysis, see <span class="citation" data-cites="vonNeumann1944">Neumann and Morgenstern (<a href="../references.html#ref-vonNeumann1944" role="doc-biblioref">1944</a>)</span>, Chapter 3 and <span class="citation" data-cites="Hespanha2017">Hespanha (<a href="../references.html#ref-Hespanha2017" role="doc-biblioref">2017</a>)</span>, Chapter 5.</p></li>
+<li><p>For a short proof based on <a href="https://en.wikipedia.org/wiki/Brouwer_fixed-point_theorem">:Brouwer’s fixed point theorem</a>, see <span class="citation" data-cites="Raghavan1994">Raghavan (<a href="../references.html#ref-Raghavan1994" role="doc-biblioref">1994</a>)</span>.</p></li>
+<li><p>The minmax theorem is equivalent to the duality theorem of linear programming. See <span class="citation" data-cites="Dantzig1951">(<a href="../references.html#ref-Dantzig1951" role="doc-biblioref"><strong>Dantzig1951?</strong></a>)</span> and <span class="citation" data-cites="vonStengel2024">(<a href="../references.html#ref-vonStengel2024" role="doc-biblioref"><strong>vonStengel2024?</strong></a>)</span>.</p></li>
+</ul>
 <p>In <a href="#exm-unit-square" class="quarto-xref">Example&nbsp;<span>2.3</span></a>, since the utility function is bilinear, we could have simply used <a href="#thm-von-Neumann" class="quarto-xref">Theorem&nbsp;<span>2.2</span></a> to conclude that the game has a value, without doing any calculations.</p>
 <p>A useful generalization of von Neumann’s minimax theorem is the following.</p>
 <div id="thm-minmax" class="theorem">
@@ -698,7 +707,7 @@ Figure&nbsp;2.2: Plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)
   \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} f(x,y).
 \]</span></p>
 </div>
-<p>For a generalization that removes the compactness assumption, see <span class="citation" data-cites="Sion1958">Sion (<a href="../references.html#ref-Sion1958" role="doc-biblioref">1958</a>)</span>.</p>
+<p>For a generalization that removes the compactness assumption, see <span class="citation" data-cites="Sion1958">Sion (<a href="../references.html#ref-Sion1958" role="doc-biblioref">1958</a>)</span>. For a general discussion of various fixed point theorems and their relevance to zero sum games, see <span class="citation" data-cites="Raghavan1994">Raghavan (<a href="../references.html#ref-Raghavan1994" role="doc-biblioref">1994</a>)</span>.</p>
 </section>
 <section id="mixed-strategies-in-finite-games" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="mixed-strategies-in-finite-games"><span class="header-section-number">2.3</span> Mixed strategies in finite games</h2>
@@ -1128,11 +1137,20 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Hespanha2017" class="csl-entry" role="listitem">
+<span class="smallcaps">Hespanha, J.P.</span> 2017. <em>Noncooperative game theory: An introduction for engineers and computer scientists</em>. Princeton University Press. DOI: <a href="https://doi.org/10.1515/9781400885442">10.1515/9781400885442</a>.
+</div>
 <div id="ref-Kjeldsen2001" class="csl-entry" role="listitem">
 <span class="smallcaps">Kjeldsen, T.H.</span> 2001. John von neumann’s conception of the minimax theorem: A journey through different mathematical contexts. <em>Archive for History of Exact Sciences</em> <em>56</em>, 1, 39–68. Available at: <a href="http://www.jstor.org/stable/41134130">http://www.jstor.org/stable/41134130</a> (Accessed: January 5, 2025).
 </div>
+<div id="ref-vonNeumann1944" class="csl-entry" role="listitem">
+<span class="smallcaps">Neumann, J. von and Morgenstern, O.</span> 1944. <em>Theory of games and economic behaviour</em>. Princeton University Press.
+</div>
 <div id="ref-Osborne1994" class="csl-entry" role="listitem">
 <span class="smallcaps">Osborne, M.J. and Rubinstein, A.</span> 1994. <em>A course in game theory</em>. MIT Press.
+</div>
+<div id="ref-Raghavan1994" class="csl-entry" role="listitem">
+<span class="smallcaps">Raghavan, T.E.S.</span> 1994. Chapter 20 zero-sum two-person games. In: <em>Handbook of game theory with economic applications</em>. Elsevier, 735–768. DOI: <a href="https://doi.org/10.1016/s1574-0005(05)80052-9">10.1016/s1574-0005(05)80052-9</a>.
 </div>
 <div id="ref-Sion1958" class="csl-entry" role="listitem">
 <span class="smallcaps">Sion, M.</span> 1958. On general minimax theorems. <em>Pacific Journal of Mathematics</em> <em>8</em>, 1, 171–176. DOI: <a href="https://doi.org/10.2140/pjm.1958.8.171">10.2140/pjm.1958.8.171</a>.
