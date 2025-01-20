@@ -115,8 +115,13 @@
 
       if show_labels : 
          for y = 0 step dy until ymax : 
-            label.lft(style & decimal y, (xmin*sx, y*sy));
-            label.rt (style & decimal y, (xmax*sx, y*sy));
+            label.lft(style & "\m{" & decimal y & "}", (xmin*sx, y*sy));
+            label.rt (style & "\m{" & decimal y & "}", (xmax*sx, y*sy));
+         endfor
+
+         for y = -dy step -dy until ymin : 
+            label.lft(style & "\m{" & decimal y & "}", (xmin*sx, y*sy));
+            label.rt (style & "\m{" & decimal y & "}", (xmax*sx, y*sy));
          endfor
       fi
   enddef;
@@ -260,6 +265,345 @@
 
   currentpicture := currentpicture scaled 2;
 \stopMPpage
+
+%% 2x3 Game: Row Player
+\startMPpage[offset=1dk]
+  startaxis [ymin = -2.5, ymax = 5, show_labels = true] ;
+    save u; path u[];
+
+    u[0] := (0, 0sy) -- (sx, 2sy) ;
+    u[1] := (0, -2sy) -- (sx, 5sy) ; 
+    u[2] := (0, 5sy) -- (sx, -1sy) ; 
+
+    linecap := butt; 
+
+    draw u[0] 
+         withpen pencircle scaled 0.5bp;
+    draw u[1] 
+         withpen pencircle scaled 0.5bp;
+    draw u[2] 
+         withpen pencircle scaled 0.5bp;
+
+    save lbl; pair lbl[];
+
+    lbl[0] := (0.2sx, 2sy);
+    label.top(style & "$2p$", lbl[0]);
+    drawarrow ( lbl[0] {dir -90} .. (0.3sx, 1.5sy) .. (0.3sx, 1sy) .. {dir -90} (0.4sx, 0sy) ) 
+              cutafter u[0];
+
+    lbl[1] := (0.3sx, -1sy);
+    label.bot(style & "$7p - 2$", lbl[1]);
+    drawarrow ( lbl[1] {dir 90} .. {dir 90} (0.2sx, 2sy) ) 
+              cutafter u[1];
+
+
+    lbl[2] := (0.4sx, 4sy);
+    label.top(style & "$-6p + 5$", lbl[2]);
+    drawarrow ( lbl[2] {dir -90} .. {dir -90} (0.2sx, 2sy) ) 
+              cutafter u[2];
+
+    save p; pair p[];
+
+    p[0] := u[0] intersectionpoint u[1]; 
+    p[1] := u[0] intersectionpoint u[2]; 
+
+    linecap := butt; 
+    draw point 0 of u[1] -- p[0] -- p[1] -- point 1 of u[2]
+         withpen pencircle scaled 2bp withcolor "lightred";
+
+    draw point 0 of u[1] -- p[0] -- p[1] -- point 1 of u[2]
+         withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+    draw p[1] -- (xpart p[1], 0) dashed evenly; 
+
+    label.bot(style & "$\tfrac 58$", (xpart p[1], 0));
+       
+    fill fullcircle scaled 2bp shifted p[1] 
+         withcolor "darkred";
+
+
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
+
+\startTEXpage[offset=1px]
+  \startcombination[nx=3,ny=2]
+    \startcontent
+      \startMPcode
+        startaxis [ymin = 0, ymax = 5, sx=2cm, show_labels = false] ;
+          save u; path u[];
+
+          u[0] := (0, 2sy) -- (sx, 4sy) ;
+          u[1] := (0, 3.5sy) -- (sx, 1sy) ; 
+          u[2] := (0, 4.5sy) -- (sx, 2sy) ; 
+
+          newpair p;
+
+          p := u[0] intersectionpoint u[1]; 
+
+          linecap := butt; 
+
+          draw u[0] 
+               withpen pencircle scaled 0.5bp;
+          draw u[1] 
+               withpen pencircle scaled 0.5bp;
+          draw u[2] 
+               withpen pencircle scaled 0.5bp withcolor "lightgray";
+
+          draw point 0 of u[0] -- p -- point 1 of u[1]
+               withpen pencircle scaled 2bp withcolor "lightred";
+
+          draw point 0 of u[0] -- p -- point 1 of u[1]
+               withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+          draw p -- (xpart p, 0) dashed evenly; 
+
+          label.bot(style & "$p^*$", (xpart p, 0));
+             
+          fill fullcircle scaled 2bp shifted p 
+               withcolor "darkred";
+
+        stopaxis ; 
+
+        currentpicture := currentpicture scaled 2;
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (a)
+    \stopcaption
+
+    \startcontent
+      \startMPcode
+        startaxis [ymin = 0, ymax = 5, sx=2cm, show_labels = false] ;
+          save u; path u[];
+
+          u[0] := (0, 0sy) -- (sx, 3sy) ;
+          u[1] := (0, 1sy) -- (sx, 2sy) ; 
+          u[2] := (0, 4.5sy) -- (sx, 3.5sy) ; 
+
+          newpair p;
+
+          p := u[0] intersectionpoint u[1]; 
+
+          linecap := butt; 
+
+          draw u[0] 
+               withpen pencircle scaled 0.5bp;
+          draw u[1] 
+               withpen pencircle scaled 0.5bp;
+          draw u[2] 
+               withpen pencircle scaled 0.5bp withcolor "lightgray";
+
+          draw point 0 of u[0] -- p -- point 1 of u[1]
+               withpen pencircle scaled 2bp withcolor "lightred";
+
+          draw point 0 of u[0] -- p -- point 1 of u[1]
+               withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+          label.bot(style & "$p^*$", (xpart point 1 of u[1], 0));
+             
+          fill fullcircle scaled 2bp shifted (point 1 of u[1]) 
+               withcolor "darkred";
+
+        stopaxis ; 
+
+        currentpicture := currentpicture scaled 2;
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (b)
+    \stopcaption
+
+    \startcontent
+      \startMPcode
+        startaxis [ymin = 0, ymax = 5, sx=2cm, show_labels = false] ;
+          save u; path u[];
+
+          u[0] := (0, 3.5sy) -- (sx, 1sy) ;
+          u[1] := (0, 2.5sy) -- (sx, 1.5sy) ; 
+          u[2] := (0, 3sy) -- (sx, 4.5sy) ; 
+
+          newpair p;
+
+          p := u[0] intersectionpoint u[1]; 
+
+          linecap := butt; 
+
+          draw u[0] 
+               withpen pencircle scaled 0.5bp;
+          draw u[1] 
+               withpen pencircle scaled 0.5bp;
+          draw u[2] 
+               withpen pencircle scaled 0.5bp withcolor "lightgray";
+
+          draw point 0 of u[1] -- p -- point 1 of u[0]
+               withpen pencircle scaled 2bp withcolor "lightred";
+
+          draw point 0 of u[1] -- p -- point 1 of u[0]
+               withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+          label.bot(style & "$p^*$", (xpart point 0 of u[1], 0));
+             
+          fill fullcircle scaled 2bp shifted (point 0 of u[1]) 
+               withcolor "darkred";
+
+        stopaxis ; 
+
+        currentpicture := currentpicture scaled 2;
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (c)
+    \stopcaption
+
+    \startcontent
+      \startMPcode
+        startaxis [ymin = 0, ymax = 5, sx=2cm, show_labels = false] ;
+          save u; path u[];
+
+          u[0] := (0, 0sy) -- (sx, 3sy) ;
+          u[1] := (0, 2sy) -- (sx, 2sy) ; 
+          u[2] := (0, 4.5sy) -- (sx, 3.5sy) ; 
+
+          newpair p;
+
+          p := u[0] intersectionpoint u[1]; 
+
+          linecap := butt; 
+
+          draw u[0] 
+               withpen pencircle scaled 0.5bp;
+          draw u[1] 
+               withpen pencircle scaled 0.5bp;
+          draw u[2] 
+               withpen pencircle scaled 0.5bp withcolor "lightgray";
+
+          draw point 0 of u[0] -- p -- point 1 of u[1]
+               withpen pencircle scaled 2bp withcolor "lightred";
+
+          draw point 0 of u[0] -- p -- point 1 of u[1]
+               withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+          draw p -- (xpart p, 0) dashed evenly; 
+
+          draw (xpart p, 0) -- (point 1 of xaxis) 
+               withpen pencircle scaled 2bp withcolor "lightblue"
+               withstacking -1;
+             
+          fill fullcircle scaled 2bp shifted p 
+               withcolor "darkred";
+
+        stopaxis ; 
+
+        currentpicture := currentpicture scaled 2;
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (d)
+    \stopcaption
+
+    \startcontent
+      \startMPcode
+        startaxis [ymin = 0, ymax = 5, sx=2cm, show_labels = false] ;
+          save u; path u[];
+
+          u[0] := (0, 1sy) -- (sx, 4sy) ;
+          u[1] := (0, 2sy) -- (sx, 2sy) ; 
+          u[2] := (0, 4.5sy) -- (sx, 0.5sy) ; 
+
+          save p; pair p[];
+
+          p[0] := u[0] intersectionpoint u[1]; 
+          p[1] := u[2] intersectionpoint u[1]; 
+
+          linecap := butt; 
+
+          draw u[0] 
+               withpen pencircle scaled 0.5bp;
+          draw u[1] 
+               withpen pencircle scaled 0.5bp;
+          draw u[2] 
+               withpen pencircle scaled 0.5bp; 
+
+          draw point 0 of u[0] -- p[0] -- p[1] -- point 1 of u[2]
+               withpen pencircle scaled 2bp withcolor "lightred";
+
+          draw point 0 of u[0] -- p[0] -- p[1] -- point 1 of u[2]
+               withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+          draw p[0] -- (xpart p[0], 0) dashed evenly; 
+          draw p[1] -- (xpart p[1], 0) dashed evenly; 
+
+          draw (xpart p[0], 0) -- (xpart p[1], 0) 
+               withpen pencircle scaled 2bp withcolor "lightblue"
+               withstacking -1;
+             
+          fill fullcircle scaled 2bp shifted p[0] 
+               withcolor "darkred";
+
+          fill fullcircle scaled 2bp shifted p[1] 
+               withcolor "darkred";
+        stopaxis ; 
+
+        currentpicture := currentpicture scaled 2;
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (e)
+    \stopcaption
+
+    \startcontent
+      \startMPcode
+        startaxis [ymin = 0, ymax = 5, sx=2cm, show_labels = false] ;
+          save u; path u[];
+
+          u[0] := (0, 1sy) -- (sx, 4sy) ;
+          u[1] := (0, 2.5sy) -- (sx, 2.5sy) ; 
+          u[2] := (0, 4.5sy) -- (sx, 0.5sy) ; 
+
+          save p; pair p[];
+
+          p[0] := u[0] intersectionpoint u[1]; 
+          p[1] := u[2] intersectionpoint u[1]; 
+
+          linecap := butt; 
+
+          draw u[0] 
+               withpen pencircle scaled 0.5bp;
+          draw u[1] 
+               withpen pencircle scaled 0.5bp;
+          draw u[2] 
+               withpen pencircle scaled 0.5bp; 
+
+          draw point 0 of u[0] -- p[0] -- p[1] -- point 1 of u[2]
+               withpen pencircle scaled 2bp withcolor "lightred";
+
+          draw point 0 of u[0] -- p[0] -- p[1] -- point 1 of u[2]
+               withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+          draw p[0] -- (xpart p[0], 0) dashed evenly; 
+          draw p[1] -- (xpart p[1], 0) dashed evenly; 
+
+          draw (xpart p[0], 0) -- (xpart p[1], 0) 
+               withpen pencircle scaled 2bp withcolor "lightblue"
+               withstacking -1;
+             
+          fill fullcircle scaled 2bp shifted p[0] 
+               withcolor "darkred";
+
+          fill fullcircle scaled 2bp shifted p[1] 
+               withcolor "darkred";
+        stopaxis ; 
+
+        currentpicture := currentpicture scaled 2;
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (f)
+    \stopcaption
+  \stopcombination
+\stopTEXpage
 
 
 \stoptext

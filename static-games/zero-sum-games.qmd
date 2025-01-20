@@ -513,7 +513,7 @@ The two payoffs are shown in @fig-2x2-payoffs-p2.
 
 We now consider
 $$
-  \bar v = \min_{q \in [0, 1]} \max \bigl{3q, -q + 2 \bigr\}.
+  \bar v = \min_{q \in [0, 1]} \max \bigl\{3q, -q + 2 \bigr\}.
 $$
 As before, the inner maximization can be easily carried out graphically. The maximization of the two curves is called an **upper envelop** which is shown in red in @fig-2x2-upper.
 
@@ -531,8 +531,118 @@ $$
 $$
 
 Note that, as expected, $\bar v = \underline v$. 
+:::
+
+The above idea works for general $2 × 2$ games. See @exr-zsg-mixed for some examples. We now show that the idea also be extended to general $2 × n$ games as well.
+
+:::{#exm-value-2x3}
+Find the value in mixed strategies of the game below:
+
+```{julia}
+game1(["T", "B"], ["L", "C", "R"], [2 5 -1; 0 -2 5])
+```
+:::
+
+:::{.callout-note}
+#### Solution
+
+#### Strategy for row player {-}
+
+The row player has two pure strategies, so we use the same idea as before. Suppose the row player is playing $σ_1 = (p, 1-p)$, i.e., it chooses action $\mathsf{T}$ with probability $p$ and action $\mathsf{B}$ with probability $1-p$. Then,
+
+\begin{alignat*}{2}
+  U_1(σ_1, \mathsf{L}) &= 2p + (1-p) &&= 2p, \\
+  U_1(σ_1, \mathsf{C}) &= 5p - 2(1-p) &&= 7p - 2, \\
+  U_1(σ_1, \mathsf{R}) &= -p + 5(1-p) &&= -6p + 5.
+\end{alignat*}
+
+As before, we can plot these functions as shown in @fig-2x3-lower, where the lower concave envelop is shown in red. 
+
+![The lower envelop of the three payoff curves](figures/svg/ZSG5.svg){#fig-2x3-lower}
+
+Note that the maximum of the lower convex envelop is the intersection of $U(σ_1, \mathsf{L})$ and $U(σ_1, \mathsf{R})$ which happens when
+$$
+  2p = -6p + 5 \implies
+  \bbox[5pt,border: 1px solid]{ p = \tfrac{5}{8} }.
+$$
+Thus, $σ_1^* = (\tfrac 58, \tfrac 38)$ and 
+$$
+  v = \underline v = U(σ_1^*, \mathsf{L}) = U(σ_1^*, \mathsf{R}) = \tfrac 54.
+$$
+
+Observe that $U(σ_1^*, \mathsf{C}) = \tfrac{19}{8} > v$. Thus, if the row player plays $σ_1^*$, then the column player will either play $\mathsf{L}$ or $\mathsf{R}$, but not $\mathsf{C}$. 
+
+#### Strategy for column player {-}
+
+We now consider the column player. We cannot follow the previous procedure because we will need to construct $U(⋅, σ_2)$, where $σ_2$ lies in a subset of $\reals^2$. So, we take an alternative approach.
+
+Suppose $σ_1 = (p, 1-p)$ and $σ_2$ are mixed strategies. For the ease of notation, we will write $U(σ_1, σ_2)$ as $U(p, σ_2)$. By construction, $U(p, σ_2)$ is linear in $p$. Thus, if $σ_2^*$ is optimal strategy for the column player, then 
+$$
+  U(p, σ_2^*) \le v = \tfrac 54, \quad \forall p \in [0, 1].
+$$
+Now, consider the graph in @fig-2x3-lower. As we have previously seen, at $p^* = \tfrac 58$, 
+$$
+U(p^*, \mathsf{L}) = U(p^*, \mathsf{R}) = \tfrac 54 = v
+\quad\text{but}\quad
+U(p^*, \mathsf{C}) > \tfrac 54 = v.
+$$
+So, $σ_2^*$ must give zero weight to $\mathsf{C}$; otherwise $U(p^*, σ_2^*)$ cannot be equal to $\tfrac 54$. Thus, we know that
+$$
+  σ_2^* = (q, 0, 1-q).
+$$
+Hence, we effectively have a $2 × 2$ game. For find $q$, we can solve 
+$$
+  U(\mathsf{T}, σ_2^*) = U(\mathsf{B}, σ_2^*) = v = \tfrac 54.
+$$
+We know that these equations will have a consistent solution, so we only need to solve one of these. Let's take
+$$
+  U(\mathsf{T}, σ_2^*) = 2q - (1-q) = 3q - 1 = v = \tfrac{5}{4}.
+$$
+Thus,
+$$
+  \bbox[5pt,border: 1px solid]{ q = \tfrac{3}{4} }.
+$$
+
+#### Final solution {-}
+Thus, the optimal strategy is 
+$$
+  σ_1^* = (\tfrac 58, \tfrac 38)
+  \quad\text{and}\quad
+  σ_2^* = (\tfrac 34, 0, \tfrac 14)
+$$
+and the value is $v = \tfrac 54$. 
 
 :::
+
+In @exm-value-2x3, the column player had three strategies but the optimal strategy randomizes between only two of them. This is an instance of the following general result. 
+
+:::{#thm-zsg-support}
+In a two player zero-sum game where player 1 has $m_1$ pure strategies and player 2 has $m_2$ pure strategies, with $m_1 < m_2$, then player 2 has an optimal strategy that puts positive weight on at most $m_1$ pure strategies.
+:::
+
+Note that @thm-zsg-support means that there exists an optimal strategy with the above feature; not that all optimal strategies have this feature. 
+
+An implication of @thm-zsg-support is that in a two player ZSG where one player, say the row player, has $2$ pure strategies and the other player, the column player, has $m$ pure strategies with $m > 2$, there is an optimal strategy for the column player that puts positive weight on at most two pure strategies. We can find the solution of such $2 × m$ games using the procedure described above. In particular, we have the following:
+
+- **STEP 1:** Consider $σ_1 = (p, 1-p)$ and for each pure strategy $s_2$ of player 2, compute $U(σ_1, s_2)$. In general, we can have six possibilities as shown in @fig-zsg-2xm. 
+
+  ![Different possibilities for $2 × m$ games](figures/svg/ZSG6.svg){#fig-zsg-2xm}
+  
+    Observe the following:
+
+    - In cases (a) and (f), the optimal strategy is attained on an internal point $p^*$
+
+    - In cases (b) and (c), the optimal strategy is a boundary point and corresponds to a pure strategy.
+
+    - In case (d) and (e), the maximum is attained in an interval; hence every point in this interval is an optimal strategy. 
+
+- **STEP 2:** It can be shown that for player 2:
+
+    - case (a) implies that the optimal strategy is an internal point
+
+    - case (b)--(e) implies thta the optimal strategy is a pure strategy
+
+    - case (f) implies that there is an interval of randomization probabilities that are optimal.
 
 ## Computing optimal strategy profile using linear programming
 
@@ -587,7 +697,7 @@ See @exr-LP for an example.
 
 ## Exercises {-}
 
-:::{#exr-zsg-pure}
+:::{#exr-zsg-mixed}
 For each of the following games, find the value of the game and the optimal strategy profile.
 
 ::::{layout-ncol=2}
@@ -605,7 +715,7 @@ game1(["T", "B"], ["L", "R"], [-3 8; 4 4]; caption="Game 2")
 ::::
 :::
 
-:::{#exr-zsg-mixed}
+:::{#exr-zsg-ieds}
 Find the optimal strategy profile and the value of the following game.
 
 ```{julia}
