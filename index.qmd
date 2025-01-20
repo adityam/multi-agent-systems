@@ -57,6 +57,8 @@ I will loosely follow the following two books, though I present the material in 
 
 - Osborne and Rubinstein, [*A Course in Game Theory*](https://mcgill.on.worldcat.org/oclc/44963976), MIT Press, 1994
 
+- Shoham and Leyton-Brown, [Multiagent Systems](https://www.cambridge.org/core/books/multiagent-systems/B11B69E0CB9032D6EC0A254F59922360), Cambridge University Press, 2009.
+
 ### Online Course Notes
 
 This semesmter, I will be attempting to type my notes and make them available on this website. Most definitely, I will fall behind and the notes for the material covered during the end of the term will not be avaiable. Even for the earlier material, the notes are not meant to be exhaustive; rather my focus is to convey the key ideas in their simplest form. For a more exhaustive treatment of the subject, please refer to the reference books mentioned above.
