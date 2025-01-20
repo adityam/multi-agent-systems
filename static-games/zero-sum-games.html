@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-19">
+<meta name="dcterms.date" content="2025-01-20">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -169,10 +169,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-19">
-<meta name="citation_cover_date" content="2025-01-19">
+<meta name="citation_publication_date" content="2025-01-20">
+<meta name="citation_cover_date" content="2025-01-20">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-19">
+<meta name="citation_online_date" content="2025-01-20">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -357,7 +357,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 19, 2025</p>
+      <p class="date">January 20, 2025</p>
     </div>
   </div>
   
@@ -544,8 +544,8 @@ Proof
 <p>As shown in <a href="#exm-matching-pennies" class="quarto-xref">Example&nbsp;<span>2.1</span></a>, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.</p>
 <div id="exm-value-zsg" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.2</strong></span> Find the maxmin and minmax value of the following game.</p>
-<div id="3ba8136d" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div id="753085eb" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>A game where $\underline v = \bar v$.</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -798,8 +798,8 @@ Proof
 <p>To illustrate how this simplification helps, we start with an example of a <span class="math inline">\(2 × 2\)</span> game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier.</p>
 <div id="exm-value-2x2" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.4</strong></span> Find the value in mixed strategies of the game below:</p>
-<div id="d522dacf" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="77">
+<div id="d6d3d25a" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -868,7 +868,7 @@ Figure&nbsp;2.5: The payoffs for <a href="#exm-value-2x2" class="quarto-xref">Ex
 </figure>
 </div>
 <p>We now consider <span class="math display">\[
-  \bar v = \min_{q \in [0, 1]} \max \bigl{3q, -q + 2 \bigr\}.
+  \bar v = \min_{q \in [0, 1]} \max \bigl\{3q, -q + 2 \bigr\}.
 \]</span> As before, the inner maximization can be easily carried out graphically. The maximization of the two curves is called an <strong>upper envelop</strong> which is shown in red in <a href="#fig-2x2-upper" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>.</p>
 <div id="fig-2x2-upper" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -891,6 +891,112 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 </section>
 </div>
 </div>
+<p>The above idea works for general <span class="math inline">\(2 × 2\)</span> games. See <a href="#exr-zsg-mixed" class="quarto-xref">Exercise&nbsp;<span>2.1</span></a> for some examples. We now show that the idea also be extended to general <span class="math inline">\(2 × n\)</span> games as well.</p>
+<div id="exm-value-2x3" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.5</strong></span> Find the value in mixed strategies of the game below:</p>
+<div id="3bb4c4a1" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$5$</td><td>$-1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$-2$</td><td>$5$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<section id="strategy-for-row-player-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="strategy-for-row-player-1">Strategy for row player</h4>
+<p>The row player has two pure strategies, so we use the same idea as before. Suppose the row player is playing <span class="math inline">\(σ_1 = (p, 1-p)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{T}\)</span> with probability <span class="math inline">\(p\)</span> and action <span class="math inline">\(\mathsf{B}\)</span> with probability <span class="math inline">\(1-p\)</span>. Then,</p>
+<p><span class="math display">\[\begin{alignat*}{2}
+  U_1(σ_1, \mathsf{L}) &amp;= 2p + (1-p) &amp;&amp;= 2p, \\
+  U_1(σ_1, \mathsf{C}) &amp;= 5p - 2(1-p) &amp;&amp;= 7p - 2, \\
+  U_1(σ_1, \mathsf{R}) &amp;= -p + 5(1-p) &amp;&amp;= -6p + 5.
+\end{alignat*}\]</span></p>
+<p>As before, we can plot these functions as shown in <a href="#fig-2x3-lower" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>, where the lower concave envelop is shown in red.</p>
+<div id="fig-2x3-lower" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2x3-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/ZSG5.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2x3-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: The lower envelop of the three payoff curves
+</figcaption>
+</figure>
+</div>
+<p>Note that the maximum of the lower convex envelop is the intersection of <span class="math inline">\(U(σ_1, \mathsf{L})\)</span> and <span class="math inline">\(U(σ_1, \mathsf{R})\)</span> which happens when <span class="math display">\[
+  2p = -6p + 5 \implies
+  \bbox[5pt,border: 1px solid]{ p = \tfrac{5}{8} }.
+\]</span> Thus, <span class="math inline">\(σ_1^* = (\tfrac 58, \tfrac 38)\)</span> and <span class="math display">\[
+  v = \underline v = U(σ_1^*, \mathsf{L}) = U(σ_1^*, \mathsf{R}) = \tfrac 54.
+\]</span></p>
+<p>Observe that <span class="math inline">\(U(σ_1^*, \mathsf{C}) = \tfrac{19}{8} &gt; v\)</span>. Thus, if the row player plays <span class="math inline">\(σ_1^*\)</span>, then the column player will either play <span class="math inline">\(\mathsf{L}\)</span> or <span class="math inline">\(\mathsf{R}\)</span>, but not <span class="math inline">\(\mathsf{C}\)</span>.</p>
+</section>
+<section id="strategy-for-column-player-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="strategy-for-column-player-1">Strategy for column player</h4>
+<p>We now consider the column player. We cannot follow the previous procedure because we will need to construct <span class="math inline">\(U(⋅, σ_2)\)</span>, where <span class="math inline">\(σ_2\)</span> lies in a subset of <span class="math inline">\(\reals^2\)</span>. So, we take an alternative approach.</p>
+<p>Suppose <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2\)</span> are mixed strategies. For the ease of notation, we will write <span class="math inline">\(U(σ_1, σ_2)\)</span> as <span class="math inline">\(U(p, σ_2)\)</span>. By construction, <span class="math inline">\(U(p, σ_2)\)</span> is linear in <span class="math inline">\(p\)</span>. Thus, if <span class="math inline">\(σ_2^*\)</span> is optimal strategy for the column player, then <span class="math display">\[
+  U(p, σ_2^*) \le v = \tfrac 54, \quad \forall p \in [0, 1].
+\]</span> Now, consider the graph in <a href="#fig-2x3-lower" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>. As we have previously seen, at <span class="math inline">\(p^* = \tfrac 58\)</span>, <span class="math display">\[
+U(p^*, \mathsf{L}) = U(p^*, \mathsf{R}) = \tfrac 54 = v
+\quad\text{but}\quad
+U(p^*, \mathsf{C}) &gt; \tfrac 54 = v.
+\]</span> So, <span class="math inline">\(σ_2^*\)</span> must give zero weight to <span class="math inline">\(\mathsf{C}\)</span>; otherwise <span class="math inline">\(U(p^*, σ_2^*)\)</span> cannot be equal to <span class="math inline">\(\tfrac 54\)</span>. Thus, we know that <span class="math display">\[
+  σ_2^* = (q, 0, 1-q).
+\]</span> Hence, we effectively have a <span class="math inline">\(2 × 2\)</span> game. For find <span class="math inline">\(q\)</span>, we can solve <span class="math display">\[
+  U(\mathsf{T}, σ_2^*) = U(\mathsf{B}, σ_2^*) = v = \tfrac 54.
+\]</span> We know that these equations will have a consistent solution, so we only need to solve one of these. Let’s take <span class="math display">\[
+  U(\mathsf{T}, σ_2^*) = 2q - (1-q) = 3q - 1 = v = \tfrac{5}{4}.
+\]</span> Thus, <span class="math display">\[
+  \bbox[5pt,border: 1px solid]{ q = \tfrac{3}{4} }.
+\]</span></p>
+</section>
+<section id="final-solution" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="final-solution">Final solution</h4>
+<p>Thus, the optimal strategy is <span class="math display">\[
+  σ_1^* = (\tfrac 58, \tfrac 38)
+  \quad\text{and}\quad
+  σ_2^* = (\tfrac 34, 0, \tfrac 14)
+\]</span> and the value is <span class="math inline">\(v = \tfrac 54\)</span>.</p>
+</section>
+</div>
+</div>
+<p>In <a href="#exm-value-2x3" class="quarto-xref">Example&nbsp;<span>2.5</span></a>, the column player had three strategies but the optimal strategy randomizes between only two of them. This is an instance of the following general result.</p>
+<div id="thm-zsg-support" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.6</strong></span> In a two player zero-sum game where player 1 has <span class="math inline">\(m_1\)</span> pure strategies and player 2 has <span class="math inline">\(m_2\)</span> pure strategies, with <span class="math inline">\(m_1 &lt; m_2\)</span>, then player 2 has an optimal strategy that puts positive weight on at most <span class="math inline">\(m_1\)</span> pure strategies.</p>
+</div>
+<p>Note that <a href="#thm-zsg-support" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> means that there exists an optimal strategy with the above feature; not that all optimal strategies have this feature.</p>
+<p>An implication of <a href="#thm-zsg-support" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> is that in a two player ZSG where one player, say the row player, has <span class="math inline">\(2\)</span> pure strategies and the other player, the column player, has <span class="math inline">\(m\)</span> pure strategies with <span class="math inline">\(m &gt; 2\)</span>, there is an optimal strategy for the column player that puts positive weight on at most two pure strategies. We can find the solution of such <span class="math inline">\(2 × m\)</span> games using the procedure described above. In particular, we have the following:</p>
+<ul>
+<li><p><strong>STEP 1:</strong> Consider <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and for each pure strategy <span class="math inline">\(s_2\)</span> of player&nbsp;2, compute <span class="math inline">\(U(σ_1, s_2)\)</span>. In general, we can have six possibilities as shown in <a href="#fig-zsg-2xm" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>.</p>
+<div id="fig-zsg-2xm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zsg-2xm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/ZSG6.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zsg-2xm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\)</span> games
+</figcaption>
+</figure>
+</div>
+<p>Observe the following:</p>
+<ul>
+<li><p>In cases (a) and (f), the optimal strategy is attained on an internal point <span class="math inline">\(p^*\)</span></p></li>
+<li><p>In cases (b) and (c), the optimal strategy is a boundary point and corresponds to a pure strategy.</p></li>
+<li><p>In case (d) and (e), the maximum is attained in an interval; hence every point in this interval is an optimal strategy.</p></li>
+</ul></li>
+<li><p><strong>STEP 2:</strong> It can be shown that for player&nbsp;2:</p>
+<ul>
+<li><p>case (a) implies that the optimal strategy is an internal point</p></li>
+<li><p>case (b)–(e) implies thta the optimal strategy is a pure strategy</p></li>
+<li><p>case (f) implies that there is an interval of randomization probabilities that are optimal.</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="computing-optimal-strategy-profile-using-linear-programming" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="computing-optimal-strategy-profile-using-linear-programming"><span class="header-section-number">2.6</span> Computing optimal strategy profile using linear programming</h2>
@@ -935,7 +1041,7 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 </section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
-<div id="exr-zsg-pure" class="theorem exercise">
+<div id="exr-zsg-mixed" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1</strong></span> For each of the following games, find the value of the game and the optimal strategy profile.</p>
 <div>
 
@@ -943,15 +1049,15 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="f669b86b" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="78">
+<div id="b7d5b090" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$6$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$-3$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="cfea6653" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="79">
+<div id="07823873" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$-3$</td><td>$8$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
@@ -959,10 +1065,10 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 </div>
 </div>
 </div>
-<div id="exr-zsg-mixed" class="theorem exercise">
+<div id="exr-zsg-ieds" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Find the optimal strategy profile and the value of the following game.</p>
-<div id="2ebc4980" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="80">
+<div id="6fd7e4fa" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$4$</td><td>$6$</td></tr><tr><td>$\mathsf{M}$</td><td>$5$</td><td>$7$</td><td>$4$</td></tr><tr><td>$\mathsf{B}$</td><td>$9$</td><td>$6$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
@@ -1002,15 +1108,15 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="e3f636e7" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="81">
+<div id="7147d93d" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td></tr><tr><td>$\mathsf{1}$</td><td>$3$</td><td>$-1$</td><td>$2$</td></tr><tr><td>$\mathsf{2}$</td><td>$1$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="821bc8b4" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="82">
+<div id="0cafdbd7" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td><td>$\mathsf{4}$</td></tr><tr><td>$\mathsf{1}$</td><td>$6$</td><td>$0$</td><td>$5$</td><td>$6$</td></tr><tr><td>$\mathsf{2}$</td><td>$-3$</td><td>$3$</td><td>$-4$</td><td>$3$</td></tr><tr><td>$\mathsf{3}$</td><td>$8$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
