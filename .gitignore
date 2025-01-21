@@ -2,3 +2,5 @@
 docs/
 references.bib.sav
 references.bib.bak
+*.log
+*.pdf

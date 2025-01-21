@@ -700,7 +700,108 @@ $$
   \end{gathered}}
 $$ 
 
-See @exr-LP for an example.
+A naive implementation of the above LP is given below:
+
+```{julia}
+#| output: false
+#| echo: true
+using JuMP, GLPK
+
+function solve_ZSG_naive(u)
+    n, m = size(u)
+
+    ## Primal LP to find strategies of row player
+    primal = Model(GLPK.Optimizer)
+
+    @variable(primal, v_lower)
+    @variable(primal, p[1:n] >= 0)
+
+    @objective(primal, Max, v_lower)
+
+    @constraint(primal, sum(p[i] for i ∈ 1:n) == 1)
+    for j ∈ 1:m
+        @constraint(primal, sum(p[i]*u[i,j] for i ∈ 1:n) >= v_lower)
+    end
+
+    ## Dual LP to find strategies for column player
+    dual = Model(GLPK.Optimizer)
+
+    @variable(dual, v_upper)
+    @variable(dual, q[1:m] >= 0)
+
+    @objective(dual, Min, v_upper)
+    
+    @constraint(dual, sum(q[j] for j ∈ 1:m) == 1)
+    for i ∈ 1:n
+        @constraint(dual, sum(q[j]*u[i,j] for j ∈ 1:m) <= v_upper)
+    end
+    
+    JuMP.optimize!(primal)
+    JuMP.optimize!(dual)
+
+    row_strategy = JuMP.value.(p)
+    col_strategy = JuMP.value.(q)
+    game_value   = JuMP.value(v_lower) # Same as v_upper
+
+    return row_strategy, col_strategy, game_value
+end
+```
+However, from LP duality, we know that the primal and the dual linear programs have the same solution. So, a more efficient implementation is the following, where we compute the strategies of the column player from the dual variables of the primal LP.
+
+```{julia}
+#| output: false
+#| echo: true
+function solve_ZSG(u)
+    n, m = size(u)
+
+    lp = Model(GLPK.Optimizer)
+
+    @variable(lp, v)
+    @variable(lp, p[1:n] >= 0)
+
+    @objective(lp, Max, v)
+
+    q = Vector{JuMP.ConstraintRef}(undef, m)
+
+    @constraint(lp, sum(p[i] for i ∈ 1:n) == 1)
+    for j ∈ 1:m
+        q[j] = @constraint(lp, sum(p[i]*u[i,j] for i ∈ 1:n) >= v)
+    end
+    JuMP.optimize!(lp)
+
+    row_strategy = JuMP.value.(p)
+    col_strategy = JuMP.dual.(q)
+    game_value   = JuMP.value(v) 
+
+    return row_strategy, col_strategy, game_value
+end
+```
+
+:::{#exr-2x3-LP}
+
+Solve @exm-value-2x3 using linear programming
+:::
+
+:::{.callout-note}
+#### Solution
+We first use the naive solution presented above:
+```{julia}
+#| echo: true
+u = [2 5 -1; 0 -2 5]
+p, q, v = solve_ZSG_naive(u)
+```
+
+Next, we use the efficient solution that uses the dual variables
+```{julia}
+#| echo: true
+u = [2 5 -1; 0 -2 5]
+p, q, v = solve_ZSG(u)
+```
+
+Note that both solutions give the same answer (up to numerical precision) that we obtained "by hand".
+:::
+
+See @exr-LP for larger examples.
 
 
 ## Exercises {-}
@@ -790,5 +891,5 @@ game1([1, 2, 3], [1, 2, 3, 4], [6  0 5 6; -3 3 -4 3; 8 1 2 2]; caption="Game 2")
 :::
 ::::
 
-You may use any programming language to solve the linear program.
+Note that part of the objective of this exercise is for you to learn how to use a linear programming solver. So, instead of blindly copy pasting the code provided above, implement the solution from the equations using the programming language of your choice.
 :::
