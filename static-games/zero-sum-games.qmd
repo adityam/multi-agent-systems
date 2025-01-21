@@ -777,7 +777,7 @@ function solve_ZSG(u)
 end
 ```
 
-:::{#exr-2x3-LP}
+:::{#exm-2x3-LP}
 
 Solve @exm-value-2x3 using linear programming
 :::
