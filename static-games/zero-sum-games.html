@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-20">
+<meta name="dcterms.date" content="2025-01-21">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -169,10 +203,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Zero-sum games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-20">
-<meta name="citation_cover_date" content="2025-01-20">
+<meta name="citation_publication_date" content="2025-01-21">
+<meta name="citation_cover_date" content="2025-01-21">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-20">
+<meta name="citation_online_date" content="2025-01-21">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -203,6 +237,8 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Chapter 20 zero-sum two-person games;,citation_author=T. E. S. Raghavan;,citation_publication_date=1994;,citation_cover_date=1994;,citation_year=1994;,citation_doi=10.1016/s1574-0005(05)80052-9;,citation_issn=1574-0005;,citation_inbook_title=Handbook of game theory with economic applications;">
 <meta name="citation_reference" content="citation_title=Theory of games and economic behaviour;,citation_author=John Neumann;,citation_author=Oskar Morgenstern;,citation_publication_date=1944;,citation_cover_date=1944;,citation_year=1944;">
 <meta name="citation_reference" content="citation_title=Noncooperative game theory: An introduction for engineers and computer scientists;,citation_author=João P. Hespanha;,citation_publication_date=2017-12;,citation_cover_date=2017-12;,citation_year=2017;,citation_doi=10.1515/9781400885442;,citation_isbn=9781400885442;">
+<meta name="citation_reference" content="citation_title=Activity analysis ofproduetion and allocation;,citation_author=George B Dantzig;,citation_editor=T. C. Koopmans;,citation_publication_date=1951;,citation_cover_date=1951;,citation_year=1951;,citation_inbook_title=undefined;">
+<meta name="citation_reference" content="citation_title=Zero-sum games and linear programming duality;,citation_author=Bernhard Stengel;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_issue=2;,citation_doi=10.1287/moor.2022.0149;,citation_issn=1526-5471;,citation_volume=49;,citation_journal_title=Mathematics of Operations Research;,citation_publisher=Institute for Operations Research; the Management Sciences (INFORMS);">
 </head>
 
 <body class="nav-sidebar floating nav-fixed slimcontent">
@@ -360,7 +396,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 20, 2025</p>
+      <p class="date">January 21, 2025</p>
     </div>
   </div>
   
@@ -547,8 +583,8 @@ Proof
 <p>As shown in <a href="#exm-matching-pennies" class="quarto-xref">Example&nbsp;<span>2.1</span></a>, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.</p>
 <div id="exm-value-zsg" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.2</strong></span> Find the maxmin and minmax value of the following game.</p>
-<div id="753085eb" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="2a0177be" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>A game where $\underline v = \bar v$.</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -692,7 +728,7 @@ Figure&nbsp;2.2: Plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)
 <li><p>For a facinating historial discussion of this result, see <span class="citation" data-cites="Kjeldsen2001">Kjeldsen (<a href="../references.html#ref-Kjeldsen2001" role="doc-biblioref">2001</a>)</span>.</p></li>
 <li><p>For a self contained proof of the result using elementary ideas from convex analysis, see <span class="citation" data-cites="vonNeumann1944">Neumann and Morgenstern (<a href="../references.html#ref-vonNeumann1944" role="doc-biblioref">1944</a>)</span>, Chapter 3 and <span class="citation" data-cites="Hespanha2017">Hespanha (<a href="../references.html#ref-Hespanha2017" role="doc-biblioref">2017</a>)</span>, Chapter 5.</p></li>
 <li><p>For a short proof based on <a href="https://en.wikipedia.org/wiki/Brouwer_fixed-point_theorem">:Brouwer’s fixed point theorem</a>, see <span class="citation" data-cites="Raghavan1994">Raghavan (<a href="../references.html#ref-Raghavan1994" role="doc-biblioref">1994</a>)</span>.</p></li>
-<li><p>The minmax theorem is equivalent to the duality theorem of linear programming. See <span class="citation" data-cites="Dantzig1951">(<a href="../references.html#ref-Dantzig1951" role="doc-biblioref"><strong>Dantzig1951?</strong></a>)</span> and <span class="citation" data-cites="vonStengel2024">(<a href="../references.html#ref-vonStengel2024" role="doc-biblioref"><strong>vonStengel2024?</strong></a>)</span>.</p></li>
+<li><p>The minmax theorem is equivalent to the duality theorem of linear programming. See <span class="citation" data-cites="Dantzig1951">Dantzig (<a href="../references.html#ref-Dantzig1951" role="doc-biblioref">1951</a>)</span> and <span class="citation" data-cites="vonStengel2024">Stengel (<a href="../references.html#ref-vonStengel2024" role="doc-biblioref">2024</a>)</span>.</p></li>
 </ul>
 <p>In <a href="#exm-unit-square" class="quarto-xref">Example&nbsp;<span>2.3</span></a>, since the utility function is bilinear, we could have simply used <a href="#thm-von-Neumann" class="quarto-xref">Theorem&nbsp;<span>2.2</span></a> to conclude that the game has a value, without doing any calculations.</p>
 <p>A useful generalization of von Neumann’s minimax theorem is the following.</p>
@@ -787,7 +823,7 @@ Proof
 <li><p><span class="math inline">\(U(σ_1^*, τ_2^*) = U(τ_1^*, σ_2^*) = v\)</span></p>
 <p>Hence, it does not matter which optimal strategy is chosen by players 1 and 2. Every combination of optimal strategies is an optimal strategy profile.</p></li>
 </ul>
-<p>The proof of this statement is left as an exercise (see <a href="#exr-switched-zsg" class="quarto-xref">Exercise&nbsp;<span>2.3</span></a>).</p>
+<p>The proof of this statement is left as an exercise (see <a href="#exr-switched-zsg" class="quarto-xref">Exercise&nbsp;<span>2.4</span></a>).</p>
 </section>
 <section id="computing-the-value-of-zsg" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="computing-the-value-of-zsg"><span class="header-section-number">2.5</span> Computing the value of ZSG</h2>
@@ -807,8 +843,8 @@ Proof
 <p>To illustrate how this simplification helps, we start with an example of a <span class="math inline">\(2 × 2\)</span> game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier.</p>
 <div id="exm-value-2x2" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.4</strong></span> Find the value in mixed strategies of the game below:</p>
-<div id="d6d3d25a" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="a2afbb7f" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -900,11 +936,11 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 </section>
 </div>
 </div>
-<p>The above idea works for general <span class="math inline">\(2 × 2\)</span> games. See <a href="#exr-zsg-mixed" class="quarto-xref">Exercise&nbsp;<span>2.1</span></a> for some examples. We now show that the idea also be extended to general <span class="math inline">\(2 × n\)</span> games as well.</p>
+<p>The above idea works for general <span class="math inline">\(2 × 2\)</span> games. See <a href="#exr-zsg-mixed" class="quarto-xref">Exercise&nbsp;<span>2.2</span></a> for some examples. We now show that the idea also be extended to general <span class="math inline">\(2 × n\)</span> games as well.</p>
 <div id="exm-value-2x3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.5</strong></span> Find the value in mixed strategies of the game below:</p>
-<div id="3bb4c4a1" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="17c7715d" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$5$</td><td>$-1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$-2$</td><td>$5$</td></tr></tbody></table>
 </div>
 </div>
@@ -1046,27 +1082,129 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
    \end{aligned}
   \end{gathered}}
 \]</span></p>
-<p>See <a href="#exr-LP" class="quarto-xref">Exercise&nbsp;<span>2.5</span></a> for an example.</p>
+<p>A naive implementation of the above LP is given below:</p>
+<div id="19bbcdaa" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">JuMP</span>, <span class="bu">GLPK</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">solve_ZSG_naive</span>(u)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    n, m <span class="op">=</span> <span class="fu">size</span>(u)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Primal LP to find strategies of row player</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    primal <span class="op">=</span> <span class="fu">Model</span>(GLPK.Optimizer)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@variable</span>(primal, v_lower)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@variable</span>(primal, p[<span class="fl">1</span><span class="op">:</span>n] <span class="op">&gt;=</span> <span class="fl">0</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@objective</span>(primal, Max, v_lower)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@constraint</span>(primal, <span class="fu">sum</span>(p[i] <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>n) <span class="op">==</span> <span class="fl">1</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@constraint</span>(primal, <span class="fu">sum</span>(p[i]<span class="op">*</span>u[i,j] <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>n) <span class="op">&gt;=</span> v_lower)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Dual LP to find strategies for column player</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    dual <span class="op">=</span> <span class="fu">Model</span>(GLPK.Optimizer)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@variable</span>(dual, v_upper)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@variable</span>(dual, q[<span class="fl">1</span><span class="op">:</span>m] <span class="op">&gt;=</span> <span class="fl">0</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@objective</span>(dual, Min, v_upper)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@constraint</span>(dual, <span class="fu">sum</span>(q[j] <span class="cf">for</span> j <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>m) <span class="op">==</span> <span class="fl">1</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@constraint</span>(dual, <span class="fu">sum</span>(q[j]<span class="op">*</span>u[i,j] <span class="cf">for</span> j <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>m) <span class="op">&lt;=</span> v_upper)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    JuMP.<span class="fu">optimize!</span>(primal)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    JuMP.<span class="fu">optimize!</span>(dual)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    row_strategy <span class="op">=</span> JuMP.<span class="fu">value</span>.(p)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    col_strategy <span class="op">=</span> JuMP.<span class="fu">value</span>.(q)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    game_value   <span class="op">=</span> JuMP.<span class="fu">value</span>(v_lower) <span class="co"># Same as v_upper</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row_strategy, col_strategy, game_value</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, from LP duality, we know that the primal and the dual linear programs have the same solution. So, a more efficient implementation is the following, where we compute the strategies of the column player from the dual variables of the primal LP.</p>
+<div id="f1641c8e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">solve_ZSG</span>(u)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    n, m <span class="op">=</span> <span class="fu">size</span>(u)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    lp <span class="op">=</span> <span class="fu">Model</span>(GLPK.Optimizer)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@variable</span>(lp, v)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@variable</span>(lp, p[<span class="fl">1</span><span class="op">:</span>n] <span class="op">&gt;=</span> <span class="fl">0</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@objective</span>(lp, Max, v)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{JuMP.ConstraintRef}</span>(<span class="cn">undef</span>, m)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@constraint</span>(lp, <span class="fu">sum</span>(p[i] <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>n) <span class="op">==</span> <span class="fl">1</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>m</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        q[j] <span class="op">=</span> <span class="pp">@constraint</span>(lp, <span class="fu">sum</span>(p[i]<span class="op">*</span>u[i,j] <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>n) <span class="op">&gt;=</span> v)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    JuMP.<span class="fu">optimize!</span>(lp)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    row_strategy <span class="op">=</span> JuMP.<span class="fu">value</span>.(p)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    col_strategy <span class="op">=</span> JuMP.<span class="fu">dual</span>.(q)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    game_value   <span class="op">=</span> JuMP.<span class="fu">value</span>(v) </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row_strategy, col_strategy, game_value</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="exr-2x3-LP" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.1</strong></span> Solve <a href="#exm-value-2x3" class="quarto-xref">Example&nbsp;<span>2.5</span></a> using linear programming</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We first use the naive solution presented above:</p>
+<div id="95edfa05" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="fl">2</span> <span class="fl">5</span> <span class="op">-</span><span class="fl">1</span>; <span class="fl">0</span> <span class="op">-</span><span class="fl">2</span> <span class="fl">5</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p, q, v <span class="op">=</span> <span class="fu">solve_ZSG_naive</span>(u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>([0.6249999999999998, 0.375], [0.75, 0.0, 0.25], 1.2500000000000002)</code></pre>
+</div>
+</div>
+<p>Next, we use the efficient solution that uses the dual variables</p>
+<div id="000963e8" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="fl">2</span> <span class="fl">5</span> <span class="op">-</span><span class="fl">1</span>; <span class="fl">0</span> <span class="op">-</span><span class="fl">2</span> <span class="fl">5</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p, q, v <span class="op">=</span> <span class="fu">solve_ZSG</span>(u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>([0.6249999999999998, 0.375], [0.75, -0.0, 0.25], 1.2500000000000002)</code></pre>
+</div>
+</div>
+<p>Note that both solutions give the same answer (up to numerical precision) that we obtained “by hand”.</p>
+</div>
+</div>
+<p>See <a href="#exr-LP" class="quarto-xref">Exercise&nbsp;<span>2.6</span></a> for larger examples.</p>
 </section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-zsg-mixed" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.1</strong></span> For each of the following games, find the value of the game and the optimal strategy profile.</p>
+<p><span class="theorem-title"><strong>Exercise 2.2</strong></span> For each of the following games, find the value of the game and the optimal strategy profile.</p>
 <div>
 
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="b7d5b090" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="545cfcda" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$6$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$-3$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="07823873" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="9ad05055" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$-3$</td><td>$8$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
@@ -1075,16 +1213,16 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
 </div>
 </div>
 <div id="exr-zsg-ieds" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Find the optimal strategy profile and the value of the following game.</p>
-<div id="6fd7e4fa" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<p><span class="theorem-title"><strong>Exercise 2.3</strong></span> Find the optimal strategy profile and the value of the following game.</p>
+<div id="98d767cd" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$4$</td><td>$6$</td></tr><tr><td>$\mathsf{M}$</td><td>$5$</td><td>$7$</td><td>$4$</td></tr><tr><td>$\mathsf{B}$</td><td>$9$</td><td>$6$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
 <p><em>Hint</em>: Use iterative elimination of strongly dominated strategies to first reduce the above to a <span class="math inline">\(2 × 2\)</span> game and then simplify the resulting game.</p>
 </div>
 <div id="exr-switched-zsg" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.3</strong></span> Suppose <span class="math inline">\((σ_1^*, σ_2^*)\)</span> and <span class="math inline">\((τ_1^*, τ_2^*)\)</span> both satisfy <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> Suppose <span class="math inline">\((σ_1^*, σ_2^*)\)</span> and <span class="math inline">\((τ_1^*, τ_2^*)\)</span> both satisfy <span class="math display">\[
   \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in Δ(\ALPHABET S_2)}
   U(σ_1, σ_2) =
   \min_{σ_2 \in Δ(\ALPHABET S_2)} \max_{σ_1 \in Δ(\ALPHABET S_1)}
@@ -1099,44 +1237,47 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
 \]</span></p>
 </div>
 <div id="exr-symmetric-games" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> A zero-sum game with <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2\)</span> is called <strong>symmetric</strong> if the utlity function is skew-symmetric, i.e., <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> A zero-sum game with <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2\)</span> is called <strong>symmetric</strong> if the utlity function is skew-symmetric, i.e., <span class="math display">\[
   u(s_1, s_2) = - u(s_2, s_1), \quad \forall s_1, s_2 \in \ALPHABET S_1.
 \]</span> An example of a symmetric game is rock-paper-scissors.</p>
 <p>Let <span class="math inline">\(\mathscr{G}\)</span> be a symmetric game. Show that:</p>
 <ol type="a">
-<li><p>The value of <span class="math inline">\(\mathscr{G}\)</span> is mixed strategies is zero.</p></li>
+<li><p>The value of <span class="math inline">\(\mathscr{G}\)</span> in mixed strategies is zero.</p></li>
 <li><p>If <span class="math inline">\((σ_1^*, σ_2^*)\)</span> is an optimal (mixed) strategy for <span class="math inline">\(\mathscr{G}\)</span>, then <span class="math inline">\((σ_2^*, σ_1^*)\)</span> is also an optimal (mixed) strategy.</p></li>
-<li><p>Use part b and <a href="#exr-switched-zsg" class="quarto-xref">Exercise&nbsp;<span>2.3</span></a> to argue that a symmetric zero-sum game always has a <em>symmetric</em> optimal (mixed) strategy of the form <span class="math inline">\((σ^*, σ^*)\)</span>, where both players are playing the same mixed strategy.</p></li>
+<li><p>Use part b and <a href="#exr-switched-zsg" class="quarto-xref">Exercise&nbsp;<span>2.4</span></a> to argue that a symmetric zero-sum game always has a <em>symmetric</em> optimal (mixed) strategy of the form <span class="math inline">\((σ^*, σ^*)\)</span>, where both players are playing the same mixed strategy.</p></li>
 </ol>
 </div>
 <div id="exr-LP" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> Use the LP formulation to find optimal strategy profile of the following games.</p>
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> Use the LP formulation to find optimal strategy profile of the following games.</p>
 <div>
 
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="7147d93d" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="75c92162" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="51">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td></tr><tr><td>$\mathsf{1}$</td><td>$3$</td><td>$-1$</td><td>$2$</td></tr><tr><td>$\mathsf{2}$</td><td>$1$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="0cafdbd7" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="f3afb27f" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td><td>$\mathsf{4}$</td></tr><tr><td>$\mathsf{1}$</td><td>$6$</td><td>$0$</td><td>$5$</td><td>$6$</td></tr><tr><td>$\mathsf{2}$</td><td>$-3$</td><td>$3$</td><td>$-4$</td><td>$3$</td></tr><tr><td>$\mathsf{3}$</td><td>$8$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>You may use any programming language to solve the linear program.</p>
+<p>Note that part of the objective of this exercise is for you to learn how to use a linear programming solver. So, instead of blindly copy pasting the code provided above, implement the solution from the equations using the programming language of your choice.</p>
 </div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Dantzig1951" class="csl-entry" role="listitem">
+<span class="smallcaps">Dantzig, G.B.</span> 1951. Activity analysis ofproduetion and allocation. In: T.C. Koopmans, ed., John Wiley, New York, 333–335.
+</div>
 <div id="ref-Hespanha2017" class="csl-entry" role="listitem">
 <span class="smallcaps">Hespanha, J.P.</span> 2017. <em>Noncooperative game theory: An introduction for engineers and computer scientists</em>. Princeton University Press. DOI: <a href="https://doi.org/10.1515/9781400885442">10.1515/9781400885442</a>.
 </div>
@@ -1154,6 +1295,9 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
 </div>
 <div id="ref-Sion1958" class="csl-entry" role="listitem">
 <span class="smallcaps">Sion, M.</span> 1958. On general minimax theorems. <em>Pacific Journal of Mathematics</em> <em>8</em>, 1, 171–176. DOI: <a href="https://doi.org/10.2140/pjm.1958.8.171">10.2140/pjm.1958.8.171</a>.
+</div>
+<div id="ref-vonStengel2024" class="csl-entry" role="listitem">
+<span class="smallcaps">Stengel, B. von</span>. 2024. Zero-sum games and linear programming duality. <em>Mathematics of Operations Research</em> <em>49</em>, 2, 1091–1108. DOI: <a href="https://doi.org/10.1287/moor.2022.0149">10.1287/moor.2022.0149</a>.
 </div>
 <div id="ref-vonNeumann1928" class="csl-entry" role="listitem">
 <span class="smallcaps">von Neumann, J.</span> 1928. Zur theorie der gesellschaftsspiele. <em>Mathematische Annalen</em> <em>100</em>, 1, 295–320. DOI: <a href="https://doi.org/10.1007/bf01448847">10.1007/bf01448847</a>.
