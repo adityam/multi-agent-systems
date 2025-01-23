@@ -920,6 +920,12 @@ b) $\ALPHABET S_i = \reals^{m_i}$, $i \in \{1,2\}$ and
 Then the game has a **unique** optimal pure strategy.
 :::
 
+When strategy spaces are compact, a solution in mixed strategies exist under very weak conditions. This result is know as [:Glicksberg Theorem](https://en.wikipedia.org/wiki/Glicksberg's_theorem). We present a simplified version of it below (in the more general setting we can relax continuity of the utility with semi-continuity). 
+
+:::{#thm-zsg-Glicksberg}
+A two player zero sum game with compact strategy spaces and continuous utility function has a value in mixed strategies.
+:::
+
 We conclude this section by presenting an example to show that a game with continuous strategy spaces may **not** have a solution in pure strategies. 
 
 :::{#exm-zsg-cts-mixed}
@@ -1092,4 +1098,26 @@ game1([1, 2, 3], [1, 2, 3, 4], [6  0 5 6; -3 3 -4 3; 8 1 2 2]; caption="Game 2")
 ::::
 
 Note that part of the objective of this exercise is for you to learn how to use a linear programming solver. So, instead of blindly copy pasting the code provided above, implement the solution from the equations using the programming language of your choice.
+:::
+
+:::{#exr-zsg-lgr}
+Consider a two player zero-sum game with $\ALPHABET S_1 = \ALPHABET S_2 = \reals$.
+
+$$
+  u(s_1, s_2) = - s_1^2 + s_2^2 - 2 s_1 s_2 - s_1 + 2 s_2.
+$$
+
+a. Show that the game satisfies the sufficient conditions of @thm-zsg-existence. Therefore, the game has a value and a unique optimal strategy.
+
+b. Find the maxmin strategy of player 1 and the maxmin value of the game by solving the following:
+$$
+  \underline v = \sup_{s_1 \in \reals} \inf_{s_2 \in \reals} u(s_1, s_2).
+$$
+
+c. Find the minmax strategy of player 2 and the minmax value of the game by solving the following:
+$$
+  \bar v = \inf_{s_2 \in \reals} \sup_{s_1 \in \reals} u(s_1, s_2).
+$$
+
+d. Is the maxmin value same as the minmax value?
 :::
