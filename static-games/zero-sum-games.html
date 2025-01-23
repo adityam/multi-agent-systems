@@ -97,8 +97,8 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3fb39a459e7a93b280bf28df6a2973b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-7035e4f70e39f4c8130043979f56ecee.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-32713c95bb3596716cfb218584f751b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d8c0ed0f4c00b1c205feb8420210e267.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -1277,6 +1277,10 @@ Figure&nbsp;2.9: Payoff profile for <span class="math inline">\(∞ × 2\)</span
 </ol>
 <p>Then the game has a <strong>unique</strong> optimal pure strategy.</p>
 </div>
+<p>When strategy spaces are compact, a solution in mixed strategies exist under very weak conditions. This result is know as <a href="https://en.wikipedia.org/wiki/Glicksberg's_theorem">:Glicksberg Theorem</a>. We present a simplified version of it below (in the more general setting we can relax continuity of the utility with semi-continuity).</p>
+<div id="thm-zsg-Glicksberg" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.8</strong></span> A two player zero sum game with compact strategy spaces and continuous utility function has a value in mixed strategies.</p>
+</div>
 <p>We conclude this section by presenting an example to show that a game with continuous strategy spaces may <strong>not</strong> have a solution in pure strategies.</p>
 <div id="exm-zsg-cts-mixed" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.7</strong></span> Consider a ZSG game with both players guess a number in the interval <span class="math inline">\([0, 1]\)</span>. Player&nbsp;1 wants to be close to player while player&nbsp;2 wants to be far from player&nbsp;1. We model this game as follows:</p>
@@ -1436,6 +1440,22 @@ Figure&nbsp;2.10: Payoff profile for <a href="#exm-zsg-cts-mixed" class="quarto-
 </div>
 </div>
 <p>Note that part of the objective of this exercise is for you to learn how to use a linear programming solver. So, instead of blindly copy pasting the code provided above, implement the solution from the equations using the programming language of your choice.</p>
+</div>
+<div id="exr-zsg-lgr" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> Consider a two player zero-sum game with <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \reals\)</span>.</p>
+<p><span class="math display">\[
+  u(s_1, s_2) = - s_1^2 + s_2^2 - 2 s_1 s_2 - s_1 + 2 s_2.
+\]</span></p>
+<ol type="a">
+<li><p>Show that the game satisfies the sufficient conditions of <a href="#thm-zsg-existence" class="quarto-xref">Theorem&nbsp;<span>2.7</span></a>. Therefore, the game has a value and a unique optimal strategy.</p></li>
+<li><p>Find the maxmin strategy of player&nbsp;1 and the maxmin value of the game by solving the following: <span class="math display">\[
+  \underline v = \sup_{s_1 \in \reals} \inf_{s_2 \in \reals} u(s_1, s_2).
+\]</span></p></li>
+<li><p>Find the minmax strategy of player&nbsp;2 and the minmax value of the game by solving the following: <span class="math display">\[
+  \bar v = \inf_{s_2 \in \reals} \sup_{s_1 \in \reals} u(s_1, s_2).
+\]</span></p></li>
+<li><p>Is the maxmin value same as the minmax value?</p></li>
+</ol>
 </div>
 
 
