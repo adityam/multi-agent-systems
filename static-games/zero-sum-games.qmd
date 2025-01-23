@@ -803,6 +803,206 @@ Note that both solutions give the same answer (up to numerical precision) that w
 
 See @exr-LP for larger examples.
 
+## Games with non-compact action spaces
+
+So far, we have restricted the discussion to finite games and shown that the game has a value in mixed strategies and there exist optimal strategies that achieve the value. We now present an example to show that this result is not always true if the game is not finite. 
+
+Consider a $∞ × 2$ game with the following payoff matrix:
+
+```{julia}
+game1([1, 2, 3, 4, 5, "\\cdot", "\\cdot", "\\cdot"], ["L", "R"], 
+      [ 2 0 ; "\\tfrac 12" "\\tfrac 12"; "\\tfrac 13" "\\tfrac 23"; 
+        "\\tfrac 14" "\\tfrac 34"; "\\tfrac 15" "\\tfrac 45";
+        "\\cdot" "\\cdot"; "\\cdot" "\\cdot"; "\\cdot" "\\cdot"])
+```
+
+where the payoffs for $k > 1$ are
+$$
+  U(k, \mathsf{L}) = \frac{1}{k}
+  \quad \text{and} \quad
+  U(k, \mathsf{R}) = \frac{k-1}{k}.
+$$
+
+Note that the row player has countable infinite number of strategies. A natural solution approach in this case is to truncate the strategy space of the row player to $K$ strategies and then solve the resulting finite game. Since the column player has two strategies, we use the graphical method presented above. 
+
+In particular, suppose the column player is playering a mixed srtategy $σ_2 = (q_K, 1-q_K)$,
+where we use subscript $K$ to empahsize the fact that this is the strategy for the $K × 2$ truncated game.
+
+Then, we have
+$$
+  U(1, σ_2) = 2q_K,
+  \quad\text{and}\quad
+  U(k, σ_2) = \frac{q_K}{k} + \left(1 - \frac 1k\right)(1-q_K),
+  \quad \forall k > 1.
+$$
+
+The payoffs for $K = 4$ are shown in @fig-zsg-infx2, where the upper convex envelop is shown in red. 
+
+![Payoff profile for $∞ × 2$ game](figures/svg/ZSG7.svg){#fig-zsg-infx2}
+  
+Observe that the upper convex envelop consists of $U(1, σ_2)$ and and $U(K, σ_2)$. We find the maxmin strategy (for the truncated game) by solving 
+$$
+  U(1,σ_2) = U(K, σ_2)
+  \implies
+  2q_K = \frac{q_K}{K} + \left(1 - \frac 1K\right)(1-q_K).
+$$
+Solving the above, we have
+$$
+  q_K = \frac{K-1}{3K -2}
+  \quad\text{and}\quad
+  v_K = \frac{2(K-1)}{3K-2}
+$$
+
+Now consider the row player. When the column player is randomizing according to $q_K$, the row player gets the same payoff when playing strategies $1$ and $K$ and gets a lower payoff when playing any other strategy. So, the row player will choose a strategy
+$$
+  σ_1 = (p_K, 0, 0, \dots, 0, 1-p_K)
+$$
+where $p_K$ can be computed by solving
+$$
+  U(σ_1, \mathsf{L}) = U(σ_1, \mathsf{R}) = v_K
+  \implies
+  2 p_K + \frac{1-p}{K} = \left(1 - \frac 1K\right) (1 - p_K) 
+  = \frac{2(K-1)}{3K - 2}
+$$
+Solving this, we get
+$$
+  p_K = \frac{K-2}{3K-2}.
+$$
+
+Observe that 
+$$
+  \lim_{K \to ∞} v_K = \tfrac{2}{3},
+$$
+So, the original game has a value. However, to achieve this value, the row player has to randomize between strategies $1$ and $K \to ∞$; so there is no strategy for the row player which actually achieves this value. 
+
+Thus, **when action sets are not compact, the existence of a value does not imply that there is a strategy that will achieve that value.** 
+
+In some sense, finding a strategy that achieves a value is equivalent to maximizing 
+$$
+  f(k) = 1 - \frac 1k, \quad k \in \naturalnumbers.
+$$
+Clearly, $\sup_{k \in \naturalnumbers} f(k) = 1$, but there is no value of $k \in \naturalnumbers$ which achieves $f(k) = 1$. 
+
+Nonetheless, we can talk about an $ε$-optimal strategy. In the above example, pick 
+$$
+  σ_1 = (\tfrac 13, 0, \dots, 0, \tfrac 23, 0, 0, \dots)
+$$
+where player is randomizing between strategy $1$ and strategy $k$. Then,
+$$
+  U(σ_1, \mathsf{L}) = \frac 23 + \frac{2}{3k}
+  \quad\text{and}\quad
+  U(σ_1, \mathsf{R}) = \frac 23 \left(1 - \frac 1k\right) = 
+  \frac{2}{3} - \frac{2}{3k}.
+$$
+Thus, for any $ε > 0$, we can guarantee a value of $\frac 23 - ε$ by choosing $k > 2/(3 ε)$.
+
+## Sufficient conditions for existence of optimal strategies for general strategy spaces
+
+We now present a general theorem that guarantees the existence of optimal strategies for a two player zero sum game with continuous action spaces.
+
+:::{#thm-zsg-existence}
+
+Consider a two player ZSG where $\ALPHABET S_1$ and $\ALPHABET S_2$ are convex sets and $u(s_1, s_2)$ is a continuous function and:
+
+- $u(⋅, s_2)$ is strictly concave for each $s_2$
+- $u(s_1, ⋅)$ is strictly convex for each $s_1$.
+
+Furthermore, either
+
+a) $\ALPHABET S_1$ and $\ALPHABET S_2$ are closed and bounded
+
+b) $\ALPHABET S_i = \reals^{m_i}$, $i \in \{1,2\}$ and 
+    
+    - $\displaystyle \lim_{\NORM{s_1} \to ∞} u(s_1, s_2) = -∞$, for all $s_2 \in \ALPHABET S_2$
+
+    - $\displaystyle \lim_{\NORM{s_2} \to ∞} u(s_1, s_2) = ∞$, for all $s_1 \in \ALPHABET S_1$
+
+Then the game has a **unique** optimal pure strategy.
+:::
+
+We conclude this section by presenting an example to show that a game with continuous strategy spaces may **not** have a solution in pure strategies. 
+
+:::{#exm-zsg-cts-mixed}
+  Consider a ZSG game with both players guess a number in the interval $[0, 1]$. Player 1 wants to be close to player while player 2 wants to be far from player 1. We model this game as follows:
+
+  We take $\ALPHABET S_1 = \ALPHABET S_2 = [0, 1]$ and 
+  $$
+    u(s_1, s_2) = - (s_1 - s_2)^2.
+  $$
+:::
+
+Observe that the utility function is concave in both $s_1$ and $s_2$. So, the above example does not satisfy the sufficient conditions of @thm-zsg-existence. We check if a value exists from first principles.
+
+:::{.callout-note}
+#### Solution
+
+#### Strategy for row player {-}
+
+Consider the optimization problem
+$$
+  \underline v = \max_{s_1 \in [0,1]} \min_{s_2 \in [0,1]} u(s_1, s_2).
+$$
+In the inner optimization problem, player 2 is minimizing a concave function. So the minima is attached at the boundary. Thus, the above optimization problem is same as one where player 2 is choosing from the discrete set $\{0, 1\}$, that is
+\begin{align*}
+  \max_{s_1 \in [0,1]} \min_{s_2 \in [0,1]} u(s_1, s_2)
+  &= \max_{s_1 \in [0,1]} \min_{s_2 \in \{0,1\}} u(s_1, s_2)
+  \\ \max_{s_1 \in [0,1]} \min \{ -s_1^2, -(1-s_1)^2 \}.
+\end{align*}
+Although the utility functions are not linear, we can follow the same argument as before: we plot both functions, find the lower envelop, and the find the maxmin value $s_1$. See @fig-zsg-cts.
+
+![Payoff profile for @exm-zsg-cts-mixed](figures/svg/ZSG8.svg){#fig-zsg-cts}
+
+Thus, we have that 
+$$
+  s_1^* = \tfrac 12
+  \quad\text{and}\quad
+  \underline v = - \tfrac{1}{4}.
+$$
+
+#### Strategy for column player {-}
+
+
+We know that player 2 only chooses among the actions in $\{0, 1\}$. Suppose player 2 is playing a randomized strategy $σ_2$ where it picks strategy $0$ with probability $q$ and strategy $1$ with probability $1$.
+
+Then, player 2 wants to solve:
+$$
+  \bar v = \min_{q \in [0, 1]} \max_{s_1 \in [0, 1]} u(s_1, s_2).
+$$
+
+Consider the inner optimization problem for player 1:
+$$
+  max_{s_1 \in [0, 1]} u(s_1, σ_2)
+  = \max_{s_1 \in [0, 1]} \bigl[
+      - q s_1^2 - (1-q) (1 - s_1)^2 
+    \bigr]
+$$
+which is concave in $s_1$. So, we look at the first order optimality conditions to find the optima:
+$$
+  \frac{∂u}{∂ s_1} = 0 
+  \implies
+  -2q s_1 + 2(1-q)(1-s_1) = 0
+  \implies s_1 = 1 - q.
+$$
+Thus, we have
+$$
+  \max_{s_1 \in [0, 1]} \min_{s_2 \in \ALPHABET S_2} 
+  = - q (1-q)^2 - (1-q)q^2 = -q(1-q).
+$$
+
+Substituting this back in the equation for the minmax, we have
+$$
+  \bar v = \min_{q \in [0, 1]} - q(1-q).
+$$
+By the [:AM-GM inequality](https://en.wikipedia.org/wiki/AM%E2%80%93GM_inequality), we know that the minima is achieved at $q = \tfrac 12$. Therefore, 
+$$
+  \bar v = - \tfrac 14.
+$$
+
+Therefore, we have that $\underline v = \bar v = -\tfrac 14$; thus, the game has a value, where player 1 plays a pure strategy of $s_1 = \tfrac 12$ and player 2 randomizes between $0$ and $1$ with equal probability (this makes sense from the description of the problem). 
+:::
+
+In the above example, the utility function was not convex in $s_2$. The game does not have a value in pure strategies, but it still has a value in mixed strategies. There are general sufficient conditions to verify the existence of value in mixed strategies for games with continuous strategy spaces, but we will not discuss them in the course. 
+
 
 ## Exercises {-}
 

@@ -605,5 +605,88 @@
   \stopcombination
 \stopTEXpage
 
+%% 2xK Game: Row Player
+\startMPpage[offset=1dk]
+  startaxis [ymin = 0, ymax = 2.2, show_labels = true, sy = 1.2cm] ;
+    save u; path u[];
+
+    newnumeric K; K := 4;
+
+    u[0] := (0, 0sy) -- (sx, 2sy) ;
+    for k = 1 upto K : 
+        u[k] := (0, k*sy/(k+1)) -- (sx, sy/(k+1)) ; 
+    endfor;
+
+    linecap := butt; 
+
+    for k = 0 upto K :
+      draw u[k] withpen pencircle scaled 0.5bp;
+    endfor
+
+    newpair p;
+
+    p := u[0] intersectionpoint u[K]; 
+
+    linecap := butt; 
+    draw point 0 of u[K] -- p -- point 1 of u[0]
+         withpen pencircle scaled 2bp withcolor "lightred";
+
+    draw point 0 of u[K] -- p -- point 1 of u[0]
+         withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+    fill fullcircle scaled 2bp shifted p withcolor "darkred";
+
+
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
+
+\startMPpage[offset=1dk]
+  startaxis [ymin = -1.2, ymax = 0, show_labels = true, sy = 1.2cm] ;
+    save u; path u[];
+
+    u[0] := (0, 0sy) 
+            for k = 1 upto 100 :
+                .. (k/100 * sx, -(k/100)*(k/100) * sy)
+            endfor ; 
+
+    u[1] := (0, -sy) 
+            for k = 1 upto 100 :
+                .. (k/100 * sx, -(1 - k/100)*(1 - k/100) * sy)
+            endfor ; 
+
+    linecap := butt; 
+
+    for k = 0 upto 1 :
+      draw u[k] withpen pencircle scaled 0.5bp;
+    endfor
+
+    newpair p;
+
+    p := u[0] intersectionpoint u[1]; 
+
+    linecap := butt; 
+    draw u[1] cutafter u[0]
+         withpen pencircle scaled 2bp withcolor "lightred";
+
+    draw u[0] cutbefore u[1]
+         withpen pencircle scaled 2bp withcolor "lightred";
+
+    draw u[1] cutafter u[0]
+         withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+    draw u[0] cutbefore u[1]
+         withpen pencircle scaled 0.5bp withcolor "darkred" ;
+
+    fill fullcircle scaled 2bp shifted p withcolor "darkred";
+
+    draw p -- (xpart p, 0) dashed evenly;
+    label.top (style & "$\frac 12$", (xpart p, 0));
+
+  stopaxis ; 
+
+  currentpicture := currentpicture scaled 2;
+\stopMPpage
 
 \stoptext
