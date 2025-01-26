@@ -1,0 +1,164 @@
+\setupbodyfont[lucida]
+
+\starttext
+
+\startuseMPgraphic{axis}
+  newnumeric sx, sy;
+  sx := 1cm;
+  sy := 1cm;
+
+  newpath xaxis, yaxis;
+
+  xaxis = (0,0) -- (xmax*sx, 0);
+  yaxis = (0,0) -- (0, ymax*sy);
+
+  draw xaxis ;
+  draw yaxis ;
+  draw yaxis shifted point 1 of xaxis;
+
+\stopuseMPgraphic 
+
+\startuseMPgraphic{noise-level}
+  newpath bin;
+
+
+  for i = 0 upto (xmax - 1) :
+    bin := unitsquare xyscaled (sx, sigma[i]*sy) shifted (i*sx, 0);
+    bin := bin enlarged (-0.8bp);
+    fill bin withcolor "lightgray" ;
+    draw bin ;
+  endfor
+\stopuseMPgraphic
+
+\startuseMPgraphic{jammer}
+  newpath jammer;
+
+  for i = 0 upto (xmax - 1) :
+
+    if jm_level > sigma[i] :
+        jammer := unitsquare xyscaled (sx, (jm_level - sigma[i])*sy) shifted (i*sx, sigma[i]*sy);
+        jammer := jammer enlarged (-0.8bp);
+        fill jammer withcolor "lightred";
+        draw jammer withcolor "red";
+    fi
+  endfor
+  label.rt("$(λ+μ)^{-1} B$", (xpart (point 1 of xaxis), jm_level*sy));
+\stopuseMPgraphic
+
+\startuseMPgraphic{transmitter}
+  newpath tx;
+
+  newnumeric interference;
+
+  for i = 0 upto (xmax - 1) :
+
+    interference := sigma[i] + jm[i];
+    
+    if tx_level > interference :
+        tx := unitsquare xyscaled (sx, (tx_level - interference)*sy) shifted (i*sx, interference*sy);
+        tx := tx enlarged (-0.8bp);
+        fill tx withcolor "lightblue";
+        draw tx withcolor "blue";
+    fi
+  endfor
+  label.rt("$λ^{-1} B$", (xpart (point 1 of xaxis), tx_level*sy));
+\stopuseMPgraphic
+
+\startuseMPgraphic{scaling}
+  currentpicture := currentpicture scaled 1.5 ;
+\stopuseMPgraphic
+
+\startTEXpage[offset=1dk]
+  \startMPdefinitions
+    xmax := 5; ymax := 6;
+    tx_level := 4;
+
+    save sigma; numeric sigma[];
+
+    sigma[0] := 1;
+    sigma[1] := 2.5;
+    sigma[2] := 5;
+    sigma[3] := 3.5;
+    sigma[4] := 2;
+
+    jm_level := 0;
+    save jm; numeric jm[];
+    for i = 0 upto (xmax - 1):
+       jm[i] = 0;
+    endfor
+  \stopMPdefinitions
+  \startcombination[nx=2,ny=1, distance=4em]
+    \startcontent
+      \startMPcode
+        \includeMPgraphic{axis}
+        \includeMPgraphic{noise-level}
+        \includeMPgraphic{scaling}
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (a)
+    \stopcaption
+    \startcontent
+      \startMPcode
+        \includeMPgraphic{axis}
+        \includeMPgraphic{noise-level}
+        \includeMPgraphic{transmitter}
+        \includeMPgraphic{scaling}
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (b)
+    \stopcaption
+  \stopcombination
+\stopTEXpage
+
+\startTEXpage[offset=1dk]
+  \startMPdefinitions
+    xmax := 6; ymax := 7;
+    tx_level := 5;
+
+    save sigma; numeric sigma[];
+
+    sigma[0] := 1.5;
+    sigma[1] := 3;
+    sigma[2] := 6;
+    sigma[3] := 1;
+    sigma[4] := 4.5;
+    sigma[5] := 2.5;
+
+    save jm; numeric jm[];
+
+    jm_level := 3.5;
+
+    for i = 0 upto (xmax - 1) :
+      jm[i] = max(jm_level - sigma[i], 0);
+    endfor
+    
+  \stopMPdefinitions
+  \startcombination[nx=2,ny=1, distance=4em]
+    \startcontent
+      \startMPcode
+        \includeMPgraphic{axis}
+        \includeMPgraphic{noise-level}
+        \includeMPgraphic{scaling}
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (a)
+    \stopcaption
+    \startcontent
+      \startMPcode
+        \includeMPgraphic{axis}
+        \includeMPgraphic{noise-level}
+        \includeMPgraphic{jammer}
+        \includeMPgraphic{transmitter}
+        \includeMPgraphic{scaling}
+      \stopMPcode
+    \stopcontent
+    \startcaption
+      (b)
+    \stopcaption
+  \stopcombination
+\stopTEXpage
+
+\stoptext
