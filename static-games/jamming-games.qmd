@@ -53,7 +53,7 @@ Thus, we can consider a zero-sum jamming game between the Tx and the Jm, where t
 ## Existence of value in pure strategies
 
 :::{#prp-jamming-value}
-The two player ZSG formulated above has a value in pure strategies.
+The two player ZSG formulated above has a value in pure strategies and the optimal strategy is unique.
 :::
 
 :::{.callout-note}
@@ -65,7 +65,7 @@ We will prove the result by showing that the model satisfies the sufficient cond
 
 By construction, we can see that $\ALPHABET X$ and $\ALPHABET Y$ are closed and bounded subsets of Eucledian space. Hence, both sets are compact. 
 
-#### Concavity of $u(x,y)$ in $x$ {-}
+#### Strict concavity of $u(x,y)$ in $x$ {-}
 
 Fix $y$ and consider the function $f(x) = u(x,y)$. Then,
 $$
@@ -89,7 +89,7 @@ $$
 $$
 which is a diagonal matrix with a negative diagonal. Recall that the eigenvalues of a diagonal matrix is the diagonal elements. Thus, all eigenvalues are negative and hence the Hessian is negative definite. Thus, $f$ is strictly concave. 
 
-#### Convexity of $u(x,y)$ in $y$ {-}
+#### Strict convexity of $u(x,y)$ in $y$ {-}
 
 Fix $x$ and consider the function $g(y) = u(x,y)$. Then,
 \begin{align*}
@@ -241,7 +241,6 @@ $$
 where $x^*_i = [λ^{-1}B - y_i - σ_i]^{+}$, as determined in the previous step. This optimization problem can be written as
 $$
   \min_{y \in \reals^m} 
-  \biggl\{ 
     \sum_{i \in \ALPHABET M} B \log\left( 1 + \frac{x_i^*}{y_i + σ_i} \right)
 $$
 such that
@@ -363,10 +362,6 @@ This situation is illustrated in @fig-waterfilling-summary.
 
   
 ![Water-filling solution for the transmitter. Plot (a) shows the noise levels $σ_i$. In plot (b), the red shaded region shows the power levels $y_i^*$ and the blue area shows the power levels $x_i^*$. ](figures/svg/waterfilling2.svg){#fig-waterfilling-summary}
-
-
-  
-
 
 
 ## Notes {-}
