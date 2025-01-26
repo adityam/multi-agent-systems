@@ -118,7 +118,9 @@ window.MathJax = {
       ALPHABET: ["\\mathcal{#1}", 1],
       MATRIX: ["\\begin{bmatrix} #1 \\end{bmatrix}", 1],
       NORM: ["\\left\\lVert #1 \\right\\rVert", 1],
-      ABS: ["\\left\\lvert #1 \\right\\rvert", 1]
+      ABS: ["\\left\\lvert #1 \\right\\rvert", 1],
+      GRAD: "\\nabla",
+      IP: ["\\left\\langle #1, #2 \\right\\rangle", 2]
     },
   },
   options: {
@@ -168,6 +170,10 @@ window.MathJax = {
 <meta name="citation_reference" content="citation_title=Noncooperative game theory: An introduction for engineers and computer scientists;,citation_author=João P. Hespanha;,citation_publication_date=2017-12;,citation_cover_date=2017-12;,citation_year=2017;,citation_doi=10.1515/9781400885442;,citation_isbn=9781400885442;">
 <meta name="citation_reference" content="citation_title=Activity analysis ofproduetion and allocation;,citation_author=George B Dantzig;,citation_editor=T. C. Koopmans;,citation_publication_date=1951;,citation_cover_date=1951;,citation_year=1951;,citation_inbook_title=undefined;">
 <meta name="citation_reference" content="citation_title=Zero-sum games and linear programming duality;,citation_author=Bernhard Stengel;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_issue=2;,citation_doi=10.1287/moor.2022.0149;,citation_issn=1526-5471;,citation_volume=49;,citation_journal_title=Mathematics of Operations Research;,citation_publisher=Institute for Operations Research; the Management Sciences (INFORMS);">
+<meta name="citation_reference" content="citation_title=Jamming in multiple independent gaussian channels as a game;,citation_author=Michail Fasoulakis;,citation_author=Apostolos Traganitis;,citation_author=Anthony Ephremides;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_doi=10.1007/978-3-030-16989-3_1;,citation_isbn=9783030169893;,citation_issn=1867-822X;,citation_inbook_title=Game theory for networks;">
+<meta name="citation_reference" content="citation_title=A jamming game in wireless networks with transmission cost;,citation_author=Eitan Altman;,citation_author=Konstantin Avrachenkov;,citation_author=Andrey Garnaev;,citation_publication_date=2007-06;,citation_cover_date=2007-06;,citation_year=2007;,citation_doi=10.1007/978-3-540-72709-5_1;,citation_isbn=9783540727088;,citation_conference_title=Network control and optimization: First EuroFGI international conference;,citation_conference=Springer Berlin Heidelberg;">
+<meta name="citation_reference" content="citation_title=Jamming in wireless networks: The case of several jammers;,citation_author=Eitan Altman;,citation_author=Konstantin Avrachenkov;,citation_author=Andrey Garnaev;,citation_publication_date=2009;,citation_cover_date=2009;,citation_year=2009;,citation_conference_title=International conference on game theory for networks;,citation_conference=IEEE;">
+<meta name="citation_reference" content="citation_title=Water-filling: A geometric approach and its application to solve generalized radio resource allocation problems;,citation_author=Peter He;,citation_author=Lian Zhao;,citation_author=Sheng Zhou;,citation_author=Zhisheng Niu;,citation_publication_date=2013-07;,citation_cover_date=2013-07;,citation_year=2013;,citation_issue=7;,citation_doi=10.1109/twc.2013.061713.130278;,citation_issn=1536-1276;,citation_volume=12;,citation_journal_title=IEEE Transactions on Wireless Communications;,citation_publisher=Institute of Electrical; Electronics Engineers (IEEE);">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -240,26 +246,32 @@ window.MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./static-games/jamming-games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Jamming Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./static-games/nash-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Nash equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Nash equilibrium</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./static-games/ESS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -331,6 +343,18 @@ window.MathJax = {
 A.</span> 2017. Competition in electricity markets with renewable energy
 sources. <em>The Energy Journal</em> <em>38</em>, 1_suppl, 137–156.
 </div>
+<div id="ref-Altman2007" class="csl-entry" role="listitem">
+<span class="smallcaps">Altman, E., Avrachenkov, K., and Garnaev,
+A.</span> 2007. A jamming game in wireless networks with transmission
+cost. <em>Network control and optimization: First EuroFGI international
+conference</em>, Springer Berlin Heidelberg, 1–12. DOI: <a href="https://doi.org/10.1007/978-3-540-72709-5_1">10.1007/978-3-540-72709-5_1</a>.
+</div>
+<div id="ref-Altman2009" class="csl-entry" role="listitem">
+<span class="smallcaps">Altman, E., Avrachenkov, K., and Garnaev,
+A.</span> 2009. Jamming in wireless networks: The case of several
+jammers. <em>International conference on game theory for networks</em>,
+IEEE, 585–592.
+</div>
 <div id="ref-Amir2017" class="csl-entry" role="listitem">
 <span class="smallcaps">Amir, R., Belkov, S., and Evstigneev,
 I.V.</span> 2017. Correlated equilibrium in a nutshell. <em>Theory and
@@ -355,6 +379,18 @@ Society</em>, 1007–1028.
 <span class="smallcaps">Dantzig, G.B.</span> 1951. Activity analysis
 ofproduetion and allocation. In: T.C. Koopmans, ed., John Wiley, New
 York, 333–335.
+</div>
+<div id="ref-Fasoulakis2019" class="csl-entry" role="listitem">
+<span class="smallcaps">Fasoulakis, M., Traganitis, A., and Ephremides,
+A.</span> 2019. Jamming in multiple independent gaussian channels as a
+game. In: <em>Game theory for networks</em>. Springer International
+Publishing, 3–8. DOI: <a href="https://doi.org/10.1007/978-3-030-16989-3_1">10.1007/978-3-030-16989-3_1</a>.
+</div>
+<div id="ref-He2013" class="csl-entry" role="listitem">
+<span class="smallcaps">He, P., Zhao, L., Zhou, S., and Niu, Z.</span>
+2013. Water-filling: A geometric approach and its application to solve
+generalized radio resource allocation problems. <em>IEEE Transactions on
+Wireless Communications</em> <em>12</em>, 7, 3637–3647. DOI: <a href="https://doi.org/10.1109/twc.2013.061713.130278">10.1109/twc.2013.061713.130278</a>.
 </div>
 <div id="ref-Hespanha2017" class="csl-entry" role="listitem">
 <span class="smallcaps">Hespanha, J.P.</span> 2017. <em>Noncooperative
@@ -1006,7 +1042,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./static-games/bayesian-equilibrium.html" class="pagination-link" aria-label="Bayesian equilibrium">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

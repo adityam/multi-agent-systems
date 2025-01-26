@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-01-05">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>6&nbsp; Bayesian equilibrium – Multi-Agent Systems</title>
+<title>7&nbsp; Bayesian equilibrium – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,7 +100,9 @@ window.MathJax = {
       ALPHABET: ["\\mathcal{#1}", 1],
       MATRIX: ["\\begin{bmatrix} #1 \\end{bmatrix}", 1],
       NORM: ["\\left\\lVert #1 \\right\\rVert", 1],
-      ABS: ["\\left\\lvert #1 \\right\\rvert", 1]
+      ABS: ["\\left\\lvert #1 \\right\\rvert", 1],
+      GRAD: "\\nabla",
+      IP: ["\\left\\langle #1, #2 \\right\\rangle", 2]
     },
   },
   options: {
@@ -117,7 +119,7 @@ window.MathJax = {
 </script>
 
 
-<meta name="citation_title" content="[6]{.chapter-number}&nbsp; [Bayesian equilibrium]{.chapter-title}">
+<meta name="citation_title" content="[7]{.chapter-number}&nbsp; [Bayesian equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
 <meta name="citation_publication_date" content="2025-01-05">
 <meta name="citation_cover_date" content="2025-01-05">
@@ -155,6 +157,10 @@ window.MathJax = {
 <meta name="citation_reference" content="citation_title=Noncooperative game theory: An introduction for engineers and computer scientists;,citation_author=João P. Hespanha;,citation_publication_date=2017-12;,citation_cover_date=2017-12;,citation_year=2017;,citation_doi=10.1515/9781400885442;,citation_isbn=9781400885442;">
 <meta name="citation_reference" content="citation_title=Activity analysis ofproduetion and allocation;,citation_author=George B Dantzig;,citation_editor=T. C. Koopmans;,citation_publication_date=1951;,citation_cover_date=1951;,citation_year=1951;,citation_inbook_title=undefined;">
 <meta name="citation_reference" content="citation_title=Zero-sum games and linear programming duality;,citation_author=Bernhard Stengel;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_issue=2;,citation_doi=10.1287/moor.2022.0149;,citation_issn=1526-5471;,citation_volume=49;,citation_journal_title=Mathematics of Operations Research;,citation_publisher=Institute for Operations Research; the Management Sciences (INFORMS);">
+<meta name="citation_reference" content="citation_title=Jamming in multiple independent gaussian channels as a game;,citation_author=Michail Fasoulakis;,citation_author=Apostolos Traganitis;,citation_author=Anthony Ephremides;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_doi=10.1007/978-3-030-16989-3_1;,citation_isbn=9783030169893;,citation_issn=1867-822X;,citation_inbook_title=Game theory for networks;">
+<meta name="citation_reference" content="citation_title=A jamming game in wireless networks with transmission cost;,citation_author=Eitan Altman;,citation_author=Konstantin Avrachenkov;,citation_author=Andrey Garnaev;,citation_publication_date=2007-06;,citation_cover_date=2007-06;,citation_year=2007;,citation_doi=10.1007/978-3-540-72709-5_1;,citation_isbn=9783540727088;,citation_conference_title=Network control and optimization: First EuroFGI international conference;,citation_conference=Springer Berlin Heidelberg;">
+<meta name="citation_reference" content="citation_title=Jamming in wireless networks: The case of several jammers;,citation_author=Eitan Altman;,citation_author=Konstantin Avrachenkov;,citation_author=Andrey Garnaev;,citation_publication_date=2009;,citation_cover_date=2009;,citation_year=2009;,citation_conference_title=International conference on game theory for networks;,citation_conference=IEEE;">
+<meta name="citation_reference" content="citation_title=Water-filling: A geometric approach and its application to solve generalized radio resource allocation problems;,citation_author=Peter He;,citation_author=Lian Zhao;,citation_author=Sheng Zhou;,citation_author=Zhisheng Niu;,citation_publication_date=2013-07;,citation_cover_date=2013-07;,citation_year=2013;,citation_issue=7;,citation_doi=10.1109/twc.2013.061713.130278;,citation_issn=1536-1276;,citation_volume=12;,citation_journal_title=IEEE Transactions on Wireless Communications;,citation_publisher=Institute of Electrical; Electronics Engineers (IEEE);">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -186,7 +192,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -227,26 +233,32 @@ window.MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../static-games/jamming-games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Jamming Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../static-games/nash-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Nash equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Nash equilibrium</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/ESS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -272,9 +284,9 @@ window.MathJax = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></h1>
 </div>
 
 
@@ -880,7 +892,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
