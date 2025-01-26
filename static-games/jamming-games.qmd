@@ -1,0 +1,375 @@
+---
+title: Jamming Games
+---
+
+[:Radio frequency (RF) jamming](https://en.wikipedia.org/wiki/Radio_jamming) is the act of blocking or causing interference to radio or wireless communication by transmitting noise to decrease the signal to noise ratio. Jamming of radio transmission orginated in World War II and is still used today in military and civilian conflicts. 
+
+We present a simple model of jamming and obtain a solution using tools from ZSG from the previous section. 
+
+## System Model
+
+Consider a line of sight communication link between a transmitter (Tx) and a receiver (Rx). There is a jammer (Jm) who wants to disrupt this communication link. 
+
+The communication link consists of $m$ orthogonal frequency bands, each of bandwidth $B$. Let $M \coloneqq \{1, \dots, m\}$ denote the set of bands. For each band $i \in \ALPHABET M$, let
+
+- $σ_i \in \reals_{\ge 0}$ denote the background noise power
+- $x_i \in \reals_{\ge 0}$ denote the signal power of Tx
+- $y_i \in \reals_{\ge 0}$ denote the interference power of Jm.
+
+It is assumed that both the Tx and Jm have constraints on the total power that they can use. In particular, 
+$$
+  \sum_{i \in \ALPHABET M} x_i \le P_T
+  \quad\text{and}\quad
+  \sum_{i \in \ALPHABET M} y_i \le P_J.
+$$
+
+Let
+\begin{align*}
+  \ALPHABET X &= \biggl\{ x \in \reals^m_{\ge 0} : 
+                        \sum_{i \in \ALPHABET M} x_i \le P_T \biggr\},
+  \\
+  \ALPHABET Y &= \biggl\{ y \in \reals^m_{\ge 0} : 
+                        \sum_{i \in \ALPHABET M} y_i \le P_J \biggr\}.
+\end{align*}
+
+Then the above constraints may be written as
+$$
+  x = (x_1, \dots, x_m) \in \ALPHABET X
+  \quad\text{and}\quad
+  y = (y_1, \dots, y_m) \in \ALPHABET Y.
+$$
+
+A basic result from communication theory is that the capacity of a narrowband channel with bandwidth $B$ and signal to noise ratio $\text{SNR}$ is 
+$$
+  C = B \log(1 + \text{SNR}).
+$$
+
+Using this expression, the capacity of the Tx when the Tx uses power $x \in \ALPHABET X$ and $Jm uses power $y \in \ALPHABET Y$ is
+$$
+  u(x,y) = \sum_{i \in M} B \log\left( 1 + \frac{x_i}{y_i + σ_i}\right).
+$$
+Thus, we can consider a zero-sum jamming game between the Tx and the Jm, where the Tx wants to maximize $u(x,y)$ and the Jm wants to minimize it. 
+
+## Existence of value in pure strategies
+
+:::{#prp-jamming-value}
+The two player ZSG formulated above has a value in pure strategies.
+:::
+
+:::{.callout-note}
+#### Proof
+
+We will prove the result by showing that the model satisfies the sufficient conditions of @thm-zsg-existence. 
+
+#### Compactness of $\ALPHABET X$ and $\ALPHABET Y$ {-}
+
+By construction, we can see that $\ALPHABET X$ and $\ALPHABET Y$ are closed and bounded subsets of Eucledian space. Hence, both sets are compact. 
+
+#### Concavity of $u(x,y)$ in $x$ {-}
+
+Fix $y$ and consider the function $f(x) = u(x,y)$. Then,
+$$
+\frac{∂ f}{∂x_i} = \frac{∂}{∂ x_i} 
+  \sum_{j \in \ALPHABET M} B \log\left(1 + \frac{x_j}{y_j + σ_j} \right)
+  = \frac{B}{1 + \dfrac{x_i}{y_i + σ_i}} \cdot \frac{1}{y_i + σ_i}
+  = \frac{B}{x_i + y_i + σ_i}.
+$$
+Moreover
+$$
+\frac{∂^2 f}{∂x_i ∂x_j}
+= \begin{cases}
+    \frac{-B}{(x_i + y_i + σ_i)^2}, & \hbox{if $i = j$} \\
+    0, & \hbox{otherwise}
+  \end{cases}
+$$
+Thus, the Hessian of $f$ is
+$$
+  \GRAD_x f = \def\1#1{\frac{-B}{(x_{#1} + y_{#1} + σ_{#1})^2}}
+  \diag\left( \1{1}, \dots, \1{m} \right)
+$$
+which is a diagonal matrix with a negative diagonal. Recall that the eigenvalues of a diagonal matrix is the diagonal elements. Thus, all eigenvalues are negative and hence the Hessian is negative definite. Thus, $f$ is strictly concave. 
+
+#### Convexity of $u(x,y)$ in $y$ {-}
+
+Fix $x$ and consider the function $g(y) = u(x,y)$. Then,
+\begin{align*}
+\frac{∂ g}{∂y_i} &= \frac{∂}{∂ y_i} 
+  \sum_{j \in \ALPHABET M} B \log\left(1 + \frac{x_j}{y_j + σ_j} \right)
+  \\
+  &= \frac{∂}{∂ y_i} B \log\left(1 + \frac{x_i}{y_i + σ_i} \right)
+  = \frac{∂}{∂ y_i} B \log\left(\frac{x_i + y_i + σ_i}{y_i + σ_i} \right)
+  \\
+  & = \frac{B}{x_i + y_i + σ_i} - \frac{B}{y_i + σ_i}.
+\end{align*}
+Moreover
+$$
+\frac{∂^2 g}{∂x_i ∂x_j}
+= \begin{cases}
+    \frac{-B}{(x_i + y_i + σ_i)^2} + \frac{B}{(y_i + σ_i)^2}, & \hbox{if $i = j$} \\
+    0, & \hbox{otherwise}
+  \end{cases}
+$$
+Observe that
+$$
+\frac{-B}{(x_i + y_i + σ_i)^2} + \frac{B}{(y_i + σ_i)^2}
+= \frac{B (x_i^2 + 2x_i y_i + 2x_i σ_i)}{(x_i + y_i + σ_i)^2 (y_i + σ_i)^2}
+$$
+which is always positive for $x_i, y_i \in \reals_{\ge 0}$. 
+
+Thus, the Hessian of $f$ is
+$$
+  \GRAD_x f = \def\1#1{\frac{-B}{(x_{#1} + y_{#1} + σ_{#1})^2} + \frac{B}{(y_{#1} + σ_{#1})^2}}
+  \diag\left( \1{1}, \dots, \1{m} \right)
+$$
+which is a diagonal matrix with a positive diagonal. Recall that the eigenvalues of a diagonal matrix is the diagonal elements. Thus, all eigenvalues are positive and hence the Hessian is positive definite. Thus, $g$ is strictly convex. 
+
+
+#### Existence of a value in pure strategies {-}
+Since all the conditions of @thm-zsg-existence are satisfied. Thus, the game has a value in pure strategies and the optimal strategy is unique.
+:::
+
+## Structre of optimal strategies
+
+Now that we know that the game has a value in pure strategies and the optimal strategy is unique, we search for an optimal solution.
+
+### Optimal strategy of the transmitter 
+
+We know that
+$$
+ v = \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} u(x,y). 
+$$
+Consider the inner optimization problem: for a given $y$ compute
+$$
+  \max_{x \in \ALPHABET X} u(x,y)
+$$
+or
+$$
+  \max_{x \in \reals^m} \sum_{i \in \ALPHABET M} B \log\left(1 + \frac{x_i}{y_i + σ_i} \right)
+$$
+such that
+\begin{align*}
+  \sum_{i \in \ALPHABET M} x_i &\le P_T, \\
+  x_i &\ge 0, \quad \forall i \in \ALPHABET M
+\end{align*}
+This is a constrained optimization problem with a concave objective and convex constraint set. So, we can find the optimal solution using [:KKT conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions).
+
+Let us consider Lagrange multiplier $λ$ for the first constraint and multiplies $α_i$ for the non-negativity constraints. The Lagrange relaxation is
+$$
+\sum_{i \in \ALPHABET M} B \log\left(1 + \frac{x_i}{y_i + σ_i}\right)
+- λ \biggl( \sum_{i \in \ALPHABET M} x_i - P_T \biggr) 
++ \sum_{i \in M} α_i x_i.
+$$
+The KKT conditions are:
+
+- **Optimality equation**
+  $$ 
+  \frac{∂ (\hbox{Lagrange relaxation})}{∂x_i}
+  = \frac{B}{x_i + y_i + σ_i} - λ + α_i = 0.
+  $$
+
+- **Complementary slackness conditions**
+  \begin{align*}
+  α_i &\ge 0 & \text{and} && α_i x_i &= 0 \\
+  λ & \ge 0  & \text{and} && λ\biggl( \sum_{i \in \ALPHABET M} x_i - P_T \biggr) &= 0.
+  \end{align*}
+
+The optimality equation implies that 
+$$
+  α_i = λ - \frac{B}{x_i + y_i + σ_i}.
+$$
+The first complementary slackness condition requires that $α_i \ge 0$. Thus,
+\begin{equation}\label{eq:cond-1}
+  λ \ge \frac{B}{x_i + y_i + σ_i}.
+\end{equation}
+Moreover, since $α_i x_i = 0$, we have
+\begin{equation}\label{eq:cond-2}
+  \biggl(λ - \frac{B}{x_i + y_i + σ_i}\biggr) x_i = 0.
+\end{equation}
+
+We now consider two cases:
+
+- **Case 1:** $λ < B/(y_i + σ_i)$.
+
+  Then $x_i = 0$ is impossible, which we prove by contraction. If $x_i = 0$, then by \eqref{eq:cond-1}
+  $$λ \ge \frac{B}{(x_i + y_i + σ_i)} = \frac{B}{(y_i + σ_i)}$$
+  which violates the assumption that $λ < B/(y_i + σ_i)$. 
+
+  Hence, $x_i > 0$. Then, \eqref{eq:cond-2} implies that
+  $$
+      λ = \frac{B}{x_i + y_i + σ_i}
+      \implies 
+      x_i = λ^{-1} B - y_i - σ_i.
+  $$
+
+
+- **Case 2:** $λ \ge B/(y_i + σ_i)$
+
+  Then $x_i > 0$ is impossible, which we prove by contradiction. If $x_i > 0$, then
+  $$
+    λ \ge \frac{B}{y_i + σ_i} > \frac{B}{x_i + y_i + σ_i},
+  $$
+  which violates \eqref{eq:cond-1}. Then $x_i = 0$.
+
+Thus, we have
+\begin{align*}
+  x_i^* &= \begin{cases}
+    λ^{-1}B - y_i - σ_i, & \hbox{if } λ < \frac{B}{y_i + σ_i} \\
+    0, & \hbox{if } λ \ge \frac{B}{y_i + σ_i}
+  \end{cases}
+  \\ 
+  &= [ λ^{-1}B - y_i - σ_i]^{+}
+\end{align*}
+where the notation $[z]^{+}$ means $\max\{z, 0\}$. 
+
+If $λ > 0$, then the complementary slackness condition implies that
+\begin{equation}\label{eq:lambda}
+  \sum_{i \in \ALPHABET M} \big[ λ^{-1} B - y_i - σ_i \bigr]^{+} = P_T.
+\end{equation}
+The LHS is a piecewise linear and increasing in $λ^{-1}$. So, we can always find a solution. 
+
+As an illustration, suppose the power levels $y_i + σ_i$ are given as in @fig-waterfilling (a). Let $λ$ denote the solution of \eqref{eq:lambda} which is shown geometrically in @fig-waterfilling (b). This solution is called a **water filling** solution for the following reason: Suppose a region is divided into $m$ cells (of unit width) and the ground level above cell $i$ is $y_i + σ_i$ and then flood the region with region with a $P_T$ amount of water. Then, the new water level at cell $i$ will be $x_i^*$.
+
+![Water-filling solution for the transmitter. Plot (a) shows the "interference" levels $y_i + σ_i$. In plot (b), the blue shaded region shows the power levels $x_i^*$. ](figures/svg/waterfilling1.svg){#fig-waterfilling}
+
+### Optimal strategy of the jammer
+
+To find the optimal strategy of the jammer, we reconsider consider the minmax problem
+$$
+  v = \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} u(x,y) 
+  = \min_{y \in Y} u(x^*, y)
+$$
+where $x^*_i = [λ^{-1}B - y_i - σ_i]^{+}$, as determined in the previous step. This optimization problem can be written as
+$$
+  \min_{y \in \reals^m} 
+  \biggl\{ 
+    \sum_{i \in \ALPHABET M} B \log\left( 1 + \frac{x_i^*}{y_i + σ_i} \right)
+$$
+such that
+\begin{align*}
+  \sum_{i \in \ALPHABET M} y_i &\le P_J \\
+  y_i & \ge 0, \quad \forall i \in \ALPHABET M.
+\end{align*}
+Consider the Lagrange relaxation, were $μ$ is the Lagrange multiplier for the first constraint and $β_i$ is the Lagrange multiplier for the non-negativity constraints. The Lagrange relaxation is
+$$
+   \sum_{i \in \ALPHABET M} B \log(x_i^* + y_i + σ_i)
+ - \sum_{i \in \ALPHABET M} B \log(        y_i + σ_i)
+ + μ \biggl( \sum_{i \in \ALPHABET M} y_i - P_J \biggr)
+ - \sum_{i \in \ALPHABET M} β_i y_i
+$$
+The KKT conditions are:
+
+- **Optimality equation:**
+  $$ 
+  \frac{∂ (\hbox{Lagrange relaxation})}{∂y_i}
+  = \frac{B}{x_i^* + y_i + σ_i} - \frac{B}{y_i + σ_i} +  μ - β_i = 0.
+  $$
+
+- **Complementary slackness:**
+  \begin{align*}
+    β_i &\ge 0 & \text{and} && β_i y_i &= 0 \\
+    μ & \ge 0  & \text{and} && μ\biggl( \sum_{i \in \ALPHABET M} y_i - P_J \biggr) &= 0.
+  \end{align*}
+
+Consider a channel where $x_i^* = 0$. The optimality euqations imply that for such a channel $β_i = μ > 0$. Thus, complementary slackness condition implies that $y_i^* = 0$.
+
+Consider a channel where $x_i^* > 0$. From the solution of the previous section, we know that for this case $x^*_i = λ^{-1}B - y_i - σ_i$. Thus, the optimality equation simplifies to
+$$
+    λ + μ = β_i + \frac{B}{y_i + σ_i}
+$$
+The first complementary slackness condition requires that $β_i \ge 0$. Thus,
+\begin{equation}\label{eq:cond-3}
+  λ + μ \ge \frac{B}{y_i + σ_i}.
+\end{equation}.
+Moreover, since $β_i y_i = 0$, we have
+\begin{equation}\label{eq:cond-4}
+\left( λ + μ - \frac{B}{y_i + σ_i} \right) y_i = 0.
+$$
+
+We now consider two cases:
+
+- **Case 1:** $λ + μ < B/σ_i$.
+
+  Then $y_i = 0$ is impossible, which we prove by contraction. If $y_i = 0$, then by \eqref{eq:cond-3} we have
+  $$
+    λ + μ \ge \frac{B}{y_i + σ_i} = \frac{B}{σ_i}
+  $$
+  which violates the assumption that $λ + μ < B/σ_i$. 
+
+  Hence, $y_i > 0$. Then, \eqref{eq:cond-4} implies that
+  $$
+    λ + μ = \frac{B}{y_i + σ_i} \implies y_i = (λ + μ)^{-1}B - σ_i.
+  $$
+
+- **Case 2:** $λ + μ \ge B/σ_i$. 
+
+  Then $y_i > 0$ is impossible, which we prove by contraction. If $y_i > 0$, then 
+  $$ 
+    β_i = λ + μ - \frac{B}{y_i + σ_i} > λ + μ - \frac{B}{σ_i} > 0.
+  $$
+  Then, from complementary slackness conditions, we get that $y_i = 0$, which contradicts the assumption that $y_i > 0$. Thus, $y_i$ must be $0$.
+
+Thus, we have
+\begin{align*}
+  y_i^* &= \begin{cases}
+    (λ + μ)^{-1}B - σ_i, & \hbox{if } λ + μ < \frac{B}{σ_i} \\
+    0, & \hbox{if } λ + μ \ge \frac{B}{σ_i}.
+  \end{cases}
+  \\
+  &= \bigl[ (λ+μ)^{-1}B - σ_i \bigr]^{+}.
+\end{align*}
+
+If $μ > 0$, then complementary slackness implies that
+$$
+  \sum_{i \in \ALPHABET M} \bigl[ (λ + μ)^{-1} B - σ_i \bigr]^{+} = P_J.
+$$
+As before, we can argue that this equation has a solution, which we can find using water-filling. 
+
+## Summary of the solution
+
+The main steps of finding the optimal $x$ and $y$ are as follows:
+
+1. Determine $(λ + μ)$ which sastisfies
+   $$
+     \sum_{i \in \ALPHABET M} \bigl[ (λ + μ)^{-1} B - σ_i \bigr]^{+} = P_J.
+   $$
+
+2. If $(λ + μ) > 0$, set $y_i^* = \big[ (λ+μ)^{-1} B - σ_i \bigr]^{+}$. Otherwise, set $y_i^* = 0$ for all $i$. 
+
+3. Determine $λ$ which satisfies
+   $$
+     \sum_{i \in \ALPHABET M} \bigl[ λ^{-1} B - y_i^* - σ_i \bigr]^{+} = P_T.
+   $$
+
+4. If $λ > 0$, set $x_i^* = \bigl[ λ^{-1}B - y_i^* - σ_i \bigr]^{+}$. Otherwise, set $x_i^* = 0$ for all $i$. 
+
+## Salient features of the solution
+
+
+The power allocated to a channel depends on the noise power $σ_i$. We have three cases:
+
+1. $σ_i > λ^{-1} B$ in which case $x_i^* = y_i^* = 0$.
+
+    This can be interpreted as follows. The channel is very bad. THerefore the transmitter does not transmit on it and consequently the jammer doesn't jam it.
+
+2. $(λ + μ)^{-1}B < σ_i < λ^{-1}B$ in which case $x_i^* > 0$ but $y_i^* = 0$.
+
+    This can be interpreted as follows. The channel is bad enough that the jammer doesn't need to deteriorate it further (because it is better for the jammer to use its resources elsewhere).
+
+3.  $σ_i < (λ + μ)^{-1}B$ in wihch case both $x_i^* > 0$ and $y_i^* > 0$. 
+
+    This can be interpreted as follows. The jammer deteriorates the channel but the transmitter still transmits on it. 
+
+This situation is illustrated in @fig-waterfilling-summary.
+
+  
+![Water-filling solution for the transmitter. Plot (a) shows the noise levels $σ_i$. In plot (b), the red shaded region shows the power levels $y_i^*$ and the blue area shows the power levels $x_i^*$. ](figures/svg/waterfilling2.svg){#fig-waterfilling-summary}
+
+
+  
+
+
+
+## Notes {-}
+
+The material in this section is adapted from @Fasoulakis2019. For generalizations of this model, see @Altman2007 and @Altman2009. For a computationally efficient algorithm to solve the waterfilling problem, see @He2013. 
+
