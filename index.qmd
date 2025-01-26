@@ -1,7 +1,7 @@
 ---
 course:
   term: "Winter 2025"
-  office-hours: "TBD"
+  office-hours: "4pm–5pm Monday (MC 533)"
   teaching-assistants: "Ziqi Huang"
   mid-term: "March 12"
   lectures:
