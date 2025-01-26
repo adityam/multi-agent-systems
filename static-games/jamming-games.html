@@ -420,7 +420,7 @@ window.Quarto = {
 <section id="existence-of-value-in-pure-strategies" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="existence-of-value-in-pure-strategies"><span class="header-section-number">3.2</span> Existence of value in pure strategies</h2>
 <div id="prp-jamming-value" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.1</strong></span> The two player ZSG formulated above has a value in pure strategies.</p>
+<p><span class="theorem-title"><strong>Proposition 3.1</strong></span> The two player ZSG formulated above has a value in pure strategies and the optimal strategy is unique.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -437,8 +437,8 @@ Proof
 <h4 class="unnumbered anchored" data-anchor-id="compactness-of-alphabet-x-and-alphabet-y">Compactness of <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span></h4>
 <p>By construction, we can see that <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span> are closed and bounded subsets of Eucledian space. Hence, both sets are compact.</p>
 </section>
-<section id="concavity-of-uxy-in-x" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="concavity-of-uxy-in-x">Concavity of <span class="math inline">\(u(x,y)\)</span> in <span class="math inline">\(x\)</span></h4>
+<section id="strict-concavity-of-uxy-in-x" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="strict-concavity-of-uxy-in-x">Strict concavity of <span class="math inline">\(u(x,y)\)</span> in <span class="math inline">\(x\)</span></h4>
 <p>Fix <span class="math inline">\(y\)</span> and consider the function <span class="math inline">\(f(x) = u(x,y)\)</span>. Then, <span class="math display">\[
 \frac{∂ f}{∂x_i} = \frac{∂}{∂ x_i}
   \sum_{j \in \ALPHABET M} B \log\left(1 + \frac{x_j}{y_j + σ_j} \right)
@@ -455,8 +455,8 @@ Proof
   \diag\left( \1{1}, \dots, \1{m} \right)
 \]</span> which is a diagonal matrix with a negative diagonal. Recall that the eigenvalues of a diagonal matrix is the diagonal elements. Thus, all eigenvalues are negative and hence the Hessian is negative definite. Thus, <span class="math inline">\(f\)</span> is strictly concave.</p>
 </section>
-<section id="convexity-of-uxy-in-y" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="convexity-of-uxy-in-y">Convexity of <span class="math inline">\(u(x,y)\)</span> in <span class="math inline">\(y\)</span></h4>
+<section id="strict-convexity-of-uxy-in-y" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="strict-convexity-of-uxy-in-y">Strict convexity of <span class="math inline">\(u(x,y)\)</span> in <span class="math inline">\(y\)</span></h4>
 <p>Fix <span class="math inline">\(x\)</span> and consider the function <span class="math inline">\(g(y) = u(x,y)\)</span>. Then, <span class="math display">\[\begin{align*}
 \frac{∂ g}{∂y_i} &amp;= \frac{∂}{∂ y_i}
   \sum_{j \in \ALPHABET M} B \log\left(1 + \frac{x_j}{y_j + σ_j} \right)
@@ -568,7 +568,6 @@ Figure&nbsp;3.1: Water-filling solution for the transmitter. Plot (a) shows the 
   = \min_{y \in Y} u(x^*, y)
 \]</span> where <span class="math inline">\(x^*_i = [λ^{-1}B - y_i - σ_i]^{+}\)</span>, as determined in the previous step. This optimization problem can be written as <span class="math display">\[
   \min_{y \in \reals^m}
-  \biggl\{
     \sum_{i \in \ALPHABET M} B \log\left( 1 + \frac{x_i^*}{y_i + σ_i} \right)
 \]</span> such that <span class="math display">\[\begin{align*}
   \sum_{i \in \ALPHABET M} y_i &amp;\le P_J \\
