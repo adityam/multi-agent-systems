@@ -1070,7 +1070,7 @@ $$
 $$
 An example of a symmetric game is rock-paper-scissors. 
 
-Let $\mathscr{G}$ be a symmetric game. Show that:
+Let $\mathscr{G}$ be a finite symmetric game. Show that:
 
 a. The value of $\mathscr{G}$ in mixed strategies is zero.
 
