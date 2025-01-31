@@ -1,5 +1,5 @@
 ---
-title: Ficticious Play
+title: Fictitious Play
 
 execute:
   echo: false
@@ -7,11 +7,11 @@ execute:
   cache: true
 ---
 
-Ficticious play is an iterative algorithm to compute the solution of static game. It was first proposed by @Brown1951 who conjectured that it could be used to find the optimal solution of two player zero sum games; a result that was soon proved by @Robinson1951. Later it was shown to converge for $2 × 2$ games [@Miyasawa1961], potential games [@Monderer1996], and games with an interior [evolutionary stable equilibrium][ESS] [@Hofbauer1995]. For a detailed discussion, see @Fudenberg1998.
+Fictitious play is an iterative algorithm to compute the solution of static game. It was first proposed by @Brown1951 who conjectured that it could be used to find the optimal solution of two player zero sum games; a result that was soon proved by @Robinson1951. Later it was shown to converge for $2 × 2$ games [@Miyasawa1961], potential games [@Monderer1996], and games with an interior [evolutionary stable equilibrium][ESS] [@Hofbauer1995]. For a detailed discussion, see @Fudenberg1998.
 
 [ESS]: ESS.qmd
 
-In this section, we will describe ficticious play for two player games and present the high level idea of why it converges in the zero sum setting.
+In this section, we will describe fictitious play for two player games and present the high level idea of why it converges in the zero sum setting.
 
 ```{julia}
 #| output: false
@@ -40,7 +40,7 @@ include("../julia/zero-sum-games.jl")
 ```
 
 
-## Ficticious play for two player zero sum games
+## Fictitious play for two player zero sum games
 
 Consider a two player ZSG that is played iteratively over an infinite horizon. Let $\{t_{i,n}\}_{n \ge 0}$ denote the (pure) strategies played by player $i$ at time $n$. Define sequence of mixed strategy profiles $\{ σ_{i,n} \}_{n \ge 1}$ as follows:
 $$
@@ -157,7 +157,7 @@ However, the rate of convergence is pretty slow as can be seen from @fig-rate-of
 ```{julia}
 #| layout-ncol: 2
 #| label: fig-rate-of-conv
-#| fig-cap: Rate of convergence of ficticious play for rock paper scissors
+#| fig-cap: Rate of convergence of fictitious play for rock paper scissors
 #| fig-subcap:
 #|      - Belief of player 1
 #|      - Belief of player 2
@@ -169,7 +169,7 @@ plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
 ## Convergence Guarantee
 
 :::{#thm-FP-ZSG}
-For a two player ZSG, the belief in ficticious play converge to the optimal strategy, i.e.,
+For a two player ZSG, the belief in fictitious play converge to the optimal strategy, i.e.,
 $$
   \lim_{n \to ∞} σ_{i,n} = σ_i^*, \quad \forall i \in \{1,2\}
 $$
@@ -223,9 +223,9 @@ See @Robinson1951 for details.
 
 :::{#exr-FP-LP}
 
-Run ficticious play for $N=1000$ steps for each of the games given in @exr-LP. Plot the beliefs of each player as a function of time. (To simplify grading, please start with $(1,1)$ as the inital pure strategy profile.)
+Run fictitious play for $N=1000$ steps for each of the games given in @exr-LP. Plot the beliefs of each player as a function of time. (To simplify grading, please start with $(1,1)$ as the inital pure strategy profile.)
 
-Part of the objective of this exercise is to completely understand ficticious play by coding the algorithm. So, instead of blindly copy pasting the code provided above, implement the algorithm from the description provided above. You may use any programming language to do this exercise.
+Part of the objective of this exercise is to completely understand fictitious play by coding the algorithm. So, instead of blindly copy pasting the code provided above, implement the algorithm from the description provided above. You may use any programming language to do this exercise.
 
 :::
 
@@ -237,7 +237,7 @@ The belifs as a function of time are shown below.
 ```{julia}
 #| layout-ncol: 2
 #| label: fig-game-1
-#| fig-cap: Rate of convergence of ficticious play for Game 1 of @exr-LP.
+#| fig-cap: Rate of convergence of fictitious play for Game 1 of @exr-LP.
 #| fig-subcap:
 #|      - Belief of player 1
 #|      - Belief of player 2
@@ -255,7 +255,7 @@ plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
 ```{julia}
 #| layout-ncol: 2
 #| label: fig-game-2
-#| fig-cap: Rate of convergence of ficticious play for Game 2 of @exr-LP.
+#| fig-cap: Rate of convergence of fictitious play for Game 2 of @exr-LP.
 #| fig-subcap:
 #|      - Belief of player 1
 #|      - Belief of player 2
@@ -273,15 +273,15 @@ plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
 
 :::{#exr-sFP}
 
-In this exercise, we describe a variation of ficticious play called stochastic ficticious play. This is version is useful when we consider general sum games, but for the purpose of this exercise, we will continue to work with zero sum games but will use the notation the extended notation $u_1, u_2 \colon \ALPHABET S \to \reals$ as the utility functions of the two players (instead of the short notation $u \colon \ALPHABET S \to \reals$ as the utility of the row player). 
+In this exercise, we describe a variation of fictitious play called stochastic fictitious play. This is version is useful when we consider general sum games, but for the purpose of this exercise, we will continue to work with zero sum games but will use the notation the extended notation $u_1, u_2 \colon \ALPHABET S \to \reals$ as the utility functions of the two players (instead of the short notation $u \colon \ALPHABET S \to \reals$ as the utility of the row player). 
 
-One of the technical challenges in analyzing ficticious play is that the best response is a set valued object. To circiumven this issue, one can replace the best response by the best response of the **regularized** utility function
+One of the technical challenges in analyzing fictitious play is that the best response is a set valued object. To circiumven this issue, one can replace the best response by the best response of the **regularized** utility function
 $$
   \tilde U_i(σ_1, σ_2) = U_i(σ_1, σ_2) + θ \sum_{s_i \in \ALPHABET S_i} σ_i(s_i) \log σ_i(s_i)
 $$
 where $θ$ is a design parameter (often called _temperature_). Observe that the regularized utility function is strictly concave in $σ_i$, therefore the best response to the regularized utility function is unique. 
 
-Stochastic ficiticious play is similar to regular ficticious play except that at each time, player $i$ chooses a pure strategy $t_{i,n}$ which is the best response to the regularized utlity function $\tilde U_i$. 
+Stochastic ficiticious play is similar to regular fictitious play except that at each time, player $i$ chooses a pure strategy $t_{i,n}$ which is the best response to the regularized utlity function $\tilde U_i$. 
 
 Such a best response can be computed efficiently from the following result: Let $μ_i = \arg \max_{σ_i \in Δ(\ALPHABET S_i)} \tilde U_i(σ_i, σ_{-i})$. Then $μ_i$ can be computed in closed form as
 $$
@@ -290,7 +290,7 @@ $$
 $$
 This means that the players pick a pure strategy according to the probability $μ_i$.
 
-Repeat @exr-FP-LP for stochastic ficticious play and $θ \in \{1, 0.1, 0.01\}$. Compare with the solution that you obtained in @exr-FP-LP.
+Repeat @exr-FP-LP for stochastic fictitious play and $θ \in \{1, 0.1, 0.01\}$. Compare with the solution that you obtained in @exr-FP-LP.
 
 :::
 
@@ -355,7 +355,7 @@ The belifs as a function of time for $θ = 0.1$ are shown below.
 ```{julia}
 #| layout-ncol: 2
 #| label: fig-s-game-1
-#| fig-cap: Rate of convergence of ficticious play for Game 1 of @exr-LP.
+#| fig-cap: Rate of convergence of fictitious play for Game 1 of @exr-LP.
 #| fig-subcap:
 #|      - Belief of player 1
 #|      - Belief of player 2
@@ -373,7 +373,7 @@ plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
 ```{julia}
 #| layout-ncol: 2
 #| label: fig-s-game-2
-#| fig-cap: Rate of convergence of ficticious play for Game 2 of @exr-LP.
+#| fig-cap: Rate of convergence of fictitious play for Game 2 of @exr-LP.
 #| fig-subcap:
 #|      - Belief of player 1
 #|      - Belief of player 2

@@ -40,7 +40,7 @@ book:
         - static-games/strategic-games.qmd
         - static-games/zero-sum-games.qmd
         - static-games/jamming-games.qmd
-        - static-games/ficticious-play.qmd
+        - static-games/fictitious-play.qmd
         - static-games/nash-equilibrium.qmd
         - static-games/ESS.qmd
         - static-games/correlated-equilibrium.qmd
