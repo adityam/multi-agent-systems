@@ -1,0 +1,392 @@
+---
+title: Ficticious Play
+
+execute:
+  echo: false
+  freeze: true
+  cache: true
+---
+
+Ficticious play is an iterative algorithm to compute the solution of static game. It was first proposed by @Brown1951 who conjectured that it could be used to find the optimal solution of two player zero sum games; a result that was soon proved by @Robinson1951. Later it was shown to converge for $2 × 2$ games [@Miyasawa1961], potential games [@Monderer1996], and games with an interior [evolutionary stable equilibrium][ESS] [@Hofbauer1995]. For a detailed discussion, see @Fudenberg1998.
+
+[ESS]: ESS.qmd
+
+In this section, we will describe ficticious play for two player games and present the high level idea of why it converges in the zero sum setting.
+
+```{julia}
+#| output: false
+# Install packages
+
+# using Pkg; Pkg.activate(".")
+# for pkg in ["IJulia", "Revise", "Hyperscript", "Plots"]
+#    Pkg.add(pkg)
+# end
+# 
+# # Installing Jupyter Cache
+# Pkg.add("Conda")
+# using Conda
+# Conda.add("jupyter-cache")
+
+using Revise
+
+using Plots
+
+current_theme = :bright
+current_colors = theme_palette(current_theme)
+theme(current_theme)
+default(linewidth=2, gridalpha=0.5, minorgridalpha=0.25)
+
+include("../julia/zero-sum-games.jl")
+```
+
+
+## Ficticious play for two player zero sum games
+
+Consider a two player ZSG that is played iteratively over an infinite horizon. Let $\{t_{i,n}\}_{n \ge 0}$ denote the (pure) strategies played by player $i$ at time $n$. Define sequence of mixed strategy profiles $\{ σ_{i,n} \}_{n \ge 1}$ as follows:
+$$
+  σ_{i,n}(s_i) = \frac{1}{n} \sum_{k=1}^n \IND\{ t_{i,k} = s_i \}.
+$$
+These mixed strategies are called beliefs. Think of $σ_{i,n}$ as the belief of player $-i$ (in general, all players other than $i$) on how player $i$ will play.
+
+Then, at time $n+1$, each player $i$ chooses a pure strategy $t_{i,n+1}$ that is a best response of its belief on how others will play:
+$$
+  t_{i,n+1} \in \text{BR}_i(σ_{-i,n})
+$$
+where $\text{BR}_i(σ_{-i})$ denotes the best response of player $i$ to the other players playing mixed strategy $σ_{-i}$. 
+
+This is a simple algorithm, which can be implemented as follows. 
+
+```{julia}
+#| echo: true
+#| output: false
+function FP_ZSG(u, N; initial = [1 1])
+  # Define best response maps
+  BR_row(u, σ) = argmax(u*σ)[1]
+  BR_col(u, σ) = argmin(σ'*u)[2]
+
+  # Size of straegy spaces
+  (m₁, m₂) = size(u)
+
+  # Strategies over time
+  t = zeros(Int,2,N)
+
+  # Beliefs over time
+  σ₁ = zeros(m₁, N)
+  σ₂ = zeros(m₂, N)
+
+  # Initial strategies
+  t[:,1] = initial
+
+  # Initial beliefs
+  σ₁[ t[1,1], 1] = 1
+  σ₂[ t[2,1], 1] = 1
+
+  for n = 1:N-1
+    t[1,n+1] = BR_row(u, σ₂[:,n])
+    t[2,n+1] = BR_col(u, σ₁[:,n])
+
+    σ₁[:,n+1] = n*σ₁[:, n]/(n+1)
+    σ₁[ t[1, n+1], n+1 ] += 1/(n+1)
+
+    σ₂[:,n+1] = n*σ₂[:, n]/(n+1)
+    σ₂[ t[2, n+1], n+1 ] += 1/(n+1)
+  end
+
+  return (t, σ₁, σ₂)
+end
+```
+
+We now test it over Rock-Paper-Scissors.
+
+```{julia}
+RPS = [0. -1. 1.; 1. 0. -1.; -1. 1. 0.]
+labels = ["R", "P", "S"]
+
+game1(labels, labels, Int.(RPS), caption="Utility for Rock Paper Scissors")
+```
+
+To fix ideas, we run FP algorithm for $N=4$ starting with the intial strategy of P1 playing rock and P2 playing scissors. 
+
+```{julia}
+using Hyperscript, Printf, LaTeXStrings
+
+t, σ₁, σ₂ = FP_ZSG(RPS, 4; initial = [1, 3])
+
+function column_vector(v) 
+  v = round.(v, digits=2)
+  latexstring(@sprintf("\\begin{bmatrix} %s \\end{bmatrix}", 
+                       join(v, " \\\\ ") ))
+end
+
+table(align="center",
+  m("thead", 
+    tr( td("Time"), [td(@sprintf("\$n=%d\$", k)) for k = 1:size(t,2)] ),
+   ),
+  m("tbody", 
+    tr( td("Action P1"), [td(labels[s[1]]) for s in eachcol(t)] ),
+    tr( td("Action P2"), [td(labels[s[2]]) for s in eachcol(t)] ),
+    tr( td("Belief P1"), [td(column_vector(σ)) for σ in eachcol(σ₁)] ),
+    tr( td("Belief P2"), [td(column_vector(σ)) for σ in eachcol(σ₂)] ),
+   )
+)
+``` 
+
+If we run the algorithm for a longer time, say $N=1000$, we observe that the beliefs are slowly converging to $[1/3, 1/3, 1/3]$, which is the optimal mixed strategy for both players in this example.
+
+```{julia}
+
+N = 1000
+t, σ₁, σ₂ = FP_ZSG(RPS, N; initial = [1, 3])
+tail = N-4:N
+
+
+table(align="center",
+  m("thead", 
+      tr( td("Time"), [td(@sprintf("\$n=%d\$", k)) for k in tail])
+   ),
+  m("tbody", 
+    # tr( td("Action P1"), [td(labels[s[1]]) for s in eachcol(t[:,tail])] ),
+    # tr( td("Action P2"), [td(labels[s[2]]) for s in eachcol(t[:,tail])] ),
+    tr( td("Belief P1"), [td(column_vector(σ)) for σ in eachcol(σ₁[:,tail])] ),
+    tr( td("Belief P2"), [td(column_vector(σ)) for σ in eachcol(σ₂[:,tail])] ),
+   )
+)
+``` 
+However, the rate of convergence is pretty slow as can be seen from @fig-rate-of-conv.
+
+```{julia}
+#| layout-ncol: 2
+#| label: fig-rate-of-conv
+#| fig-cap: Rate of convergence of ficticious play for rock paper scissors
+#| fig-subcap:
+#|      - Belief of player 1
+#|      - Belief of player 2
+
+plot(size=(400,200), σ₁', seriestype=:stepmid, legend=false) |> display
+plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
+
+```
+## Convergence Guarantee
+
+:::{#thm-FP-ZSG}
+For a two player ZSG, the belief in ficticious play converge to the optimal strategy, i.e.,
+$$
+  \lim_{n \to ∞} σ_{i,n} = σ_i^*, \quad \forall i \in \{1,2\}
+$$
+where $(σ_1^*, σ_2^*)$ is an optimal strategy.
+:::
+
+This result was proved in @Robinson1951. The main idea of the proof is as follows: Define
+\begin{align*}
+  \underline V_n(s_2) &= \frac{1}{n} \sum_{k=1}^n u(t_{1,k}, s_2),
+  & \forall s_2 & \in \ALPHABET S_2 \\
+  \bar V_n(s_1) &= \frac{1}{n} \sum_{k=1}^n u(s_1, t_{2,k}),
+  & \forall s_1 & \in \ALPHABET S_1
+\end{align*}
+Recall that the expected utility $U(σ_1, σ_2)$ is bilinear. Therefore, 
+\begin{align*}
+  \underline V_n(s_2) &= U(σ_{1,n}, s_2) \\
+  \bar V_n(s_1) &= U(s_1, σ_{2,n}).
+\end{align*}
+Moreover, we have that
+\begin{align*}
+  \min_{s_2 \in \ALPHABET S_2} \underline V_n(s_2) 
+  &= \min_{s_2 \in \ALPHABET S_2} U(σ_{1,n}, s_2)
+  \\
+  &\le \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{s_2 \in \ALPHABET S_2} U(σ_1, s_2) \\
+  &\stackrel{(a)}=   \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in \ALPHABET S_2} U(σ_1, σ_2)
+  \\
+  &= v
+\end{align*}
+where $(a)$ uses the fact that for a fixed $σ_1$, the term $U(σ_1, σ_2)$ is linear in $σ_2$, therefore $\min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2) = \min_{s_2 \in \ALPHABET S_2} U(σ_1, s_2)$. [This is the same idea we used when coming up with [an algorithm to compute the value of a ZSG](zero-sum-game.qmd#computing-the-value-of-zsg).]
+
+By a symmetric argument, we have
+$$
+  \max_{s_1 \in \ALPHABET S_1} \ge v.
+$$
+Thus, we have established that 
+$$
+  \min_{s_2 \in \ALPHABET S_2} \underline V_n(s_2) 
+  \le  v \le 
+  \max_{s_1 \in \ALPHABET S_1} \bar V_n(s_1).
+$$
+  
+The proof of @thm-FP-ZSG works by establishing that 
+$$
+  \lim_{n \to ∞} \min_{s_2 \in \ALPHABET S_2} \underline V_n(s_2) = v
+  \quad\text{and}\quad
+  \lim_{n \to ∞} \max_{s_1 \in \ALPHABET S_1} \bar V_n(s_1) = v.
+$$
+See @Robinson1951 for details. 
+
+## Exercises {-}
+
+:::{#exr-FP-LP}
+
+Run ficticious play for $N=1000$ steps for each of the games given in @exr-LP. Plot the beliefs of each player as a function of time. (To simplify grading, please start with $(1,1)$ as the inital pure strategy profile.)
+
+Part of the objective of this exercise is to completely understand ficticious play by coding the algorithm. So, instead of blindly copy pasting the code provided above, implement the algorithm from the description provided above. You may use any programming language to do this exercise.
+
+:::
+
+:::{.callout-note collapse="true"} 
+#### Solution
+
+The belifs as a function of time are shown below.
+
+```{julia}
+#| layout-ncol: 2
+#| label: fig-game-1
+#| fig-cap: Rate of convergence of ficticious play for Game 1 of @exr-LP.
+#| fig-subcap:
+#|      - Belief of player 1
+#|      - Belief of player 2
+
+
+N = 1000
+
+game_1 = [3. -1. 2.; 1. 2. -2.]
+t, σ₁, σ₂ = FP_ZSG(game_1, N; initial = [1, 1])
+
+plot(size=(400,200), σ₁', seriestype=:stepmid, legend=false) |> display
+plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
+```
+
+```{julia}
+#| layout-ncol: 2
+#| label: fig-game-2
+#| fig-cap: Rate of convergence of ficticious play for Game 2 of @exr-LP.
+#| fig-subcap:
+#|      - Belief of player 1
+#|      - Belief of player 2
+
+
+N = 1000
+
+game_2 = [6. 0. 5. 6.; -3. 3. -4. 3.; 8. 1. 2. 2.]
+t, σ₁, σ₂ = FP_ZSG(game_2, N; initial = [1, 1])
+
+plot(size=(400,200), σ₁', seriestype=:stepmid, legend=false) |> display
+plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
+```
+:::
+
+:::{#exr-sFP}
+
+In this exercise, we describe a variation of ficticious play called stochastic ficticious play. This is version is useful when we consider general sum games, but for the purpose of this exercise, we will continue to work with zero sum games but will use the notation the extended notation $u_1, u_2 \colon \ALPHABET S \to \reals$ as the utility functions of the two players (instead of the short notation $u \colon \ALPHABET S \to \reals$ as the utility of the row player). 
+
+One of the technical challenges in analyzing ficticious play is that the best response is a set valued object. To circiumven this issue, one can replace the best response by the best response of the **regularized** utility function
+$$
+  \tilde U_i(σ_1, σ_2) = U_i(σ_1, σ_2) + θ \sum_{s_i \in \ALPHABET S_i} σ_i(s_i) \log σ_i(s_i)
+$$
+where $θ$ is a design parameter (often called _temperature_). Observe that the regularized utility function is strictly concave in $σ_i$, therefore the best response to the regularized utility function is unique. 
+
+Stochastic ficiticious play is similar to regular ficticious play except that at each time, player $i$ chooses a pure strategy $t_{i,n}$ which is the best response to the regularized utlity function $\tilde U_i$. 
+
+Such a best response can be computed efficiently from the following result: Let $μ_i = \arg \max_{σ_i \in Δ(\ALPHABET S_i)} \tilde U_i(σ_i, σ_{-i})$. Then $μ_i$ can be computed in closed form as
+$$
+  μ_{i}(s_i) = \frac{ \exp\bigl(\frac{1}{θ} U_i(s_i, σ_{-i}) \bigr) }
+                    { \sum_{\tilde s_i \in \ALPHABET S_i} \exp\bigl(\frac{1}{θ} U_i(\tilde s_i, σ_{-i}) \bigr) }.
+$$
+This means that the players pick a pure strategy according to the probability $μ_i$.
+
+Repeat @exr-FP-LP for stochastic ficticious play and $θ \in \{1, 0.1, 0.01\}$. Compare with the solution that you obtained in @exr-FP-LP.
+
+:::
+
+:::{.callout-note collapse="true"} 
+#### Solution
+
+
+```{julia}
+#| echo: false
+#| output: false
+using Distributions
+
+function sFP_ZSG(u, N; θ = 0.1, initial = [1 1])
+  # Define best response maps
+  function BR_row(u, σ; θ=θ)
+    U  = u*σ
+    E = exp.( (U .- maximum(U))/θ )
+    μ = vec(E ./ sum(E))
+    rand(Categorical(μ))
+  end
+
+  function BR_col(u, σ; θ=θ)
+    u  = -σ'*u
+    e = exp.( (u .- maximum(u))/θ )
+    μ = vec(e ./ sum(e))
+    rand(Categorical(μ))
+  end
+
+  # Size of straegy spaces
+  (m₁, m₂) = size(u)
+
+  # Strategies over time
+  t = zeros(Int,2,N)
+
+  # Beliefs over time
+  σ₁ = zeros(m₁, N)
+  σ₂ = zeros(m₂, N)
+
+  # Initial strategies
+  t[:,1] = initial
+
+  # Initial beliefs
+  σ₁[ t[1,1], 1] = 1
+  σ₂[ t[2,1], 1] = 1
+
+  for n = 1:N-1
+    t[1,n+1] = BR_row(u, σ₂[:,n])
+    t[2,n+1] = BR_col(u, σ₁[:,n])
+
+    σ₁[:,n+1] = n*σ₁[:, n]/(n+1)
+    σ₁[ t[1, n+1], n+1 ] += 1/(n+1)
+
+    σ₂[:,n+1] = n*σ₂[:, n]/(n+1)
+    σ₂[ t[2, n+1], n+1 ] += 1/(n+1)
+  end
+
+  return (t, σ₁, σ₂)
+end
+```
+The belifs as a function of time for $θ = 0.1$ are shown below.
+
+```{julia}
+#| layout-ncol: 2
+#| label: fig-s-game-1
+#| fig-cap: Rate of convergence of ficticious play for Game 1 of @exr-LP.
+#| fig-subcap:
+#|      - Belief of player 1
+#|      - Belief of player 2
+
+
+N = 1000
+
+game_1 = [3. -1. 2.; 1. 2. -2.]
+t, σ₁, σ₂ = sFP_ZSG(game_1, N, θ=0.1, initial = [1, 1])
+
+plot(size=(400,200), σ₁', seriestype=:stepmid, legend=false) |> display
+plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
+```
+
+```{julia}
+#| layout-ncol: 2
+#| label: fig-s-game-2
+#| fig-cap: Rate of convergence of ficticious play for Game 2 of @exr-LP.
+#| fig-subcap:
+#|      - Belief of player 1
+#|      - Belief of player 2
+
+
+N = 1000
+
+game_2 = [6. 0. 5. 6.; -3. 3. -4. 3.; 8. 1. 2. 2.]
+t, σ₁, σ₂ = sFP_ZSG(game_2, N, θ=0.1, initial = [1, 1])
+
+plot(size=(400,200), σ₁', seriestype=:stepmid, legend=false) |> display
+plot(size=(400,200), σ₂', seriestype=:stepmid, legend=false) |> display
+```
+:::
+
+
