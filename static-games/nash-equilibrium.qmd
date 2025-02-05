@@ -4,5 +4,176 @@ format:
   html:
     include-in-header: 
      - ../static/html/vue.html
+
+execute:
+  echo: false
+  freeze: true
+  cache: true
 ---
+
+So far we have looked at two solution concepts:
+
+- Rationalizable strategies, which don't exist for all games
+
+- Optimal or minmax strategies for zero-sum games.
+
+In this section, we look at the most popular solution concept known as **Nash equilibrium** (which we will abbreviate to NE).
+
+```{julia}
+#| output: false
+# Install packages
+
+# using Pkg; Pkg.activate(".")
+# for pkg in ["IJulia", "Revise", "Hyperscript"]
+#    Pkg.add(pkg)
+# end
+# 
+# # Installing Jupyter Cache
+# Pkg.add("Conda")
+# using Conda
+# Conda.add("jupyter-cache")
+
+using Revise
+
+include("../julia/typeset-games.jl")
+```
+
+We start with an informal definition of NE.
+
+:::{.callout-tip}
+#### Informal definition of Nash equilibrium
+
+A strategy profile is a NE if no player can improve its performance by unilateral deviations.
+:::
+
+
+The above definition can be written formally as follows.
+
+:::{#def-Nash-equil}
+A **Nash equilibrium** in pure strategies for a strategic game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ is a strategy profile $s^* = (s^*_1, \dots, s^*_n) \in \ALPHABET S$ such that for each $i \in N$ the following is satisfied:
+$$
+  u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
+  \quad \forall s_i \in \ALPHABET S_i.
+$$
+The payoff vector $u(s^*)$ is called the **equilibrium payoff** corresponding to NE $s^*$.
+:::
+
+Another way to define NE is use **Best response correspondece** $B_i \colon \ALPHABET S_{-i} \rightrightarrows A_i$ defined as follows
+$$
+  B_i(s_{-i}) = \bigl\{ s_i \in \ALPHABET S_i : u_i(s_i, s_{-i}) \ge u_i(τ_i, s_{-i}), \forall τ_i \in \ALPHABET S_i \bigr\}.
+$$
+
+:::{#def-Nash-equil-alt}
+A strategy profile $s^* \in \ALPHABET S$ is a **Nash equilibrium** if each player is playing a best response to the strategy profile of other players, i.e., 
+$$
+  s_i^* \in B_i(s^*_{-i}), \quad \forall i \in N.
+$$
+:::
+
+## Relationship with previous solution concepts
+
+### Relationship between NE and dominant strategy equilibrium
+
+Consider prisoner's dilemma game.
+
+```{julia}
+game(["A", "R"], ["A", "R"], [-2 0; -3 -1], [-2 -3; 0 -1], 
+     caption="Prisoner's Dilemma")
+```
+Recall that $(\mathsf{A}, \mathsf{A})$ was the equilibrium in strongly dominated strategies. It can be easily verified that is also a Nash equillbrium. In fact, we have the following general result:
+
+:::{#prp-NE-vs-dominant}
+  Any equilibrium in strongly or weakly dominant strategy is also a Nash equilibrium.
+:::
+
+:::{.callout-note}
+#### Proof
+
+Suppose $s^* \in \ALPHABET S$ is an equilibrium in strongly or weakly dominant strategies. Then, by definition, for all players $i \in N$, we have
+$$
+u_i(s_i^*, s_{-i}) \ge u_i(s_i, s_{-i}), 
+  \quad \forall s_i \in \ALPHABET S_i, s_{-i} \in \ALPHABET S_{-i}.
+$$
+In particular, if we take $s_{-i} = s_{-i}^*$, we get
+$$
+u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*), 
+  \quad \forall s_i \in \ALPHABET S_i.
+$$
+Thus, $s^*$ is a Nash equilibrium.
+:::
+
+### Relationship between NE and rationalizable strategies
+
+Recall the following example discussed earlier:
+
+```{julia}
+game(["T", "B"], ["L", "C", "R"], [1 1 0; 0 0 2], [0 2 1; 3 1 0])
+```
+We had shown earlier that $(\mathsf{T}, \mathsf{C})$ is a rationalizble strategy obtained by IEDS. It can be easily verified that it is also a Nash equilibrium. In fact, we have the following general result.
+
+:::{#prp-NE-vs-rationalizable}
+  Any rationalizable output come IEDS or IEWDS is a Nash equilibrium.
+:::
+
+:::{.callout-note}
+#### Proof
+
+For IEDS, the proof hinges on the fact that at each step of IEDS, we remove strategies that are dominated and therefore cannot be part of the best response. 
+
+For IEWDS, we may remove some best response strategies, but anything that survives has to be a best response pair.
+:::
+
+### Relationship between NE and optimal strategies in zero sum games
+
+Recall the following example discussed earlier in @exm-value-zsg
+
+```{julia}
+game1(["T", "M", "B"], ["L", "C", "R"], [2 -1 -2; 1 0 1; -2 -1 2])
+```
+
+We had shown that $(\mathsf{M}, \mathsf{C})$ is an optimal strategy of this game. It can be easily verified that it is also a Nash equilibrium. In fact, we have the following general result:
+
+:::{#prp-NE-vs-optimal}
+  Any optimal strategy of a ZSG is a NE and vice versa.
+:::
+
+:::{.callout-note}
+#### Proof
+
+This follows immediately from the saddle point property of optimal strategies.
+:::
+
+
+The above discussion shows that the concept of Nash equilibrium generalizes all the solution concepts that we have discussed so far. The main advantage of Nash equilibrium is that it exists even when the previously discussed solution concepts do not. For instance, consider the following games.
+
+:::{#exm-battle-of-sexes}
+
+Find all NE (in pure strategies) for Battle of Sexes game.
+
+```{julia}
+game(["F", "O"], ["F", "O"], [2 0; 0 1], [1 0; 0 2],
+     caption="Battle of Sexes game")
+```
+:::
+
+:::{#exm-chicken}
+
+Find all NE (in pure strategies) for the game of chicken
+
+```{julia}
+game(["C", "H"], ["C", "H"], [3 1; 10 0], [3 10; 1 0],
+     caption="The game of chicken")
+```
+:::
+
+Note that a game may not have an equilibrium in pure strategyes. For example, the game of matching pennies has no equilibrium in pure strategies. 
+
+```{julia}
+game(["H", "T"], ["H", "T"], [1 -1; -1 1], [-1 1; 1 -1],
+     caption="Matching pennies game")
+```
+
+It is natural to ask if we can seek a NE in mixed strategies in such instances. And, in general, **when does a game have a NE?**
+
+This question was answered by [@Nash1950; @Nash1951] who showed that any finte game has a NE in mixed strategy. We will come to that proof later. 
 
