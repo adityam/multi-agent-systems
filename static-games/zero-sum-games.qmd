@@ -29,31 +29,13 @@ Recall the game of matching pennies.
 
 using Revise
 
-include("../julia/zero-sum-games.jl")
+include("../julia/typeset-games.jl")
 ```
 
-<table class="game" align="center">
-<caption>Matching pennies game</caption>
-  <tr>
-    <td></td>
-    <td colspan="2">$\mathsf{H}$</td>
-    <td colspan="2">$\mathsf{T}$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{H}$</td>
-    <td>$1$</td>
-    <td>$-1$</td>
-    <td>$-1$</td>
-    <td>$1$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{T}$</td>
-    <td>$-1$</td>
-    <td>$1$</td>
-    <td>$1$</td>
-    <td>$-1$</td>
-  </tr>
-</table>
+```{julia}
+game(["H", "T"], ["H", "T"], [1 -1; -1 1], [-1 1; 1 -1],
+     caption="Matching pennies game")
+```
 
 This game has the property that for any strategy profile $(s_1, s_2) \in \ALPHABET S$,
 $$
@@ -75,25 +57,10 @@ Some remarks
 
 For two player ZSGs, we can simplify the notation. Since $u_2(s_1, s_2) = -u_1(s_1, s_2)$, we can just specify the payoff of player 1 instead of specifying the payoff of both players. For instance, the matching pennies game can be represented as
 
-<table class="game1" align="center">
-<caption>Simplified notation for ZSGs</caption>
-  <tr>
-    <td></td>
-    <td>$\mathsf{H}$</td>
-    <td>$\mathsf{T}$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{H}$</td>
-    <td>$1$</td>
-    <td>$-1$</td>
-  </tr>
-  <tr>
-    <td>$\mathsf{T}$</td>
-    <td>$-1$</td>
-    <td>$1$</td>
-  </tr>
-</table>
-
+```{julia}
+game1(["H", "T"], ["H", "T"], [1 -1; -1 1],
+      caption="Simplified notation for ZSGs")
+```
 Here we can think of $P_1$ as the **maximizing player** and $P_2$ as the **minimizing player**. Thus, instead of a bimatrix representation, we will specify the payoffs by a matrix and assume that the row player is the maximizer and the column player is the minimizer. 
 
 Moreover, we will use $u(s_1, s_2)$ to denote $u_1(s_1, s_2)$ and $-u_2(s_1, s_2)$. 
@@ -181,7 +148,6 @@ game1(["T", "M", "B"], ["L", "C", "R"], [2 -1 -2; 1 0 1; -2 -1 2];
       caption="A game where \$\\underline v = \\bar v\$.")
 ```
 :::
-
 
 :::{#def-value-zsg}
 In a two player ZSG if $\underline v = \bar v$, then the quantity
