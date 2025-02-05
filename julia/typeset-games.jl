@@ -24,7 +24,7 @@ function game1(S1, S2, u; caption="")
     # Combine all elements
     table_elements = []
     if caption != ""
-        push!(table_elements, caption)
+        push!(table_elements, Hyperscript.m("caption", caption))
     end
     push!(table_elements, tr([td(), header_cells...]))
     append!(table_elements, data_rows)
