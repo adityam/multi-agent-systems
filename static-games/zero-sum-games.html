@@ -137,6 +137,7 @@ window.MathJax = {
     tags: "ams",
     macros: {
       PR: "\\mathbb{P}",
+      BR: "\\operatorname{BR}",
       EXP: "\\mathbb{E}",
       IND: "\\mathbb{1}",
       ONES: "\\mathbb{1}",
@@ -252,6 +253,8 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Fictitious play property for games with identical interests;,citation_author=Dov Monderer;,citation_author=Lloyd S Shapley;,citation_publication_date=1996;,citation_cover_date=1996;,citation_year=1996;,citation_issue=1;,citation_volume=68;,citation_journal_title=Journal of economic theory;,citation_publisher=Elsevier;">
 <meta name="citation_reference" content="citation_title=The theory of learning in games;,citation_author=Drew Fudenberg;,citation_author=David K Levine;,citation_publication_date=1998;,citation_cover_date=1998;,citation_year=1998;,citation_volume=2;">
 <meta name="citation_reference" content="citation_title=Stability for the best response dynamics;,citation_author=Josef Hofbauer;,citation_publication_date=1995;,citation_cover_date=1995;,citation_year=1995;,citation_technical_report_institution=Universität Wien;">
+<meta name="citation_reference" content="citation_title=Equilibrium points in n -person games;,citation_author=John F. Nash;,citation_publication_date=1950-01;,citation_cover_date=1950-01;,citation_year=1950;,citation_issue=1;,citation_doi=10.1073/pnas.36.1.48;,citation_issn=1091-6490;,citation_volume=36;,citation_journal_title=Proceedings of the National Academy of Sciences;,citation_publisher=Proceedings of the National Academy of Sciences;">
+<meta name="citation_reference" content="citation_title=Non-cooperative games;,citation_author=John Nash;,citation_publication_date=1951-09;,citation_cover_date=1951-09;,citation_year=1951;,citation_issue=2;,citation_doi=10.2307/1969529;,citation_issn=0003-486X;,citation_volume=54;,citation_journal_title=The Annals of Mathematics;,citation_publisher=JSTOR;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed slimcontent">
@@ -436,7 +439,7 @@ window.Quarto = {
 
 
 <p>Recall the game of matching pennies.</p>
-<div id="54e6bc1a" class="cell" data-execution_count="2">
+<div id="2513fa50" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Matching pennies game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td><td>$1$</td><td>$-1$</td></tr></tbody></table>
 </div>
@@ -460,9 +463,9 @@ u_1(s_1, s_2) + u_2(s_1, s_2) = 0.
 <section id="simplified-notation" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="simplified-notation"><span class="header-section-number">2.1</span> Simplified notation</h2>
 <p>For two player ZSGs, we can simplify the notation. Since <span class="math inline">\(u_2(s_1, s_2) = -u_1(s_1, s_2)\)</span>, we can just specify the payoff of player 1 instead of specifying the payoff of both players. For instance, the matching pennies game can be represented as</p>
-<div id="92007a0c" class="cell" data-execution_count="3">
+<div id="060a5cc3" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="4">
-Simplified notation for ZSGs<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{H}$</td><td>$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td></tr></tbody></table>
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Simplified notation for ZSGs</caption><tbody><tr><td></td><td>$\mathsf{H}$</td><td>$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
 <p>Here we can think of <span class="math inline">\(P_1\)</span> as the <strong>maximizing player</strong> and <span class="math inline">\(P_2\)</span> as the <strong>minimizing player</strong>. Thus, instead of a bimatrix representation, we will specify the payoffs by a matrix and assume that the row player is the maximizer and the column player is the minimizer.</p>
@@ -534,9 +537,9 @@ Proof
 <p>As shown in <a href="#exm-matching-pennies" class="quarto-xref">Example&nbsp;<span>2.1</span></a>, in general the inequality is strict. However, for some games, the maxmin value is equal to the minmax value as seen from the following example.</p>
 <div id="exm-value-zsg" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.2</strong></span> Find the maxmin and minmax value of the following game.</p>
-<div id="d8304c07" class="cell" data-execution_count="4">
+<div id="0b609914" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="5">
-A game where $\underline v = \bar v$.<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>A game where $\underline v = \bar v$.</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
@@ -794,7 +797,7 @@ Proof
 <p>To illustrate how this simplification helps, we start with an example of a <span class="math inline">\(2 × 2\)</span> game. In this case, the mixed extension is similar to the game on the unit square, which we have considered earlier.</p>
 <div id="exm-value-2x2" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.4</strong></span> Find the value in mixed strategies of the game below:</p>
-<div id="97963ece" class="cell" data-execution_count="5">
+<div id="0ddccf20" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -890,7 +893,7 @@ Figure&nbsp;2.6: The upper envelop of the two curves of <a href="#fig-2x2-payoff
 <p>The above idea works for general <span class="math inline">\(2 × 2\)</span> games. See <a href="#exr-zsg-mixed" class="quarto-xref">Exercise&nbsp;<span>2.1</span></a> for some examples. We now show that the idea also be extended to general <span class="math inline">\(2 × n\)</span> games as well.</p>
 <div id="exm-value-2x3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.5</strong></span> Find the value in mixed strategies of the game below:</p>
-<div id="5df92173" class="cell" data-execution_count="6">
+<div id="81f174f1" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="7">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$5$</td><td>$-1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$-2$</td><td>$5$</td></tr></tbody></table>
 </div>
@@ -1034,7 +1037,7 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
   \end{gathered}}
 \]</span></p>
 <p>A naive implementation of the above LP is given below:</p>
-<div id="dcf2d33d" class="cell" data-execution_count="7">
+<div id="3bb42640" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">JuMP</span>, <span class="bu">GLPK</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">solve_ZSG_naive</span>(u)</span>
@@ -1077,7 +1080,7 @@ Figure&nbsp;2.8: Different possibilities for <span class="math inline">\(2 × m\
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>However, from LP duality, we know that the primal and the dual linear programs have the same solution. So, a more efficient implementation is the following, where we compute the strategies of the column player from the dual variables of the primal LP.</p>
-<div id="d2abeb19" class="cell" data-execution_count="8">
+<div id="6cdb3066" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">solve_ZSG</span>(u)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    n, m <span class="op">=</span> <span class="fu">size</span>(u)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1117,7 +1120,7 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p>We first use the naive solution presented above:</p>
-<div id="54587d40" class="cell" data-execution_count="9">
+<div id="dcc9fc3f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="fl">2</span> <span class="fl">5</span> <span class="op">-</span><span class="fl">1</span>; <span class="fl">0</span> <span class="op">-</span><span class="fl">2</span> <span class="fl">5</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p, q, v <span class="op">=</span> <span class="fu">solve_ZSG_naive</span>(u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1125,7 +1128,7 @@ Solution
 </div>
 </div>
 <p>Next, we use the efficient solution that uses the dual variables</p>
-<div id="16d852fc" class="cell" data-execution_count="10">
+<div id="b36e4215" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="fl">2</span> <span class="fl">5</span> <span class="op">-</span><span class="fl">1</span>; <span class="fl">0</span> <span class="op">-</span><span class="fl">2</span> <span class="fl">5</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p, q, v <span class="op">=</span> <span class="fu">solve_ZSG</span>(u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1141,7 +1144,7 @@ Solution
 <h2 data-number="2.7" class="anchored" data-anchor-id="games-with-non-compact-action-spaces"><span class="header-section-number">2.7</span> Games with non-compact action spaces</h2>
 <p>So far, we have restricted the discussion to finite games and shown that the game has a value in mixed strategies and there exist optimal strategies that achieve the value. We now present an example to show that this result is not always true if the game is not finite.</p>
 <p>Consider a <span class="math inline">\(∞ × 2\)</span> game with the following payoff matrix:</p>
-<div id="9d80f97c" class="cell" data-execution_count="11">
+<div id="113b87b6" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="12">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{1}$</td><td>$2$</td><td>$0$</td></tr><tr><td>$\mathsf{2}$</td><td>$\tfrac 12$</td><td>$\tfrac 12$</td></tr><tr><td>$\mathsf{3}$</td><td>$\tfrac 13$</td><td>$\tfrac 23$</td></tr><tr><td>$\mathsf{4}$</td><td>$\tfrac 14$</td><td>$\tfrac 34$</td></tr><tr><td>$\mathsf{5}$</td><td>$\tfrac 15$</td><td>$\tfrac 45$</td></tr><tr><td>$\mathsf{\cdot}$</td><td>$\cdot$</td><td>$\cdot$</td></tr><tr><td>$\mathsf{\cdot}$</td><td>$\cdot$</td><td>$\cdot$</td></tr><tr><td>$\mathsf{\cdot}$</td><td>$\cdot$</td><td>$\cdot$</td></tr></tbody></table>
 </div>
@@ -1313,16 +1316,16 @@ Figure&nbsp;2.10: Payoff profile for <a href="#exm-zsg-cts-mixed" class="quarto-
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="557cc110" class="cell" data-execution_count="12">
+<div id="8c4efc0d" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display" data-execution_count="13">
-Game 1<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$6$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$-3$</td><td>$3$</td></tr></tbody></table>
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$6$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$-3$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="22803c8a" class="cell" data-execution_count="13">
+<div id="c0ca6477" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="14">
-Game 2<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$-3$</td><td>$8$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$-3$</td><td>$8$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
 </div>
@@ -1331,7 +1334,7 @@ Game 2<table class="game1" data-quarto-disable-processing="true" align="center">
 </div>
 <div id="exr-zsg-ieds" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Find the optimal strategy profile and the value of the following game.</p>
-<div id="ec82e0a0" class="cell" data-execution_count="14">
+<div id="cf3d8e73" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display" data-execution_count="15">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$4$</td><td>$6$</td></tr><tr><td>$\mathsf{M}$</td><td>$5$</td><td>$7$</td><td>$4$</td></tr><tr><td>$\mathsf{B}$</td><td>$9$</td><td>$6$</td><td>$3$</td></tr></tbody></table>
 </div>
@@ -1372,16 +1375,16 @@ Game 2<table class="game1" data-quarto-disable-processing="true" align="center">
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="game-1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="53f112d4" class="cell" data-execution_count="15">
+<div id="d603eae9" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display" data-execution_count="16">
-Game 1<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td></tr><tr><td>$\mathsf{1}$</td><td>$3$</td><td>$-1$</td><td>$2$</td></tr><tr><td>$\mathsf{2}$</td><td>$1$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td></tr><tr><td>$\mathsf{1}$</td><td>$3$</td><td>$-1$</td><td>$2$</td></tr><tr><td>$\mathsf{2}$</td><td>$1$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div class="game-2 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="1f44e163" class="cell" data-execution_count="16">
+<div id="7d18890d" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display" data-execution_count="17">
-Game 2<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td><td>$\mathsf{4}$</td></tr><tr><td>$\mathsf{1}$</td><td>$6$</td><td>$0$</td><td>$5$</td><td>$6$</td></tr><tr><td>$\mathsf{2}$</td><td>$-3$</td><td>$3$</td><td>$-4$</td><td>$3$</td></tr><tr><td>$\mathsf{3}$</td><td>$8$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Game 2</caption><tbody><tr><td></td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\mathsf{3}$</td><td>$\mathsf{4}$</td></tr><tr><td>$\mathsf{1}$</td><td>$6$</td><td>$0$</td><td>$5$</td><td>$6$</td></tr><tr><td>$\mathsf{2}$</td><td>$-3$</td><td>$3$</td><td>$-4$</td><td>$3$</td></tr><tr><td>$\mathsf{3}$</td><td>$8$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
 </div>

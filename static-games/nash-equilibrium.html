@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-05">
+<meta name="dcterms.date" content="2025-02-08">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>5&nbsp; Nash equilibrium – Multi-Agent Systems</title>
@@ -23,10 +23,29 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -84,6 +103,7 @@ window.MathJax = {
     tags: "ams",
     macros: {
       PR: "\\mathbb{P}",
+      BR: "\\operatorname{BR}",
       EXP: "\\mathbb{E}",
       IND: "\\mathbb{1}",
       ONES: "\\mathbb{1}",
@@ -117,14 +137,46 @@ window.MathJax = {
 <script>
   const { createApp, ref } = Vue
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta name="citation_title" content="[5]{.chapter-number}&nbsp; [Nash equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-05">
-<meta name="citation_cover_date" content="2025-01-05">
+<meta name="citation_publication_date" content="2025-02-08">
+<meta name="citation_cover_date" content="2025-02-08">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-05">
+<meta name="citation_online_date" content="2025-02-08">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/nash-equilibrium.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -167,6 +219,8 @@ window.MathJax = {
 <meta name="citation_reference" content="citation_title=Fictitious play property for games with identical interests;,citation_author=Dov Monderer;,citation_author=Lloyd S Shapley;,citation_publication_date=1996;,citation_cover_date=1996;,citation_year=1996;,citation_issue=1;,citation_volume=68;,citation_journal_title=Journal of economic theory;,citation_publisher=Elsevier;">
 <meta name="citation_reference" content="citation_title=The theory of learning in games;,citation_author=Drew Fudenberg;,citation_author=David K Levine;,citation_publication_date=1998;,citation_cover_date=1998;,citation_year=1998;,citation_volume=2;">
 <meta name="citation_reference" content="citation_title=Stability for the best response dynamics;,citation_author=Josef Hofbauer;,citation_publication_date=1995;,citation_cover_date=1995;,citation_year=1995;,citation_technical_report_institution=Universität Wien;">
+<meta name="citation_reference" content="citation_title=Equilibrium points in n -person games;,citation_author=John F. Nash;,citation_publication_date=1950-01;,citation_cover_date=1950-01;,citation_year=1950;,citation_issue=1;,citation_doi=10.1073/pnas.36.1.48;,citation_issn=1091-6490;,citation_volume=36;,citation_journal_title=Proceedings of the National Academy of Sciences;,citation_publisher=Proceedings of the National Academy of Sciences;">
+<meta name="citation_reference" content="citation_title=Non-cooperative games;,citation_author=John Nash;,citation_publication_date=1951-09;,citation_cover_date=1951-09;,citation_year=1951;,citation_issue=2;,citation_doi=10.2307/1969529;,citation_issn=0003-486X;,citation_volume=54;,citation_journal_title=The Annals of Mathematics;,citation_publisher=JSTOR;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -290,8 +344,25 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#relationship-with-previous-solution-concepts" id="toc-relationship-with-previous-solution-concepts" class="nav-link active" data-scroll-target="#relationship-with-previous-solution-concepts"><span class="header-section-number">5.1</span> Relationship with previous solution concepts</a>
+  <ul class="collapse">
+  <li><a href="#relationship-between-ne-and-dominant-strategy-equilibrium" id="toc-relationship-between-ne-and-dominant-strategy-equilibrium" class="nav-link" data-scroll-target="#relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.1.1</span> Relationship between NE and dominant strategy equilibrium</a></li>
+  <li><a href="#relationship-between-ne-and-rationalizable-strategies" id="toc-relationship-between-ne-and-rationalizable-strategies" class="nav-link" data-scroll-target="#relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.1.2</span> Relationship between NE and rationalizable strategies</a></li>
+  <li><a href="#relationship-between-ne-and-optimal-strategies-in-zero-sum-games" id="toc-relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="nav-link" data-scroll-target="#relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.1.3</span> Relationship between NE and optimal strategies in zero sum games</a></li>
+  </ul></li>
+  <li><a href="#computing-ne-in-2-2-games" id="toc-computing-ne-in-2-2-games" class="nav-link" data-scroll-target="#computing-ne-in-2-2-games"><span class="header-section-number">5.2</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</a>
+  <ul class="collapse">
+  <li><a href="#best-response-map-of-player-1" id="toc-best-response-map-of-player-1" class="nav-link" data-scroll-target="#best-response-map-of-player-1"><span class="header-section-number">5.2.1</span> Best response map of player 1</a></li>
+  <li><a href="#best-response-map-of-player-2" id="toc-best-response-map-of-player-2" class="nav-link" data-scroll-target="#best-response-map-of-player-2"><span class="header-section-number">5.2.2</span> Best response map of player 2</a></li>
+  <li><a href="#identifying-the-ne" id="toc-identifying-the-ne" class="nav-link" data-scroll-target="#identifying-the-ne"><span class="header-section-number">5.2.3</span> Identifying the NE</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/nash-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -324,7 +395,7 @@ window.MathJax = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 5, 2025</p>
+      <p class="date">February 8, 2025</p>
     </div>
   </div>
   
@@ -336,8 +407,364 @@ window.MathJax = {
 </header>
 
 
+<p>So far we have looked at two solution concepts:</p>
+<ul>
+<li><p>Rationalizable strategies, which don’t exist for all games</p></li>
+<li><p>Optimal or minmax strategies for zero-sum games.</p></li>
+</ul>
+<p>In this section, we look at the most popular solution concept known as <strong>Nash equilibrium</strong> (which we will abbreviate to NE).</p>
+<p>We start with an informal definition of NE.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Informal definition of Nash equilibrium
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A strategy profile is a NE if no player can improve its performance by unilateral deviations.</p>
+</div>
+</div>
+<p>The above definition can be written formally as follows.</p>
+<div id="def-Nash-equil" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.1</strong></span> A <strong>Nash equilibrium</strong> in pure strategies for a strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span> is a strategy profile <span class="math inline">\(s^* = (s^*_1, \dots, s^*_n) \in \ALPHABET S\)</span> such that for each <span class="math inline">\(i \in N\)</span> the following is satisfied: <span class="math display">\[
+  u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
+  \quad \forall s_i \in \ALPHABET S_i.
+\]</span> The payoff vector <span class="math inline">\(u(s^*)\)</span> is called the <strong>equilibrium payoff</strong> corresponding to NE <span class="math inline">\(s^*\)</span>.</p>
+</div>
+<p>Another way to define NE is use <strong>Best response correspondece</strong> <span class="math inline">\(\BR_i \colon \ALPHABET S_{-i} \rightrightarrows A_i\)</span> defined as follows <span class="math display">\[
+  \BR_i(s_{-i}) = \bigl\{ s_i \in \ALPHABET S_i : u_i(s_i, s_{-i}) \ge u_i(τ_i, s_{-i}), \forall τ_i \in \ALPHABET S_i \bigr\}.
+\]</span></p>
+<div id="def-Nash-equil-alt" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.2</strong></span> A strategy profile <span class="math inline">\(s^* \in \ALPHABET S\)</span> is a <strong>Nash equilibrium</strong> if each player is playing a best response to the strategy profile of other players, i.e., <span class="math display">\[
+  s_i^* \in \BR_i(s^*_{-i}), \quad \forall i \in N.
+\]</span></p>
+</div>
+<section id="relationship-with-previous-solution-concepts" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="relationship-with-previous-solution-concepts"><span class="header-section-number">5.1</span> Relationship with previous solution concepts</h2>
+<section id="relationship-between-ne-and-dominant-strategy-equilibrium" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.1.1</span> Relationship between NE and dominant strategy equilibrium</h3>
+<p>Consider prisoner’s dilemma game.</p>
+<div id="597a0364" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Prisoner's Dilemma</caption><tbody><tr><td></td><td colspan="2">$\mathsf{A}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{A}$</td><td>$-2$</td><td>$-2$</td><td>$0$</td><td>$-3$</td></tr><tr><td>$\mathsf{R}$</td><td>$-3$</td><td>$0$</td><td>$-1$</td><td>$-1$</td></tr></tbody></table>
+</div>
+</div>
+<p>Recall that <span class="math inline">\((\mathsf{A}, \mathsf{A})\)</span> was the equilibrium in strongly dominated strategies. It can be easily verified that is also a Nash equillbrium. In fact, we have the following general result:</p>
+<div id="prp-NE-vs-dominant" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> Any equilibrium in strongly or weakly dominant strategy is also a Nash equilibrium.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose <span class="math inline">\(s^* \in \ALPHABET S\)</span> is an equilibrium in strongly or weakly dominant strategies. Then, by definition, for all players <span class="math inline">\(i \in N\)</span>, we have <span class="math display">\[
+u_i(s_i^*, s_{-i}) \ge u_i(s_i, s_{-i}),
+  \quad \forall s_i \in \ALPHABET S_i, s_{-i} \in \ALPHABET S_{-i}.
+\]</span> In particular, if we take <span class="math inline">\(s_{-i} = s_{-i}^*\)</span>, we get <span class="math display">\[
+u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
+  \quad \forall s_i \in \ALPHABET S_i.
+\]</span> Thus, <span class="math inline">\(s^*\)</span> is a Nash equilibrium.</p>
+</div>
+</div>
+</section>
+<section id="relationship-between-ne-and-rationalizable-strategies" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.1.2</span> Relationship between NE and rationalizable strategies</h3>
+<p>Recall the following example discussed earlier:</p>
+<div id="88763c4e" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
+</div>
+</div>
+<p>We had shown earlier that <span class="math inline">\((\mathsf{T}, \mathsf{C})\)</span> is a rationalizble strategy obtained by IEDS. It can be easily verified that it is also a Nash equilibrium. In fact, we have the following general result.</p>
+<div id="prp-NE-vs-rationalizable" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5.2</strong></span> Any rationalizable output come IEDS or IEWDS is a Nash equilibrium.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For IEDS, the proof hinges on the fact that at each step of IEDS, we remove strategies that are dominated and therefore cannot be part of the best response.</p>
+<p>For IEWDS, we may remove some best response strategies, but anything that survives has to be a best response pair.</p>
+</div>
+</div>
+</section>
+<section id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.1.3</span> Relationship between NE and optimal strategies in zero sum games</h3>
+<p>Recall the following example discussed earlier in <a href="zero-sum-games.html#exm-value-zsg" class="quarto-xref">Example&nbsp;<span>2.2</span></a></p>
+<div id="43130d1b" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
+<p>We had shown that <span class="math inline">\((\mathsf{M}, \mathsf{C})\)</span> is an optimal strategy of this game. It can be easily verified that it is also a Nash equilibrium. In fact, we have the following general result:</p>
+<div id="prp-NE-vs-optimal" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5.3</strong></span> Any optimal strategy of a ZSG is a NE and vice versa.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This follows immediately from the saddle point property of optimal strategies.</p>
+</div>
+</div>
+<p>The above discussion shows that the concept of Nash equilibrium generalizes all the solution concepts that we have discussed so far. The main advantage of Nash equilibrium is that it exists even when the previously discussed solution concepts do not. For instance, consider the following games.</p>
+<div id="exm-battle-of-sexes" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.1</strong></span> Find all NE (in pure strategies) for Battle of Sexes game.</p>
+<div id="196abe3e" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div id="exm-chicken" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.2</strong></span> Find all NE (in pure strategies) for the game of chicken</p>
+<div id="6b77a669" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>The game of chicken</caption><tbody><tr><td></td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{C}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$10$</td></tr><tr><td>$\mathsf{H}$</td><td>$10$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>Note that a game may not have an equilibrium in pure strategyes. For example, the game of matching pennies has no equilibrium in pure strategies.</p>
+<div id="4017c591" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Matching pennies game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td><td>$1$</td><td>$-1$</td></tr></tbody></table>
+</div>
+</div>
+<p>It is natural to ask if we can seek a NE in mixed strategies in such instances. And, in general, <strong>when does a game have a NE?</strong></p>
+<p>This question was answered by <span class="citation" data-cites="Nash1950 Nash1951">(<a href="../references.html#ref-Nash1950" role="doc-biblioref">Nash 1950</a>; <a href="../references.html#ref-Nash1951" role="doc-biblioref">Nash 1951</a>)</span> who showed that any finte game has a NE in mixed strategy. We will come to that proof later.</p>
+</section>
+</section>
+<section id="computing-ne-in-2-2-games" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="computing-ne-in-2-2-games"><span class="header-section-number">5.2</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</h2>
+<p>We start by a brute-force method to compute NE in <span class="math inline">\(2 × 2\)</span> games. This method is just for illustration. Based on the intuition from this method, we will later present an efficient method to compute NE.</p>
+<p>Consider the game shown below. We can check that the game has no NE in pure strategies.</p>
+<div id="1088e80f" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Game with no NE in pure strategies</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$-1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
+</div>
+</div>
+<p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the probability distribution of the different actions is shown below:</p>
+<div id="f5492779" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>Probability of choosing different actions</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$pq$</td><td>$p(1-q)$</td></tr><tr><td>$\mathsf{B}$</td><td>$(1-p)q$</td><td>$(1-p)(1-q)$</td></tr></tbody></table>
+</div>
+</div>
+<p>Thus, we have <span class="math display">\[\begin{align*}
+  U_1(p, q) \coloneqq U_1(σ_1, σ_2) &amp;= 1 ⋅ pq + 0 ⋅ p (1-q) + 0 ⋅ (1-p) q + 2 ⋅ (1-p)(1-q) \\
+  &amp;= 3pq - 2p -2q + 2,
+\end{align*}\]</span> and <span class="math display">\[\begin{align*}
+  U_2(p, q) \coloneqq U_2(σ_1, σ_2) &amp;= -1 ⋅ pq + 2 ⋅ p (1-q) + 1 ⋅ (1-p) q + 0 ⋅ (1-p)(1-q) \\
+  &amp;= -4pq + 2p + q .
+\end{align*}\]</span></p>
+<p>Thus, we can think of this as a two player game on the unit square where <span class="math inline">\(P_1\)</span> chooses <span class="math inline">\(p \in [0,1]\)</span> and <span class="math inline">\(P_2\)</span> chooses <span class="math inline">\(q \in [0,1]\)</span> and the pageoff functions are <span class="math inline">\(U_1(p, q)\)</span> and <span class="math inline">\(U_2(p,q)\)</span>, respectively.</p>
+<p>In this notation, NE is a point <span class="math inline">\((p,q)\)</span> such that <span class="math display">\[
+  p \in \BR_1(q)
+  \quad\text{and}\quad
+  q \in \BR_2(p).
+\]</span></p>
+<p>We will now identify the best response maps <span class="math inline">\(\BR_1\)</span> and <span class="math inline">\(\BR_2\)</span> and then compute the NE.</p>
+<section id="best-response-map-of-player-1" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="best-response-map-of-player-1"><span class="header-section-number">5.2.1</span> Best response map of player 1</h3>
+<p>Recall that <span class="math display">\[
+  U_1(p,q) = 3 pq - 2p - 2q + 2 = (3q - 2) p - 2q + 2
+\]</span> which is linear in <span class="math inline">\(p\)</span> (for a fixed <span class="math inline">\(q\)</span>). Thus, <span class="math display">\[
+  \max_{p \in [0,1]} U_1(p,q)
+  = \begin{cases}
+    U_1(1, q) = q, &amp; \hbox{if } 3q - 2 \ge 0 \\
+    U_1(0, q) = -2q + 2, &amp; \hbox{if } 3q - 2 &lt; 0
+  \end{cases}
+\]</span> and <span class="math display">\[
+  \arg\max_{p \in [0,1]} U_1(p,q)
+  = \begin{cases}
+    1, &amp; \hbox{if } 3q - 2 &gt; 0 \\
+    [0,1], &amp; \hbox{ if 3q - 2 = 0 \\
+    0, &amp; \hbox{if } 3q - 2 &lt; 0
+  \end{cases}
+\]</span></p>
+<p>We can visual these results graphically, as shown in <a href="#fig-BR-1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>.</p>
+<div id="fig-BR-1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-BR-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-BR-1-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-BR-1-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/nash-equilibrium1.svg" class="img-fluid figure-img" data-ref-parent="fig-BR-1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-BR-1-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) <span class="math inline">\(\max_{p \in [0,1]} U_1(p,q)\)</span> as a function of <span class="math inline">\(q\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-BR-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-BR-1-b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-BR-1-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/nash-equilibrium2.svg" class="img-fluid figure-img" data-ref-parent="fig-BR-1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-BR-1-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) <span class="math inline">\(\arg\max_{p \in [0,1]} U_1(p,q)\)</span> as a function of <span class="math inline">\(q\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Best response map for player 1
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="best-response-map-of-player-2" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="best-response-map-of-player-2"><span class="header-section-number">5.2.2</span> Best response map of player 2</h3>
+<p>We repeat the above process for player 2. Recall that <span class="math display">\[
+  U_2(p,q) = -4 pq + 2p + q = (1 - 4p)q + 2p
+\]</span> which is linear in <span class="math inline">\(q\)</span> (for a fixed <span class="math inline">\(p\)</span>). Thus, <span class="math display">\[
+  \max_{q \in [0,1]} U_2(p,q)
+  = \begin{cases}
+    U_2(p, 0) =  2p, &amp; \hbox{if } 1 - 4p \le 0 \\
+    U_2(p, 1) = -2p + 1, &amp; \hbox{if } 1 - 4p &gt; 0
+  \end{cases}
+\]</span> and <span class="math display">\[
+  \arg\max_{q \in [0,1]} U_2(p,q)
+  = \begin{cases}
+    0, &amp; \hbox{if } 1 - 4p &lt; \\
+    [0,1], &amp; \hbox{ if } 1 - 4p = 0 \\
+    1, &amp; \hbox{if } 1 - 4p &gt; 0
+  \end{cases}
+\]</span></p>
+<p>We can visual these results graphically, as shown in <a href="#fig-BR-2" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>.</p>
+<div id="fig-BR-2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BR-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-BR-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-BR-2-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-BR-2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/nash-equilibrium3.svg" class="img-fluid figure-img" data-ref-parent="fig-BR-2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-BR-2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) <span class="math inline">\(\max_{q \in [0,1]} U_2(p,q)\)</span> as a function of <span class="math inline">\(p\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-BR-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-BR-2-b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-BR-2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/nash-equilibrium4.svg" class="img-fluid figure-img" data-ref-parent="fig-BR-2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-BR-2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) <span class="math inline">\(\arg\max_{q \in [0,1]} U_2(p,q)\)</span> as a function of <span class="math inline">\(p\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BR-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Best response map for player 2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="identifying-the-ne" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="identifying-the-ne"><span class="header-section-number">5.2.3</span> Identifying the NE</h3>
+<p>To compute the NE, we look at the two BR curves and find their point of intersection, as shown in <a href="#fig-BR-cap" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
+<div id="fig-BR-cap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BR-cap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/nash-equilibrium5.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BR-cap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Intersection of the best response curves of the two players. Note that the axes of the best response curve of player 2 has been flipped
+</figcaption>
+</figure>
+</div>
+<p>Observe that each BR curve is like a staircase. If we are looking for an equilibrium in <em>strictly mixed strategies</em> (i.e., <span class="math inline">\(p \in (0,1)\)</span> and <span class="math inline">\(q \in (0,1)\)</span>), then the intersection point of the two BR curves will be the vertically straight line part of the BR curves.</p>
+<p>Recall that we have argued that <span class="math display">\[
+  \max_{p \in [0,1]} U_1(p,q) =
+  \begin{cases}
+    U_1(\mathsf{T}, q), &amp; q \ge q^* \\
+    U_1(\mathsf{B}, q), &amp; q \le q^*
+  \end{cases}
+\]</span> where <span class="math inline">\(q^*\)</span> is the point where <span class="math inline">\(U_1(\mathsf{T}, q) = U_1(\mathsf{B}, q)\)</span>.</p>
+<p>By a symmetric argument, we have that <span class="math inline">\(p^*\)</span> point in the BR curve for player 2 is the point where <span class="math inline">\(U_2(p, \mathsf{L}) = U_2(p, \mathsf{R})\)</span>.</p>
+<p>Thus, instead of drawing the BR curves, we could have directly found the mixed strategy NE <span class="math inline">\((p^*, q^*)\)</span> as <span class="math display">\[
+  \bbox[5pt,border: 1px solid]{
+    \begin{aligned}
+      q^* &amp;: q \hbox{ such that } U_1(\mathsf{T}, q) = U_1(\mathsf{B}, q) \\
+      p^* &amp;: p \hbox{ such that } U_2(p, \mathsf{R}) = U_2(p, \mathsf{B})
+    \end{aligned}
+  }
+\]</span> This provides a general method of finding the NE for <span class="math inline">\(2 × 2\)</span> games, which we use in general.</p>
+<div id="exm-battle-of-sexes-all" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.3</strong></span> Find all the NE of battle of sexes game.</p>
+<div id="4d084570" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have already identified the pure strategy NE in <span class="quarto-unresolved-ref">?exr-battle-of-sexes</span>. We now consider NE in strictly mixed strategies.</p>
+<p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the equilibrium value of <span class="math inline">\(p\)</span> is such that <span class="math display">\[
+U_2(p, \mathsf{F}) = U_2(p, \mathsf{O})
+\]</span> Hence, <span class="math display">\[
+  p = 2 (1 - p) \implies p = \tfrac 23.
+\]</span></p>
+<p>Similarly, the equilibrium value of <span class="math inline">\(q\)</span> is such that <span class="math display">\[
+  U_1(\mathsf{F}, q) = U_1(\mathsf{O}, q)
+\]</span> Hence, <span class="math display">\[ 2 q = 1 - q \implies q = \tfrac 13.\]</span> Thus, in addition to the two pure strategy NE, we have <span class="math inline">\(σ_1 = (\tfrac 23, \tfrac 13)\)</span> and <span class="math inline">\(σ_2 = (\tfrac 13, \tfrac 23)\)</span> is a mixed strategy NE.</p>
+</div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Nash1951" class="csl-entry" role="listitem">
+<span class="smallcaps">Nash, J.</span> 1951. Non-cooperative games. <em>The Annals of Mathematics</em> <em>54</em>, 2, 286. DOI: <a href="https://doi.org/10.2307/1969529">10.2307/1969529</a>.
+</div>
+<div id="ref-Nash1950" class="csl-entry" role="listitem">
+<span class="smallcaps">Nash, J.F.</span> 1950. Equilibrium points in n -person games. <em>Proceedings of the National Academy of Sciences</em> <em>36</em>, 1, 48–49. DOI: <a href="https://doi.org/10.1073/pnas.36.1.48">10.1073/pnas.36.1.48</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -918,5 +1345,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/nash-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/nash-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
