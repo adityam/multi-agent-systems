@@ -293,6 +293,8 @@ To compute the NE, we look at the two BR curves and find their point of intersec
 
 ![Intersection of the best response curves of the two players. Note that the axes of the best response curve of player 2 has been flipped](figures/svg/nash-equilibrium5.svg){#fig-BR-cap}
 
+Thus, the NE is $σ_1 = (\tfrac 14, \tfrac 34)$ and $σ_2 = (\tfrac 23, \tfrac 13)$. 
+
 Observe that each BR curve is like a staircase. If we are looking for an equilibrium in _strictly mixed strategies_ (i.e., $p \in (0,1)$ and $q \in (0,1)$), then the intersection point of the two BR curves will be the vertically straight line part of the BR curves. 
 
 Recall that we have argued that
