@@ -350,3 +350,88 @@ Hence,
 $$ 2 q = 1 - q \implies q = \tfrac 13.$$
 Thus, in addition to the two pure strategy NE, we have $σ_1 = (\tfrac 23, \tfrac 13)$ and $σ_2 = (\tfrac 13, \tfrac 23)$ is a mixed strategy NE.
 :::
+
+## The indifference principle
+
+We now present a general method to compute NE for finite games. The method relies on the following characterization of NE.
+
+:::{#thm-NE-property}
+Let $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ be a finite strategic game. Then $σ^* = (σ^*_1, \dots, σ^*_n)$, where $σ^*_i \in Δ(\ALPHABET S_i)$, $i \in N$< is a mixed strategy NE of $\mathscr{G}$ [if and only if]{.text-danger} for every player $i \in N$ and every pure strategy $s_i$ in the support of $σ^*_i$ (i.e., every $s_i$ such that $σ^*_i(s_i) > 0$), we have
+$$
+    s_i \in \BR_i(σ^*_{-i}).
+$$
+:::
+
+:::{.callout-note}
+#### Proof
+
+- $(\implies)$ Suppose there is a $s_i$ in the support of $σ^*_i$ (i.e., $σ^*_i(s_i) > 0$) but $s_i \not\in \BR_{i}(σ^*_{-i})$. Then, by linearity of $U_i(σ_i, σ^*_{-i})$ in $σ_i$, player $i$ can increase its payoff by transferring the probability mass on $s_i$ to an action that is a BR. This will imply that $σ^*_i$ is not a Br, which is a contradiction. Thus, our initial supposition must be incorrect and $s_i \in \BR_i(σ^*_{-i})$.
+
+- $(\impliedby)$ Suppose for every player $i \in N$ and every action $s_i$ in the support of $σ^*_i$ is a BR of $σ^*_{-i}$ but $σ^*$ is not a NE. Then, there must be a player $i$ such that $σ^*_i$ is not a BR to $σ^*_{-i}$. 
+
+  Since $σ^*_i$ is not a BR, there must be a mixed strategy $τ_i$ such that 
+  \begin{equation}\label{eq:ineq}
+      U_i(σ^*_i, σ^*_{-i}) < U_i(τ_i, σ^*_{-i}).
+  \end{equation}
+  Now consider a $t_i$ in the support of $τ_i$ and $s_i$ in the support of $σ^*_i$. By linearity of $U_i$, we have
+  $$
+    U_i(t_i, σ^*_{-i}) = U_i(τ_i, σ^*_{-i})
+  $$
+  and
+  $$
+    U_i(s_i, σ^*_{-i}) = U_i(σ^*_i, σ^*_{-i}).
+  $$
+  Eq. \eqref{eq:ineq} implies that $U_i(t_i, σ^*_{-i}) > U_i(s_i, σ^*_{-i})$. This means that $s_i$ is not a BR of $σ^*_{-i}$, which is a contraction. Hence, our supposition that $σ^*_i$ is not a NE must be incorrect.
+:::
+
+An immediate consequence of the previous result is the following.
+
+:::{#thm-indifference-principle}
+#### The indifference principle
+  Let $σ^* = (σ^*_1, \dots, σ^*_n)$ be a NE in mixed strategy. Then, we have the following:
+
+  - For any $s_i$ such that $σ^*_i(s_i) > 0$, we have
+    $$
+        U_i(s_i, σ^*_{-i}) = U_i(σ^*_i, σ^*_{-i}).
+    $$
+
+  - For any $s_i$ such that $σ^*_i(s_i) = 0$, we have
+    $$
+        U_i(s_i, σ^*_{-i}) \le U_i(σ^*_i, σ^*_{-i}).
+    $$
+:::
+
+:::{.callout-note}
+#### Proof
+
+From @thm-NE-property, we know that every pure strategy in the support of $σ^*_i$ must be a BR to $σ^*_{-i}$ and hence all such strategies must have the same payoff. Moreover, if all the pure strategies in the support of $σ^*_i$ have the same payoff, their payoff must be the same as the payoff of $σ^*_i$. This establishes the first property.
+
+The second property follows from the definition of NE.
+:::
+
+@thm-indifference-principle can be used to compute the NE of general two-player finite game. Let $(σ^*_1, σ^*_2)$ be a mixed strategy NE. Let
+$$
+  \text{supp}(σ^*_i) = \{ s_i \in \ALPHABET S_i : σ^*_i(s_i) > 0 \}
+$$
+denote the support of $σ^*_i$. From @thm-indifference-principle, we have that for any $s^∘_i \in \text{supp}(σ^*_i)$, $i \in \{1, 2\}$, we must have
+\begin{align*}
+  U_1(s^∘_1, σ^*_2) &= U_1(s_1, σ^*_2), & s_1 &\in \text{supp}(σ^*_1) \\ 
+  U_1(s^∘_1, σ^*_2) &\ge U_1(t_1, σ^*_2), & t_1 &\not\in \text{supp}(σ^*_1) 
+\end{align*}
+and
+\begin{align*}
+  U_2(σ^*_1, s^∘_2) &= U_2(σ^*_1, s_2), & s_2 &\in \text{supp}(σ^*_2) \\ 
+  U_2(σ^*_1, s^∘_2) &\ge U_2(σ^*_1, t_2), & t_2 &\not\in \text{supp}(σ^*_2) 
+\end{align*}
+
+Note that for any given choice of $\text{supp}(σ^*_1)$ and $\text{supp}(σ^*_2)$, we can check if the above equations have a consistent solution. If they do, that solutin is a NE. 
+
+The difficulty is that we do not know the support of $σ^*_1$ and $σ^*_2$. So, we need to repeat the above process for each choice of supports. Computing NE by such a brute-force search has an exponential complexity in $\ABS{\ALPHABET S_1}$ and $\ABS{\ALPHABET S_2}$. 
+
+:::{#exm-NE-2x3}
+Compute all NE of the following game.
+
+```{julia}
+game(["T", "B"], ["L", "C", "R"], [7 2 3; 2 7 4], [2 7 6; 7 2 5])
+```
+:::
