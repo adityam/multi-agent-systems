@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-02-08">
+<meta name="dcterms.date" content="2025-02-10">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>5&nbsp; Nash equilibrium – Multi-Agent Systems</title>
@@ -173,10 +173,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[5]{.chapter-number}&nbsp; [Nash equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-02-08">
-<meta name="citation_cover_date" content="2025-02-08">
+<meta name="citation_publication_date" content="2025-02-10">
+<meta name="citation_cover_date" content="2025-02-10">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-08">
+<meta name="citation_online_date" content="2025-02-10">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/nash-equilibrium.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -349,19 +349,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#relationship-with-previous-solution-concepts" id="toc-relationship-with-previous-solution-concepts" class="nav-link active" data-scroll-target="#relationship-with-previous-solution-concepts"><span class="header-section-number">5.1</span> Relationship with previous solution concepts</a>
+  <li><a href="#what-is-nash-equilibrium" id="toc-what-is-nash-equilibrium" class="nav-link active" data-scroll-target="#what-is-nash-equilibrium"><span class="header-section-number">5.1</span> What is Nash equilibrium</a></li>
+  <li><a href="#relationship-with-previous-solution-concepts" id="toc-relationship-with-previous-solution-concepts" class="nav-link" data-scroll-target="#relationship-with-previous-solution-concepts"><span class="header-section-number">5.2</span> Relationship with previous solution concepts</a>
   <ul class="collapse">
-  <li><a href="#relationship-between-ne-and-dominant-strategy-equilibrium" id="toc-relationship-between-ne-and-dominant-strategy-equilibrium" class="nav-link" data-scroll-target="#relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.1.1</span> Relationship between NE and dominant strategy equilibrium</a></li>
-  <li><a href="#relationship-between-ne-and-rationalizable-strategies" id="toc-relationship-between-ne-and-rationalizable-strategies" class="nav-link" data-scroll-target="#relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.1.2</span> Relationship between NE and rationalizable strategies</a></li>
-  <li><a href="#relationship-between-ne-and-optimal-strategies-in-zero-sum-games" id="toc-relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="nav-link" data-scroll-target="#relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.1.3</span> Relationship between NE and optimal strategies in zero sum games</a></li>
+  <li><a href="#relationship-between-ne-and-dominant-strategy-equilibrium" id="toc-relationship-between-ne-and-dominant-strategy-equilibrium" class="nav-link" data-scroll-target="#relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.2.1</span> Relationship between NE and dominant strategy equilibrium</a></li>
+  <li><a href="#relationship-between-ne-and-rationalizable-strategies" id="toc-relationship-between-ne-and-rationalizable-strategies" class="nav-link" data-scroll-target="#relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.2.2</span> Relationship between NE and rationalizable strategies</a></li>
+  <li><a href="#relationship-between-ne-and-optimal-strategies-in-zero-sum-games" id="toc-relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="nav-link" data-scroll-target="#relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.2.3</span> Relationship between NE and optimal strategies in zero sum games</a></li>
   </ul></li>
-  <li><a href="#computing-ne-in-2-2-games" id="toc-computing-ne-in-2-2-games" class="nav-link" data-scroll-target="#computing-ne-in-2-2-games"><span class="header-section-number">5.2</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</a>
+  <li><a href="#computing-ne-in-2-2-games" id="toc-computing-ne-in-2-2-games" class="nav-link" data-scroll-target="#computing-ne-in-2-2-games"><span class="header-section-number">5.3</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</a>
   <ul class="collapse">
-  <li><a href="#best-response-map-of-player-1" id="toc-best-response-map-of-player-1" class="nav-link" data-scroll-target="#best-response-map-of-player-1"><span class="header-section-number">5.2.1</span> Best response map of player 1</a></li>
-  <li><a href="#best-response-map-of-player-2" id="toc-best-response-map-of-player-2" class="nav-link" data-scroll-target="#best-response-map-of-player-2"><span class="header-section-number">5.2.2</span> Best response map of player 2</a></li>
-  <li><a href="#identifying-the-ne" id="toc-identifying-the-ne" class="nav-link" data-scroll-target="#identifying-the-ne"><span class="header-section-number">5.2.3</span> Identifying the NE</a></li>
+  <li><a href="#best-response-map-of-player-1" id="toc-best-response-map-of-player-1" class="nav-link" data-scroll-target="#best-response-map-of-player-1"><span class="header-section-number">5.3.1</span> Best response map of player 1</a></li>
+  <li><a href="#best-response-map-of-player-2" id="toc-best-response-map-of-player-2" class="nav-link" data-scroll-target="#best-response-map-of-player-2"><span class="header-section-number">5.3.2</span> Best response map of player 2</a></li>
+  <li><a href="#identifying-the-ne" id="toc-identifying-the-ne" class="nav-link" data-scroll-target="#identifying-the-ne"><span class="header-section-number">5.3.3</span> Identifying the NE</a></li>
   </ul></li>
-  <li><a href="#the-indifference-principle" id="toc-the-indifference-principle" class="nav-link" data-scroll-target="#the-indifference-principle"><span class="header-section-number">5.3</span> The indifference principle</a></li>
+  <li><a href="#the-indifference-principle" id="toc-the-indifference-principle" class="nav-link" data-scroll-target="#the-indifference-principle"><span class="header-section-number">5.4</span> The indifference principle</a></li>
+  <li><a href="#proof-of-the-existence-of-nash-equilibrium" id="toc-proof-of-the-existence-of-nash-equilibrium" class="nav-link" data-scroll-target="#proof-of-the-existence-of-nash-equilibrium"><span class="header-section-number">5.5</span> Proof of the existence of Nash equilibrium</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/nash-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -396,7 +398,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2025</p>
+      <p class="date">February 10, 2025</p>
     </div>
   </div>
   
@@ -414,7 +416,8 @@ window.Quarto = {
 <li><p>Optimal or minmax strategies for zero-sum games.</p></li>
 </ul>
 <p>In this section, we look at the most popular solution concept known as <strong>Nash equilibrium</strong> (which we will abbreviate to NE).</p>
-<p>We start with an informal definition of NE.</p>
+<section id="what-is-nash-equilibrium" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="what-is-nash-equilibrium"><span class="header-section-number">5.1</span> What is Nash equilibrium</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -443,17 +446,18 @@ Informal definition of Nash equilibrium
   s_i^* \in \BR_i(s^*_{-i}), \quad \forall i \in N.
 \]</span></p>
 </div>
-<section id="relationship-with-previous-solution-concepts" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="relationship-with-previous-solution-concepts"><span class="header-section-number">5.1</span> Relationship with previous solution concepts</h2>
-<section id="relationship-between-ne-and-dominant-strategy-equilibrium" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.1.1</span> Relationship between NE and dominant strategy equilibrium</h3>
+</section>
+<section id="relationship-with-previous-solution-concepts" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="relationship-with-previous-solution-concepts"><span class="header-section-number">5.2</span> Relationship with previous solution concepts</h2>
+<section id="relationship-between-ne-and-dominant-strategy-equilibrium" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.2.1</span> Relationship between NE and dominant strategy equilibrium</h3>
 <p>Consider prisoner’s dilemma game.</p>
-<div id="bbbdcf69" class="cell" data-execution_count="2">
+<div id="9d85d147" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Prisoner's Dilemma</caption><tbody><tr><td></td><td colspan="2">$\mathsf{A}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{A}$</td><td>$-2$</td><td>$-2$</td><td>$0$</td><td>$-3$</td></tr><tr><td>$\mathsf{R}$</td><td>$-3$</td><td>$0$</td><td>$-1$</td><td>$-1$</td></tr></tbody></table>
 </div>
 </div>
-<p>Recall that <span class="math inline">\((\mathsf{A}, \mathsf{A})\)</span> was the equilibrium in strongly dominated strategies. It can be easily verified that is also a Nash equillbrium. In fact, we have the following general result:</p>
+<p>Recall that <span class="math inline">\((\mathsf{A}, \mathsf{A})\)</span> was the equilibrium in strongly dominant strategies. It can be easily verified that is also a Nash equillbrium. In fact, we have the following general result:</p>
 <div id="prp-NE-vs-dominant" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 5.1</strong></span> Any equilibrium in strongly or weakly dominant strategy is also a Nash equilibrium.</p>
 </div>
@@ -470,17 +474,17 @@ Proof
 <p>Suppose <span class="math inline">\(s^* \in \ALPHABET S\)</span> is an equilibrium in strongly or weakly dominant strategies. Then, by definition, for all players <span class="math inline">\(i \in N\)</span>, we have <span class="math display">\[
 u_i(s_i^*, s_{-i}) \ge u_i(s_i, s_{-i}),
   \quad \forall s_i \in \ALPHABET S_i, s_{-i} \in \ALPHABET S_{-i}.
-\]</span> In particular, if we take <span class="math inline">\(s_{-i} = s_{-i}^*\)</span>, we get <span class="math display">\[
+\]</span> In particular, setting <span class="math inline">\(s_{-i} = s_{-i}^*\)</span> gives <span class="math display">\[
 u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
   \quad \forall s_i \in \ALPHABET S_i.
 \]</span> Thus, <span class="math inline">\(s^*\)</span> is a Nash equilibrium.</p>
 </div>
 </div>
 </section>
-<section id="relationship-between-ne-and-rationalizable-strategies" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.1.2</span> Relationship between NE and rationalizable strategies</h3>
+<section id="relationship-between-ne-and-rationalizable-strategies" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.2.2</span> Relationship between NE and rationalizable strategies</h3>
 <p>Recall the following example discussed earlier:</p>
-<div id="059bb3a7" class="cell" data-execution_count="3">
+<div id="44592d9f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
@@ -495,7 +499,7 @@ u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof
+Proof Sketch
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -504,10 +508,10 @@ Proof
 </div>
 </div>
 </section>
-<section id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.1.3</span> Relationship between NE and optimal strategies in zero sum games</h3>
+<section id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.2.3</span> Relationship between NE and optimal strategies in zero sum games</h3>
 <p>Recall the following example discussed earlier in <a href="zero-sum-games.html#exm-value-zsg" class="quarto-xref">Example&nbsp;<span>2.2</span></a></p>
-<div id="9dda9e62" class="cell" data-execution_count="4">
+<div id="5d68683b" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="5">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -532,7 +536,7 @@ Proof
 <p>The above discussion shows that the concept of Nash equilibrium generalizes all the solution concepts that we have discussed so far. The main advantage of Nash equilibrium is that it exists even when the previously discussed solution concepts do not. For instance, consider the following games.</p>
 <div id="exm-battle-of-sexes" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.1</strong></span> Find all NE (in pure strategies) for Battle of Sexes game.</p>
-<div id="d4fc82a2" class="cell" data-execution_count="5">
+<div id="ec06c1be" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -540,14 +544,14 @@ Proof
 </div>
 <div id="exm-chicken" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.2</strong></span> Find all NE (in pure strategies) for the game of chicken</p>
-<div id="2d029130" class="cell" data-execution_count="6">
+<div id="8e8dd82f" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display" data-execution_count="7">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>The game of chicken</caption><tbody><tr><td></td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{C}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$10$</td></tr><tr><td>$\mathsf{H}$</td><td>$10$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <p>Note that a game may not have an equilibrium in pure strategyes. For example, the game of matching pennies has no equilibrium in pure strategies.</p>
-<div id="c93c7ca5" class="cell" data-execution_count="7">
+<div id="d31533fc" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="8">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Matching pennies game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td><td>$1$</td><td>$-1$</td></tr></tbody></table>
 </div>
@@ -556,17 +560,17 @@ Proof
 <p>This question was answered by <span class="citation" data-cites="Nash1950 Nash1951">(<a href="../references.html#ref-Nash1950" role="doc-biblioref">Nash 1950</a>; <a href="../references.html#ref-Nash1951" role="doc-biblioref">Nash 1951</a>)</span> who showed that any finte game has a NE in mixed strategy. We will come to that proof later.</p>
 </section>
 </section>
-<section id="computing-ne-in-2-2-games" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="computing-ne-in-2-2-games"><span class="header-section-number">5.2</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</h2>
+<section id="computing-ne-in-2-2-games" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="computing-ne-in-2-2-games"><span class="header-section-number">5.3</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</h2>
 <p>We start by a brute-force method to compute NE in <span class="math inline">\(2 × 2\)</span> games. This method is just for illustration. Based on the intuition from this method, we will later present an efficient method to compute NE.</p>
 <p>Consider the game shown below. We can check that the game has no NE in pure strategies.</p>
-<div id="28ef7a61" class="cell" data-execution_count="8">
+<div id="7ea7c6c6" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Game with no NE in pure strategies</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$-1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 <p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the probability distribution of the different actions is shown below:</p>
-<div id="229ed619" class="cell" data-execution_count="9">
+<div id="b2ce57d2" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Probability of choosing different actions</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$pq$</td><td>$p(1-q)$</td></tr><tr><td>$\mathsf{B}$</td><td>$(1-p)q$</td><td>$(1-p)(1-q)$</td></tr></tbody></table>
 </div>
@@ -585,8 +589,8 @@ Proof
   q \in \BR_2(p).
 \]</span></p>
 <p>We will now identify the best response maps <span class="math inline">\(\BR_1\)</span> and <span class="math inline">\(\BR_2\)</span> and then compute the NE.</p>
-<section id="best-response-map-of-player-1" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="best-response-map-of-player-1"><span class="header-section-number">5.2.1</span> Best response map of player 1</h3>
+<section id="best-response-map-of-player-1" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="best-response-map-of-player-1"><span class="header-section-number">5.3.1</span> Best response map of player 1</h3>
 <p>Recall that <span class="math display">\[
   U_1(p,q) = 3 pq - 2p - 2q + 2 = (3q - 2) p - 2q + 2
 \]</span> which is linear in <span class="math inline">\(p\)</span> (for a fixed <span class="math inline">\(q\)</span>). Thus, <span class="math display">\[
@@ -599,7 +603,7 @@ Proof
   \arg\max_{p \in [0,1]} U_1(p,q)
   = \begin{cases}
     1, &amp; \hbox{if } 3q - 2 &gt; 0 \\
-    [0,1], &amp; \hbox{ if 3q - 2 = 0 \\
+    [0,1], &amp; \hbox{ if } 3q - 2 = 0 \\
     0, &amp; \hbox{if } 3q - 2 &lt; 0
   \end{cases}
 \]</span></p>
@@ -640,8 +644,8 @@ Figure&nbsp;5.1: Best response map for player 1
 </figure>
 </div>
 </section>
-<section id="best-response-map-of-player-2" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="best-response-map-of-player-2"><span class="header-section-number">5.2.2</span> Best response map of player 2</h3>
+<section id="best-response-map-of-player-2" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="best-response-map-of-player-2"><span class="header-section-number">5.3.2</span> Best response map of player 2</h3>
 <p>We repeat the above process for player 2. Recall that <span class="math display">\[
   U_2(p,q) = -4 pq + 2p + q = (1 - 4p)q + 2p
 \]</span> which is linear in <span class="math inline">\(q\)</span> (for a fixed <span class="math inline">\(p\)</span>). Thus, <span class="math display">\[
@@ -695,8 +699,8 @@ Figure&nbsp;5.2: Best response map for player 2
 </figure>
 </div>
 </section>
-<section id="identifying-the-ne" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="identifying-the-ne"><span class="header-section-number">5.2.3</span> Identifying the NE</h3>
+<section id="identifying-the-ne" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="identifying-the-ne"><span class="header-section-number">5.3.3</span> Identifying the NE</h3>
 <p>To compute the NE, we look at the two BR curves and find their point of intersection, as shown in <a href="#fig-BR-cap" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
 <div id="fig-BR-cap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -709,7 +713,7 @@ Figure&nbsp;5.3: Intersection of the best response curves of the two players. No
 </figure>
 </div>
 <p>Thus, the NE is <span class="math inline">\(σ_1 = (\tfrac 14, \tfrac 34)\)</span> and <span class="math inline">\(σ_2 = (\tfrac 23, \tfrac 13)\)</span>.</p>
-<p>Observe that each BR curve is like a staircase. If we are looking for an equilibrium in <em>strictly mixed strategies</em> (i.e., <span class="math inline">\(p \in (0,1)\)</span> and <span class="math inline">\(q \in (0,1)\)</span>), then the intersection point of the two BR curves will be the vertically straight line part of the BR curves.</p>
+<p>Notice that each BR curve have a “staircase” appearance. If we are looking for an equilibrium in <em>strictly mixed strategies</em> (i.e., <span class="math inline">\(p \in (0,1)\)</span> and <span class="math inline">\(q \in (0,1)\)</span>), then the intersection point of the two BR curves will be the vertically straight line part of the BR curves.</p>
 <p>Recall that we have argued that <span class="math display">\[
   \max_{p \in [0,1]} U_1(p,q) =
   \begin{cases}
@@ -728,7 +732,7 @@ Figure&nbsp;5.3: Intersection of the best response curves of the two players. No
 \]</span> This provides a general method of finding the NE for <span class="math inline">\(2 × 2\)</span> games, which we use in general.</p>
 <div id="exm-battle-of-sexes-all" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.3</strong></span> Find all the NE of battle of sexes game.</p>
-<div id="1c08bbfa" class="cell" data-execution_count="10">
+<div id="19ecad36" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="11">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -757,8 +761,8 @@ U_2(p, \mathsf{F}) = U_2(p, \mathsf{O})
 </div>
 </section>
 </section>
-<section id="the-indifference-principle" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="the-indifference-principle"><span class="header-section-number">5.3</span> The indifference principle</h2>
+<section id="the-indifference-principle" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="the-indifference-principle"><span class="header-section-number">5.4</span> The indifference principle</h2>
 <p>We now present a general method to compute NE for finite games. The method relies on the following characterization of NE.</p>
 <div id="thm-NE-property" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 5.1</strong></span> Let <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span> be a finite strategic game. Then <span class="math inline">\(σ^* = (σ^*_1, \dots, σ^*_n)\)</span>, where <span class="math inline">\(σ^*_i \in Δ(\ALPHABET S_i)\)</span>, <span class="math inline">\(i \in N\)</span>&lt; is a mixed strategy NE of <span class="math inline">\(\mathscr{G}\)</span> <span class="text-danger">if and only if</span> for every player <span class="math inline">\(i \in N\)</span> and every pure strategy <span class="math inline">\(s_i\)</span> in the support of <span class="math inline">\(σ^*_i\)</span> (i.e., every <span class="math inline">\(s_i\)</span> such that <span class="math inline">\(σ^*_i(s_i) &gt; 0\)</span>), we have <span class="math display">\[
@@ -827,12 +831,151 @@ Proof
 <p>The difficulty is that we do not know the support of <span class="math inline">\(σ^*_1\)</span> and <span class="math inline">\(σ^*_2\)</span>. So, we need to repeat the above process for each choice of supports. Computing NE by such a brute-force search has an exponential complexity in <span class="math inline">\(\ABS{\ALPHABET S_1}\)</span> and <span class="math inline">\(\ABS{\ALPHABET S_2}\)</span>.</p>
 <div id="exm-NE-2x3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.4</strong></span> Compute all NE of the following game.</p>
-<div id="46971450" class="cell" data-execution_count="11">
+<div id="080267f3" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display" data-execution_count="12">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$7$</td><td>$2$</td><td>$2$</td><td>$7$</td><td>$3$</td><td>$6$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$7$</td><td>$7$</td><td>$2$</td><td>$4$</td><td>$5$</td></tr></tbody></table>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We first check for pure strategy NE by inspection and see that the game has no pure strategy NE.</p>
+<p>To search for mixed strategy NE, we will consider all possible choices for the support for mixed strategyes for both players. Player 1 has two pure strategies and any mixed strategy must randomize between them. For player 2, there are three pure strategies, so there are <span class="math inline">\(\binom{3}{2} + \binom{3}{3} = 4\)</span> possible choices for the support of mixed strategies. We must search for NE in each of these cases.</p>
+<p>For all possibilities, we will assume that <span class="math display">\[
+  σ^*_1 = (p[\mathsf{T}], 1-p[\mathsf{B}])
+  \quad\text{and}\quad
+  σ^*_2 = (q_1[\mathsf{L}], q_2[\mathsf{C}], q_3[\mathsf{R}])
+\]</span> where <span class="math inline">\(q_1, q_2, q_3 \ge 0\)</span> and <span class="math inline">\(q_1 + q_2 + q_3 = 1\)</span>. Thus, <span class="math display">\[\begin{align*}
+  U_1(\mathsf{T}, σ^*_2) &amp;= 7q_1  + 2 q_2 + 3 q_3 \\
+  U_1(\mathsf{B}, σ^*_2) &amp;= 2q_1  + 7 q_2 + 4 q_3
+\end{align*}\]</span> and <span class="math display">\[\begin{align*}
+  U_2(σ^*_1, \mathsf{L}) &amp;= 2 p + 7(1-p) = -5p + 7 \\
+  U_2(σ^*_1, \mathsf{C}) &amp;= 7p + 2(1-p) = 5p + 2 \\
+  U_2(σ^*_1, \mathsf{R}) &amp;= 6p + 5(1-p) = p + 5
+\end{align*}\]</span></p>
+<ul>
+<li><p><strong>Case 1:</strong> Assume that <span class="math inline">\(\text{supp}(σ^*_2) = \{\mathsf{L}, \mathsf{C}, \mathsf{R}\}\)</span> so <span class="math inline">\(q_1, q_2, q_3 &gt; 0\)</span>. By the irrelevance principle, we must have <span class="math display">\[
+    U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2)
+\]</span> and <span class="math display">\[
+  U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{C}) = U_2(σ^*_1, \mathsf{R}).
+\]</span> The second set of equations has no consistent solution for <span class="math inline">\(p\)</span>. Thus, there is no NE in this case.</p></li>
+<li><p><strong>Case 2:</strong> Assume that <span class="math inline">\(\text{supp}(σ^*_2) = \{\mathsf{L}, \mathsf{C}\}\)</span>, i.e., <span class="math inline">\(q_1, q_2 &gt; 0\)</span> and <span class="math inline">\(q_3 = 0\)</span>. By the irrelevance principle, we must have <span class="math display">\[
+    U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2)
+\]</span> and <span class="math display">\[
+  U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{C}) \ge U_2(σ^*_1, \mathsf{R}).
+\]</span> Solving <span class="math inline">\(U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{C})\)</span>, we get <span class="math inline">\(p = \tfrac 12\)</span> and <span class="math inline">\(U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{C}) = 4.5\)</span>.</p>
+<p>We now check <span class="math inline">\(U_2(σ^*_1, \mathsf{R}) = p + 5 = 5.5 &gt; 4.5\)</span>. Thus, the second system of equations has no consistent solution for <span class="math inline">\(p\)</span>. Thus, there is no NE in this case.</p></li>
+<li><p><strong>Case 3:</strong> Assume that <span class="math inline">\(\text{supp}(σ^*_2) = \{\mathsf{L}, \mathsf{R}\}\)</span>, i.e., <span class="math inline">\(q_1, q_3 &gt; 0\)</span> and <span class="math inline">\(q_2 = 0\)</span>. By the irrelevance principle, we must have <span class="math display">\[
+    U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2)
+\]</span> and <span class="math display">\[
+  U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{R}) \ge U_2(σ^*_1, \mathsf{C}).
+\]</span> Solving <span class="math inline">\(U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{R})\)</span>, we get <span class="math inline">\(p = \tfrac 13\)</span> and <span class="math inline">\(U_2(σ^*_1, \mathsf{L}) = U_2(σ^*_1, \mathsf{C}) = \tfrac{16}{3}\)</span>.</p>
+<p>We now check <span class="math inline">\(U_2(σ^*_1, \mathsf{C}) = 5p + 2 = \tfrac{11}{3} \le \tfrac{16}{3}\)</span>. Thus, the second system of equations has a consistent solution for <span class="math inline">\(p\)</span>, <span class="math inline">\(p = \tfrac{1}{3}\)</span>.</p>
+<p>So, we check the first system of equations <span class="math inline">\(U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2)\)</span> (for <span class="math inline">\(q_2 = 0\)</span>), which gives <span class="math inline">\(q_1 = \tfrac{1}{6}\)</span> and <span class="math inline">\(q_3 = \tfrac{5}{6}\)</span> and the corresponding payoff is <span class="math inline">\(U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2) = \tfrac{11}{3}\)</span>.</p>
+<p><span class="text-primary">Thus, <span class="math inline">\(σ^*_1 = (\tfrac 13, \tfrac 23)\)</span> and <span class="math inline">\(σ^*_2 = (\tfrac 16, 0, \tfrac 56)\)</span> is a NE with payoff <span class="math inline">\((\tfrac{11}{3}, \tfrac{16}{3})\)</span>.</span></p></li>
+<li><p><strong>Case 4:</strong> Assume that <span class="math inline">\(\text{supp}(σ^*_2) = \{\mathsf{C}, \mathsf{R}\}\)</span>, i.e., <span class="math inline">\(q_2, q_3 &gt; 0\)</span> and <span class="math inline">\(q_1 = 0\)</span>. By the irrelevance principle, we must have <span class="math display">\[
+    U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2)
+\]</span> and <span class="math display">\[
+  U_2(σ^*_1, \mathsf{C}) = U_2(σ^*_1, \mathsf{R}) \ge U_2(σ^*_1, \mathsf{L}).
+\]</span> Solving <span class="math inline">\(U_2(σ^*_1, \mathsf{C}) = U_2(σ^*_1, \mathsf{R})\)</span>, we get <span class="math inline">\(p = \tfrac 34\)</span> and <span class="math inline">\(U_2(σ^*_1, \mathsf{C}) = U_2(σ^*_1, \mathsf{R}) = \tfrac{23}{4}\)</span>.</p>
+<p>We now check <span class="math inline">\(U_2(σ^*_1, \mathsf{L}) = -5p + 7 = \tfrac{13}{4} \le \tfrac{23}{4}\)</span>. Thus, the second system of equations has a consistent solution for <span class="math inline">\(p\)</span>, <span class="math inline">\(p = \tfrac{3}{4}\)</span>.</p>
+<p>So, we check the first system of equations <span class="math inline">\(U_1(\mathsf{T}, σ^*_2) = U_1(\mathsf{B}, σ^*_2)\)</span> (for <span class="math inline">\(q_1 = 0\)</span>), which gives <span class="math inline">\(q_2 = -\tfrac{1}{4}\)</span> and <span class="math inline">\(q_3 = \tfrac{5}{4}\)</span>, <span class="text-warning">which is not a valid probability mass function</span>. Thus, the first system of equations does not have a consistent solution.</p></li>
+</ul>
+<p>Therefore, the game has a <strong>unique</strong> NE that is identified in Case 3.</p>
+</div>
+</div>
+</section>
+<section id="proof-of-the-existence-of-nash-equilibrium" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="proof-of-the-existence-of-nash-equilibrium"><span class="header-section-number">5.5</span> Proof of the existence of Nash equilibrium</h2>
+<p>We now present a proof that every finite game has a NE in mixed strategies. The proof is based on <span class="citation" data-cites="Nash1950">Nash (<a href="../references.html#ref-Nash1950" role="doc-biblioref">1950</a>)</span> and relies on <a href="https://en.wikipedia.org/wiki/Kakutani_fixed-point_theorem">:Kakutani’s fixed point theorem</a>, which we state below.</p>
+<div id="thm-Kakutani" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.3 (Kakutani’s fixed point theorem)</strong></span> Let <span class="math inline">\(\ALPHABET X\)</span> be a compact and convex subset of <span class="math inline">\(\reals^n\)</span> and <span class="math inline">\(f \colon \ALPHABET X \rightrightarrows \ALPHABET X\)</span> be a set valued correspondence which satisfies:</p>
+<ul>
+<li><p>for all <span class="math inline">\(x \in \ALPHABET X\)</span>, the set <span class="math inline">\(f(x)\)</span> is non-empty and convex.</p></li>
+<li><p>The graph of <span class="math inline">\(f(x)\)</span> is closed, which means that if we consider two converging sequences <span class="math inline">\(\{x_n\}_{n \ge 1}\)</span> and <span class="math inline">\(\{y_n\}_{n \ge 1}\)</span> such that <span class="math inline">\(x_n \to x^*\)</span> and <span class="math inline">\(y_n \to y^*\)</span> such that <span class="math inline">\(y_n \in f(x_n)\)</span> for all <span class="math inline">\(n\)</span>, then <span class="math inline">\(y^* \in f(x^*)\)</span>.</p></li>
+</ul>
+<p>Then <span class="math inline">\(f\)</span> has a fixed point <span class="math inline">\(x^*\)</span>, i.e., there exists an <span class="math inline">\(x^* \in \ALPHABET X\)</span> such that <span class="math inline">\(x^* \in f(x^*)\)</span>.</p>
+</div>
+<p>To use this theorem, we need the notion of <strong>quasi-concave</strong> function, which can be defined in two equivalent ways.</p>
+<ol type="1">
+<li><p><strong>Super-level set definition</strong> Let <span class="math inline">\(\ALPHABET C\)</span> be a convex subset of <span class="math inline">\(\reals^n\)</span>. A function <span class="math inline">\(g \colon \ALPHABET C \to \reals\)</span> is said to be quasi-concave if for every <span class="math inline">\(α \in \reals\)</span>, the super-level set <span class="math display">\[
+\ALPHABET S^{α} \coloneqq \{ x \in \ALPHABET C : g(x) \ge α \}
+\]</span> is convex.</p></li>
+<li><p><strong>Interpolation definition</strong> For the same setup as above, the function <span class="math inline">\(g \colon \ALPHABET C \to \reals\)</span> is said to be quasi-concave if for every <span class="math inline">\(x, y \in \ALPHABET C\)</span> and <span class="math inline">\(λ \in [0, 1]\)</span> <span class="math display">\[
+   f(λ x + (1-λ)y) \le \min\{ f(x), f(y) \}.
+\]</span> Thus, if we draw a line between two points in <span class="math inline">\(\ALPHABET C\)</span>, then the the value of the function is along this line is never less than the smaller of the two end point values.</p></li>
+</ol>
+<p>Quasi-concavity is a milder assumption that concavity. In particular, a concave function is quasi-concave but the reverse in not true. For example, consider the density of a Gassian random variable: <span class="math display">\[
+    g(x) = e^{-\NORM{x}^2}
+\]</span> which is quasi-concave but not concave.</p>
+<p>Quasi-concave functions are useful in optimization because for a quasi-concave function, a local minimum is also a global minimum.</p>
+<p>Now we state a theorem which guarantees the existence of Nash equilibrium in pure strategies.</p>
+<div id="thm-NE-pure" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.4</strong></span> A strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span> has a NE in pure strategies if for all <span class="math inline">\(i \in N\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\ALPHABET S_i\)</span> is non-empty, compact, and a convex subset of a Eucledian space.</p></li>
+<li><p>The utlitiy function <span class="math inline">\(u_i \colon \ALPHABET S \to \reals\)</span> is continuous in <span class="math inline">\(\ALPHABET S\)</span> and <strong>quasi-concave</strong> in <span class="math inline">\(\ALPHABET S_i\)</span>.</p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the set valued map <span class="math inline">\(\BR \colon \ALPHABET S \rightrightarrows \ALPHABET S\)</span> define by <span class="math display">\[
+  \BR(s) = \MATRIX{ \BR_1(s_{-1} \\ \vdots \\ B_n(s_{-n}) }.
+\]</span> We verify that <span class="math inline">\(\BR(s)\)</span> satisfies the conditions of Kakutani’s fixed point theorem (<a href="#thm-Kakutani" class="quarto-xref">Theorem&nbsp;<span>5.3</span></a>).</p>
+<ul>
+<li><p>For any <span class="math inline">\(i \in N\)</span> and <span class="math inline">\(s_{-i} \in \ALPHABET S_{-i}\)</span>, the set <span class="math inline">\(\BR_i(s_{-i})\)</span> is non-empty because <span class="math inline">\(u_i\)</span> is continuous and <span class="math inline">\(\ALPHABET S_i\)</span> is compact.</p></li>
+<li><p><span class="math inline">\(\BR_i(s_{-i})\)</span> is convex because <span class="math inline">\(u_i\)</span> is quasi-concave in <span class="math inline">\(\ALPHABET S_i\)</span></p></li>
+<li><p><span class="math inline">\(\BR(s)\)</span> has a closed graph because each <span class="math inline">\(B_i(s_{-i})\)</span> is close because <span class="math inline">\(u_i\)</span> is continuous.</p></li>
+</ul>
+<p>Thus, by Kakutani’s fixed point theorem, <span class="math inline">\(\BR(s)\)</span> has a fixed point <span class="math inline">\(s^*\)</span> such that <span class="math inline">\(s^* = \BR(s^*)\)</span>. By definition, such a <span class="math inline">\(s^*\)</span> is a NE.</p>
+</div>
+</div>
+<div id="thm-Nash" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.5 (Nash)</strong></span> Every finite strategic game has a NE in mixed strategies.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For any game <span class="math inline">\(\mathscr{G}\)</span>, consider the mixed extension <span class="math inline">\(\mathscr{G}'\)</span>. If <span class="math inline">\(\mathscr{G}\)</span> is finite, then</p>
+<ul>
+<li><p><span class="math inline">\(Δ(\ALPHABET S_i)\)</span> is non-empty, compact and convex subset of a Eucledian space.</p></li>
+<li><p><span class="math inline">\(U_i\)</span> is continuous on <span class="math inline">\(Δ(\ALPHABET S_1) × \cdots × Δ(\ALPHABET S_n)\)</span> and linear (and therefore also quasi-concave) on <span class="math inline">\(Δ(\ALPHABET S_i)\)</span>.</p></li>
+</ul>
+<p>Hence, by <a href="#thm-NE-pure" class="quarto-xref">Theorem&nbsp;<span>5.4</span></a>, the mixed extension <span class="math inline">\(\mathscr{G}'\)</span> has a NE in pure strategies. Thus, the original game <span class="math inline">\(\mathscr{G}\)</span> has a NE in mixed strategies.</p>
+</div>
+</div>
+<p>We now state a generalization of <a href="#thm-Nash" class="quarto-xref">Theorem&nbsp;<span>5.5</span></a> without a proof.</p>
+<div id="thm-Glicksberg" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5.6 (Glicksberg)</strong></span> A strategic game <span class="math inline">\(\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle\)</span> has a mixed strategy NE if for all <span class="math inline">\(i \in N\)</span>,</p>
+<ul>
+<li><p><span class="math inline">\(\ALPHABET S_i\)</span> is a non-empty, convex, and compact subset of a Eucledian space.</p></li>
+<li><p>The utility function <span class="math inline">\(u_i\)</span> is continuous in <span class="math inline">\(\ALPHABET S\)</span>.</p></li>
+</ul>
+</div>
+<p>Note that if the utility function <span class="math inline">\(u_i\)</span> is also quasi-concave in <span class="math inline">\(\ALPHABET S_i\)</span>, then by <a href="#thm-NE-pure" class="quarto-xref">Theorem&nbsp;<span>5.4</span></a>, the game has a pure strategy NE.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
