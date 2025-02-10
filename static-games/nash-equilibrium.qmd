@@ -613,3 +613,66 @@ A strategic game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \
 :::
 
 Note that if the utility function $u_i$ is also quasi-concave in $\ALPHABET S_i$, then by @thm-NE-pure, the game has a pure strategy NE.
+
+## Some examples
+
+:::{#exr-guessing-game}
+#### A guessing game
+
+Consider a two player game with $\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, K\}$ and the utility functions are given by
+$$
+  u(s_1, s_2) = \begin{cases} 
+  (1, -1), & \hbox{if } s_1 = s_2 \\
+  (0, 0), & \hbox{otherwise}
+\end{cases}
+$$
+
+:::
+
+:::{.callout-note}
+#### Solution
+
+Let $σ_1^* = (p_1, \dots, p_K)$ and $σ^*_2 = (q_1, \dots, q_K)$ be mixed strategy equilibrium of the game. 
+
+If there is a state $k \in \{1, \dots, K\}$ such that $p_k > 0$. Then by the indifference principle
+$$
+  U_1(k, σ^*_2) \ge U_1(\ell, σ^*_2), \quad \forall \ell \neq k,
+$$
+which implies $q_k \ge q_{\ell}$. 
+
+Since player 2 must put positive weight on at least one of the pure strategies, we have two possibilities: 
+
+- there is some pure strategy $\ell \neq k$ such that $q_{\ell} > 0$. In this case, the above condition implies that $q_k > 0$.
+- for all pure strategies $\ell \neq k$, $q_{\ell} = 0$. In which case, $q_k = 1 > 0$. 
+
+Thus, we get that if player 1 gives a positive weight to any pure strategy, then player 2 must also give a positive weight to that strategy. 
+
+Now suppose there is a state $k \in \{1, \dots, K\}$ such that $q_k > 0$. Then, by the indifference principle,  
+$$
+  U_2(σ^*_1, k) \ge U_2(σ^*_2, \ell), \quad \forall \ell \neq k,
+$$
+which implies $-p_k \ge -p_{\ell}$ or $p_k \le p_{\ell}$. 
+
+So, we have the following: if player 1 puts a positive weight on a pure strategy $k$, then player 2 should also put positive weight on $k$. But if player 2 puts a positive weight on $k$, then player 1 should put larger weight on all strategies other than $k$. By symmetry (in terms of the choice of strategy), we get that player 1 should put equal weight on all strategies. Therefore, so should player 2.
+:::
+
+:::{#exm-taxation}
+#### Taxation and Auditing
+
+Consider the following game between a population and a tax auditor.
+```{julia}
+game(["A", "N"], ["H", "C"], [2 4; 4 0], [0 -10; 0 4])
+```
+
+What happens to the equilibrium if the penalty for cheating is increased.
+
+```{julia}
+game(["A", "N"], ["H", "C"], [2 4; 4 0], [0 -20; 0 4])
+```
+
+What happens if we increase the benefit of not getting caught
+```{julia}
+game(["A", "N"], ["H", "C"], [2 4; 4 0], [0 -10; 0 8])
+```
+
+:::
