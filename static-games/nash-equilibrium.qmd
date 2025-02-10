@@ -37,8 +37,7 @@ using Revise
 
 include("../julia/typeset-games.jl")
 ```
-
-We start with an informal definition of NE.
+## What is Nash equilibrium
 
 :::{.callout-tip}
 #### Informal definition of Nash equilibrium
@@ -80,7 +79,7 @@ Consider prisoner's dilemma game.
 game(["A", "R"], ["A", "R"], [-2 0; -3 -1], [-2 -3; 0 -1], 
      caption="Prisoner's Dilemma")
 ```
-Recall that $(\mathsf{A}, \mathsf{A})$ was the equilibrium in strongly dominated strategies. It can be easily verified that is also a Nash equillbrium. In fact, we have the following general result:
+Recall that $(\mathsf{A}, \mathsf{A})$ was the equilibrium in strongly dominant strategies. It can be easily verified that is also a Nash equillbrium. In fact, we have the following general result:
 
 :::{#prp-NE-vs-dominant}
   Any equilibrium in strongly or weakly dominant strategy is also a Nash equilibrium.
@@ -94,7 +93,7 @@ $$
 u_i(s_i^*, s_{-i}) \ge u_i(s_i, s_{-i}), 
   \quad \forall s_i \in \ALPHABET S_i, s_{-i} \in \ALPHABET S_{-i}.
 $$
-In particular, if we take $s_{-i} = s_{-i}^*$, we get
+In particular, setting $s_{-i} = s_{-i}^*$ gives
 $$
 u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*), 
   \quad \forall s_i \in \ALPHABET S_i.
@@ -116,7 +115,7 @@ We had shown earlier that $(\mathsf{T}, \mathsf{C})$ is a rationalizble strategy
 :::
 
 :::{.callout-note}
-#### Proof
+#### Proof Sketch
 
 For IEDS, the proof hinges on the fact that at each step of IEDS, we remove strategies that are dominated and therefore cannot be part of the best response. 
 
@@ -235,7 +234,7 @@ $$
   \arg\max_{p \in [0,1]} U_1(p,q)
   = \begin{cases}
     1, & \hbox{if } 3q - 2 > 0 \\
-    [0,1], & \hbox{ if 3q - 2 = 0 \\
+    [0,1], & \hbox{ if } 3q - 2 = 0 \\
     0, & \hbox{if } 3q - 2 < 0 
   \end{cases}
 $$
@@ -295,7 +294,7 @@ To compute the NE, we look at the two BR curves and find their point of intersec
 
 Thus, the NE is $σ_1 = (\tfrac 14, \tfrac 34)$ and $σ_2 = (\tfrac 23, \tfrac 13)$. 
 
-Observe that each BR curve is like a staircase. If we are looking for an equilibrium in _strictly mixed strategies_ (i.e., $p \in (0,1)$ and $q \in (0,1)$), then the intersection point of the two BR curves will be the vertically straight line part of the BR curves. 
+Notice that each BR curve have a "staircase" appearance. If we are looking for an equilibrium in _strictly mixed strategies_ (i.e., $p \in (0,1)$ and $q \in (0,1)$), then the intersection point of the two BR curves will be the vertically straight line part of the BR curves. 
 
 Recall that we have argued that
 $$
@@ -516,3 +515,101 @@ and
 
 Therefore, the game has a **unique** NE that is identified in Case 3. 
 :::
+
+## Proof of the existence of Nash equilibrium
+
+We now present a proof that every finite game has a NE in mixed strategies. The proof is based on @Nash1950 and relies on [:Kakutani's fixed point theorem](https://en.wikipedia.org/wiki/Kakutani_fixed-point_theorem), which we state below.
+
+:::{#thm-Kakutani}
+#### Kakutani's fixed point theorem
+
+Let $\ALPHABET X$ be a compact and convex subset of $\reals^n$ and $f \colon \ALPHABET X \rightrightarrows \ALPHABET X$ be a set valued correspondence which satisfies:
+
+- for all $x \in \ALPHABET X$, the set $f(x)$ is non-empty and convex.
+
+- The graph of $f(x)$ is closed, which means that if we consider two converging sequences $\{x_n\}_{n \ge 1}$ and $\{y_n\}_{n \ge 1}$ such that $x_n \to x^*$ and $y_n \to y^*$ such that $y_n \in f(x_n)$ for all $n$, then $y^* \in f(x^*)$. 
+
+Then $f$ has a fixed point $x^*$, i.e., there exists an $x^* \in \ALPHABET X$ such that $x^* \in f(x^*)$.
+:::
+
+To use this theorem, we need the notion of **quasi-concave** function, which can be defined in two equivalent ways. 
+
+1. **Super-level set definition** Let $\ALPHABET C$ be a convex subset of $\reals^n$. A function $g \colon \ALPHABET C \to \reals$ is said to be quasi-concave if for every $α \in \reals$, the super-level set 
+   $$
+    \ALPHABET S^{α} \coloneqq \{ x \in \ALPHABET C : g(x) \ge α \}
+   $$
+   is convex.
+
+2. **Interpolation definition** For the same setup as above, the function $g \colon \ALPHABET C \to \reals$ is said to be quasi-concave if for every $x, y \in \ALPHABET C$ and $λ \in [0, 1]$
+   $$
+      f(λ x + (1-λ)y) \le \min\{ f(x), f(y) \}.
+   $$
+   Thus, if we draw a line between two points in $\ALPHABET C$, then the the value of the function is along this line is never less than the smaller of the two end point values. 
+
+Quasi-concavity is a milder assumption that concavity. In particular, a concave function is quasi-concave but the reverse in not true. For example, consider the density of a Gassian random variable:
+$$
+    g(x) = e^{-\NORM{x}^2}
+$$
+which is quasi-concave but not concave.
+
+Quasi-concave functions are useful in optimization because for a quasi-concave function, a local minimum is also a global minimum.
+
+Now we state a theorem which guarantees the existence of Nash equilibrium in pure strategies.
+
+:::{#thm-NE-pure}
+A strategic game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ has a NE in pure strategies if for all $i \in N$:
+
+- $\ALPHABET S_i$ is non-empty, compact, and a convex subset of a Eucledian space.
+
+- The utlitiy function $u_i \colon \ALPHABET S \to \reals$ is continuous in $\ALPHABET S$ and **quasi-concave** in $\ALPHABET S_i$.
+:::
+
+:::{.callout-note}
+#### Proof
+
+Consider the set valued map $\BR \colon \ALPHABET S \rightrightarrows \ALPHABET S$ define by
+$$
+  \BR(s) = \MATRIX{ \BR_1(s_{-1} \\ \vdots \\ B_n(s_{-n}) }.
+$$
+We verify that $\BR(s)$ satisfies the conditions of Kakutani's fixed point theorem (@thm-Kakutani).
+
+- For any $i \in N$ and $s_{-i} \in \ALPHABET S_{-i}$, the set $\BR_i(s_{-i})$ is non-empty because $u_i$ is continuous and $\ALPHABET S_i$ is compact. 
+
+- $\BR_i(s_{-i})$ is convex because $u_i$ is quasi-concave in $\ALPHABET S_i$
+
+- $\BR(s)$ has a closed graph because each $B_i(s_{-i})$ is close because $u_i$ is continuous. 
+
+Thus, by Kakutani's fixed point theorem, $\BR(s)$ has a fixed point $s^*$ such that $s^* = \BR(s^*)$. By definition, such a $s^*$ is a NE.
+:::
+
+:::{#thm-Nash}
+#### Nash
+
+Every finite strategic game has a NE in mixed strategies.
+:::
+
+:::{.callout-note}
+#### Proof
+
+For any game $\mathscr{G}$, consider the mixed extension $\mathscr{G}'$. If $\mathscr{G}$ is finite, then
+
+- $Δ(\ALPHABET S_i)$ is non-empty, compact and convex subset of a Eucledian space.
+
+- $U_i$ is continuous on $Δ(\ALPHABET S_1) × \cdots × Δ(\ALPHABET S_n)$ and linear (and therefore also quasi-concave) on $Δ(\ALPHABET S_i)$. 
+
+Hence, by @thm-NE-pure, the mixed extension $\mathscr{G}'$ has a NE in pure strategies. Thus, the original game $\mathscr{G}$ has a NE in mixed strategies. 
+:::
+
+We now state a generalization of @thm-Nash without a proof.
+
+:::{#thm-Glicksberg}
+#### Glicksberg
+
+A strategic game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \in N} \rangle$ has a mixed strategy NE if for all $i \in N$, 
+
+- $\ALPHABET S_i$ is a non-empty, convex, and compact subset of a Eucledian space.
+
+- The utility function $u_i$ is continuous in $\ALPHABET S$.
+:::
+
+Note that if the utility function $u_i$ is also quasi-concave in $\ALPHABET S_i$, then by @thm-NE-pure, the game has a pure strategy NE.
