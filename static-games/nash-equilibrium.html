@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-02-10">
+<meta name="dcterms.date" content="2025-02-11">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>5&nbsp; Nash equilibrium – Multi-Agent Systems</title>
@@ -173,10 +173,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[5]{.chapter-number}&nbsp; [Nash equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-02-10">
-<meta name="citation_cover_date" content="2025-02-10">
+<meta name="citation_publication_date" content="2025-02-11">
+<meta name="citation_cover_date" content="2025-02-11">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-10">
+<meta name="citation_online_date" content="2025-02-11">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/nash-equilibrium.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -399,7 +399,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 10, 2025</p>
+      <p class="date">February 11, 2025</p>
     </div>
   </div>
   
@@ -453,7 +453,7 @@ Informal definition of Nash equilibrium
 <section id="relationship-between-ne-and-dominant-strategy-equilibrium" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.2.1</span> Relationship between NE and dominant strategy equilibrium</h3>
 <p>Consider prisoner’s dilemma game.</p>
-<div id="a8503c04" class="cell" data-execution_count="2">
+<div id="a8503c04" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="18">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Prisoner's Dilemma</caption><tbody><tr><td></td><td colspan="2">$\mathsf{A}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{A}$</td><td>$-2$</td><td>$-2$</td><td>$0$</td><td>$-3$</td></tr><tr><td>$\mathsf{R}$</td><td>$-3$</td><td>$0$</td><td>$-1$</td><td>$-1$</td></tr></tbody></table>
 </div>
@@ -485,7 +485,7 @@ u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
 <section id="relationship-between-ne-and-rationalizable-strategies" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.2.2</span> Relationship between NE and rationalizable strategies</h3>
 <p>Recall the following example discussed earlier:</p>
-<div id="05893b4c" class="cell" data-execution_count="3">
+<div id="05893b4c" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="19">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
@@ -512,7 +512,7 @@ Proof Sketch
 <section id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.2.3</span> Relationship between NE and optimal strategies in zero sum games</h3>
 <p>Recall the following example discussed earlier in <a href="zero-sum-games.html#exm-value-zsg" class="quarto-xref">Example&nbsp;<span>2.2</span></a></p>
-<div id="d04d4b49" class="cell" data-execution_count="4">
+<div id="d04d4b49" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="20">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -537,7 +537,7 @@ Proof
 <p>The above discussion shows that the concept of Nash equilibrium generalizes all the solution concepts that we have discussed so far. The main advantage of Nash equilibrium is that it exists even when the previously discussed solution concepts do not. For instance, consider the following games.</p>
 <div id="exm-battle-of-sexes" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.1</strong></span> Find all NE (in pure strategies) for Battle of Sexes game.</p>
-<div id="73d72bda" class="cell" data-execution_count="5">
+<div id="73d72bda" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="21">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -545,14 +545,14 @@ Proof
 </div>
 <div id="exm-chicken" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.2</strong></span> Find all NE (in pure strategies) for the game of chicken</p>
-<div id="c0f07d1d" class="cell" data-execution_count="6">
+<div id="c0f07d1d" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display" data-execution_count="22">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>The game of chicken</caption><tbody><tr><td></td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{C}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$10$</td></tr><tr><td>$\mathsf{H}$</td><td>$10$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <p>Note that a game may not have an equilibrium in pure strategyes. For example, the game of matching pennies has no equilibrium in pure strategies.</p>
-<div id="5aaa98bb" class="cell" data-execution_count="7">
+<div id="5aaa98bb" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="23">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Matching pennies game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td><td>$1$</td><td>$-1$</td></tr></tbody></table>
 </div>
@@ -565,13 +565,13 @@ Proof
 <h2 data-number="5.3" class="anchored" data-anchor-id="computing-ne-in-2-2-games"><span class="header-section-number">5.3</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</h2>
 <p>We start by a brute-force method to compute NE in <span class="math inline">\(2 × 2\)</span> games. This method is just for illustration. Based on the intuition from this method, we will later present an efficient method to compute NE.</p>
 <p>Consider the game shown below. We can check that the game has no NE in pure strategies.</p>
-<div id="65e55669" class="cell" data-execution_count="8">
+<div id="65e55669" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="24">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Game with no NE in pure strategies</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$-1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 <p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the probability distribution of the different actions is shown below:</p>
-<div id="9822dfa7" class="cell" data-execution_count="9">
+<div id="9822dfa7" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="25">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Probability of choosing different actions</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$pq$</td><td>$p(1-q)$</td></tr><tr><td>$\mathsf{B}$</td><td>$(1-p)q$</td><td>$(1-p)(1-q)$</td></tr></tbody></table>
 </div>
@@ -733,7 +733,7 @@ Figure&nbsp;5.3: Intersection of the best response curves of the two players. No
 \]</span> This provides a general method of finding the NE for <span class="math inline">\(2 × 2\)</span> games, which we use in general.</p>
 <div id="exm-battle-of-sexes-all" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.3</strong></span> Find all the NE of battle of sexes game.</p>
-<div id="9cb11190" class="cell" data-execution_count="10">
+<div id="9cb11190" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="26">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
@@ -832,7 +832,7 @@ Proof
 <p>The difficulty is that we do not know the support of <span class="math inline">\(σ^*_1\)</span> and <span class="math inline">\(σ^*_2\)</span>. So, we need to repeat the above process for each choice of supports. Computing NE by such a brute-force search has an exponential complexity in <span class="math inline">\(\ABS{\ALPHABET S_1}\)</span> and <span class="math inline">\(\ABS{\ALPHABET S_2}\)</span>.</p>
 <div id="exm-NE-2x3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.4</strong></span> Compute all NE of the following game.</p>
-<div id="e13db026" class="cell" data-execution_count="11">
+<div id="e13db026" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display" data-execution_count="27">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$7$</td><td>$2$</td><td>$2$</td><td>$7$</td><td>$3$</td><td>$6$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$7$</td><td>$7$</td><td>$2$</td><td>$4$</td><td>$5$</td></tr></tbody></table>
 </div>
@@ -911,7 +911,7 @@ Solution
 \ALPHABET S^{α} \coloneqq \{ x \in \ALPHABET C : g(x) \ge α \}
 \]</span> is convex.</p></li>
 <li><p><strong>Interpolation definition</strong> For the same setup as above, the function <span class="math inline">\(g \colon \ALPHABET C \to \reals\)</span> is said to be quasi-concave if for every <span class="math inline">\(x, y \in \ALPHABET C\)</span> and <span class="math inline">\(λ \in [0, 1]\)</span> <span class="math display">\[
-   f(λ x + (1-λ)y) \le \min\{ f(x), f(y) \}.
+   f(λ x + (1-λ)y) \ge \min\{ f(x), f(y) \}.
 \]</span> Thus, if we draw a line between two points in <span class="math inline">\(\ALPHABET C\)</span>, then the the value of the function is along this line is never less than the smaller of the two end point values.</p></li>
 </ol>
 <p>Quasi-concavity is a milder assumption that concavity. In particular, a concave function is quasi-concave but the reverse in not true. For example, consider the density of a Gassian random variable: <span class="math display">\[
@@ -1017,19 +1017,19 @@ Solution
 </div>
 <div id="exm-taxation" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.5 (Taxation and Auditing)</strong></span> Consider the following game between a population and a tax auditor.</p>
-<div id="faa3def9" class="cell" data-execution_count="12">
+<div id="faa3def9" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="28">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
 <p>What happens to the equilibrium if the penalty for cheating is increased.</p>
-<div id="d0695a7b" class="cell" data-execution_count="13">
+<div id="d0695a7b" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display" data-execution_count="29">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-20$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
 <p>What happens if we increase the benefit of not getting caught</p>
-<div id="7a2d3bd4" class="cell" data-execution_count="14">
+<div id="7a2d3bd4" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display" data-execution_count="30">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$8$</td></tr></tbody></table>
 </div>
