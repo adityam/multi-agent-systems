@@ -419,10 +419,12 @@ Each player picks a real number between 0 and 100. The person who was closest to
 
 :::
 
-[:Beauty contest games](https://en.wikipedia.org/wiki/Keynesian_beauty_contest) were introduced by @Keynes1936, where all participants have to guess the average. In $p$-beauty contest games, introduced by @Moulin1986, participants have to guess closest to $p$ times the average, with $p \in (0, 1)$. For a discussion of an experimental study of $p$-beauty contest games, see @Nagel1995. 
-
-
 How will you play this game?
+
+[:Beauty contest games](https://en.wikipedia.org/wiki/Keynesian_beauty_contest) were introduced by @Keynes1936, where all participants have to guess the average. In $p$-beauty contest games, introduced by @Moulin1986, participants have to guess closest to $p$ times the average, with $p \in (0, 1)$. For a discussion of an experimental study of $p$-beauty contest games, see @Nagel1995. More recently, NPR's Planet Money ran the above game. More than 15,000 people participated. The distribution of the answers is shown in @fig-beauty-contest. Check [their website](https://www.npr.org/sections/money/2011/10/11/141249864/heres-the-winner-in-our-pick-a-number-game) for more details.
+
+![Histogram of the number chosen by different participants in a beauty contest game run by NRP's Planet Money](https://media.npr.org/assets/img/2011/10/11/histogram-e3369f686fa1e87e23122d9d26bbf13a374e2f53.jpg){#fig-beauty-contest}
+
     
 ## Iterative elimination of weakly dominated strategies
 
