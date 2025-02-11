@@ -55,8 +55,8 @@
 <use data-text="&#x2044;" xlink:href="#font_13_1" transform="matrix(11.955133,0,0,-11.955186,168.71854,252.3039)"/>
 <use data-text="3" xlink:href="#font_12_3" transform="matrix(8.577781,0,0,-8.159377,170.7399,259.58546)"/>
 <use data-text="3" xlink:href="#font_12_3" stroke-width=".0020583403" stroke-linecap="butt" stroke-linejoin="round" transform="matrix(8.577781,0,0,-8.159377,170.7399,259.58546)" fill="none" stroke="#000000"/>
-<path transform="matrix(1,0,0,-1,22.261948,237.93846)" stroke-width="4" stroke-linecap="butt" stroke-linejoin="round" fill="none" stroke="#87cefa" stroke-opacity=".5" d="M226.7716 0V56.692934H0V226.7716"/>
-<path transform="matrix(1,0,0,-1,22.261948,237.93846)" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" fill="none" stroke="#1a1cd6" d="M226.7716 0V56.692934H0V226.7716"/>
+<path transform="matrix(1,0,0,-1,22.261948,237.93846)" stroke-width="4" stroke-linecap="butt" stroke-linejoin="round" fill="none" stroke="#87cefa" stroke-opacity=".5" d="M0 0V56.692934H226.7716V226.7716"/>
+<path transform="matrix(1,0,0,-1,22.261948,237.93846)" stroke-width="1" stroke-linecap="butt" stroke-linejoin="round" fill="none" stroke="#1a1cd6" d="M0 0V56.692934H226.7716V226.7716"/>
 <use data-text="1" xlink:href="#font_12_5" transform="matrix(8.577781,0,0,-8.159377,8.8356699,179.26328)"/>
 <use data-text="1" xlink:href="#font_12_5" stroke-width=".0020583403" stroke-linecap="butt" stroke-linejoin="round" transform="matrix(8.577781,0,0,-8.159377,8.8356699,179.26328)" fill="none" stroke="#000000"/>
 <use data-text="&#x2044;" xlink:href="#font_13_1" transform="matrix(11.955133,0,0,-11.955186,6.814292,181.24605)"/>

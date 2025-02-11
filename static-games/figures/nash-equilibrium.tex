@@ -256,10 +256,10 @@
 
     linecap := butt; 
 
-    draw (0, sy) -- (xpart p, sy) -- (xpart p, 0) -- (sx, 0) 
+    draw (0, 0) -- (xpart p, 0) -- (xpart p, sy) -- (sx, sy) 
          withpen pencircle scaled 2bp withcolor "lightblue";
 
-    draw (0, sy) -- (xpart p, sy) -- (xpart p, 0) -- (sx, 0) 
+    draw (0, 0) -- (xpart p, 0) -- (xpart p, sy) -- (sx, sy) 
          withpen pencircle scaled 0.5bp withcolor "darkblue";
 
   stopaxis ;
@@ -306,7 +306,7 @@
 
     p := u[0] intersectionpoint u[1];
 
-    pp[1] := (sy,0) -- (sy, xpart p) -- (0, xpart p) -- (0, sx) ;
+    pp[1] := (0, 0) -- (0, xpart p) -- (sy, xpart p) -- (sy, sx) ;
 
     draw pp[1]
          withpen pencircle scaled 2bp withcolor "lightblue";
