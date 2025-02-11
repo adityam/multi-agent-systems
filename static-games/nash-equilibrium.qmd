@@ -542,7 +542,7 @@ To use this theorem, we need the notion of **quasi-concave** function, which can
 
 2. **Interpolation definition** For the same setup as above, the function $g \colon \ALPHABET C \to \reals$ is said to be quasi-concave if for every $x, y \in \ALPHABET C$ and $λ \in [0, 1]$
    $$
-      f(λ x + (1-λ)y) \le \min\{ f(x), f(y) \}.
+      f(λ x + (1-λ)y) \ge \min\{ f(x), f(y) \}.
    $$
    Thus, if we draw a line between two points in $\ALPHABET C$, then the the value of the function is along this line is never less than the smaller of the two end point values. 
 
