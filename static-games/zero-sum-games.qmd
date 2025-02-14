@@ -776,10 +776,10 @@ So far, we have restricted the discussion to finite games and shown that the gam
 Consider a $∞ × 2$ game with the following payoff matrix:
 
 ```{julia}
-game1([1, 2, 3, 4, 5, "\\cdot", "\\cdot", "\\cdot"], ["L", "R"], 
-      [ 2 0 ; "\\tfrac 12" "\\tfrac 12"; "\\tfrac 13" "\\tfrac 23"; 
-        "\\tfrac 14" "\\tfrac 34"; "\\tfrac 15" "\\tfrac 45";
-        "\\cdot" "\\cdot"; "\\cdot" "\\cdot"; "\\cdot" "\\cdot"])
+game1([1, 2, 3, 4, 5, "⋅", "⋅", "⋅"], ["L", "R"], 
+      [ 2 0 ; "1//2" "1//2"; "1//3" "2//3"; 
+        "1//4" "3//4"; "1//5" "4//5";
+        "⋅" "⋅"; "⋅" "⋅"; "⋅" "⋅"])
 ```
 
 where the payoffs for $k > 1$ are
@@ -943,7 +943,7 @@ $$
 
 Consider the inner optimization problem for player 1:
 $$
-  max_{s_1 \in [0, 1]} u(s_1, σ_2)
+  \max_{s_1 \in [0, 1]} u(s_1, σ_2)
   = \max_{s_1 \in [0, 1]} \bigl[
       - q s_1^2 - (1-q) (1 - s_1)^2 
     \bigr]
@@ -981,19 +981,11 @@ In the above example, the utility function was not convex in $s_2$. The game doe
 :::{#exr-zsg-mixed}
 For each of the following games, find the value of the game and the optimal strategy profile.
 
-::::{layout-ncol=2}
-:::{.game-1}
 ```{julia}
-game1(["T", "B"], ["L", "R"], [6 0; -3 3]; caption="Game 1")
-```
-:::
+game1(["T", "B"], ["L", "R"], [6 0; -3 3]; caption="Game 1") |> display
 
-:::{.game-2}
-```{julia}
-game1(["T", "B"], ["L", "R"], [-3 8; 4 4]; caption="Game 2")
+game1(["T", "B"], ["L", "R"], [-3 8; 4 4]; caption="Game 2") |> display
 ```
-:::
-::::
 :::
 
 :::{#exr-zsg-ieds}
@@ -1004,7 +996,19 @@ game1(["T", "M", "B"], ["L", "C", "R"], [0 4 6; 5 7 4; 9 6 3])
 ```
 
 _Hint_: Use iterative elimination of strongly dominated strategies to first reduce the above to a $2 × 2$ game and then simplify the resulting game. 
+:::
 
+:::{#exr-zsg-corner-cases}
+
+Find **all** optimal strategies of the following games. Clearly explain all your steps.
+
+```{julia}
+game1(["T", "B"], ["L", "C", "R"], [3 1.2 -1; 1 1.2 2]; caption="Game 1") |> display
+
+game1(["T", "B"], ["L", "C", "R"], [1 4//3 3; 3 0 1]; caption="Game 2") |> display
+
+game1(["T", "B"], ["L", "C", "R"], [1 -1 0; 2 4 3]; caption="Game 3") |> display
+```
 :::
 
 :::{#exr-switched-zsg}
@@ -1049,20 +1053,11 @@ c. Use part b and @exr-switched-zsg to argue that a symmetric zero-sum game alwa
 :::{#exr-LP}
 Use the LP formulation to find optimal strategy profile of the following games.
 
-::::{layout-ncol=2}
-:::{.game-1}
 ```{julia}
-game1([1, 2], [1, 2, 3], [3 -1 2; 1 2 -2]; caption="Game 1")
-```
-:::
+game1([1, 2], [1, 2, 3], [3 -1 2; 1 2 -2]; caption="Game 1") |> display
 
-:::{.game-2}
-```{julia}
-game1([1, 2, 3], [1, 2, 3, 4], [6  0 5 6; -3 3 -4 3; 8 1 2 2]; caption="Game 2")
+game1([1, 2, 3], [1, 2, 3, 4], [6  0 5 6; -3 3 -4 3; 8 1 2 2]; caption="Game 2") |> display
 ```
-:::
-::::
-
 Note that part of the objective of this exercise is for you to learn how to use a linear programming solver. So, instead of blindly copy pasting the code provided above, implement the solution from the equations using the programming language of your choice.
 :::
 

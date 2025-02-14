@@ -762,3 +762,31 @@ $$
   σ_3 = (\tfrac 5{11}, \tfrac 6{11}).
 $$
 :::
+
+## Exercises {-}
+
+:::{#exr-NE-2x2}
+For each of the following two-player games, find **all** Nash equilibria. 
+
+```{julia}
+game(["T", "B"], ["L", "R"], [2 1; 1 2], [1 2; 5 1], caption="Game 1") |> display
+
+game(["T", "B"], ["L", "R"], [3 6; 2 7], [7 6; 2 3], caption="Game 2") |> display
+
+game(["T", "B"], ["L", "R"], [7 6; 2 3], [3 6; 2 7], caption="Game 3") |> display
+```
+
+_Hint_: Each game has an odd number of equilibria.
+:::
+
+:::{#exr-NE-more-than-2}
+For each of the following two-player games, find **all** Nash equilibra.
+
+```{julia}
+game(["T", "B"], ["L", "C", "R"], [0 5 8; 2 6 5], [4 6 7; 9 5 1], caption="Game 1") |> display
+
+game(["T", "M", "B"], ["L", "C", "R"], [0 5 4; 4 0 5; 5 4 0], [0 4 5; 5 0 4; 4 5 0], caption="Game 2") |> display
+```
+
+_Hint_: For Game 2, you don't need to consider all 16 cases! Start by considering the case where both mixed strategies have full support. Based on the calculations for that case, you should be able to argue that you do not need to consider strategies of a particular form.
+:::
