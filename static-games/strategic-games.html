@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-17">
+<meta name="dcterms.date" content="2025-02-11">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
@@ -63,8 +63,8 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-32713c95bb3596716cfb218584f751b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d8c0ed0f4c00b1c205feb8420210e267.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5c60770313eeac639f84df3bfd9f1f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-bd2b61a4ced222d9eab8d8bfc03d9193.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -170,10 +170,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Rationalizable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-17">
-<meta name="citation_cover_date" content="2025-01-17">
+<meta name="citation_publication_date" content="2025-02-11">
+<meta name="citation_cover_date" content="2025-02-11">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-17">
+<meta name="citation_online_date" content="2025-02-11">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -392,7 +392,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 17, 2025</p>
+      <p class="date">February 11, 2025</p>
     </div>
   </div>
   
@@ -1018,8 +1018,18 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 <p>Each player picks a real number between 0 and 100. The person who was closest to <em>half</em> of the average of the group wins a prize.</p>
 </div>
 </div>
-<p><a href="https://en.wikipedia.org/wiki/Keynesian_beauty_contest">:Beauty contest games</a> were introduced by <span class="citation" data-cites="Keynes1936">Keynes (<a href="../references.html#ref-Keynes1936" role="doc-biblioref">1936</a>)</span>, where all participants have to guess the average. In <span class="math inline">\(p\)</span>-beauty contest games, introduced by <span class="citation" data-cites="Moulin1986">Moulin (<a href="../references.html#ref-Moulin1986" role="doc-biblioref">1986</a>)</span>, participants have to guess closest to <span class="math inline">\(p\)</span> times the average, with <span class="math inline">\(p \in (0, 1)\)</span>. For a discussion of an experimental study of <span class="math inline">\(p\)</span>-beauty contest games, see <span class="citation" data-cites="Nagel1995">Nagel (<a href="../references.html#ref-Nagel1995" role="doc-biblioref">1995</a>)</span>.</p>
 <p>How will you play this game?</p>
+<p><a href="https://en.wikipedia.org/wiki/Keynesian_beauty_contest">:Beauty contest games</a> were introduced by <span class="citation" data-cites="Keynes1936">Keynes (<a href="../references.html#ref-Keynes1936" role="doc-biblioref">1936</a>)</span>, where all participants have to guess the average. In <span class="math inline">\(p\)</span>-beauty contest games, introduced by <span class="citation" data-cites="Moulin1986">Moulin (<a href="../references.html#ref-Moulin1986" role="doc-biblioref">1986</a>)</span>, participants have to guess closest to <span class="math inline">\(p\)</span> times the average, with <span class="math inline">\(p \in (0, 1)\)</span>. For a discussion of an experimental study of <span class="math inline">\(p\)</span>-beauty contest games, see <span class="citation" data-cites="Nagel1995">Nagel (<a href="../references.html#ref-Nagel1995" role="doc-biblioref">1995</a>)</span>. More recently, NPR’s Planet Money ran the above game. More than 15,000 people participated. The distribution of the answers is shown in <a href="#fig-beauty-contest" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>. Check <a href="https://www.npr.org/sections/money/2011/10/11/141249864/heres-the-winner-in-our-pick-a-number-game">their website</a> for more details.</p>
+<div id="fig-beauty-contest" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beauty-contest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://media.npr.org/assets/img/2011/10/11/histogram-e3369f686fa1e87e23122d9d26bbf13a374e2f53.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beauty-contest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Histogram of the number chosen by different participants in a beauty contest game run by NRP’s Planet Money
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="iterative-elimination-of-weakly-dominated-strategies" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="iterative-elimination-of-weakly-dominated-strategies"><span class="header-section-number">1.6</span> Iterative elimination of weakly dominated strategies</h2>

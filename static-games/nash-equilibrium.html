@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-02-11">
+<meta name="dcterms.date" content="2025-02-14">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>5&nbsp; Nash equilibrium – Multi-Agent Systems</title>
@@ -63,8 +63,8 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-32713c95bb3596716cfb218584f751b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d8c0ed0f4c00b1c205feb8420210e267.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5c60770313eeac639f84df3bfd9f1f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-bd2b61a4ced222d9eab8d8bfc03d9193.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -132,11 +132,6 @@ window.MathJax = {
 };
 </script>
 <script async="" data-id="101261731" src="//static.getclicky.com/js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-
-<script>
-  const { createApp, ref } = Vue
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -173,10 +168,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[5]{.chapter-number}&nbsp; [Nash equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-02-11">
-<meta name="citation_cover_date" content="2025-02-11">
+<meta name="citation_publication_date" content="2025-02-14">
+<meta name="citation_cover_date" content="2025-02-14">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-11">
+<meta name="citation_online_date" content="2025-02-14">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/nash-equilibrium.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -365,6 +360,7 @@ window.Quarto = {
   <li><a href="#the-indifference-principle" id="toc-the-indifference-principle" class="nav-link" data-scroll-target="#the-indifference-principle"><span class="header-section-number">5.4</span> The indifference principle</a></li>
   <li><a href="#proof-of-the-existence-of-nash-equilibrium" id="toc-proof-of-the-existence-of-nash-equilibrium" class="nav-link" data-scroll-target="#proof-of-the-existence-of-nash-equilibrium"><span class="header-section-number">5.5</span> Proof of the existence of Nash equilibrium</a></li>
   <li><a href="#some-examples" id="toc-some-examples" class="nav-link" data-scroll-target="#some-examples"><span class="header-section-number">5.6</span> Some examples</a></li>
+  <li><a href="#games-with-more-than-two-players" id="toc-games-with-more-than-two-players" class="nav-link" data-scroll-target="#games-with-more-than-two-players"><span class="header-section-number">5.7</span> Games with more than two players</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/nash-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -399,7 +395,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 11, 2025</p>
+      <p class="date">February 14, 2025</p>
     </div>
   </div>
   
@@ -453,8 +449,8 @@ Informal definition of Nash equilibrium
 <section id="relationship-between-ne-and-dominant-strategy-equilibrium" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.2.1</span> Relationship between NE and dominant strategy equilibrium</h3>
 <p>Consider prisoner’s dilemma game.</p>
-<div id="5d934900" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="4a8a4657" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="40">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Prisoner's Dilemma</caption><tbody><tr><td></td><td colspan="2">$\mathsf{A}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{A}$</td><td>$-2$</td><td>$-2$</td><td>$0$</td><td>$-3$</td></tr><tr><td>$\mathsf{R}$</td><td>$-3$</td><td>$0$</td><td>$-1$</td><td>$-1$</td></tr></tbody></table>
 </div>
 </div>
@@ -485,8 +481,8 @@ u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
 <section id="relationship-between-ne-and-rationalizable-strategies" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.2.2</span> Relationship between NE and rationalizable strategies</h3>
 <p>Recall the following example discussed earlier:</p>
-<div id="3637f3ce" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="bf45593e" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
@@ -512,8 +508,8 @@ Proof Sketch
 <section id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.2.3</span> Relationship between NE and optimal strategies in zero sum games</h3>
 <p>Recall the following example discussed earlier in <a href="zero-sum-games.html#exm-value-zsg" class="quarto-xref">Example&nbsp;<span>2.2</span></a></p>
-<div id="b9214d27" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="e2791983" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -537,23 +533,23 @@ Proof
 <p>The above discussion shows that the concept of Nash equilibrium generalizes all the solution concepts that we have discussed so far. The main advantage of Nash equilibrium is that it exists even when the previously discussed solution concepts do not. For instance, consider the following games.</p>
 <div id="exm-battle-of-sexes" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.1</strong></span> Find all NE (in pure strategies) for Battle of Sexes game.</p>
-<div id="6d60afd9" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="20e7f68a" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div id="exm-chicken" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.2</strong></span> Find all NE (in pure strategies) for the game of chicken</p>
-<div id="0e301966" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="0366494b" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>The game of chicken</caption><tbody><tr><td></td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{C}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$10$</td></tr><tr><td>$\mathsf{H}$</td><td>$10$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <p>Note that a game may not have an equilibrium in pure strategyes. For example, the game of matching pennies has no equilibrium in pure strategies.</p>
-<div id="5a19e639" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="996e407b" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Matching pennies game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td><td>$1$</td><td>$-1$</td></tr></tbody></table>
 </div>
 </div>
@@ -565,14 +561,14 @@ Proof
 <h2 data-number="5.3" class="anchored" data-anchor-id="computing-ne-in-2-2-games"><span class="header-section-number">5.3</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</h2>
 <p>We start by a brute-force method to compute NE in <span class="math inline">\(2 × 2\)</span> games. This method is just for illustration. Based on the intuition from this method, we will later present an efficient method to compute NE.</p>
 <p>Consider the game shown below. We can check that the game has no NE in pure strategies.</p>
-<div id="db871381" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="fffae327" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Game with no NE in pure strategies</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$-1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 <p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the probability distribution of the different actions is shown below:</p>
-<div id="265b9f58" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="2ce9b1a3" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Probability of choosing different actions</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$pq$</td><td>$p(1-q)$</td></tr><tr><td>$\mathsf{B}$</td><td>$(1-p)q$</td><td>$(1-p)(1-q)$</td></tr></tbody></table>
 </div>
 </div>
@@ -735,8 +731,8 @@ Figure&nbsp;5.3: Intersection of the best response curves of the two players. No
 \]</span> This provides a general method of finding the NE for <span class="math inline">\(2 × 2\)</span> games, which we use in general.</p>
 <div id="exm-battle-of-sexes-all" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.3</strong></span> Find all the NE of battle of sexes game.</p>
-<div id="5477ab3e" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="b525368c" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -751,7 +747,7 @@ Solution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We have already identified the pure strategy NE in <span class="quarto-unresolved-ref">?exr-battle-of-sexes</span>. We now consider NE in strictly mixed strategies.</p>
+<p>We have already identified the pure strategy NE in <a href="#exm-battle-of-sexes" class="quarto-xref">Example&nbsp;<span>5.1</span></a>. We now consider NE in strictly mixed strategies.</p>
 <p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the equilibrium value of <span class="math inline">\(p\)</span> is such that <span class="math display">\[
 U_2(p, \mathsf{F}) = U_2(p, \mathsf{O})
 \]</span> Hence, <span class="math display">\[
@@ -834,8 +830,8 @@ Proof
 <p>The difficulty is that we do not know the support of <span class="math inline">\(σ^*_1\)</span> and <span class="math inline">\(σ^*_2\)</span>. So, we need to repeat the above process for each choice of supports. Computing NE by such a brute-force search has an exponential complexity in <span class="math inline">\(\ABS{\ALPHABET S_1}\)</span> and <span class="math inline">\(\ABS{\ALPHABET S_2}\)</span>.</p>
 <div id="exm-NE-2x3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.4</strong></span> Compute all NE of the following game.</p>
-<div id="5435493f" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="cb4cf597" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$7$</td><td>$2$</td><td>$2$</td><td>$7$</td><td>$3$</td><td>$6$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$7$</td><td>$7$</td><td>$2$</td><td>$4$</td><td>$5$</td></tr></tbody></table>
 </div>
 </div>
@@ -982,13 +978,52 @@ Proof
 </section>
 <section id="some-examples" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="some-examples"><span class="header-section-number">5.6</span> Some examples</h2>
-<div id="exr-guessing-game" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.1 (A guessing game)</strong></span> Consider a two player game with <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, K\}\)</span> and the utility functions are given by <span class="math display">\[
-  u(s_1, s_2) = \begin{cases}
-  (1, -1), &amp; \hbox{if } s_1 = s_2 \\
-  (0, 0), &amp; \hbox{otherwise}
-\end{cases}
-\]</span></p>
+<div id="exm-taxation" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.5 (Taxation and Auditing)</strong></span> Consider the following game between a population and a tax auditor.</p>
+<div id="04bba9ff" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="50">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
+</div>
+</div>
+<p>What happens to the equilibrium if the penalty for cheating is increased.</p>
+<div id="3e245337" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="51">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-20$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
+</div>
+</div>
+<p>What happens if we increase the benefit of not getting caught</p>
+<div id="eedf1691" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="52">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$8$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+</section>
+<section id="games-with-more-than-two-players" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="games-with-more-than-two-players"><span class="header-section-number">5.7</span> Games with more than two players</h2>
+<p>So far, we have presented examples of games with only two players. The same ideas work for games with more than two players, as is illustrated by the following examples.</p>
+<div id="exm-3player-pure" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.6</strong></span> &nbsp;</p>
+<!-- Taken from Harrington -->
+<p>Consider the following three player game where player 1 chooses the row, player 2 chooses the column and player 3 chooses whether game (a) or game (b) is played.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div id="4ec0fb74" class="cell quarto-layout-cell" data-execution_count="16" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="53">
+<table class="game3" data-quarto-disable-processing="true" align="center"><caption>(a)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
+</div>
+</div>
+<div id="2f7fe92c" class="cell quarto-layout-cell" data-execution_count="17" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="54">
+<table class="game3" data-quarto-disable-processing="true" align="center"><caption>(b)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+</div>
+<p>Find all the NE in pure strategies.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1000,41 +1035,101 @@ Solution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(σ_1^* = (p_1, \dots, p_K)\)</span> and <span class="math inline">\(σ^*_2 = (q_1, \dots, q_K)\)</span> be mixed strategy equilibrium of the game.</p>
-<p>If there is a state <span class="math inline">\(k \in \{1, \dots, K\}\)</span> such that <span class="math inline">\(p_k &gt; 0\)</span>. Then by the indifference principle <span class="math display">\[
-  U_1(k, σ^*_2) \ge U_1(\ell, σ^*_2), \quad \forall \ell \neq k,
-\]</span> which implies <span class="math inline">\(q_k \ge q_{\ell}\)</span>.</p>
-<p>Since player 2 must put positive weight on at least one of the pure strategies, we have two possibilities:</p>
+<p>We could exhastively check whether each outcome is a NE or not. An alternative method is to check the BR of each player for every choice of strategy of other players. For example, for player 1,</p>
 <ul>
-<li>there is some pure strategy <span class="math inline">\(\ell \neq k\)</span> such that <span class="math inline">\(q_{\ell} &gt; 0\)</span>. In this case, the above condition implies that <span class="math inline">\(q_k &gt; 0\)</span>.</li>
-<li>for all pure strategies <span class="math inline">\(\ell \neq k\)</span>, <span class="math inline">\(q_{\ell} = 0\)</span>. In which case, <span class="math inline">\(q_k = 1 &gt; 0\)</span>.</li>
+<li><span class="math inline">\(\BR_1(\mathsf{L}, a) = \mathsf{T}\)</span></li>
+<li><span class="math inline">\(\BR_1(\mathsf{R}, a) = \mathsf{B}\)</span></li>
+<li><span class="math inline">\(\BR_1(\mathsf{L}, b) = \mathsf{B}\)</span></li>
+<li><span class="math inline">\(\BR_1(\mathsf{R}, b) = \mathsf{B}\)</span></li>
 </ul>
-<p>Thus, we get that if player 1 gives a positive weight to any pure strategy, then player 2 must also give a positive weight to that strategy.</p>
-<p>Now suppose there is a state <span class="math inline">\(k \in \{1, \dots, K\}\)</span> such that <span class="math inline">\(q_k &gt; 0\)</span>. Then, by the indifference principle,<br>
-<span class="math display">\[
-  U_2(σ^*_1, k) \ge U_2(σ^*_2, \ell), \quad \forall \ell \neq k,
-\]</span> which implies <span class="math inline">\(-p_k \ge -p_{\ell}\)</span> or <span class="math inline">\(p_k \le p_{\ell}\)</span>.</p>
-<p>So, we have the following: if player 1 puts a positive weight on a pure strategy <span class="math inline">\(k\)</span>, then player 2 should also put positive weight on <span class="math inline">\(k\)</span>. But if player 2 puts a positive weight on <span class="math inline">\(k\)</span>, then player 1 should put larger weight on all strategies other than <span class="math inline">\(k\)</span>. By symmetry (in terms of the choice of strategy), we get that player 1 should put equal weight on all strategies. Therefore, so should player 2.</p>
+<p>Similarly, for player 2</p>
+<ul>
+<li><span class="math inline">\(\BR_2(\mathsf{T}, a) = \mathsf{L}\)</span></li>
+<li><span class="math inline">\(\BR_2(\mathsf{B}, a) = \mathsf{R}\)</span></li>
+<li><span class="math inline">\(\BR_2(\mathsf{T}, b) = \mathsf{R}\)</span></li>
+<li><span class="math inline">\(\BR_2(\mathsf{B}, b) = \mathsf{R}\)</span></li>
+</ul>
+<p>and for player 3</p>
+<ul>
+<li><span class="math inline">\(\BR_3(\mathsf{T}, \mathsf{L}) = a\)</span></li>
+<li><span class="math inline">\(\BR_3(\mathsf{T}, \mathsf{R}) = \{a, b\}\)</span></li>
+<li><span class="math inline">\(\BR_3(\mathsf{B}, \mathsf{L}) = b\)</span></li>
+<li><span class="math inline">\(\BR_3(\mathsf{B}, \mathsf{R}) = b\)</span></li>
+</ul>
+<p>NE are the fixed point of the BR, and is given by <span class="math display">\[
+  (\mathsf{T}, \mathsf{L}, a)
+  \quad\text{and}\quad
+  (\mathsf{B}, \mathsf{R}, b)
+\]</span> An easy way to find this intersection is to visually draw a circle around the payoffs corresponding to each of the BRs. Then, the NE are the cells where all payoffs are encircled.</p>
 </div>
 </div>
-<div id="exm-taxation" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.5 (Taxation and Auditing)</strong></span> Consider the following game between a population and a tax auditor.</p>
-<div id="1fa880d9" class="cell" data-execution_count="13">
-<div class="cell-output cell-output-display" data-execution_count="13">
-<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
+<div id="exm-3player-mixed" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.7</strong></span> &nbsp;</p>
+<!-- Taken from Harrington -->
+<p>Consider the following three player game where player 1 chooses the row, player 2 chooses the column and player 3 chooses whether game (a) or game (b) is played.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div id="814790a5" class="cell quarto-layout-cell" data-execution_count="18" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="55">
+<table class="game3" data-quarto-disable-processing="true" align="center"><caption>(a)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$-4$</td><td>$1$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$-4$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
 </div>
 </div>
-<p>What happens to the equilibrium if the penalty for cheating is increased.</p>
-<div id="50790067" class="cell" data-execution_count="14">
-<div class="cell-output cell-output-display" data-execution_count="14">
-<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-20$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
+<div id="943f35a1" class="cell quarto-layout-cell" data-execution_count="19" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="56">
+<table class="game3" data-quarto-disable-processing="true" align="center"><caption>(b)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$3$</td><td>$-2$</td><td>$1$</td><td>$-4$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$-4$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
-<p>What happens if we increase the benefit of not getting caught</p>
-<div id="b1623bc6" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="15">
-<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$8$</td></tr></tbody></table>
 </div>
+</div>
+<p>Find all the NE in <em>mixed</em> strategies.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can verify that there are no NE in pure strategies. The idea for finding the NE in mixed strategies remains the same, just the algebra is more tedious. In particular, suppose the mixed strategy NE is <span class="math display">\[
+  σ_1 = (p, 1-p),
+  \quad
+  σ_2 = (q, 1-q),
+  \quad\text{and}\quad
+  σ_3 = (r, 1-r).
+\]</span></p>
+<p>Then, by the irrelevance principle, we have that for player 1, <span class="math display">\[
+  U_1(\mathsf{T}, σ_2, σ_3) = U_1(\mathsf{B}, σ_2, σ_3)
+\]</span> which simplifies to <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  7q - 6r + qr = 1.
+}
+\]</span></p>
+<p>By the same argument, we have that for player 2 <span class="math display">\[
+  U_2(σ_1, \mathsf{L}, σ_3) = U_2(σ_1, \mathsf{R}, σ_3)
+\]</span> which simplifies to <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  7p - 6r + pr = 1
+}
+\]</span></p>
+<p>Finally, we have that for player 3, <span class="math display">\[
+  U_3(σ_1, σ_2, a) = U_3(σ_1, σ_2, b)
+\]</span> which simplifies to <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  p + q = 1.
+}
+\]</span> Thus, we get 3 (non-linear) equations in 3 variables. Simplifying the first two equations give us that <span class="math inline">\(p = q\)</span>, which combined with the third equation gives that <span class="math inline">\(p = q = \tfrac 12\)</span>. Substituting back in either the first or the second equatin gives us that <span class="math inline">\(r = \tfrac 5{11}\)</span>. Thus, the mixed strategy NE is <span class="math display">\[
+  σ_1 = (\tfrac 12, \tfrac 12),
+  \quad
+  σ_2 = (\tfrac 12, \tfrac 12),
+  \quad\text{and}\quad
+  σ_3 = (\tfrac 5{11}, \tfrac 6{11}).
+\]</span></p>
 </div>
 </div>
 
