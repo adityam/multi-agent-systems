@@ -1,10 +1,9 @@
-using Hyperscript, Printf
+using Hyperscript, Printf, Latexify
 
 @tags table td tr 
 
 function game1(S1, S2, u; caption="")
     strategy(s) = @sprintf("\$\\mathsf{%s}\$", s)
-    ltx(s) = @sprintf("\$%s\$", s)
     n = size(S1, 1)
     m = size(S2, 1)
     
@@ -16,7 +15,7 @@ function game1(S1, S2, u; caption="")
     for i in 1:n
         row_cells = [td(strategy(S1[i]))]
         for j in 1:m
-            push!(row_cells, td(ltx(u[i,j])))
+            push!(row_cells, td(latexify(u[i,j])))
         end
         push!(data_rows, tr(row_cells))
     end
@@ -40,7 +39,6 @@ end
 
 function game(S1, S2, u1, u2; caption="")
     strategy(s) = @sprintf("\$\\mathsf{%s}\$", s)
-    ltx(s) = @sprintf("\$%s\$", s)
     n = size(S1, 1)
     m = size(S2, 1)
     
@@ -52,8 +50,8 @@ function game(S1, S2, u1, u2; caption="")
     for i in 1:n
         row_cells = [td(strategy(S1[i]))]
         for j in 1:m
-            push!(row_cells, td(ltx(u1[i,j])))
-            push!(row_cells, td(ltx(u2[i,j])))
+            push!(row_cells, td(latexify(u1[i,j])))
+            push!(row_cells, td(latexify(u2[i,j])))
         end
         push!(data_rows, tr(row_cells))
     end
@@ -77,7 +75,6 @@ end
 
 function game3(S1, S2, u1, u2, u3; caption="")
     strategy(s) = @sprintf("\$\\mathsf{%s}\$", s)
-    ltx(s) = @sprintf("\$%s\$", s)
     n = size(S1, 1)
     m = size(S2, 1)
     
@@ -89,9 +86,9 @@ function game3(S1, S2, u1, u2, u3; caption="")
     for i in 1:n
         row_cells = [td(strategy(S1[i]))]
         for j in 1:m
-            push!(row_cells, td(ltx(u1[i,j])))
-            push!(row_cells, td(ltx(u2[i,j])))
-            push!(row_cells, td(ltx(u3[i,j])))
+            push!(row_cells, td(latexify(u1[i,j])))
+            push!(row_cells, td(latexify(u2[i,j])))
+            push!(row_cells, td(latexify(u3[i,j])))
         end
         push!(data_rows, tr(row_cells))
     end
