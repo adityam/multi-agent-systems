@@ -1,9 +1,5 @@
 ---
 title: Nash equilibrium
-format:
-  html:
-    include-in-header: 
-     - ../static/html/vue.html
 
 execute:
   echo: false
@@ -37,6 +33,7 @@ using Revise
 
 include("../julia/typeset-games.jl")
 ```
+
 ## What is Nash equilibrium
 
 :::{.callout-tip}
@@ -334,7 +331,7 @@ game(["F", "O"], ["F", "O"], [2 0; 0 1], [1 0; 0 2],
 :::{.callout-note}
 #### Solution
 
-We have already identified the pure strategy NE in @exr-battle-of-sexes. We now consider NE in strictly mixed strategies. 
+We have already identified the pure strategy NE in @exm-battle-of-sexes. We now consider NE in strictly mixed strategies. 
 
 Let $σ_1 = (p, 1-p)$ and $σ_2 = (q, 1-q)$ be a NE in mixed strategies. Then, the equilibrium value of $p$ is such that
 $$
@@ -620,46 +617,6 @@ Note that if the utility function $u_i$ is also quasi-concave in $\ALPHABET S_i$
 
 ## Some examples
 
-:::{#exr-guessing-game}
-#### A guessing game
-
-Consider a two player game with $\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, K\}$ and the utility functions are given by
-$$
-  u(s_1, s_2) = \begin{cases} 
-  (1, -1), & \hbox{if } s_1 = s_2 \\
-  (0, 0), & \hbox{otherwise}
-\end{cases}
-$$
-
-:::
-
-:::{.callout-note}
-#### Solution
-
-Let $σ_1^* = (p_1, \dots, p_K)$ and $σ^*_2 = (q_1, \dots, q_K)$ be mixed strategy equilibrium of the game. 
-
-If there is a state $k \in \{1, \dots, K\}$ such that $p_k > 0$. Then by the indifference principle
-$$
-  U_1(k, σ^*_2) \ge U_1(\ell, σ^*_2), \quad \forall \ell \neq k,
-$$
-which implies $q_k \ge q_{\ell}$. 
-
-Since player 2 must put positive weight on at least one of the pure strategies, we have two possibilities: 
-
-- there is some pure strategy $\ell \neq k$ such that $q_{\ell} > 0$. In this case, the above condition implies that $q_k > 0$.
-- for all pure strategies $\ell \neq k$, $q_{\ell} = 0$. In which case, $q_k = 1 > 0$. 
-
-Thus, we get that if player 1 gives a positive weight to any pure strategy, then player 2 must also give a positive weight to that strategy. 
-
-Now suppose there is a state $k \in \{1, \dots, K\}$ such that $q_k > 0$. Then, by the indifference principle,  
-$$
-  U_2(σ^*_1, k) \ge U_2(σ^*_2, \ell), \quad \forall \ell \neq k,
-$$
-which implies $-p_k \ge -p_{\ell}$ or $p_k \le p_{\ell}$. 
-
-So, we have the following: if player 1 puts a positive weight on a pure strategy $k$, then player 2 should also put positive weight on $k$. But if player 2 puts a positive weight on $k$, then player 1 should put larger weight on all strategies other than $k$. By symmetry (in terms of the choice of strategy), we get that player 1 should put equal weight on all strategies. Therefore, so should player 2.
-:::
-
 :::{#exm-taxation}
 #### Taxation and Auditing
 
@@ -678,5 +635,130 @@ What happens if we increase the benefit of not getting caught
 ```{julia}
 game(["A", "N"], ["H", "C"], [2 4; 4 0], [0 -10; 0 8])
 ```
+:::
 
+## Games with more than two players
+
+So far, we have presented examples of games with only two players. The same ideas work for games with more than two players, as is illustrated by the following examples.
+
+:::{#exm-3player-pure}
+<!-- Taken from Harrington -->
+Consider the following three player game where player 1 chooses the row, player 2 chooses the column and player 3 chooses whether game (a) or game (b) is played. 
+
+:::{layout-ncol=2}
+```{julia}
+game3(["T", "B"], ["L", "R"], [2 0; 1 1], [2 1; 0 1], [2 0; 0 0], caption="(a)")
+```
+
+```{julia}
+game3(["T", "B"], ["L", "R"], [0 0; 1 1], [0 1; 0 1], [1 0; 1 1], caption="(b)")
+```
+:::
+
+Find all the NE in pure strategies.
+
+:::
+
+:::{.callout-note}
+#### Solution
+
+We could exhastively check whether each outcome is a NE or not. An alternative method is to check the BR of each player for every choice of strategy of other players. For example, for player 1, 
+
+- $\BR_1(\mathsf{L}, a) = \mathsf{T}$
+- $\BR_1(\mathsf{R}, a) = \mathsf{B}$
+- $\BR_1(\mathsf{L}, b) = \mathsf{B}$
+- $\BR_1(\mathsf{R}, b) = \mathsf{B}$
+
+Similarly, for player 2
+
+- $\BR_2(\mathsf{T}, a) = \mathsf{L}$
+- $\BR_2(\mathsf{B}, a) = \mathsf{R}$
+- $\BR_2(\mathsf{T}, b) = \mathsf{R}$
+- $\BR_2(\mathsf{B}, b) = \mathsf{R}$
+
+and for player 3
+
+- $\BR_3(\mathsf{T}, \mathsf{L}) = a$
+- $\BR_3(\mathsf{T}, \mathsf{R}) = \{a, b\}$
+- $\BR_3(\mathsf{B}, \mathsf{L}) = b$
+- $\BR_3(\mathsf{B}, \mathsf{R}) = b$
+
+NE are the fixed point of the BR, and is given by
+$$
+  (\mathsf{T}, \mathsf{L}, a)
+  \quad\text{and}\quad
+  (\mathsf{B}, \mathsf{R}, b)
+$$
+An easy way to find this intersection is to visually draw a circle around the payoffs corresponding to each of the BRs. Then, the NE are the cells where all payoffs are encircled. 
+:::
+
+:::{#exm-3player-mixed}
+<!-- Taken from Harrington -->
+Consider the following three player game where player 1 chooses the row, player 2 chooses the column and player 3 chooses whether game (a) or game (b) is played. 
+
+:::{layout-ncol=2}
+```{julia}
+game3(["T", "B"], ["L", "R"], [0 -4; 1 2], [0 1; -4 2], [0 2; 2 -2], caption="(a)")
+```
+
+```{julia}
+game3(["T", "B"], ["L", "R"], [3 1; -4 0], [3 -4; 1 0], [-2 2; 2 0], caption="(b)")
+```
+:::
+
+Find all the NE in _mixed_ strategies.
+:::
+
+:::{.callout-note}
+#### Solution
+
+We can verify that there are no NE in pure strategies. The idea for finding the NE in mixed strategies remains the same, just the algebra is more tedious. In particular, suppose the mixed strategy NE is 
+$$
+  σ_1 = (p, 1-p),
+  \quad
+  σ_2 = (q, 1-q),
+  \quad\text{and}\quad
+  σ_3 = (r, 1-r).
+$$
+
+Then, by the irrelevance principle, we have that for player 1, 
+$$
+  U_1(\mathsf{T}, σ_2, σ_3) = U_1(\mathsf{B}, σ_2, σ_3)
+$$
+which simplifies to 
+$$
+\bbox[5pt,border: 1px solid]{
+  7q - 6r + qr = 1.
+ }
+$$
+
+By the same argument, we have that for player 2
+$$
+  U_2(σ_1, \mathsf{L}, σ_3) = U_2(σ_1, \mathsf{R}, σ_3)
+$$
+which simplifies to 
+$$
+\bbox[5pt,border: 1px solid]{
+  7p - 6r + pr = 1
+ }
+$$
+
+Finally, we have that for player 3,
+$$
+  U_3(σ_1, σ_2, a) = U_3(σ_1, σ_2, b)
+$$
+which simplifies to 
+$$
+\bbox[5pt,border: 1px solid]{
+  p + q = 1.
+ }
+$$
+Thus, we get 3 (non-linear) equations in 3 variables. Simplifying the first two equations give us that $p = q$, which combined with the third equation gives that $p = q = \tfrac 12$. Substituting back in either the first or the second equatin gives us that $r = \tfrac 5{11}$. Thus, the mixed strategy NE is
+$$
+  σ_1 = (\tfrac 12, \tfrac 12),
+  \quad
+  σ_2 = (\tfrac 12, \tfrac 12),
+  \quad\text{and}\quad
+  σ_3 = (\tfrac 5{11}, \tfrac 6{11}).
+$$
 :::

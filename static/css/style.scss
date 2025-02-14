@@ -9,12 +9,12 @@
 }
 
 /* Game tables */
-.game td, .game1 td, .gamemin td {
+.game td, .game1 td, .game3 td, .gamemin td {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
 }
 
-.game td, .gamemin td {
+.game td, .gamemin td, .game3 td {
   text-align: right;
 }
 
@@ -36,18 +36,21 @@
 
 .game  tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
 .gamemin  tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
-.game1 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)) {
+.game1 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
+.game3 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)) {
   border-bottom: 1px solid;
 }
 
 .game tr:not(:nth-of-type(1)) > td:nth-of-type(1),
 .gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(1),
-.game1 tr:not(:nth-of-type(1)) > td:nth-of-type(1) {
+.game1 tr:not(:nth-of-type(1)) > td:nth-of-type(1),
+.game3 tr:not(:nth-of-type(1)) > td:nth-of-type(1) {
   border-right : 1px solid ;
 }
 
 
 .game tr:not(:nth-of-type(1)) > td:nth-of-type(2n),
+.game3 tr:not(:nth-of-type(1)) > td:nth-of-type(3n+2),
 .gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(2n),
 {
   padding-left: 1em;
@@ -61,39 +64,44 @@
 }
 
 .game tr:not(:nth-of-type(1)) > td:nth-of-type(2n+1),
+.game3 tr:not(:nth-of-type(1)) > td:nth-of-type(3n+1),
 .gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(2n+1),
 {
   padding-right: 1em;
 }
 
 .game tr:not(:nth-of-type(1)) > td:nth-of-type(2n):after,
+.game3 tr:not(:nth-of-type(1)) > td:nth-of-type(3n+2):after,
+.game3 tr:not(:nth-of-type(1)) > td:nth-of-type(3n):after,
 .gamemin tr:not(:nth-of-type(1)):not(:last-child) > td:nth-of-type(2n):not(:last-child):after,
 {
   content: ', ';
 }
 
 .game tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
+.game3 tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
 .gamemin tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
 .game1 tr:not(:nth-of-type(1)) > td:nth-last-of-type(1) {
   border-right : 1px solid ;
 }
 
 .game tr:nth-of-type(1) > td:not(:nth-of-type(1)),
+.game3 tr:nth-of-type(1) > td:not(:nth-of-type(1)),
 .gamemin tr:nth-of-type(1) > td:not(:nth-of-type(1)),
 .game1 tr:nth-of-type(1) > td:not(:nth-of-type(1)) {
   text-align: center;
-  padding-left: 1em;
   border-bottom : 1px solid ;
 }
 
 .game tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
+.game3 tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
 .gamemin tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
 .game1 tr:nth-last-of-type(1) > td:not(:nth-of-type(1)) {
   border-bottom : 1px solid ;
 }
 
 
-.game, .game1, .gamemin {
+.game, .game1, .gamemin, .game3 {
   border-collapse: collapse;
   border: none;
 }
