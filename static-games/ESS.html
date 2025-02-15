@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-05">
+<meta name="dcterms.date" content="2025-02-15">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>6&nbsp; Evolutionarily stable strategies – Multi-Agent Systems</title>
@@ -23,10 +23,29 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -113,19 +132,46 @@ window.MathJax = {
 };
 </script>
 <script async="" data-id="101261731" src="//static.getclicky.com/js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script>
-  const { createApp, ref } = Vue
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
 </script>
-
 
 <meta name="citation_title" content="[6]{.chapter-number}&nbsp; [Evolutionarily stable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-05">
-<meta name="citation_cover_date" content="2025-01-05">
+<meta name="citation_publication_date" content="2025-02-15">
+<meta name="citation_cover_date" content="2025-02-15">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-05">
+<meta name="citation_online_date" content="2025-02-15">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/ESS.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -170,6 +216,9 @@ window.MathJax = {
 <meta name="citation_reference" content="citation_title=Stability for the best response dynamics;,citation_author=Josef Hofbauer;,citation_publication_date=1995;,citation_cover_date=1995;,citation_year=1995;,citation_technical_report_institution=Universität Wien;">
 <meta name="citation_reference" content="citation_title=Equilibrium points in n -person games;,citation_author=John F. Nash;,citation_publication_date=1950-01;,citation_cover_date=1950-01;,citation_year=1950;,citation_issue=1;,citation_doi=10.1073/pnas.36.1.48;,citation_issn=1091-6490;,citation_volume=36;,citation_journal_title=Proceedings of the National Academy of Sciences;,citation_publisher=Proceedings of the National Academy of Sciences;">
 <meta name="citation_reference" content="citation_title=Non-cooperative games;,citation_author=John Nash;,citation_publication_date=1951-09;,citation_cover_date=1951-09;,citation_year=1951;,citation_issue=2;,citation_doi=10.2307/1969529;,citation_issn=0003-486X;,citation_volume=54;,citation_journal_title=The Annals of Mathematics;,citation_publisher=JSTOR;">
+<meta name="citation_reference" content="citation_title=The logic of animal conflict;,citation_author=J Maynard Smith;,citation_author=G. R Price;,citation_publication_date=1973-11;,citation_cover_date=1973-11;,citation_year=1973;,citation_issue=5427;,citation_doi=10.1038/246015a0;,citation_issn=1476-4687;,citation_volume=246;,citation_journal_title=Nature;,citation_publisher=Springer Science; Business Media LLC;">
+<meta name="citation_reference" content="citation_title=Evolution and the theory of games;,citation_author=John Maynard Smith;,citation_publication_date=1982-10;,citation_cover_date=1982-10;,citation_year=1982;,citation_doi=10.1017/cbo9780511806292;,citation_isbn=9780511806292;">
+<meta name="citation_reference" content="citation_title=Population games and evolutionary dynamics;,citation_author=William H. Sandholm;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -293,8 +342,16 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-ess" id="toc-what-is-ess" class="nav-link active" data-scroll-target="#what-is-ess"><span class="header-section-number">6.1</span> What is ESS</a></li>
+  <li><a href="#relationship-between-ne-and-ess" id="toc-relationship-between-ne-and-ess" class="nav-link" data-scroll-target="#relationship-between-ne-and-ess"><span class="header-section-number">6.2</span> Relationship between NE and ESS</a></li>
+  <li><a href="#necessary-and-sufficient-conditions-for-ess" id="toc-necessary-and-sufficient-conditions-for-ess" class="nav-link" data-scroll-target="#necessary-and-sufficient-conditions-for-ess"><span class="header-section-number">6.3</span> Necessary and sufficient conditions for ESS</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/ESS.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -327,7 +384,7 @@ window.MathJax = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 5, 2025</p>
+      <p class="date">February 15, 2025</p>
     </div>
   </div>
   
@@ -339,8 +396,183 @@ window.MathJax = {
 </header>
 
 
+<p>As we saw earlier, one of the interpretations of mixed strategy NE is that it determines the fraction of population playing a certain pure strategy. <span class="citation" data-cites="MaynardSmith1973">Maynard Smith and Price (<a href="../references.html#ref-MaynardSmith1973" role="doc-biblioref">1973</a>)</span> used this interpretation to propose an evolutionary mechanism via which organisms can change their behavior across generations. For a facinating (non-technical) introduction to the area, see <span class="citation" data-cites="MaynardSmith1982">Maynard Smith (<a href="../references.html#ref-MaynardSmith1982" role="doc-biblioref">1982</a>)</span>.</p>
+<p>The key idea in what is now called <strong>evolutionary game theory</strong> is that of evolutionarily stable strategies, which we will discuss here. For detailed treatment of the subject, see <span class="citation" data-cites="Sandholm2010">Sandholm (<a href="../references.html#ref-Sandholm2010" role="doc-biblioref">2010</a>)</span>.</p>
+<section id="what-is-ess" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="what-is-ess"><span class="header-section-number">6.1</span> What is ESS</h2>
+<p>To understand evolutionary stability, consider the variation of Hawk-Dove game shown below.</p>
+<div id="9dee6185" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>A variation of the Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$8$</td></tr><tr><td>$\mathsf{H}$</td><td>$8$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
+</div>
+</div>
+<p>Note that this is a symmetric game. Now suppose that there is a large population comprising of 80% doves and 20% hawks. THus, we are considering the population state <span class="math inline">\(σ = (0.8, 0.2)\)</span>.</p>
+<p>We assume that there are repeated interactions between the organisms (or agents) in the population. At state <span class="math inline">\(σ\)</span> described above, a generic agent will encounter a dove with probability <span class="math inline">\(0.8\)</span> and a hawk with probability <span class="math inline">\(0.2\)</span>. Thus, if this organism is a dove, his payoff is <span class="math display">\[
+  U(\mathsf{D}, σ) = 0.8 × 4 + 0.2 × 2 = 3.6.
+\]</span> On the other hand, if this organism is a hawk, then his payoff is <span class="math display">\[
+  U(\mathsf{H}, σ) = 0.8 × 8 + 0.2 × 1 = 6.6.
+\]</span> The argument of <span class="citation" data-cites="MaynardSmith1982">Maynard Smith (<a href="../references.html#ref-MaynardSmith1982" role="doc-biblioref">1982</a>)</span> is that in this situation, the population of hawks have an evolutionary advantage. So, over time, the fraction of hawks will increase. The population state <span class="math inline">\(σ^*\)</span> where no trait has an evolutionary advantage is given by <span class="math display">\[
+  U(\mathsf{H}, σ^*) = U(\mathsf{D}, σ^*)
+\]</span> which is precisely the NE of the game.</p>
+<p>Now the key difference in this interpretation from NE is how we determine if an equilibrium is sustainable. To define sustainability, we introduce some notation. Consider a symmetric two player game <span class="math inline">\(\mathscr{G} = \langle 2, (\ALPHABET S_1, \ALPHABET S_2), (u_1, u_2) \rangle\)</span> where <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2\)</span> and <span class="math inline">\(u_1(s,t) = u_2(t,s)\)</span> for all <span class="math inline">\(t, s \in \ALPHABET S_1\)</span>. For the ease of notation, we will denote <span class="math inline">\(\ALPHABET S_1\)</span> and <span class="math inline">\(\ALPHABET S_2\)</span> simply as <span class="math inline">\(\ALPHABET S\)</span> (note that this is inconsistent with the notation that we use in general!) and denote the payoff function by <span class="math inline">\(u \colon \ALPHABET S × \ALPHABET S \to \reals\)</span> where <span class="math display">\[
+  u(s,t) = u_1(s,t) = u_2(t,s).
+\]</span></p>
+<p>Consider a symmetric mixed strategy <span class="math inline">\(σ^*\)</span>, i.e., we have a large population where <span class="math inline">\(σ^*(s)\)</span> fraction of the population is of type <span class="math inline">\(s\)</span>, <span class="math inline">\(s \in \ALPHABET S\)</span>.</p>
+<p>Now suppose a fraction <span class="math inline">\(ε\)</span> of the population <strong>mutates</strong> and starts playing another strategy <span class="math inline">\(σ\)</span>. Thus, the new state of the population is <span class="math display">\[
+  \bar σ_{ε} = (1-ε) σ^* + ε σ
+\]</span></p>
+<p>Then, the average payoff of a <strong>normal</strong> player (i.e., the player belonging to the unmutated population) is <span class="math display">\[\def\1{\textcolor{red}{σ^*}}
+  U(\1, \bar σ_{ε}) = (1-ε) U(\1, σ^*) + ε U(\1, σ).
+\]</span> Similarly, the average payoff of a <strong>mutated</strong> player is <span class="math display">\[\def\1{\textcolor{red}{σ}}
+  U(\1, \bar σ_{ε}) = (1-ε) U(\1, σ^*) + ε U(\1, σ).
+\]</span></p>
+<div id="def-ESS" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.1</strong></span> A population state <span class="math inline">\(σ^*\)</span> is said to be <strong>evolutionarily stable strategy (ESS)</strong> if for all mutations <span class="math inline">\(σ \in Δ(\ALPHABET S)\)</span>, <span class="math inline">\(σ \neq σ^*\)</span>, there exists a <span class="math inline">\(ε_\circ = ε_\circ(α) &gt; 0\)</span> such that for all <span class="math inline">\(ε \in (0, ε_\circ)\)</span> and <span class="math inline">\(\bar σ_{ε} = (1 -ε) σ^* + ε σ\)</span>, we have <span class="math display">\[
+  U(σ^*, \bar σ_{ε}) &gt; U (σ, \bar σ_{ε}).
+\]</span> i.e., <span class="math display">\[\begin{equation}\label{eq:ESS}
+  (1-ε)U(σ^*, σ^*) + ε U(σ^*, σ) &gt;
+  (1-ε)U(σ, σ^*) + ε U(σ, σ).
+\end{equation}\]</span></p>
+</div>
+</section>
+<section id="relationship-between-ne-and-ess" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="relationship-between-ne-and-ess"><span class="header-section-number">6.2</span> Relationship between NE and ESS</h2>
+<p>If we take the limit as <span class="math inline">\(ε \to 0\)</span> in the definition of ESS, we get that an ESS has be a symmetric NE. Thus, <strong>all ESS are NE</strong>. We now present an example to show that <strong>not all NE are ESS.</strong></p>
+<p>Consider the variation of Hawk Dove shown below.</p>
+<div id="da450d95" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>A variation of the Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$2$</td></tr><tr><td>$\mathsf{H}$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
+<p>This game has two pure strategy NE: <span class="math inline">\((\mathsf{D}, \mathsf{D})\)</span> and <span class="math inline">\((\mathsf{H}, \mathsf{H})\)</span>. We now check if each of these is ESS.</p>
+<ul>
+<li><p>Consider the NE <span class="math inline">\((\mathsf{D}, \mathsf{D})\)</span>, i.e., <span class="math inline">\(σ^* = (1,0)\)</span>. Consider a mutation <span class="math inline">\(σ = (p, 1-p)\)</span>, where <span class="math inline">\(p &lt; 1\)</span>. Then, <span class="math display">\[\begin{align*}
+  U(σ^*, σ^*) &amp;= 4  &amp; U(σ^*, σ) &amp;= 4p + 2(1-p) = 2p + 2 \\
+  U(σ, σ^*) &amp;= 2p + 2  &amp; U(σ, σ) &amp;= 4p^2 + 2(1-p^2) = 2p^2 + 2
+\end{align*}\]</span> Therefore, <span class="math display">\[
+  U(σ^*, σ_{ε}) = (1-ε)4 + ε(2p + 2) = 4 - 2 ε(1-p)
+\]</span> and <span class="math display">\[
+  U(σ, σ_{ε}) = (1-ε)(2p+2) + ε(2p^2 + 2) = (2p+2) - 2p ε(1-p).
+\]</span> Consider <span class="math display">\[\begin{align*}
+  U(σ^*, σ_{ε}) - U(σ, σ_{ε})
+  &amp;=
+  4 - 2 ε(1-p) - (2p+2) + 2p ε(1-p) \\
+  &amp;=
+  2(1 - p - ε(1-p)^2) \\
+  &amp;= 2(1-p)(1 - ε(1-p))
+\end{align*}\]</span> Thus, for any <span class="math inline">\(p \in [0, 1)\)</span> (note that <span class="math inline">\(p=1\)</span> is ruled out because the mutation cannot be the same as the normal population), and any <span class="math inline">\(ε \in (0, 1)\)</span>, we have that <span class="math display">\[
+  U(σ^*, σ_{ε}) - U(σ, σ_{ε}) &gt; 0.
+\]</span> So, <strong><span class="math inline">\((\mathsf{D}, \mathsf{D})\)</span> is an ESS.</strong></p></li>
+<li><p>Consider the NE <span class="math inline">\((\mathsf{H}, \mathsf{H})\)</span>, i.e., <span class="math inline">\(σ^* = (0, 1)\)</span>. Consider a mutation <span class="math inline">\((p, 1-p)\)</span>, where <span class="math inline">\(p &gt; 0\)</span>. Then, <span class="math display">\[\begin{align*}
+  U(σ^*, σ^*) &amp;= 2  &amp; U(σ^*, σ) &amp;= 2 \\
+  U(σ, σ^*) &amp;= 2  &amp; U(σ, σ) &amp;= 4p^2 + 2(1-p^2) = 2p^2 + 2
+\end{align*}\]</span> Therefore, <span class="math display">\[
+  U(σ^*, σ_{ε}) = (1-ε)2 + ε2 = 2
+\]</span> and <span class="math display">\[
+  U(σ, σ_{ε}) = (1-ε)2 + ε(2p^2 + 2) = 2 - 2 ε p^2
+\]</span> Consider <span class="math display">\[
+  U(σ^*, σ_{ε}) - U(σ, σ_{ε})
+  = 2 - 2 + 2 ε p^2 = 2 ε p^2
+\]</span> which is strictly positive for any <span class="math inline">\(p \in (0, 1]\)</span> (note that <span class="math inline">\(p = 0\)</span> is ruled out because the mutation cannot be the same as the normal population) and <span class="math inline">\(ε &gt; 0\)</span>, we have <span class="math display">\[
+  U(σ^*, σ_{ε}) - U(σ, σ_{ε}) &gt; 0.
+\]</span> So, <strong><span class="math inline">\((\mathsf{H}, \mathsf{H})\)</span> is not an ESS.</strong></p></li>
+</ul>
+</section>
+<section id="necessary-and-sufficient-conditions-for-ess" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="necessary-and-sufficient-conditions-for-ess"><span class="header-section-number">6.3</span> Necessary and sufficient conditions for ESS</h2>
+<div id="thm-ESS" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.1</strong></span> A strategy <span class="math inline">\(σ^*\)</span> is ESS <span class="text-danger">if and only if</span> for every <span class="math inline">\(σ \neq σ^*\)</span> one of the following conditions is true:</p>
+<ol type="1">
+<li><p><span class="math inline">\(U(σ^*, σ^*) &gt; U(σ, σ^*)\)</span></p>
+<p><span class="text-primary">That is, if a mutation deviates from <span class="math inline">\(σ^*\)</span> it will lose in its encounters with the normal population</span></p></li>
+<li><p><span class="math inline">\(U(σ^*, σ^*) = U(σ, σ^*)\)</span> and <span class="math inline">\(U(σ^*, σ) &gt; U(σ,σ)\)</span>.</p>
+<p><span class="text-primary">That is, if the payoff that a mutation receives from encountering the normal population is equal to the payoff that a normal indvidual receives from encountering the normal population, that mutation will receive a smaller payer if it encounters the same mutation than a normal individual will receive in the encounter</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><strong>ESS implies the two conditions:</strong> Let <span class="math inline">\(σ^*\)</span> be an ESS. As argued earlier, this implies that <span class="math inline">\(σ^*\)</span> is also a NE. Thus, <span class="math display">\[
+  U(σ^*, σ^*) \ge U(σ, σ^*), \quad \forall σ \in Δ(\ALPHABET S).
+\]</span> We prove the result by contradiction. Suppose that neither of the two conditions hold. Then, there must exist an <span class="math inline">\(σ \neq σ^*\)</span> such that <span class="math display">\[
+  U(σ^*, σ^*) = U(σ, σ^*)
+  \quad\text{and}\quad
+  U(σ^*, σ) \le U(σ, σ).
+\]</span> This implies that for any <span class="math inline">\(ε \in (0,1)\)</span> <span class="math display">\[
+  (1-ε)U(σ^*, σ^*) + ε U(σ^*, σ) \le
+  (1-ε)U(σ, σ^*) + ε U(σ, σ)
+\]</span> which contradicts the fact that <span class="math inline">\(σ^*\)</span> is ESS.</p></li>
+<li><p><strong>The two conditions imply ESS:</strong> Suppose a mutation <span class="math inline">\(σ\)</span> satisfies condition&nbsp;1. Let <span class="math inline">\(D = U(σ^*, σ^*) - U(σ, σ^*)\)</span> and <span class="math display">\[
+  M = \max_{s,t} U(s,t) - \min_{s,t} u(s,t).
+\]</span> Moreover, for any <span class="math inline">\(ε \in (0,1)\)</span>, define <span class="math inline">\(\bar σ_{ε} = (1-ε) σ^* + ε σ\)</span>. Then, <span class="math display">\[\begin{align*}
+  U(σ^*, \bar σ_{ε}) - U(σ, \bar σ_{ε}) &amp;=
+  (1-ε) \bigl[ U(σ^*, σ^*) - U(σ, σ^*) \bigr]
+  +
+  ε \bigl[ U(σ^*, σ) - U(σ, σ) \bigr]
+  \\
+  &amp; \ge
+  (1-ε) D - ε M
+\end{align*}\]</span> which is positive for <span class="math inline">\(ε &lt; D/(D+M)\)</span>.</p>
+<p>Now suppose a mutation statisfied condition&nbsp;2. Then, <span class="math display">\[\begin{align*}
+  U(σ^*, \bar σ_{ε}) - U(σ, \bar σ_{ε}) &amp;=
+  (1-ε) \underbrace{\bigl[ U(σ^*, σ^*) - U(σ, σ^*) \bigr]}_{=0}
+  +
+  ε \underbrace{\bigl[ U(σ^*, σ) - U(σ, σ) \bigr]}_{&gt; 0}
+  \\
+  &amp;&gt; 0, \quad \forall ε \in (0,1).
+\end{align*}\]</span></p></li>
+</ul>
+<p>Since every mutation must satisfy either condition 1 or 2, we have that the strategy <span class="math inline">\(σ^*\)</span> is ESS.</p>
+</div>
+</div>
+<p>Let’s revisit the modified Hawk Dove game shown below.</p>
+<div id="a77fc780" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>A variation of the Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$8$</td></tr><tr><td>$\mathsf{H}$</td><td>$8$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
+</div>
+</div>
+<p>We can verify that the unique NE is <span class="math inline">\(σ^* = (\tfrac 15, \tfrac 45)\)</span>. We now check if this is ESS.</p>
+<p>Consider a mutation <span class="math inline">\(σ = (p, 1-p)\)</span>. We verify the two sufficient and necessary conditions of <a href="#thm-ESS" class="quarto-xref">Theorem&nbsp;<span>6.1</span></a> separately.</p>
+<ul>
+<li><p><strong>Check condition 1:</strong> Since <span class="math inline">\(σ^*\)</span> is a NE with support <span class="math inline">\(\{\mathsf{H}, \mathsf{D}\}\)</span>, from irrelevance principle we must have <span class="math display">\[
+  U(\mathsf{H}, σ^*) = U(\mathsf{D}, σ^*).
+\]</span> This means that for any mixed strategy <span class="math inline">\(σ\)</span>, we will have <span class="math display">\[
+  U(σ, σ^*) = U(σ^*, σ^*).
+\]</span> So, condition 1 is never satisfied.</p></li>
+<li><p><strong>Check condition 2:</strong> Since <span class="math inline">\(U(σ, σ^*) = U(σ^*, σ^*)\)</span>, condition 2 is satisfied if <span class="math inline">\(U(σ^*, σ) &gt; U(σ, σ)\)</span>. Observe that <span class="math display">\[
+  U(σ^*, σ) = \frac{4p}{5} + \frac{2(1-p)}{5} + \frac{32p}{5} + \frac{4(1-p)}{5}
+  = \frac{6}{5} + 6p
+\]</span> and <span class="math display">\[
+  U(σ, σ) = 4p^2 + 2p(1-p) + 8(1-p)p + (1-p)^2
+  = 1 + 8p - 5p^2
+  .
+\]</span> Thus, <span class="math display">\[
+  U(σ^*, σ) - U(σ,σ) = \frac{1}{5} - 2p + 5p^2
+  = \frac{(1-5p)^2}{5}
+\]</span> which is non-negative for all <span class="math inline">\(p \neq \tfrac 15\)</span> (i.e., all <span class="math inline">\(σ \neq σ^*\)</span>). Thus, condition 2 holds and therefore <span class="math inline">\(σ^*\)</span> is ESS.</p></li>
+</ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-MaynardSmith1982" class="csl-entry" role="listitem">
+<span class="smallcaps">Maynard Smith, J.</span> 1982. <em>Evolution and the theory of games</em>. Cambridge University Press. DOI: <a href="https://doi.org/10.1017/cbo9780511806292">10.1017/cbo9780511806292</a>.
+</div>
+<div id="ref-MaynardSmith1973" class="csl-entry" role="listitem">
+<span class="smallcaps">Maynard Smith, J. and Price, G.R.</span> 1973. The logic of animal conflict. <em>Nature</em> <em>246</em>, 5427, 15–18. DOI: <a href="https://doi.org/10.1038/246015a0">10.1038/246015a0</a>.
+</div>
+<div id="ref-Sandholm2010" class="csl-entry" role="listitem">
+<span class="smallcaps">Sandholm, W.H.</span> 2010. <em>Population games and evolutionary dynamics</em>. MIT Press.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -921,5 +1153,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/ESS.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/ESS.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
