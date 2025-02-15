@@ -350,6 +350,7 @@ window.Quarto = {
   <li><a href="#what-is-ess" id="toc-what-is-ess" class="nav-link active" data-scroll-target="#what-is-ess"><span class="header-section-number">6.1</span> What is ESS</a></li>
   <li><a href="#relationship-between-ne-and-ess" id="toc-relationship-between-ne-and-ess" class="nav-link" data-scroll-target="#relationship-between-ne-and-ess"><span class="header-section-number">6.2</span> Relationship between NE and ESS</a></li>
   <li><a href="#necessary-and-sufficient-conditions-for-ess" id="toc-necessary-and-sufficient-conditions-for-ess" class="nav-link" data-scroll-target="#necessary-and-sufficient-conditions-for-ess"><span class="header-section-number">6.3</span> Necessary and sufficient conditions for ESS</a></li>
+  <li><a href="#ess-for-arbitrary-two-player-2-2-symmeric-games" id="toc-ess-for-arbitrary-two-player-2-2-symmeric-games" class="nav-link" data-scroll-target="#ess-for-arbitrary-two-player-2-2-symmeric-games"><span class="header-section-number">6.4</span> ESS for arbitrary two player <span class="math inline">\(2 × 2\)</span> symmeric games</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/ESS.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -401,8 +402,8 @@ window.Quarto = {
 <section id="what-is-ess" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="what-is-ess"><span class="header-section-number">6.1</span> What is ESS</h2>
 <p>To understand evolutionary stability, consider the variation of Hawk-Dove game shown below.</p>
-<div id="9dee6185" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="a2771f29" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>A variation of the Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$8$</td></tr><tr><td>$\mathsf{H}$</td><td>$8$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
@@ -439,8 +440,8 @@ window.Quarto = {
 <h2 data-number="6.2" class="anchored" data-anchor-id="relationship-between-ne-and-ess"><span class="header-section-number">6.2</span> Relationship between NE and ESS</h2>
 <p>If we take the limit as <span class="math inline">\(ε \to 0\)</span> in the definition of ESS, we get that an ESS has be a symmetric NE. Thus, <strong>all ESS are NE</strong>. We now present an example to show that <strong>not all NE are ESS.</strong></p>
 <p>Consider the variation of Hawk Dove shown below.</p>
-<div id="da450d95" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="44ca3e9e" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>A variation of the Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$2$</td></tr><tr><td>$\mathsf{H}$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -533,13 +534,25 @@ Proof
 <p>Since every mutation must satisfy either condition 1 or 2, we have that the strategy <span class="math inline">\(σ^*\)</span> is ESS.</p>
 </div>
 </div>
-<p>Let’s revisit the modified Hawk Dove game shown below.</p>
-<div id="a77fc780" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="exm-modified-hawk-dove" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.1</strong></span> Consider the modified Hawk Dove game shown below.</p>
+<div id="bacf706c" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>A variation of the Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$8$</td></tr><tr><td>$\mathsf{H}$</td><td>$8$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
-<p>We can verify that the unique NE is <span class="math inline">\(σ^* = (\tfrac 15, \tfrac 45)\)</span>. We now check if this is ESS.</p>
+<p>We can verify that the unique NE is <span class="math inline">\(σ^* = (\tfrac 15, \tfrac 45)\)</span>. Is this an ESS?</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Consider a mutation <span class="math inline">\(σ = (p, 1-p)\)</span>. We verify the two sufficient and necessary conditions of <a href="#thm-ESS" class="quarto-xref">Theorem&nbsp;<span>6.1</span></a> separately.</p>
 <ul>
 <li><p><strong>Check condition 1:</strong> Since <span class="math inline">\(σ^*\)</span> is a NE with support <span class="math inline">\(\{\mathsf{H}, \mathsf{D}\}\)</span>, from irrelevance principle we must have <span class="math display">\[
@@ -559,6 +572,155 @@ Proof
   = \frac{(1-5p)^2}{5}
 \]</span> which is non-negative for all <span class="math inline">\(p \neq \tfrac 15\)</span> (i.e., all <span class="math inline">\(σ \neq σ^*\)</span>). Thus, condition 2 holds and therefore <span class="math inline">\(σ^*\)</span> is ESS.</p></li>
 </ul>
+</div>
+</div>
+</section>
+<section id="ess-for-arbitrary-two-player-2-2-symmeric-games" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="ess-for-arbitrary-two-player-2-2-symmeric-games"><span class="header-section-number">6.4</span> ESS for arbitrary two player <span class="math inline">\(2 × 2\)</span> symmeric games</h2>
+<p>Consider a symmetric two player <span class="math inline">\(2 × 2\)</span> game.</p>
+<div id="52d66ca2" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{1}$</td><td colspan="2">$\mathsf{2}$</td></tr><tr><td>$\mathsf{1}$</td><td>$a$</td><td>$a$</td><td>$b$</td><td>$c$</td></tr><tr><td>$\mathsf{2}$</td><td>$c$</td><td>$b$</td><td>$d$</td><td>$d$</td></tr></tbody></table>
+</div>
+</div>
+<p>A symmetric mixed strategy <span class="math inline">\((σ^*, σ^*)\)</span> with <span class="math inline">\(σ^* = (p, 1-p)\)</span> is a NE if and only if <span class="math display">\[
+  a p + b(1-p) = c p + d (1-p)
+  \implies p = \frac{b - d}{(b+c) - (a+d)}.
+\]</span> This is a valid probability distribution if either</p>
+<ol type="1">
+<li><p>Both numerator and denominator are positive and numerator is less than the denominator</p></li>
+<li><p>Both numerator and denominator are negative and numerator is more than the denominator</p></li>
+</ol>
+<p>Note that there wil also be cases where <span class="math inline">\(b = d\)</span> or <span class="math inline">\(a = c\)</span> where there will be multiple equilibria. We do not consider these cases here.</p>
+<ul>
+<li><p><strong>Case 1:</strong> In this case, we have</p>
+<ul>
+<li>numerator is positive, i.e., <span class="math inline">\(b &gt; d\)</span></li>
+<li>denominator is positive, i.e., <span class="math inline">\(b+c &gt; a + d\)</span></li>
+<li>numerator is less than denominator, i.e., <span class="math inline">\(c &gt; a\)</span>.</li>
+</ul>
+<p>Thus, <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  b &gt; d \quad\text{and}\quad c &gt; a
+}
+\]</span></p></li>
+<li><p><strong>Case 2:</strong> In this case, we have</p>
+<ul>
+<li>numerator is negative, i.e., <span class="math inline">\(b &lt; d\)</span></li>
+<li>denominator is negative, i.e., <span class="math inline">\(b+c &lt; a + d\)</span></li>
+<li>numerator is more than denominator, i.e., <span class="math inline">\(c &lt; a\)</span>.</li>
+</ul>
+<p>Thus, <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  b &lt; d \quad\text{and}\quad c &lt; a
+}
+\]</span></p></li>
+</ul>
+<p><strong>When is this mixed strategy NE an ESS?</strong></p>
+<p>Since <span class="math inline">\(p \in (0,1)\)</span>, for any other <span class="math inline">\(σ = (q, 1-q)\)</span>, we will have <span class="math inline">\(U(σ, σ^*) = U(σ^*, σ^*)\)</span>. So, we only need to check condition 2 of <a href="#thm-ESS" class="quarto-xref">Theorem&nbsp;<span>6.1</span></a>. For that mater, consider <span class="math display">\[\begin{align*}
+  U(σ, σ^*) - U(σ, σ) &amp;=
+  (p - q) \big[ qa + (1-q) b \bigr] - (p - q) \bigl[ qc + (1-q) d \bigr]
+  \\
+  &amp;= (p -q) \bigl[ b - d - q( (b+c) - (a+d) ) \bigr] \\
+  &amp;= (p - q)^2 ( (b+c) - (a+d) )
+\end{align*}\]</span> where the last equality uses the fact that <span class="math inline">\(b-d = p( (b+c) - (a+d) )\)</span>.</p>
+<p>Thus, in case 1 we have <span class="math inline">\(U(σ, σ^*) - U(σ, σ)\)</span> and therefore <span class="math inline">\(σ^*\)</span> is an ESS while in case 2 we have <span class="math inline">\(U(σ, σ^*) - U(σ, σ) &lt; 0\)</span> and therefore <span class="math inline">\(σ^*\)</span> is not an ESS.</p>
+<section id="general-hawk-dove-game" class="level4 {exm-hawk-dove-general}" data-number="6.4.0.1">
+<h4 data-number="6.4.0.1" class="anchored" data-anchor-id="general-hawk-dove-game"><span class="header-section-number">6.4.0.1</span> General Hawk Dove game</h4>
+<p>Consider a general Hawk Dove game</p>
+<div id="fc5c7eb3" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="14">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>A general Hawk-Dove game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{D}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{D}$</td><td>$\frac{v - c}{2}$</td><td>$\frac{v - c}{2}$</td><td>$v$</td><td>$0$</td></tr><tr><td>$\mathsf{H}$</td><td>$0$</td><td>$v$</td><td>$\frac{v}{2}$</td><td>$\frac{v}{2}$</td></tr></tbody></table>
+</div>
+</div>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(v\)</span> denotes the value of the resource</li>
+<li><span class="math inline">\(C\)</span> denotes the value lost due to fighting.</li>
+</ul>
+<p>Characterize all NE of this game and verify if the symmetric NE are ESS.</p>
+</section>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have the following cases.</p>
+<ul>
+<li><p>If <span class="math inline">\(\tfrac 12 (v-c) &gt; 0\)</span>, then <span class="math inline">\((\mathsf{H}, \mathsf{H})\)</span> is a NE in strictly dominated strategies (and also an ESS)</p></li>
+<li><p>If <span class="math inline">\(\tfrac 12 (v-c) = 0\)</span>, then <span class="math inline">\((\mathsf{H}, \mathsf{H})\)</span> is a NE in weakly dominated strategies (and not an ESS)</p></li>
+<li><p>If <span class="math inline">\(\tfrac 12 (v-c) &lt; 0\)</span>, then <span class="math inline">\((\mathsf{H}, \mathsf{D})\)</span> and <span class="math inline">\((\mathsf{D}, \mathsf{H})\)</span> are NE (but they are not symmetric). The symmetric NE in mixed strategies is <span class="math inline">\(σ^* = (p, 1-p)\)</span> where <span class="math display">\[
+  p = \frac{v - \tfrac 12 v}{v - (v - \frac{1}{2}c)} = \frac{v}{c}.
+\]</span> Since in this case <span class="math inline">\(v &gt; \frac 12 v\)</span> and <span class="math inline">\(0 &lt; \frac 12(v-c)\)</span>, we are in case 1 of the general setting and therefore this NE is ESS.</p></li>
+</ul>
+</div>
+</div>
+<section id="medium-access-control" class="level4 {exm-MAC}" data-number="6.4.0.2">
+<h4 data-number="6.4.0.2" class="anchored" data-anchor-id="medium-access-control"><span class="header-section-number">6.4.0.2</span> Medium Access Control</h4>
+<p>Consider a Medium Access Control game</p>
+<div id="15bee118" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Medium access control game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{D}$</td></tr><tr><td>$\mathsf{T}$</td><td>$ - c$</td><td>$ - c$</td><td>$v - c$</td><td>$0$</td></tr><tr><td>$\mathsf{D}$</td><td>$0$</td><td>$v - c$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
+</div>
+</div>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(v\)</span> denotes the value of communication</li>
+<li><span class="math inline">\(c\)</span> denotes the cost of communication</li>
+</ul>
+<p>Assuming <span class="math inline">\(v &gt; c\)</span>, characterize all NE of this game and verify if the symmetric NE are ESS.</p>
+</section>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this case <span class="math inline">\((\mathsf{T}, \mathsf{D})\)</span> and <span class="math inline">\((\mathsf{D}, \mathsf{T})\)</span> are pure strategy NE of the game, but they are not symmetric. A symmetric mixed strategy of the form <span class="math inline">\((σ^*, σ^*)\)</span> with <span class="math inline">\(σ^* = (p, 1-p)\)</span> is mixed strategy NE where <span class="math display">\[
+  -pc + (v-c)(1-p) = 0 \implies p = 1 - \frac{c}{v}.
+\]</span> Since, <span class="math inline">\(v - c &gt; 0\)</span> and <span class="math inline">\(0 &gt; -c\)</span>, we are in case 1 of the general setting and therefore <span class="math inline">\(σ^*\)</span> is an ESS.</p>
+</div>
+</div>
+<div id="exm-MAC-variation" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.2 (Medium Access Control with lost opportiunity cost)</strong></span> Consider a Medium Access Control game</p>
+<div id="c13d8228" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>Medium access control game with lost opportunity cost</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{D}$</td></tr><tr><td>$\mathsf{T}$</td><td>$ - c$</td><td>$ - c$</td><td>$v - c$</td><td>$0$</td></tr><tr><td>$\mathsf{D}$</td><td>$0$</td><td>$v - c$</td><td>$ - d$</td><td>$ - d$</td></tr></tbody></table>
+</div>
+</div>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(v\)</span> denotes the value of communication</li>
+<li><span class="math inline">\(c\)</span> denotes the cost of communication</li>
+<li><span class="math inline">\(d\)</span> denotes the cost of wasted channel</li>
+</ul>
+<p>Assuming <span class="math inline">\(v &gt; c\)</span>, characterize all NE of this game and verify if the symmetric NE are ESS.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this case <span class="math inline">\((\mathsf{T}, \mathsf{D})\)</span> and <span class="math inline">\((\mathsf{D}, \mathsf{T})\)</span> are pure strategy NE of the game, but they are not symmetric. A symmetric mixed strategy of the form <span class="math inline">\((σ^*, σ^*)\)</span> with <span class="math inline">\(σ^* = (p, 1-p)\)</span> is mixed strategy NE where <span class="math display">\[
+  -pc + (v-c)(1-p) = -d(1-p) \implies p = 1 - \frac{c}{v+d}.
+\]</span> <span class="text-muted">Note that this shows that adding a lost opportunity cost is equivalent to increasing the value of communication</span></p>
+<p>Since, <span class="math inline">\(v - c &gt; 0 &gt; -d\)</span> and <span class="math inline">\(0 &gt; -c\)</span>, we are in case 1 of the general setting and therefore <span class="math inline">\(σ^*\)</span> is an ESS.</p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
