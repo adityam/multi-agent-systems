@@ -1,8 +1,255 @@
 ---
 title: Evolutionarily stable strategies
-format:
-  html:
-    include-in-header: 
-     - ../static/html/vue.html
+
+execute:
+  echo: false
+  freeze: true
+  cache: true
 ---
 
+As we saw earlier, one of the interpretations of mixed strategy NE is that it determines the fraction of population playing a certain pure strategy. @MaynardSmith1973 used this interpretation to propose an evolutionary mechanism via which organisms can change their behavior across generations. For a facinating (non-technical) introduction to the area, see @MaynardSmith1982. 
+
+The key idea in what is now called **evolutionary game theory** is that of evolutionarily stable strategies, which we will discuss here. For detailed treatment of the subject, see @Sandholm2010.
+
+## What is ESS
+
+To understand evolutionary stability, consider the variation of Hawk-Dove game shown below.
+
+```{julia}
+#| output: false
+# Install packages
+
+# using Pkg; Pkg.activate(".")
+# for pkg in ["IJulia", "Revise", "Hyperscript"]
+#    Pkg.add(pkg)
+# end
+# 
+# # Installing Jupyter Cache
+# Pkg.add("Conda")
+# using Conda
+# Conda.add("jupyter-cache")
+
+using Revise
+
+include("../julia/typeset-games.jl")
+```
+
+
+```{julia}
+game(["D", "H"], ["D", "H"], [4 2; 8 1], [4 8; 2 1], caption="A variation of the Hawk-Dove game")
+```
+
+Note that this is a symmetric game. Now suppose that there is a large population comprising of 80% doves and 20% hawks. THus, we are considering the population state $σ = (0.8, 0.2)$. 
+
+We assume that there are repeated interactions between the organisms (or agents) in the population. At state $σ$ described above, a generic agent will encounter a dove with probability $0.8$ and a hawk with probability $0.2$. Thus, if this organism is a dove, his payoff is
+$$
+  U(\mathsf{D}, σ) = 0.8 × 4 + 0.2 × 2 = 3.6.
+$$
+On the other hand, if this organism is a hawk, then his payoff is
+$$
+  U(\mathsf{H}, σ) = 0.8 × 8 + 0.2 × 1 = 6.6.
+$$
+The argument of @MaynardSmith1982 is that in this situation, the population of hawks have an evolutionary advantage. So, over time, the fraction of hawks will increase. The population state $σ^*$ where no trait has an evolutionary advantage is given by
+$$
+  U(\mathsf{H}, σ^*) = U(\mathsf{D}, σ^*)
+$$
+which is precisely the NE of the game.
+
+Now the key difference in this interpretation from NE is how we determine if an equilibrium is sustainable. To define sustainability, we introduce some notation. Consider a symmetric two player game $\mathscr{G} = \langle 2, (\ALPHABET S_1, \ALPHABET S_2), (u_1, u_2) \rangle$ where $\ALPHABET S_1 = \ALPHABET S_2$ and $u_1(s,t) = u_2(t,s)$ for all $t, s \in \ALPHABET S_1$. For the ease of notation, we will denote $\ALPHABET S_1$ and $\ALPHABET S_2$ simply as $\ALPHABET S$ (note that this is inconsistent with the notation that we use in general!) and denote the payoff function by $u \colon \ALPHABET S × \ALPHABET S \to \reals$ where
+$$
+  u(s,t) = u_1(s,t) = u_2(t,s).
+$$
+
+Consider a symmetric mixed strategy $σ^*$, i.e., we have a large population where $σ^*(s)$ fraction of the population is of type $s$, $s \in \ALPHABET S$. 
+
+Now suppose a fraction $ε$ of the population **mutates** and starts playing another strategy $σ$. Thus, the new state of the population is 
+$$
+  \bar σ_{ε} = (1-ε) σ^* + ε σ
+$$
+
+Then, the average payoff of a **normal** player (i.e., the player belonging to the unmutated population) is
+$$\def\1{\textcolor{red}{σ^*}}
+  U(\1, \bar σ_{ε}) = (1-ε) U(\1, σ^*) + ε U(\1, σ).
+$$
+Similarly, the average payoff of a **mutated** player is 
+$$\def\1{\textcolor{red}{σ}}
+  U(\1, \bar σ_{ε}) = (1-ε) U(\1, σ^*) + ε U(\1, σ).
+$$
+
+:::{#def-ESS}
+A population state $σ^*$ is said to be **evolutionarily stable strategy (ESS)** if for all mutations $σ \in Δ(\ALPHABET S)$, $σ \neq σ^*$, there exists a $ε_\circ = ε_\circ(α) > 0$ such that for all $ε \in (0, ε_\circ)$ and $\bar σ_{ε} = (1 -ε) σ^* + ε σ$, we have
+$$
+  U(σ^*, \bar σ_{ε}) > U (σ, \bar σ_{ε}).
+$$
+i.e.,
+\begin{equation}\label{eq:ESS}
+  (1-ε)U(σ^*, σ^*) + ε U(σ^*, σ) >
+  (1-ε)U(σ, σ^*) + ε U(σ, σ).
+\end{equation}
+:::
+
+## Relationship between NE and ESS
+
+If we take the limit as $ε \to 0$ in the definition of ESS, we get that an ESS has be a symmetric NE. Thus, **all ESS are NE**. We now present an example to show that **not all NE are ESS.**
+
+Consider the variation of Hawk Dove shown below.
+
+```{julia}
+game(["D", "H"], ["D", "H"], [4 2; 2 2], [4 2; 2 2], caption="A variation of the Hawk-Dove game")
+```
+
+This game has two pure strategy NE: $(\mathsf{D}, \mathsf{D})$ and $(\mathsf{H}, \mathsf{H})$. We now check if each of these is ESS.
+
+- Consider the NE $(\mathsf{D}, \mathsf{D})$, i.e., $σ^* = (1,0)$. Consider a mutation $σ = (p, 1-p)$, where $p < 1$. Then,
+  \begin{align*}
+    U(σ^*, σ^*) &= 4  & U(σ^*, σ) &= 4p + 2(1-p) = 2p + 2 \\
+    U(σ, σ^*) &= 2p + 2  & U(σ, σ) &= 4p^2 + 2(1-p^2) = 2p^2 + 2 
+  \end{align*}
+  Therefore,
+  $$
+    U(σ^*, σ_{ε}) = (1-ε)4 + ε(2p + 2) = 4 - 2 ε(1-p)
+  $$
+  and
+  $$
+    U(σ, σ_{ε}) = (1-ε)(2p+2) + ε(2p^2 + 2) = (2p+2) - 2p ε(1-p).
+  $$
+  Consider
+  \begin{align*}
+    U(σ^*, σ_{ε}) - U(σ, σ_{ε}) 
+    &=
+    4 - 2 ε(1-p) - (2p+2) + 2p ε(1-p) \\
+    &= 
+    2(1 - p - ε(1-p)^2) \\
+    &= 2(1-p)(1 - ε(1-p))
+  \end{align*}
+  Thus, for any $p \in [0, 1)$ (note that $p=1$ is ruled out because the mutation cannot be the same as the normal population), and any $ε \in (0, 1)$, we have that 
+  $$
+    U(σ^*, σ_{ε}) - U(σ, σ_{ε}) > 0.
+  $$
+  So, **$(\mathsf{D}, \mathsf{D})$ is an ESS.**
+
+- Consider the NE $(\mathsf{H}, \mathsf{H})$, i.e., $σ^* = (0, 1)$. Consider a mutation $(p, 1-p)$, where $p > 0$. Then,
+  \begin{align*}
+    U(σ^*, σ^*) &= 2  & U(σ^*, σ) &= 2 \\
+    U(σ, σ^*) &= 2  & U(σ, σ) &= 4p^2 + 2(1-p^2) = 2p^2 + 2 
+  \end{align*}
+  Therefore,
+  $$
+    U(σ^*, σ_{ε}) = (1-ε)2 + ε2 = 2
+  $$
+  and
+  $$
+    U(σ, σ_{ε}) = (1-ε)2 + ε(2p^2 + 2) = 2 - 2 ε p^2
+  $$
+  Consider
+  $$
+    U(σ^*, σ_{ε}) - U(σ, σ_{ε}) 
+    = 2 - 2 + 2 ε p^2 = 2 ε p^2
+  $$
+  which is strictly positive for any $p \in (0, 1]$ (note that $p = 0$ is ruled out because the mutation cannot be the same as the normal population) and $ε > 0$, we have
+  $$
+    U(σ^*, σ_{ε}) - U(σ, σ_{ε}) > 0.
+  $$
+  So, **$(\mathsf{H}, \mathsf{H})$ is not an ESS.**
+
+## Necessary and sufficient conditions for ESS
+
+:::{#thm-ESS}
+A strategy $σ^*$ is ESS [if and only if]{.text-danger} for every $σ \neq σ^*$ one of the following conditions is true:
+
+1. $U(σ^*, σ^*) > U(σ, σ^*)$
+
+    [That is, if a mutation deviates from $σ^*$ it will lose in its encounters with the normal population]{.text-primary}
+
+2. $U(σ^*, σ^*) = U(σ, σ^*)$ and $U(σ^*, σ) > U(σ,σ)$.
+
+    [That is, if the payoff that a mutation receives from encountering the normal population is equal to the payoff that a normal indvidual receives from encountering the normal population, that mutation will receive a smaller payer if it encounters the same mutation than a normal individual will receive in the encounter]{.text-primary}
+:::
+
+:::{.callout-note}
+#### Proof
+
+- **ESS implies the two conditions:** Let $σ^*$ be an ESS. As argued earlier, this implies that $σ^*$ is also a NE. Thus,
+  $$
+    U(σ^*, σ^*) \ge U(σ, σ^*), \quad \forall σ \in Δ(\ALPHABET S).
+  $$
+  We prove the result by contradiction. Suppose that neither of the two conditions hold. Then, there must exist an $σ \neq σ^*$ such that
+  $$
+    U(σ^*, σ^*) = U(σ, σ^*) 
+    \quad\text{and}\quad
+    U(σ^*, σ) \le U(σ, σ).
+  $$
+  This implies that for any $ε \in (0,1)$
+  $$
+    (1-ε)U(σ^*, σ^*) + ε U(σ^*, σ) \le 
+    (1-ε)U(σ, σ^*) + ε U(σ, σ)
+  $$
+  which contradicts the fact that $σ^*$ is ESS.
+
+- **The two conditions imply ESS:** Suppose a mutation $σ$ satisfies condition 1. Let $D = U(σ^*, σ^*) - U(σ, σ^*)$ and 
+  $$
+    M = \max_{s,t} U(s,t) - \min_{s,t} u(s,t).
+  $$
+  Moreover, for any $ε \in (0,1)$, define $\bar σ_{ε} = (1-ε) σ^* + ε σ$. Then,
+  \begin{align*}
+    U(σ^*, \bar σ_{ε}) - U(σ, \bar σ_{ε}) &=
+    (1-ε) \bigl[ U(σ^*, σ^*) - U(σ, σ^*) \bigr]
+    +
+    ε \bigl[ U(σ^*, σ) - U(σ, σ) \bigr]
+    \\
+    & \ge
+    (1-ε) D - ε M 
+  \end{align*}
+  which is positive for $ε < D/(D+M)$. 
+
+  Now suppose a mutation statisfied condition 2. Then,
+  \begin{align*}
+    U(σ^*, \bar σ_{ε}) - U(σ, \bar σ_{ε}) &=
+    (1-ε) \underbrace{\bigl[ U(σ^*, σ^*) - U(σ, σ^*) \bigr]}_{=0}
+    +
+    ε \underbrace{\bigl[ U(σ^*, σ) - U(σ, σ) \bigr]}_{> 0}
+    \\
+    &> 0, \quad \forall ε \in (0,1).
+ \end{align*}
+
+ Since every mutation must satisfy either condition 1 or 2, we have that the strategy $σ^*$ is ESS. 
+:::
+
+Let's revisit the modified Hawk Dove game shown below.
+
+```{julia}
+game(["D", "H"], ["D", "H"], [4 2; 8 1], [4 8; 2 1], caption="A variation of the Hawk-Dove game")
+```
+
+We can verify that the unique NE is $σ^* = (\tfrac 15, \tfrac 45)$. We now check if this is ESS.
+
+Consider a mutation $σ = (p, 1-p)$. We verify the two sufficient and necessary conditions of @thm-ESS separately.
+
+- **Check condition 1:** Since $σ^*$ is a NE with support $\{\mathsf{H}, \mathsf{D}\}$, from irrelevance principle we must have
+  $$
+    U(\mathsf{H}, σ^*) = U(\mathsf{D}, σ^*).
+  $$
+  This means that for any mixed strategy $σ$, we will have
+  $$
+    U(σ, σ^*) = U(σ^*, σ^*).
+  $$
+  So, condition 1 is never satisfied.
+
+- **Check condition 2:** Since $U(σ, σ^*) = U(σ^*, σ^*)$, condition 2 is satisfied if $U(σ^*, σ) > U(σ, σ)$. 
+  Observe that
+  $$
+    U(σ^*, σ) = \frac{4p}{5} + \frac{2(1-p)}{5} + \frac{32p}{5} + \frac{4(1-p)}{5}
+    = \frac{6}{5} + 6p
+  $$
+  and 
+  $$
+    U(σ, σ) = 4p^2 + 2p(1-p) + 8(1-p)p + (1-p)^2
+    = 1 + 8p - 5p^2
+    .
+  $$
+  Thus,
+  $$
+    U(σ^*, σ) - U(σ,σ) = \frac{1}{5} - 2p + 5p^2
+    = \frac{(1-5p)^2}{5} 
+  $$
+  which is non-negative for all $p \neq \tfrac 15$ (i.e., all $σ \neq σ^*$). Thus, condition 2 holds and therefore $σ^*$ is ESS.
