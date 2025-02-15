@@ -215,13 +215,19 @@ A strategy $σ^*$ is ESS [if and only if]{.text-danger} for every $σ \neq σ^*$
  Since every mutation must satisfy either condition 1 or 2, we have that the strategy $σ^*$ is ESS. 
 :::
 
-Let's revisit the modified Hawk Dove game shown below.
+
+:::{#exm-modified-hawk-dove}
+Consider the modified Hawk Dove game shown below.
 
 ```{julia}
 game(["D", "H"], ["D", "H"], [4 2; 8 1], [4 8; 2 1], caption="A variation of the Hawk-Dove game")
 ```
 
-We can verify that the unique NE is $σ^* = (\tfrac 15, \tfrac 45)$. We now check if this is ESS.
+We can verify that the unique NE is $σ^* = (\tfrac 15, \tfrac 45)$. Is this an ESS?
+:::
+
+:::{.callout-note}
+#### Solution
 
 Consider a mutation $σ = (p, 1-p)$. We verify the two sufficient and necessary conditions of @thm-ESS separately.
 
@@ -253,3 +259,153 @@ Consider a mutation $σ = (p, 1-p)$. We verify the two sufficient and necessary 
     = \frac{(1-5p)^2}{5} 
   $$
   which is non-negative for all $p \neq \tfrac 15$ (i.e., all $σ \neq σ^*$). Thus, condition 2 holds and therefore $σ^*$ is ESS.
+:::
+
+## ESS for arbitrary two player $2 × 2$ symmeric games
+
+Consider a symmetric two player $2 × 2$ game.
+
+```{julia}
+game(["1", "2"], ["1", "2"], ["a" "b"; "c" "d"], ["a" "c"; "b" "d"])
+```
+
+A symmetric mixed strategy $(σ^*, σ^*)$ with $σ^* = (p, 1-p)$ is a NE if and only if
+$$
+  a p + b(1-p) = c p + d (1-p) 
+  \implies p = \frac{b - d}{(b+c) - (a+d)}.
+$$
+This is a valid probability distribution if either
+
+1. Both numerator and denominator are positive and numerator is less than the denominator
+
+2. Both numerator and denominator are negative and numerator is more than the denominator
+
+Note that there wil also be cases where $b = d$ or $a = c$ where there will be multiple equilibria. We do not consider these cases here.
+
+- **Case 1:** In this case, we have
+  
+  - numerator is positive, i.e., $b > d$
+  - denominator is positive, i.e., $b+c > a + d$
+  - numerator is less than denominator, i.e., $c > a$.
+
+  Thus, 
+  $$
+  \bbox[5pt,border: 1px solid]{
+    b > d \quad\text{and}\quad c > a
+  }
+  $$
+
+- **Case 2:** In this case, we have
+  
+  - numerator is negative, i.e., $b < d$
+  - denominator is negative, i.e., $b+c < a + d$
+  - numerator is more than denominator, i.e., $c < a$.
+
+  Thus, 
+  $$
+  \bbox[5pt,border: 1px solid]{
+    b < d \quad\text{and}\quad c < a
+  }
+  $$
+
+**When is this mixed strategy NE an ESS?**
+
+Since $p \in (0,1)$, for any other $σ = (q, 1-q)$, we will have $U(σ, σ^*) = U(σ^*, σ^*)$. So, we only need to check condition 2 of @thm-ESS. For that mater, consider
+\begin{align*}
+  U(σ, σ^*) - U(σ, σ) &=
+  (p - q) \big[ qa + (1-q) b \bigr] - (p - q) \bigl[ qc + (1-q) d \bigr]
+  \\
+  &= (p -q) \bigl[ b - d - q( (b+c) - (a+d) ) \bigr] \\
+  &= (p - q)^2 ( (b+c) - (a+d) )
+\end{align*}
+where the last equality uses the fact that $b-d = p( (b+c) - (a+d) )$. 
+
+Thus, in case 1 we have $U(σ, σ^*) - U(σ, σ)$ and therefore $σ^*$ is an ESS while in case 2 we have $U(σ, σ^*) - U(σ, σ) < 0$  and therefore $σ^*$ is not an ESS. 
+
+:::{exm-hawk-dove-general}
+#### General Hawk Dove game
+
+Consider a general Hawk Dove game
+
+```{julia}
+game(["D", "H"], ["D", "H"], ["(v - c)//2" "v"; "0" "v//2"], ["(v-c)//2" "0"; "v" "v//2"], caption="A general Hawk-Dove game")
+```
+
+where
+
+- $v$ denotes the value of the resource
+- $C$ denotes the value lost due to fighting.
+
+Characterize all NE of this game and verify if the symmetric NE are ESS.
+:::
+
+:::{.callout-note}
+#### Solution
+
+We have the following cases.
+
+- If $\tfrac 12 (v-c) > 0$, then $(\mathsf{H}, \mathsf{H})$ is a NE in strictly dominated strategies (and also an ESS)
+
+- If $\tfrac 12 (v-c) = 0$, then $(\mathsf{H}, \mathsf{H})$ is a NE in weakly dominated strategies (and not an ESS)
+
+- If $\tfrac 12 (v-c) < 0$, then $(\mathsf{H}, \mathsf{D})$ and $(\mathsf{D}, \mathsf{H})$ are NE (but they are not symmetric). The symmetric NE in mixed strategies is $σ^* = (p, 1-p)$ where
+  $$
+    p = \frac{v - \tfrac 12 v}{v - (v - \frac{1}{2}c)} = \frac{v}{c}.
+  $$
+  Since in this case $v > \frac 12 v$ and $0 < \frac 12(v-c)$, we are in case 1 of the general setting and therefore this NE is ESS.
+:::
+
+:::{exm-MAC}
+#### Medium Access Control
+
+Consider a Medium Access Control game
+
+```{julia}
+game(["T", "D"], ["T", "D"], ["-c" "v-c"; "0" "0"], ["-c" "0"; "v-c" "0"], caption="Medium access control game")
+```
+
+where
+
+- $v$ denotes the value of communication
+- $c$ denotes the cost of communication
+
+Assuming $v > c$, characterize all NE of this game and verify if the symmetric NE are ESS.
+:::
+
+:::{.callout-note}
+#### Solution
+
+In this case $(\mathsf{T}, \mathsf{D})$ and $(\mathsf{D}, \mathsf{T})$ are pure strategy NE of the game, but they are not symmetric. A symmetric mixed strategy of the form $(σ^*, σ^*)$ with $σ^* = (p, 1-p)$ is mixed strategy NE where
+$$
+  -pc + (v-c)(1-p) = 0 \implies p = 1 - \frac{c}{v}.
+$$
+Since, $v - c > 0$ and $0 > -c$, we are in case 1 of the general setting and therefore $σ^*$ is an ESS.
+:::
+
+:::{#exm-MAC-variation}
+#### Medium Access Control with lost opportiunity cost
+Consider a Medium Access Control game
+
+```{julia}
+game(["T", "D"], ["T", "D"], ["-c" "v-c"; "0" "-d"], ["-c" "0"; "v-c" "-d"], caption="Medium access control game with lost opportunity cost")
+```
+
+where
+
+- $v$ denotes the value of communication
+- $c$ denotes the cost of communication
+- $d$ denotes the cost of wasted channel
+
+Assuming $v > c$, characterize all NE of this game and verify if the symmetric NE are ESS.
+:::
+:::{.callout-note}
+#### Solution
+
+In this case $(\mathsf{T}, \mathsf{D})$ and $(\mathsf{D}, \mathsf{T})$ are pure strategy NE of the game, but they are not symmetric. A symmetric mixed strategy of the form $(σ^*, σ^*)$ with $σ^* = (p, 1-p)$ is mixed strategy NE where
+$$
+  -pc + (v-c)(1-p) = -d(1-p) \implies p = 1 - \frac{c}{v+d}.
+$$
+[Note that this shows that adding a lost opportunity cost is equivalent to increasing the value of communication]{.text-muted}
+
+Since, $v - c > 0 > -d$ and $0 > -c$, we are in case 1 of the general setting and therefore $σ^*$ is an ESS.
+:::
