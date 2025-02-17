@@ -409,3 +409,127 @@ $$
 
 Since, $v - c > 0 > -d$ and $0 > -c$, we are in case 1 of the general setting and therefore $σ^*$ is an ESS.
 :::
+
+## A brief overview of evolutionary game theory
+
+So far we have discussed evolutionarily stable equilibrium. In this section we discuss evolutionary game theory which rovides **revision protocols** that explain how a population state evolves over time to reach an ESS. 
+
+Consider a two player symmetric game with finite strategy space. let $\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, m\}$ and define
+$$
+  Δ^m = \biggl\{ (p_1, \dots, p_m) \in \reals^{m}_{\ge 0} : \sum_{i=1}^m p_i = 1 \biggr\}.
+$$
+For the ease of notation, we will use $p = (p_1, \dots, p_m)$ (instead of $σ$ used earlier) to denote a mixed strategy. 
+
+The simplest form of revision protocol is called **replicator dynamics**. Suppose there is a large population of $N$ agents playing strategy $p$. Let $n_i = p_i N$ denote the number of agents playing pure strategy $i$. Suppose $r_i$ denotes the rate of change of $n_i$, i.e.,
+$$
+  \dot n_i = r_i n_i.
+$$
+This implies that
+$$
+  \dot N = \sum_{i=1}^m \dot n_i 
+  = \sum_{i=1}^m r_i n_i = \bar r N
+$$
+where $\bar r = (r_1 p_1 + \dots + r_m p_m)$. 
+
+Recall that $p_i = n_i/N$. Therefore,
+$$
+\dot p_i = \frac{\dot n_i N - n_i \dot N}{N^2}
+= \frac{r_i n_i N - n_i \bar r N}{N^2} = p_i(r_i - \bar r).
+$$
+Thus, the differential equation
+$$
+  \bbox[5pt,border: 1px solid]{
+    \dot p_i = p_i (r_i - \bar r)
+  }
+$$
+tells us how the population state changes over time.
+
+In general the rate $r_i$ of change of population $i$ is some function of the population state. Motivated by the theory of evolution, the simplest assumption is that the rate of change equals the fitness function, i.e., 
+$$
+  r_i = U(i, p).
+$$
+This means that
+$$
+  \bar r = \sum_{i=1}^m r_i p_i = \sum_{i=1}^m U(i,p) p_i = U(p, p).
+$$
+Substituting that back in the above differential equation we get
+$$
+  \bbox[5pt,border: 1px solid]{
+    \dot p_i = p_i \bigl[ U(i,p)  - U(p,p) \bigr],
+    \quad i \in \{1, \dots, m\}
+  }
+$$
+This differential equation is called **replicator dynamics**.
+
+An equilibrium point of this dynamics is one where $\dot p_i = 0$ for all $i$. This means that for all $i$ either $p_i = 0$ or $U(i,p) = U(p,p)$. **Thus, any NE of the game is an equilibrium point of the replicator dynamics.** The converse is not true. For example, every pure strategy $p$ satisfies the replicator dynamics. 
+
+## Stability of equilibrium points of replicator dynamics
+
+The next question is whether the equilibrium points of replicator dynamics are stable. Recall that there are three common notions of stability of differential equations. Consider the differential equation
+$$
+  \dot x = f(x)
+$$ and let $x_e$ be an equilibrium point (i.e., $f(x_e) = 0$).
+
+- **Lyapunov stability:**  if the intiail state lies in a small neighborhood of $x_e$, then the trajectory of the differential equation remains in the neighborhood.
+
+- **Local asymptotic stability:** If the initial state lies in a neighborhood of $x_e$, then the trajectory of the trajectory of the differential equation converges to $x_e$.
+
+- **Global asymptotic stability:** For any initial state, the trajectory of the differential equation converges to $x_e$.
+
+The main result of replicator dynamics is the following.
+
+:::{#thm-replicator}
+
+1. An ESS $p^*$ is locally asymptotically stable equilibrium point of the replicator dyanmics.
+
+2. An ESS $p^*$ in the interior of $Δ^m$ is a globally asymptotically stable equilibrium point of the replicator dynamics.
+:::
+
+:::{.callout-note}
+#### Proof
+The proof uses $V(p) = \prod_{i=1}^m p_i^{p_i^*}$ as a Lyapunov function. See @Hofbauer1979 for details.
+:::
+
+## Other evolutionary dynamics
+
+Replicator dynamics are not ideal because they have the following property: if $p_i = 0$ at some point then $p_i = 0$ for all times in the future. To avoid this limitation, various other forms of evolutionary dynamics have been proposed in the literature. We list a few of them here:
+
+- **Best response dynamics**
+  $$ \dot p_i = \BR_i(p) - p_i, \quad i \in \{1, \dots, m\}. $$
+  Since best response is not unique, this gives us a differential inclusion rather than a differential equation.
+
+- **Smoothed best response dynamics**
+  $$ \dot p_i = \sigma_i(p) - p_i, \quad i \in \{1, \dots, m\} $$
+  where
+  $$
+    σ_i(p) = \frac{\exp(η U(i,p))}{\sum_{j=1}^m \exp(η U(j,p))}
+  $$
+
+- **Brown-von Neumann-Nash (BNN) dynamics:**
+  $$
+    \dot p_i = \hat U_i(p) - p_i \sum_{j=1}^m \hat U_j(p),
+    \quad i \in \{1, \dots, m\}
+  $$
+  where
+  $$
+    \hat U_i(p) = \max\{ U(i,p) - U(p,p), 0 \}
+  $$
+
+There are various stability results for these dynamics. These results rely on the notion of **negative definite games** and **negative semi-definite games**. 
+
+## Negative definite and semidefinite games
+
+To be written
+
+## Evolutionary dynamics and negative definite/semi-definite games
+
+The main results for replicator dynamics is that for negative definite games (which have a unique NE that is also an ESS), the unique NE is globally asymptotically stable equilibrium point of replicator dynamics.
+
+The big advantage of the modified dynamics is that for negative semi-definite games, the convex set of NE is globally asymptotically stable for BR and BNN dynamics. 
+
+The smoothed BR dynamics have the advantage that they are always globally asymptotically stable but their equilibrium points are not NE but something called perturbed NE. 
+
+[Add example]
+
+See the book @Sandholm2010 for more details on evolutionary dynamics. 
+  
