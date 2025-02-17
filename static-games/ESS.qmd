@@ -77,7 +77,7 @@ $$\def\1{\textcolor{red}{σ}}
 $$
 
 :::{#def-ESS}
-A population state $σ^*$ is said to be **evolutionarily stable strategy (ESS)** if for all mutations $σ \in Δ(\ALPHABET S)$, $σ \neq σ^*$, there exists a $ε_\circ = ε_\circ(α) > 0$ such that for all $ε \in (0, ε_\circ)$ and $\bar σ_{ε} = (1 -ε) σ^* + ε σ$, we have
+A population state $σ^*$ is said to be **evolutionarily stable strategy (ESS)** if for all mutations $σ \in Δ(\ALPHABET S)$, $σ \neq σ^*$, there exists a $ε_\circ = ε_\circ(σ) > 0$ such that for all $ε \in (0, ε_\circ)$ and $\bar σ_{ε} = (1 -ε) σ^* + ε σ$, we have
 $$
   U(σ^*, \bar σ_{ε}) > U (σ, \bar σ_{ε}).
 $$
@@ -144,11 +144,11 @@ This game has two pure strategy NE: $(\mathsf{D}, \mathsf{D})$ and $(\mathsf{H},
   Consider
   $$
     U(σ^*, σ_{ε}) - U(σ, σ_{ε}) 
-    = 2 - 2 + 2 ε p^2 = 2 ε p^2
+    = 2 - 2 - 2 ε p^2 = -2 ε p^2
   $$
   which is strictly positive for any $p \in (0, 1]$ (note that $p = 0$ is ruled out because the mutation cannot be the same as the normal population) and $ε > 0$, we have
   $$
-    U(σ^*, σ_{ε}) - U(σ, σ_{ε}) > 0.
+    U(σ^*, σ_{ε}) - U(σ, σ_{ε}) < 0.
   $$
   So, **$(\mathsf{H}, \mathsf{H})$ is not an ESS.**
 
@@ -188,7 +188,7 @@ A strategy $σ^*$ is ESS [if and only if]{.text-danger} for every $σ \neq σ^*$
 
 - **The two conditions imply ESS:** Suppose a mutation $σ$ satisfies condition 1. Let $D = U(σ^*, σ^*) - U(σ, σ^*)$ and 
   $$
-    M = \max_{s,t} U(s,t) - \min_{s,t} u(s,t).
+    M = \max_{σ,τ} U(σ,τ) - \min_{σ,τ} u(σ,τ).
   $$
   Moreover, for any $ε \in (0,1)$, define $\bar σ_{ε} = (1-ε) σ^* + ε σ$. Then,
   \begin{align*}
@@ -334,7 +334,7 @@ game(["D", "H"], ["D", "H"], ["(v - c)//2" "v"; "0" "v//2"], ["(v-c)//2" "0"; "v
 where
 
 - $v$ denotes the value of the resource
-- $C$ denotes the value lost due to fighting.
+- $c$ denotes the value lost due to fighting.
 
 Characterize all NE of this game and verify if the symmetric NE are ESS.
 :::
