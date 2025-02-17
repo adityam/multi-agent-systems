@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-02-15">
+<meta name="dcterms.date" content="2025-02-17">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>6&nbsp; Evolutionarily stable strategies – Multi-Agent Systems</title>
@@ -168,10 +168,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[6]{.chapter-number}&nbsp; [Evolutionarily stable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-02-15">
-<meta name="citation_cover_date" content="2025-02-15">
+<meta name="citation_publication_date" content="2025-02-17">
+<meta name="citation_cover_date" content="2025-02-17">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-15">
+<meta name="citation_online_date" content="2025-02-17">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/ESS.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -351,6 +351,11 @@ window.Quarto = {
   <li><a href="#relationship-between-ne-and-ess" id="toc-relationship-between-ne-and-ess" class="nav-link" data-scroll-target="#relationship-between-ne-and-ess"><span class="header-section-number">6.2</span> Relationship between NE and ESS</a></li>
   <li><a href="#necessary-and-sufficient-conditions-for-ess" id="toc-necessary-and-sufficient-conditions-for-ess" class="nav-link" data-scroll-target="#necessary-and-sufficient-conditions-for-ess"><span class="header-section-number">6.3</span> Necessary and sufficient conditions for ESS</a></li>
   <li><a href="#ess-for-arbitrary-two-player-2-2-symmeric-games" id="toc-ess-for-arbitrary-two-player-2-2-symmeric-games" class="nav-link" data-scroll-target="#ess-for-arbitrary-two-player-2-2-symmeric-games"><span class="header-section-number">6.4</span> ESS for arbitrary two player <span class="math inline">\(2 × 2\)</span> symmeric games</a></li>
+  <li><a href="#a-brief-overview-of-evolutionary-game-theory" id="toc-a-brief-overview-of-evolutionary-game-theory" class="nav-link" data-scroll-target="#a-brief-overview-of-evolutionary-game-theory"><span class="header-section-number">6.5</span> A brief overview of evolutionary game theory</a></li>
+  <li><a href="#stability-of-equilibrium-points-of-replicator-dynamics" id="toc-stability-of-equilibrium-points-of-replicator-dynamics" class="nav-link" data-scroll-target="#stability-of-equilibrium-points-of-replicator-dynamics"><span class="header-section-number">6.6</span> Stability of equilibrium points of replicator dynamics</a></li>
+  <li><a href="#other-evolutionary-dynamics" id="toc-other-evolutionary-dynamics" class="nav-link" data-scroll-target="#other-evolutionary-dynamics"><span class="header-section-number">6.7</span> Other evolutionary dynamics</a></li>
+  <li><a href="#negative-definite-and-semidefinite-games" id="toc-negative-definite-and-semidefinite-games" class="nav-link" data-scroll-target="#negative-definite-and-semidefinite-games"><span class="header-section-number">6.8</span> Negative definite and semidefinite games</a></li>
+  <li><a href="#evolutionary-dynamics-and-negative-definitesemi-definite-games" id="toc-evolutionary-dynamics-and-negative-definitesemi-definite-games" class="nav-link" data-scroll-target="#evolutionary-dynamics-and-negative-definitesemi-definite-games"><span class="header-section-number">6.9</span> Evolutionary dynamics and negative definite/semi-definite games</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/ESS.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -385,7 +390,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 15, 2025</p>
+      <p class="date">February 17, 2025</p>
     </div>
   </div>
   
@@ -721,6 +726,99 @@ Solution
 <p>Since, <span class="math inline">\(v - c &gt; 0 &gt; -d\)</span> and <span class="math inline">\(0 &gt; -c\)</span>, we are in case 1 of the general setting and therefore <span class="math inline">\(σ^*\)</span> is an ESS.</p>
 </div>
 </div>
+</section>
+<section id="a-brief-overview-of-evolutionary-game-theory" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="a-brief-overview-of-evolutionary-game-theory"><span class="header-section-number">6.5</span> A brief overview of evolutionary game theory</h2>
+<p>So far we have discussed evolutionarily stable equilibrium. In this section we discuss evolutionary game theory which rovides <strong>revision protocols</strong> that explain how a population state evolves over time to reach an ESS.</p>
+<p>Consider a two player symmetric game with finite strategy space. let <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = \{1, \dots, m\}\)</span> and define <span class="math display">\[
+  Δ^m = \biggl\{ (p_1, \dots, p_m) \in \reals^{m}_{\ge 0} : \sum_{i=1}^m p_i = 1 \biggr\}.
+\]</span> For the ease of notation, we will use <span class="math inline">\(p = (p_1, \dots, p_m)\)</span> (instead of <span class="math inline">\(σ\)</span> used earlier) to denote a mixed strategy.</p>
+<p>The simplest form of revision protocol is called <strong>replicator dynamics</strong>. Suppose there is a large population of <span class="math inline">\(N\)</span> agents playing strategy <span class="math inline">\(p\)</span>. Let <span class="math inline">\(n_i = p_i N\)</span> denote the number of agents playing pure strategy <span class="math inline">\(i\)</span>. Suppose <span class="math inline">\(r_i\)</span> denotes the rate of change of <span class="math inline">\(n_i\)</span>, i.e., <span class="math display">\[
+  \dot n_i = r_i n_i.
+\]</span> This implies that <span class="math display">\[
+  \dot N = \sum_{i=1}^m \dot n_i
+  = \sum_{i=1}^m r_i n_i = \bar r N
+\]</span> where <span class="math inline">\(\bar r = (r_1 p_1 + \dots + r_m p_m)\)</span>.</p>
+<p>Recall that <span class="math inline">\(p_i = n_i/N\)</span>. Therefore, <span class="math display">\[
+\dot p_i = \frac{\dot n_i N - n_i \dot N}{N^2}
+= \frac{r_i n_i N - n_i \bar r N}{N^2} = p_i(r_i - \bar r).
+\]</span> Thus, the differential equation <span class="math display">\[
+  \bbox[5pt,border: 1px solid]{
+    \dot p_i = p_i (r_i - \bar r)
+  }
+\]</span> tells us how the population state changes over time.</p>
+<p>In general the rate <span class="math inline">\(r_i\)</span> of change of population <span class="math inline">\(i\)</span> is some function of the population state. Motivated by the theory of evolution, the simplest assumption is that the rate of change equals the fitness function, i.e., <span class="math display">\[
+  r_i = U(i, p).
+\]</span> This means that <span class="math display">\[
+  \bar r = \sum_{i=1}^m r_i p_i = \sum_{i=1}^m U(i,p) p_i = U(p, p).
+\]</span> Substituting that back in the above differential equation we get <span class="math display">\[
+  \bbox[5pt,border: 1px solid]{
+    \dot p_i = p_i \bigl[ U(i,p)  - U(p,p) \bigr],
+    \quad i \in \{1, \dots, m\}
+  }
+\]</span> This differential equation is called <strong>replicator dynamics</strong>.</p>
+<p>An equilibrium point of this dynamics is one where <span class="math inline">\(\dot p_i = 0\)</span> for all <span class="math inline">\(i\)</span>. This means that for all <span class="math inline">\(i\)</span> either <span class="math inline">\(p_i = 0\)</span> or <span class="math inline">\(U(i,p) = U(p,p)\)</span>. <strong>Thus, any NE of the game is an equilibrium point of the replicator dynamics.</strong> The converse is not true. For example, every pure strategy <span class="math inline">\(p\)</span> satisfies the replicator dynamics.</p>
+</section>
+<section id="stability-of-equilibrium-points-of-replicator-dynamics" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="stability-of-equilibrium-points-of-replicator-dynamics"><span class="header-section-number">6.6</span> Stability of equilibrium points of replicator dynamics</h2>
+<p>The next question is whether the equilibrium points of replicator dynamics are stable. Recall that there are three common notions of stability of differential equations. Consider the differential equation <span class="math display">\[
+  \dot x = f(x)
+\]</span> and let <span class="math inline">\(x_e\)</span> be an equilibrium point (i.e., <span class="math inline">\(f(x_e) = 0\)</span>).</p>
+<ul>
+<li><p><strong>Lyapunov stability:</strong> if the intiail state lies in a small neighborhood of <span class="math inline">\(x_e\)</span>, then the trajectory of the differential equation remains in the neighborhood.</p></li>
+<li><p><strong>Local asymptotic stability:</strong> If the initial state lies in a neighborhood of <span class="math inline">\(x_e\)</span>, then the trajectory of the trajectory of the differential equation converges to <span class="math inline">\(x_e\)</span>.</p></li>
+<li><p><strong>Global asymptotic stability:</strong> For any initial state, the trajectory of the differential equation converges to <span class="math inline">\(x_e\)</span>.</p></li>
+</ul>
+<p>The main result of replicator dynamics is the following.</p>
+<div id="thm-replicator" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.2</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>An ESS <span class="math inline">\(p^*\)</span> is locally asymptotically stable equilibrium point of the replicator dyanmics.</p></li>
+<li><p>An ESS <span class="math inline">\(p^*\)</span> in the interior of <span class="math inline">\(Δ^m\)</span> is a globally asymptotically stable equilibrium point of the replicator dynamics.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The proof uses <span class="math inline">\(V(p) = \prod_{i=1}^m p_i^{p_i^*}\)</span> as a Lyapunov function. See <span class="citation" data-cites="Hofbauer1979">(<a href="../references.html#ref-Hofbauer1979" role="doc-biblioref"><strong>Hofbauer1979?</strong></a>)</span> for details.</p>
+</div>
+</div>
+</section>
+<section id="other-evolutionary-dynamics" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="other-evolutionary-dynamics"><span class="header-section-number">6.7</span> Other evolutionary dynamics</h2>
+<p>Replicator dynamics are not ideal because they have the following property: if <span class="math inline">\(p_i = 0\)</span> at some point then <span class="math inline">\(p_i = 0\)</span> for all times in the future. To avoid this limitation, various other forms of evolutionary dynamics have been proposed in the literature. We list a few of them here:</p>
+<ul>
+<li><p><strong>Best response dynamics</strong> <span class="math display">\[ \dot p_i = \BR_i(p) - p_i, \quad i \in \{1, \dots, m\}. \]</span> Since best response is not unique, this gives us a differential inclusion rather than a differential equation.</p></li>
+<li><p><strong>Smoothed best response dynamics</strong> <span class="math display">\[ \dot p_i = \sigma_i(p) - p_i, \quad i \in \{1, \dots, m\} \]</span> where <span class="math display">\[
+  σ_i(p) = \frac{\exp(η U(i,p))}{\sum_{j=1}^m \exp(η U(j,p))}
+\]</span></p></li>
+<li><p><strong>Brown-von Neumann-Nash (BNN) dynamics:</strong> <span class="math display">\[
+  \dot p_i = \hat U_i(p) - p_i \sum_{j=1}^m \hat U_j(p),
+  \quad i \in \{1, \dots, m\}
+\]</span> where <span class="math display">\[
+  \hat U_i(p) = \max\{ U(i,p) - U(p,p), 0 \}
+\]</span></p></li>
+</ul>
+<p>There are various stability results for these dynamics. These results rely on the notion of <strong>negative definite games</strong> and <strong>negative semi-definite games</strong>.</p>
+</section>
+<section id="negative-definite-and-semidefinite-games" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="negative-definite-and-semidefinite-games"><span class="header-section-number">6.8</span> Negative definite and semidefinite games</h2>
+<p>To be written</p>
+</section>
+<section id="evolutionary-dynamics-and-negative-definitesemi-definite-games" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="evolutionary-dynamics-and-negative-definitesemi-definite-games"><span class="header-section-number">6.9</span> Evolutionary dynamics and negative definite/semi-definite games</h2>
+<p>The main results for replicator dynamics is that for negative definite games (which have a unique NE that is also an ESS), the unique NE is globally asymptotically stable equilibrium point of replicator dynamics.</p>
+<p>The big advantage of the modified dynamics is that for negative semi-definite games, the convex set of NE is globally asymptotically stable for BR and BNN dynamics.</p>
+<p>The smoothed BR dynamics have the advantage that they are always globally asymptotically stable but their equilibrium points are not NE but something called perturbed NE.</p>
+<p>[Add example]</p>
+<p>See the book <span class="citation" data-cites="Sandholm2010">Sandholm (<a href="../references.html#ref-Sandholm2010" role="doc-biblioref">2010</a>)</span> for more details on evolutionary dynamics.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
