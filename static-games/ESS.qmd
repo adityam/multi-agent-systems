@@ -20,7 +20,7 @@ To understand evolutionary stability, consider the variation of Hawk-Dove game s
 # Install packages
 
 # using Pkg; Pkg.activate(".")
-# for pkg in ["IJulia", "Revise", "Hyperscript"]
+# for pkg in ["IJulia", "Revise", "Hyperscript", "DifferentialEquations"]
 #    Pkg.add(pkg)
 # end
 # 
@@ -30,6 +30,13 @@ To understand evolutionary stability, consider the variation of Hawk-Dove game s
 # Conda.add("jupyter-cache")
 
 using Revise
+
+using Plots
+current_theme = :bright
+current_colors = theme_palette(current_theme)
+theme(current_theme)
+default(size=(600,300), linewidth=2, gridalpha=0.5, minorgridalpha=0.25)
+
 
 include("../julia/typeset-games.jl")
 ```
@@ -328,7 +335,7 @@ Thus, in case 1 we have $U(σ, σ^*) - U(σ, σ)$ and therefore $σ^*$ is an ESS
 Consider a general Hawk Dove game
 
 ```{julia}
-game(["D", "H"], ["D", "H"], ["(v - c)//2" "v"; "0" "v//2"], ["(v-c)//2" "0"; "v" "v//2"], caption="A general Hawk-Dove game")
+game(["D", "H"], ["D", "H"], ["(v-c)//2" "0"; "v" "v//2"], ["(v - c)//2" "v"; "0" "v//2"], caption="A general Hawk-Dove game")
 ```
 
 where
@@ -519,7 +526,72 @@ There are various stability results for these dynamics. These results rely on th
 
 ## Negative definite and semidefinite games
 
-To be written
+For the ease of notation, define a $m × m$ matrix $Q$ such that $Q_{ij} = u(i,j)$. Note that
+$$
+  U(i,p) = \sum_{j = 1}^m u(i,j) p_j = [Qp]_i
+$$
+and 
+$$
+  U(q,p) = \sum_{i=1}^m q_i U(i,p) = q^\TRANS Q p.
+$$
+With this notation, we have the following:
+
+- **NE** A strategy $p$ is a NE if for all $q \in Δ^m$, 
+  $$
+    p^\TRANS Q p \ge q^\TRANS Q p.
+  $$
+
+- **ESS:** A strategy $p$ is ESS if for all $q \in Δ^m$, $q \neq p$, either of the following hold:
+  
+  1. $p^\TRANS Q p > q^\TRANS Q p$
+  2. $p^\TRANS Q p = q^\TRANS Q p$ and $p^\TRANS Q q > q^\TRANS Q q$. 
+
+Define the set $\reals^m_0$ as $\{ q \in \reals^m : \sum_{i=1}^m q_i = 0 \}$. 
+We say that a (symmetric) game is **negative semidefinite** if
+$$
+  q^\TRANS Q q \le 0, \quad \forall q \in \reals^m_0.
+$$
+We say that the game is **negative definite** if the inequality is strict for all $q \neq 0$.
+
+Analogously the game is said to be **positive semidefinite** if
+$$
+  q^\TRANS Q q \ge 0, \quad \forall q \in \reals^m_0.
+$$
+We say that the game is **postiive definite** if the inequality is strict for all $q \neq 0$.
+
+Negative definite/semidefinite games have the following properties:
+
+1. A negative definite game has a unique NE (possibly at the boundary) which is also an ESS.
+
+2. The set of NE of a negative semdefinite game is a convex subset of $Δ^m$. These NE need not be ESS.
+
+:::{#exm-modified-RPS}
+#### A modefied version of rock paper scissors
+Consider a variation of rock paper scissors where
+$$
+  Q = \MATRIX{0 & -b & a \\ a & 0  & -b \\ -b & a & 0 },
+  \quad a, b > 0.
+$$
+The standard RPS is when $a = b$. In all cases, it is easy to verify that $p^* = (\tfrac 13, \tfrac 13, \tfrac 13)$ is the unique NE.
+
+Show the following:
+
+- If $0 < b < a$, then the game is negative definite.
+- If $0 < a < b$, then the game is positive definite.
+:::
+    
+:::{.callout-note}
+#### Proof
+Take a $q \in \reals^3_0$, i.e., $q = (q_1, q_2, q_3) such that $q_1 + q_2 + q_3 = 0$. Then,
+$$
+  q^\TRANS Q q = (a-b)[q_1q_2 + q_2 q_3 + q_3 q_1).
+$$
+Since $(q_1 + q_2)^2 = q_3^2$, we have that $q_1q_2 = (q_3^2 - q_1^2 - q_2^2)/2$. Symmetric expressions hold for $q_2q_3$ and $q_3q_1$. Substituting these in the above equation, we have
+$$
+  q^\TRANS Q q = \frac{(b-a)}{2}(q_1^2 + q_2^2 + q_3^2).
+$$
+Then the result follows from the definition of positive and negative definite games.
+:::
 
 ## Evolutionary dynamics and negative definite/semi-definite games
 
@@ -529,7 +601,143 @@ The big advantage of the modified dynamics is that for negative semi-definite ga
 
 The smoothed BR dynamics have the advantage that they are always globally asymptotically stable but their equilibrium points are not NE but something called perturbed NE. 
 
-[Add example]
-
 See the book @Sandholm2010 for more details on evolutionary dynamics. 
+
+The above results imply that for the modified version of rock paper scissors considered in @exm-modified-RPS, replicator dynamics will converge for games where $b < a$ but not when $b = a$ (in which case the NE is not an ESS). However, BR and BNN dynamics will converge even when $b = a$. The smoothed BR dynamics converge, but to a perturbed equilibrium point. We verify this numerically.
+
+```{julia}
+#| echo: true
+#| output: false
+
+using DifferentialEquations, Plots
+
+function replicator_dynamics!(dp, p, Q, t)
+    dp .= p .* ( Q*p .- p'*Q*p)
+end
+
+function BNN_dynamics!(dp, p, Q, t)
+    Û = max.(Q*p .- p'Q*p, 0.0)
+    dp .= Û - sum(Û) .* p
+end
+
+## Modified RPS game
+Q(a,b) = [0 -b a; a 0 -b; -b a 0]
+
+## Initial mixed strategy
+p0 = [0.3, 0.2, 0.5]
+```
+
+### Comparing replicator and BNN dynamics on a negative definite game {-}
+
+This corresponds to the case when $a > b$. In this case, we expect both dynamics to converge. The numerical solution is as expected.
+
+```{julia}
+#| echo: true
+replicator_trajectory = ODEProblem(replicator_dynamics!, p0, (0.0, 35), Q(2,1)) |> solve
+BNN_trajectory        = ODEProblem(BNN_dynamics!,        p0, (0.0, 35), Q(2,1)) |> solve
+
+plot(replicator_trajectory, title="Replicator Dynamics") |> display
+plot(BNN_trajectory,        title="BNN Dynamics")        |> display
+```
+
+### Comparing replicator and BNN dynamics on a negative semidefinite game {-}
+
+This corresponds to the case when $a = b$. In this case, we expect replicator dynamics not to converge but BNN to converge. 
+
+The numerical solution is as expected: replicator dynamics oscillates around the equilibrium point but BNN dynamics converge. However, the convergence is slow, so we have to solve the ODE for a longer time. I also used a more accurate ODE solver because the default solver was showing some numerical artifacts.
+
+```{julia}
+#| echo: true
+replicator_trajectory = ODEProblem(replicator_dynamics!, p0, (0.0, 75), Q(1,1)) |> solve
+BNN_trajectory        = ODEProblem(BNN_dynamics!,        p0, (0.0, 75), Q(1,1)) |> prob -> solve(prob, Vern9())
+
+plot(replicator_trajectory, title="Replicator Dynamics") |> display
+plot(BNN_trajectory,        title="BNN Dynamics")        |> display
+```
+
+### Comparing replicator and BNN dynamics on a positive definite game {-}
+
+This corresponds to the case when $a < b$. In this case, we don't expect either replicator dynamics or BNN to converge. The numerical solution shows that both the dynamics oscillate, but the behavior of replicator dynamics is a bit unexpected.
+
+
+```{julia}
+#| echo: true
+replicator_trajectory = ODEProblem(replicator_dynamics!, p0, (0.0, 35), Q(1,2)) |> solve
+BNN_trajectory        = ODEProblem(BNN_dynamics!,        p0, (0.0, 35), Q(1,2)) |> solve
+
+plot(replicator_trajectory, title="Replicator Dynamics") |> display
+plot(BNN_trajectory,        title="BNN Dynamics")        |> display
+```
+
+Note that in the replicator dynamics, the trajectory is oscillating very close to the boundary (because each complenent cyclically gets very close to 1, which corresponds to a corner of the simplex). We can observe this behavior more easily if we solve the ODE for a longer horizon.
+
+```{julia}
+#| echo: true
+replicator_trajectory = ODEProblem(replicator_dynamics!, p0, (0.0, 250), Q(1,2)) |> solve
+plot(replicator_trajectory, title="Replicator Dynamics") |> display
+```
+
+Had we zoomed into the plot, say around time $t=125$, it would appear that the solution has converged because all the components of the state are changing very slowing. But such a conclusion will be mistaken because the state switches after a while. This shows that it is dangerous to infer the convergence of a sequence by looking at the rate ofchange of that sequence!
   
+## Exercises {-}
+
+:::{#exr-ESS-weakly-dominated}
+Consider the following two-player symmetric game where $x$ can be either $0$, $1$, or $2$. 
+
+```{julia}
+game(["A", "B"], ["A", "B"], ["1" "2"; "x" "3"], ["1" "x"; "2" "3"])
+```
+
+a. For each possible value of $x$, find all NE of the game and check if they are ESS or not. 
+:::
+
+::: {#exr-negative-definite}
+The purpose of this exercise is to develop a method to check if a game is negative definite/semidefinte. This is not the most efficient method numerically, but is the simplest to understand.
+
+Recall the definition of $\reals^m_0$:
+$$
+  \reals^m_0 = \biggl\{ q \in Δ^m : \sum_{i=1}^m q_i = 0 \biggr\}.
+$$
+This is a linear subspace of dimension $m-1$ because $q_m = -(q_1 + \cdots + q_{m-1})$. A basis of this linear subspace is 
+$$
+  T = \MATRIX{ I_{(m-1) × (m-1)} \\ -\ONES_{1 \times (m-1) } }_{m \times (m-1)}
+$$
+Then any vector $q \in \reals^m_0$ must be of the form $T x$, where $x \in \reals^m$. 
+             
+a. Based on the above, argue that a game with matrix $Q$ is negative definite if and only if $T^\TRANS Q T$ is a [negative definite matrix][definite] (i.e., all the eigenvalues are real and negative).
+
+b. Consider the symmetric game in @exr-NE-more-than-2, which is repeated below for convenience.
+
+  ```{julia}
+  #| output: asis
+  game(["T", "M", "B"], ["L", "C", "R"], [0 5 4; 4 0 5; 5 4 0], [0 4 5; 5 0 4; 4 5 0]) |> display
+  ```
+
+  Check if this case is negative definite? (You may use any numerical software to compute the eigenvalues of $T^\TRANS Q T$, but you should report the eigenvalues in your solution). 
+
+
+[definite]: https://adityam.github.io/stochastic-control/linear-algebra/positive-definite-matrix.html
+
+:::
+
+
+::: {#exr-evolution-example}
+
+Consider the symmetric game of @exr-negative-definite. Run replicator dynamics and BNN dynamics on this game and describe the behavior (converges and if so to what value, does not converge and oscillates, etc.). 
+
+:::{.callout-note collapse="true"}
+#### Solution
+We can verify that this game is negative semi-definite. So, we expect that Replicator dynamics will not converge but BNN dynamics will. We test that numerically. 
+
+```{julia}
+#| echo: true
+
+Qex = [0 5 4; 4 0 5; 5 4 0]
+
+replicator_trajectory = ODEProblem(replicator_dynamics!, p0, (0.0, 15), Qex) |> solve
+BNN_trajectory        = ODEProblem(BNN_dynamics!,        p0, (0.0, 15), Qex) |> solve
+
+plot(replicator_trajectory, title="Replicator Dynamics") |> display
+plot(BNN_trajectory,        title="BNN Dynamics")        |> display
+```
+:::
