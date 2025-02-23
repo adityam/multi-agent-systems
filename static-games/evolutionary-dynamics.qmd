@@ -1,17 +1,20 @@
 ---
-title: Evolutionarily stable strategies
+title: Evolutionary dyanmics
 
 execute:
   echo: false
   freeze: true
   cache: true
+
+aliases:
+  - ESS.html
 ---
 
 As we saw earlier, one of the interpretations of mixed strategy NE is that it determines the fraction of population playing a certain pure strategy. @MaynardSmith1973 used this interpretation to propose an evolutionary mechanism via which organisms can change their behavior across generations. For a facinating (non-technical) introduction to the area, see @MaynardSmith1982. 
 
-The key idea in what is now called **evolutionary game theory** is that of evolutionarily stable strategies, which we will discuss here. For detailed treatment of the subject, see @Sandholm2010.
+The key idea in what is now called **evolutionary game theory** is that of **evolutionarily stable strategies (ESS)**, which we will discuss here. For detailed treatment of the subject, see @Sandholm2010.
 
-## What is ESS
+## Evolutionary stable strategies (ESS)
 
 To understand evolutionary stability, consider the variation of Hawk-Dove game shown below.
 
