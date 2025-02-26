@@ -1,8 +1,0 @@
----
-title: Bayesian equilibrium
-format:
-  html:
-    include-in-header: 
-     - ../static/html/vue.html
----
-

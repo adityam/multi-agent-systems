@@ -44,8 +44,8 @@ book:
         - static-games/nash-equilibrium.qmd
         - static-games/evolutionary-dynamics.qmd
         - static-games/continuous-nash.qmd
+        - static-games/bayesian-games.qmd
         - static-games/correlated-equilibrium.qmd
-        - static-games/bayesian-equilibrium.qmd
     - part: "Dynamic Games"
     - references.qmd
 
