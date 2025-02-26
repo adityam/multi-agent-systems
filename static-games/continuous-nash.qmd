@@ -1,3 +1,67 @@
 ---
 title: NE in continuous games
+format:
+  html:
+    include-in-header: 
+     - ../static/html/vue.html
 ---
+
+So far, we have restricted attention to computing Nash equilibrium in finite games. In this section, we look at continuous games, i.e., games where the strategy spaces are continuous sets, primarily focusing on the case where the strategy space of each player is a subset of $\reals$. The examples in this section are adapted from @Gibbons1992 and @Harrington2014.
+
+Suppose that the utility function is continuous in $\ALPHABET S$ and quasi-concave in $\ALPHABET S_i$. Then, by @thm-NE-pure, the game has NE in pure strategies. In principle, for games where $\ALPHABET S_i \subseteq \reals$, finding such a pure strategy NE is straight forward: [draw the best response curves of all players and find their point of intersection!]{.text-primary} In fact, we have already done that without explicitly stating it.
+
+Recall the game of Cournot competition defined in @sec-cournot for $n = 2$ players. In this case, $\ALPHABET S_1 = \ALPHABET S_2 = [0, M]$ and 
+$$
+  u_i(s_1, s_2) = s_i \cdot (p(s_1 + s_2) - c)
+$$
+where the price function is $p(a) = \max\{ M - a, 0 \}$. 
+
+As we had shown in @sec-cournot, the best response curves of the two players are
+$$
+  \BR_1(s_2) = \frac{M - c -s_2}{2}
+  \quad\text{and}\quad
+  \BR_2(s_1) = \frac{M - c - s_1}{2}.
+$$
+which are plotted below:
+
+{{< include diagrams/cournot-competition.qmd >}}
+
+In @sec-cournot, we had shown that the intersection point of these two best response curve is the unique rationalizable strategy (and therefore a NE). In general, even when the intersection point of the best response curves is not rationalizable, it is a NE.
+
+
+
+## Bertrand competition with differentiated products {#sec-bertrand}
+
+This model, proposed by @Bertrand1883, may be viewed as a generalization of Cournot competition where players set the prices rather than production levels. 
+
+We consider a _differentiated product_ market with two firms. Firm $i \in \{1,2\}$ sets a price $p_i \in \reals_{\ge 0}$ and incurs a has a constant marginal production cost of $c$ (i.e., each firm has a cost of $c$ to produce one unit of goods, and as was the case in cournot competition, we assume that this case is the same for both firms). 
+
+The demand of firm $i$ is a function of the curve and is captured by a demand curve $D_i(p_i, p_j)$, which is a weakly decreasing function of its own price and a weakly increasing function of the prices of the other firm.
+
+Thus, the utility of each firm is
+$$
+  u_i(p_i, p_j) = (p_i - c) D_i(p_i, p_j).
+$$
+
+For simplicity, we will assume that the demand function is
+$$
+  D(p_i, p_j) = \max\{ P - p_i + a p_j, 0 \}
+$$
+where $P$ is a constant known as market potential. Thus, the utility of each firm is
+$$
+  u_i(p_i, p_j) = (p_i - c) \max\{ P - p_i + a p_j, 0 \}.
+
+Note that $u_i$ is a continuous function of $(p_i, p_j)$ and is quasi-concave in $p_i$. But, the strategy spaces are not compact. Therefore, @thm-NE-pure is not directly applicable. Nonetheless, it can be shown that the game has a pure strategy NE.
+
+To find the NE, we look at the best response curves, which are obtained by setting $∂u_i/∂p_i = 0$ (and assuming that $p_i < P + a p_j$, so that we can ignore the max in the demand function):
+$$
+  \BR_i(p_j) = \tfrac 12 ( P + a p_j + c), \quad i, j \in \{1,2\}, i \neq j.
+$$
+Solving the above system of equations, we get
+$$
+  p_1 = p_2 = \frac{P + c}{2 - a}.
+$$
+
+## Final offer arbitration
+
+## Problem of the commons

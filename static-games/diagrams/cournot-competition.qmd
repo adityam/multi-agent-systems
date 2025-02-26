@@ -5,7 +5,7 @@ format:
      - ../../static/html/vue.html
 ---
 ```{=html}
-<div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-cournot" class="quarto-figure quarto-figure-center anchored">
 <figure id="cournot" class="figure" style="width=100%">
   <p style="max-width:400px; margin: 0px auto;">
   <svg class="cartesian" viewBox="-100 -400 600 500">

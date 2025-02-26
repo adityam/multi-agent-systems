@@ -938,7 +938,7 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
 
 -->
 
-## Cournot competition
+## Cournot competition {#sec-cournot}
 
 This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interstrategy between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly). Cournot competition is used to model competition between energy generators in electricity markets, e.g., see @Willems2002, @Acemoglu2017, @Lundin2020. 
 
@@ -1008,9 +1008,9 @@ So,
 \end{align*}
 So, if $s_1 + s_2 < M$, the BR of firm 1 and firm 2 are:
 $$
-  B_1(s_2) = \frac{M - c -s_2}{2}
+  \BR_1(s_2) = \frac{M - c -s_2}{2}
   \quad\text{and}\quad
-  B_2(s_1) = \frac{M - c - s_1}{2}.
+  \BR_2(s_1) = \frac{M - c - s_1}{2}.
 $$
 We plot the BR relationships below.
 
@@ -1035,7 +1035,7 @@ strategy games as well.
 :::{.callout-warning}
 #### Implication of the model
 
-Note that if the firms collude and fix production to $(M-c)/4$ (which ensures that the total production is the same as the monopoly level), it will result in a higher price and increased profits. However, this feature depends on the assumptions of the model, some of which are unrealistic. For a more realistic market model, consider the later example of Bertrand competition, where players set prices rather than production levels. 
+Note that if the firms collude and fix production to $(M-c)/4$ (which ensures that the total production is the same as the monopoly level), it will result in a higher price and increased profits. However, this feature depends on the assumptions of the model, some of which are unrealistic. For a more realistic market model, consider the later example of Bertrand competition (see @sec-bertrand), where players set prices rather than production levels. 
 
 
 :::
