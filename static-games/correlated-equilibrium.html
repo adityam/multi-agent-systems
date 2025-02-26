@@ -11,7 +11,7 @@
 <meta name="keywords" content="correlated equilibrium, coarse correlated equilibrium">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>8&nbsp; Correlated equilibrium – Multi-Agent Systems</title>
+<title>9&nbsp; Correlated equilibrium – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,8 +53,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../static-games/bayesian-equilibrium.html" rel="next">
-<link href="../static-games/continuous-nash.html" rel="prev">
+<link href="../references.html" rel="next">
+<link href="../static-games/bayesian-games.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,6 +97,20 @@ div.csl-indent {
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
 window.MathJax = {
+// https://github.com/mathjax/MathJax/issues/2744#issuecomment-1658624747
+// To fix the bug that uppercase unicode letters are shown in italic
+  startup: {
+    ready() {
+      const {RANGES} = MathJax._.core.MmlTree.OperatorDictionary;
+      const {TEXCLASS} = MathJax._.core.MmlTree.MmlNode;
+      RANGES.splice(4, 1,
+        [0x0370, 0x0385, TEXCLASS.ORD, 'mi'],
+        [0x0386, 0x3AB, TEXCLASS.ORD, 'mi', 'normal'],
+        [0x03AC, 0x1A20, TEXCLASS.ORD, 'mi']
+      );
+      MathJax.startup.defaultReady();
+    }
+  },
   tex: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
@@ -164,7 +178,7 @@ window.Quarto = {
 };
 </script>
 
-<meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Correlated equilibrium]{.chapter-title}">
+<meta name="citation_title" content="[9]{.chapter-number}&nbsp; [Correlated equilibrium]{.chapter-title}">
 <meta name="citation_keywords" content="correlated equilibrium,coarse correlated equilibrium">
 <meta name="citation_author" content="Aditya Mahajan">
 <meta name="citation_publication_date" content="2025-01-02">
@@ -253,7 +267,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/correlated-equilibrium.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/correlated-equilibrium.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -324,14 +338,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+  <a href="../static-games/bayesian-games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian Games</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
+  <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -356,10 +370,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#correlated-equilibrium" id="toc-correlated-equilibrium" class="nav-link active" data-scroll-target="#correlated-equilibrium"><span class="header-section-number">8.1</span> Correlated equilibrium</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">8.2</span> Examples</a>
+  <li><a href="#correlated-equilibrium" id="toc-correlated-equilibrium" class="nav-link active" data-scroll-target="#correlated-equilibrium"><span class="header-section-number">9.1</span> Correlated equilibrium</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">9.2</span> Examples</a>
   <ul class="collapse">
-  <li><a href="#a-hawk-dove-game" id="toc-a-hawk-dove-game" class="nav-link" data-scroll-target="#a-hawk-dove-game"><span class="header-section-number">8.2.1</span> A Hawk-Dove game</a></li>
+  <li><a href="#a-hawk-dove-game" id="toc-a-hawk-dove-game" class="nav-link" data-scroll-target="#a-hawk-dove-game"><span class="header-section-number">9.2.1</span> A Hawk-Dove game</a></li>
   </ul></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
@@ -368,9 +382,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/correlated-equilibrium.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/correlated-equilibrium.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></h1>
 </div>
 
 
@@ -538,8 +552,8 @@ window.Quarto = {
 </tbody></table>
 <p>This is consistent with how we resolve the conflict in real-life: by using a traffic light which tells which user should go and which should stop. Once a traffic light makes a joint recommendation to both players, it is in the best interest of the players to follow that recommendation.</p>
 <p>It is not always possible to achieve such a “coordination” via mixed strategies. The reason is that, in mixed strategies, the players are randomizing independently: so the joint distribution of the form above cannot be achieved.</p>
-<section id="correlated-equilibrium" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="correlated-equilibrium"><span class="header-section-number">8.1</span> Correlated equilibrium</h2>
+<section id="correlated-equilibrium" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="correlated-equilibrium"><span class="header-section-number">9.1</span> Correlated equilibrium</h2>
 <p>One way to interpret correlated equilibrium is as follows:</p>
 <ul>
 <li>There is an omniscient observer (who may be viewed as an <em>information designer</em>) who recommends strategies to the players.</li>
@@ -555,7 +569,7 @@ window.Quarto = {
 <li>The payoff of each player <span class="math inline">\(i\)</span> is <span class="math inline">\(u_i(b_1, \dots, b_n)\)</span>.</li>
 </ul>
 <div id="def-strategy-correlated-extension" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.1</strong></span> A (pure) strategy of player <span class="math inline">\(i\)</span> in game <span class="math inline">\(Γ(π)\)</span> is a function <span class="math inline">\(s_i \colon \ALPHABET A_i \to \ALPHABET A_i\)</span>, mapping every recommendation <span class="math inline">\(a_i\)</span> of the observer to an action <span class="math inline">\(s_i(a_i)\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 9.1</strong></span> A (pure) strategy of player <span class="math inline">\(i\)</span> in game <span class="math inline">\(Γ(π)\)</span> is a function <span class="math inline">\(s_i \colon \ALPHABET A_i \to \ALPHABET A_i\)</span>, mapping every recommendation <span class="math inline">\(a_i\)</span> of the observer to an action <span class="math inline">\(s_i(a_i)\)</span>.</p>
 </div>
 <p>A <strong>correlated strategy</strong> <span class="math inline">\(π\)</span> is a joint probability distribution on all the pure strategies of the game. For example, consider any <span class="math inline">\(2×2\)</span> two-player game. Then, a correlated strategy is of the form <span class="math display">\[
   π = \begin{bmatrix} π_{11} &amp; π_{12} \\ π_{21} &amp; π_{22} \end{bmatrix},
@@ -563,7 +577,7 @@ window.Quarto = {
   \quad \sum_{i,j} π_{ij} = 1.
 \]</span></p>
 <div id="def-correlated-equil" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.2</strong></span> Given a strategic game <span class="math inline">\(\mathscr{G} = \langle \ALPHABET N, (\ALPHABET A_i)_{i
+<p><span class="theorem-title"><strong>Definition 9.2</strong></span> Given a strategic game <span class="math inline">\(\mathscr{G} = \langle \ALPHABET N, (\ALPHABET A_i)_{i
 \in \ALPHABET N}, (u_i)_{i \in \ALPHABET N} \rangle\)</span>, a correlated equilibrium is a is a correlated strategy <span class="math inline">\(π\)</span> such that <span class="math display">\[\begin{equation}\label{eq:corr}
    \EXP^{π}[ u(a_i, A_{-i}) \mid A_i = a_i ]
    \ge
@@ -598,10 +612,10 @@ Remark
 \end{equation}\]</span></p>
 <p>Note that \eqref{eq:corr2} are a set of linear inequalities. Therefore, the set of all correlated equilibria is convex and can be obtained by identifying the feasibility region of a linear program.</p>
 </section>
-<section id="examples" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="examples"><span class="header-section-number">8.2</span> Examples</h2>
-<section id="a-hawk-dove-game" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="a-hawk-dove-game"><span class="header-section-number">8.2.1</span> A Hawk-Dove game</h3>
+<section id="examples" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="examples"><span class="header-section-number">9.2</span> Examples</h2>
+<section id="a-hawk-dove-game" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="a-hawk-dove-game"><span class="header-section-number">9.2.1</span> A Hawk-Dove game</h3>
 <p>Consider the following variation of “hawk-dove” game:</p>
 <table class="game" align="center">
 <tbody><tr>
@@ -661,8 +675,8 @@ Remark
   \end{bmatrix}
 \]</span></p>
 <p>We first verify the conditions in \eqref{eq:corr} and then verify the conditions in \eqref{eq:corr2}.</p>
-<section id="verification-of-eqrefeqcorr" class="level4" data-number="8.2.1.1">
-<h4 data-number="8.2.1.1" class="anchored" data-anchor-id="verification-of-eqrefeqcorr"><span class="header-section-number">8.2.1.1</span> Verification of \eqref{eq:corr}</h4>
+<section id="verification-of-eqrefeqcorr" class="level4" data-number="9.2.1.1">
+<h4 data-number="9.2.1.1" class="anchored" data-anchor-id="verification-of-eqrefeqcorr"><span class="header-section-number">9.2.1.1</span> Verification of \eqref{eq:corr}</h4>
 <p>We consider the analysis from the point of view of player 1. By symmetry, the argument is the same for player 1.</p>
 <ul>
 <li><p>Suppose the mediator recommends strategy <span class="math inline">\(\D\)</span> to player~<span class="math inline">\(1\)</span>. The conditional payoff if player 1 follows the recommendation is <span class="math display">\[
@@ -677,8 +691,8 @@ Remark
 <li><p>Now suppose the mediator recommends strategy <span class="math inline">\(\H\)</span> to player <span class="math inline">\(1\)</span>. Then the player knows that player <span class="math inline">\(2\)</span> has received a recommendation of <span class="math inline">\(\D\)</span>. Since <span class="math inline">\((\H, \D)\)</span> is a Nash equilibrium, there is no incentive to deviate.</p></li>
 </ul>
 </section>
-<section id="verification-of-eqrefeqcorr2" class="level4" data-number="8.2.1.2">
-<h4 data-number="8.2.1.2" class="anchored" data-anchor-id="verification-of-eqrefeqcorr2"><span class="header-section-number">8.2.1.2</span> Verification of \eqref{eq:corr2}</h4>
+<section id="verification-of-eqrefeqcorr2" class="level4" data-number="9.2.1.2">
+<h4 data-number="9.2.1.2" class="anchored" data-anchor-id="verification-of-eqrefeqcorr2"><span class="header-section-number">9.2.1.2</span> Verification of \eqref{eq:corr2}</h4>
 <p>We consider each case separately:</p>
 <ul>
 <li><p><span class="math inline">\(i = 1\)</span>, <span class="math inline">\(a_1 = \D\)</span>, <span class="math inline">\(b_1 = \H\)</span>: <span class="math display">\[\begin{align*}
@@ -1332,13 +1346,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../static-games/continuous-nash.html" class="pagination-link" aria-label="NE in continuous games">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></span>
+      <a href="../static-games/bayesian-games.html" class="pagination-link" aria-label="Bayesian Games">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian Games</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../static-games/bayesian-equilibrium.html" class="pagination-link" aria-label="Bayesian equilibrium">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

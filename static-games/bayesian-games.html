@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-05">
+<meta name="dcterms.date" content="2025-02-26">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>9&nbsp; Bayesian equilibrium – Multi-Agent Systems</title>
+<title>8&nbsp; Bayesian Games – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,15 +26,15 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
-<link href="../static-games/correlated-equilibrium.html" rel="prev">
+<link href="../static-games/correlated-equilibrium.html" rel="next">
+<link href="../static-games/continuous-nash.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -77,6 +77,20 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
 window.MathJax = {
+// https://github.com/mathjax/MathJax/issues/2744#issuecomment-1658624747
+// To fix the bug that uppercase unicode letters are shown in italic
+  startup: {
+    ready() {
+      const {RANGES} = MathJax._.core.MmlTree.OperatorDictionary;
+      const {TEXCLASS} = MathJax._.core.MmlTree.MmlNode;
+      RANGES.splice(4, 1,
+        [0x0370, 0x0385, TEXCLASS.ORD, 'mi'],
+        [0x0386, 0x3AB, TEXCLASS.ORD, 'mi', 'normal'],
+        [0x03AC, 0x1A20, TEXCLASS.ORD, 'mi']
+      );
+      MathJax.startup.defaultReady();
+    }
+  },
   tex: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
@@ -113,20 +127,47 @@ window.MathJax = {
 };
 </script>
 <script async="" data-id="101261731" src="//static.getclicky.com/js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script>
-  const { createApp, ref } = Vue
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
 </script>
 
-
-<meta name="citation_title" content="[9]{.chapter-number}&nbsp; [Bayesian equilibrium]{.chapter-title}">
+<meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-05">
-<meta name="citation_cover_date" content="2025-01-05">
+<meta name="citation_publication_date" content="2025-02-26">
+<meta name="citation_cover_date" content="2025-02-26">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-05">
-<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-equilibrium.html">
+<meta name="citation_online_date" content="2025-02-26">
+<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
 <meta name="citation_reference" content="citation_title=Correlated equilibrium as an expression of bayesian rationality;,citation_author=Robert J. Aumann;,citation_publication_date=1987-01;,citation_cover_date=1987-01;,citation_year=1987;,citation_issue=1;,citation_doi=10.2307/1911154;,citation_volume=55;,citation_journal_title=Econometrica;,citation_publisher=JSTOR;">
@@ -208,7 +249,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-games.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian Games</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -279,14 +320,14 @@ window.MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+  <a href="../static-games/bayesian-games.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian Games</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
+  <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -306,15 +347,25 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#an-illustrative-example" id="toc-an-illustrative-example" class="nav-link active" data-scroll-target="#an-illustrative-example"><span class="header-section-number">8.1</span> An illustrative example</a>
+  <ul class="collapse">
+  <li><a href="#method-1-ex-ante-view" id="toc-method-1-ex-ante-view" class="nav-link" data-scroll-target="#method-1-ex-ante-view">Method 1: Ex-ante view</a></li>
+  </ul></li>
+  <li><a href="#method-2-interim-view" id="toc-method-2-interim-view" class="nav-link" data-scroll-target="#method-2-interim-view"><span class="header-section-number">8.2</span> Method 2: Interim view</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/bayesian-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-games.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian Games</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian Games</span></h1>
 </div>
 
 
@@ -340,7 +391,7 @@ window.MathJax = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 5, 2025</p>
+      <p class="date">February 26, 2025</p>
     </div>
   </div>
   
@@ -352,8 +403,209 @@ window.MathJax = {
 </header>
 
 
+<p>So far, we have restricted attention to simultaneous move games where players have perfect knowledge of the utility functions of other players. This is not always true in practice. In this section, we will consider games where players have uncertainty about the utility functions of other players, and this uncertainty may be different for different players. Such games are called <strong>games with incomplete information</strong>. We will focus on the special case when players have a <em>subject</em> probability distribution on the uncertainty. Such games are called <strong>Bayesian Games</strong>.</p>
+<section id="an-illustrative-example" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="an-illustrative-example"><span class="header-section-number">8.1</span> An illustrative example</h2>
+<p>To iilustrate such games, let’s consider a variation of battle of sexes, where player&nbsp;2 may either want to meet player&nbsp;1 or may want to avoid it. For simplicity we assume that player&nbsp;1 is the same as before. We will model it by saying that there are two <strong>types</strong> of player&nbsp;2; the type of the player is determined by <strong>events in nature</strong>, and that each player has a probability distribution on the events in nature (for simplicity, we will assume that this probability distribution is common knowledge between the players, but it is possible to model Bayesian games where each player has a different subjective probability on the events in nature).</p>
+<p>More formally, we assume that there are two states in nature, modelled by <span class="math display">\[
+  Ω = \{ ω_1, ω_2 \}.
+\]</span> In state <span class="math inline">\(ω_1\)</span>, player&nbsp;2 wants to meet player&nbsp;1 while in state <span class="math inline">\(ω_2\)</span>, player&nbsp;2 wants to avoid player&nbsp;1. Furthermore, there is a prior belief <span class="math inline">\(p\)</span> on <span class="math inline">\(Ω\)</span> which we will assume is given by <span class="math display">\[
+  p(ω_1) = \tfrac 12
+  \quad\text{and}\quad
+  p(ω_2) = \tfrac 12.
+\]</span></p>
+<p>Each player has a type, which we will denote by <span class="math inline">\(t_i\)</span> for player&nbsp;<span class="math inline">\(i\)</span> (there is a slight notational conflict as we had sometimes used <span class="math inline">\(t_i\)</span> to denote alternative strategies for players). The set of types of player&nbsp;<span class="math inline">\(i\)</span> is denoted by <span class="math inline">\(\ALPHABET T_i\)</span>. In the above example, <span class="math display">\[
+  \ALPHABET T_1 = \{1\}
+  \quad\text{and}\quad
+  \ALPHABET T_2 = \{1, 2\}.
+\]</span></p>
+<p>The important aspect of modeling such games is the <strong>information structure</strong>, i.e., who knows what about the states of nature. The information structure is modelled by a <strong>signal</strong> <span class="math inline">\(τ_i\)</span> from the state of nature to player’s type. For this example, we will assume that <span class="math display">\[
+  τ_1(ω_1) = τ_1(ω_2) = 1
+  \quad\text{and}\quad
+  τ_2(ω_1) = 1, τ_2(ω_2) = 2.
+\]</span> Thus, player&nbsp;2 knows the state of nature (i.e., it knows whether it wants to meet with player&nbsp;1 or not), while player&nbsp;1 does not know the tate of nature (i.e., she doesn’t know if player&nbsp;2 wants to meet with her or not).</p>
+<p>Thus, effectively the type <span class="math inline">\(t_i = τ_i(ω)\)</span> of the player is a random variable and the information structure can be thought of as the collection of partition generated by the types of each player, i.e., <span class="math inline">\(σ(t_1)\)</span> and <span class="math inline">\(α(t_2)\)</span> (where <span class="math inline">\(σ(⋅)\)</span> means the sigma algebra generated by a random variable). Thus, for the above example, we can visualize the information structure as follows: <span class="math display">\[
+\text{To be drawn}
+\]</span></p>
+<p>We will use a slightly different terminology and call the moves of the players as <strong>actions</strong> (and denote them by <span class="math inline">\(a_i \in \ALPHABET A_i\)</span>. The <strong>pure strategy</strong> of a player is defined as a map from its type to its actions, i.e., <span class="math display">\[
+  s_i \colon \ALPHABET T_i \to \ALPHABET A_i.
+\]</span> This means that in the above example player 2 of type 1 (the one who wants to meet with player 1) may choose actions differently from player 2 of type 2 (the one who wants to avoid player 1).</p>
+<p>Note that player 1 has two pure strategies: <span class="math display">\[
+   1 \mapsto \mathsf{F},
+   \quad \text{and} \quad
+   1 \mapsto \mathsf{O}
+\]</span> while player 2 has four pure strategies: <span class="math display">\[
+  1 \mapsto \mathsf{F}, 2 \mapsto \mathsf{F},
+  \quad
+  1 \mapsto \mathsf{F}, 2 \mapsto \mathsf{O},
+  \quad
+  1 \mapsto \mathsf{O}, 2 \mapsto \mathsf{F},
+  \quad
+  1 \mapsto \mathsf{O}, 2 \mapsto \mathsf{O}.
+\]</span> For simplicity of notation, we will simply denote them as follows: <span class="math display">\[
+  \ALPHABET S_1 = \{ \mathsf{F}, \mathsf{O} \}
+  \quad\text{and}\quad
+  \ALPHABET S_2 = \{ \mathsf{FF}, \mathsf{FO}, \mathsf{OF}, \mathsf{OO} \}.
+\]</span></p>
+<p>As was the case in games with complete information, a <strong>mixed strategy</strong> <span class="math inline">\(σ_i\)</span> is a probability distribution over a set of pure strategies.</p>
+<p>There are two ways to model the utility function of the players. Utilities could be either modelled as a function of events in nature and strategy profile of players or as a function of type profile of players and strategy profile of players. For this example, we will take the former approach. Thus, <span class="math display">\[
+  u_i \colon Ω × \ALPHABET S \to \reals, \quad i \in \ALPHABET N.
+\]</span></p>
+<p>For two player finite games, a compact way to write the utility function is to draw the bimatrix representation for each <span class="math inline">\(ω \in Ω\)</span>. For instance, in the above example, we may consider</p>
+<div id="fig-bayesian-bos" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bayesian-bos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bayesian-bos" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bayesian-bos-1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bayesian-bos-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bayesian-bos-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) <span class="math inline">\(ω_1\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bayesian-bos" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bayesian-bos-2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bayesian-bos-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$1$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bayesian-bos-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) <span class="math inline">\(ω_2\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bayesian-bos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: A modified battle of sexes game with incomplete information
+</figcaption>
+</figure>
+</div>
+<p>Given a pure strategy profile <span class="math inline">\((s_1, s_2)\)</span>, the utility of player <span class="math inline">\(i\)</span> is <span class="math display">\[
+  U_i(s_1, s_2) = \sum_{ω \in Ω} \sum_{t_1 \in \ALPHABET T_1} \sum_{t_2 \in \ALPHABET T_2}
+  p(ω) u_i(ω, s_1( t_1(ω) ) s_2( t_2(ω) ) ).
+\]</span> The payoff of a mixed strategy profile <span class="math inline">\((σ_1, σ_2)\)</span> is defined as <span class="math display">\[
+  U_i(σ_1, σ_2) = \sum_{s_1 \in \ALPHABET S_1} \sum_{s_2 \in \ALPHABET S_2}
+  σ_1(s_1) σ_2(s_2) U_i(s_1, s_2).
+\]</span></p>
+<p>The equilibrium of a Bayesian game is called <strong>Bayesian equilibrium</strong> (abbreviated as BNE). There are two equivalent methods to define and compute BNE of Bayesian game. We describe both of them below.</p>
+<section id="method-1-ex-ante-view" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="method-1-ex-ante-view">Method 1: Ex-ante view</h3>
+<p>According to the ex-ante view, we view the game before nature has played. A strategy profile <span class="math inline">\((s_1, s_2)\)</span> is a (pure strategy) BNE if <span class="math display">\[
+  U_i(s_i, s_{-i}) \ge U_i(s'_{i}, s_{-i}),
+  \quad \forall i \in \ALPHABET N, s'_i \in \ALPHABET S_i.
+\]</span> Note that the definition BNE is similar to that of NE; the difference is in how the utility function <span class="math inline">\(U_i\)</span> is defined. A mixed strategy BNE is defined in a similar manner.</p>
+<p>Thus, if we compute the utility function <span class="math inline">\(U_i(s_1, s_2)\)</span> for all pure strategy profiles, we can easily find the BNE. For instance, for the above game, the utility function <span class="math inline">\(U_i(s_1, s_2)\)</span> can be computed as follows: <span class="math display">\[\begin{align*}
+  U(\mathsf{F}, \mathsf{FF}) &amp;= p(ω_1) u(ω_1, \mathsf{F}, \mathsf{F}) + p(ω_2) u(ω_2, \mathsf{F}, \mathsf{F})
+  = \tfrac 12 (2,1) + \tfrac 12 (2,0) = (2, \tfrac 12) \\
+  U(\mathsf{F}, \mathsf{FO}) &amp;= p(ω_1) u(ω_1, \mathsf{F}, \mathsf{F}) + p(ω_2) u(ω_2, \mathsf{F}, \mathsf{O})
+  = \tfrac 12 (2,1) + \tfrac 12 (0,2) = (1, \tfrac 32) \\
+  \cdots &amp;= \cdots
+\end{align*}\]</span></p>
+<p>We can write such an <strong>normal-form reduction</strong> of the game as a bimatrix game:</p>
+<div id="afd8b079" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{FF}$</td><td colspan="2">$\mathsf{FO}$</td><td colspan="2">$\mathsf{OF}$</td><td colspan="2">$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$\frac{2}{3}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{3}{2}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
+</div>
+</div>
+<p>We can then identify a BNE of the orginal game by identifying the NE of its normal-form rediction. Although this approach is simple, it is not very attractive because the normal-form reduction has large strategy spaces (exponential in the number of types) and we have already seen that it difficult to compute NE of games with large strategy spaces.</p>
+</section>
+</section>
+<section id="method-2-interim-view" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="method-2-interim-view"><span class="header-section-number">8.2</span> Method 2: Interim view</h2>
+<p>According to the interim view, we view the game after nature has played; so each player knows its type. We can consider each player of each time (i.e., each <span class="math inline">\((i,t_i)\)</span> as a separete player. Thus, the game has <span class="math inline">\(\prod_{i \in \ALPHABET N} |\ALPHABET T_i|\)</span> players.</p>
+<p>Combing back to our example, we can write the utility function of all the players as follows:</p>
+<div id="fig-bayesian-bos-interim" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bayesian-bos-interim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bayesian-bos-interim" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-bayesian-bos-interim-1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bayesian-bos-interim-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{FF}$</td><td>$\mathsf{FO}$</td><td>$\mathsf{OF}$</td><td>$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$1$</td></tr></tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bayesian-bos-interim-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1.1 (row player)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bayesian-bos-interim" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-bayesian-bos-interim-2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bayesian-bos-interim-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{F}$</td><td>$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$2$</td></tr></tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bayesian-bos-interim-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2.1 (col player)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bayesian-bos-interim" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-bayesian-bos-interim-3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bayesian-bos-interim-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{F}$</td><td>$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{O}$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bayesian-bos-interim-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Player 2.2 (col player)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bayesian-bos-interim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Interim-view of battle of sexes game
+</figcaption>
+</figure>
+</div>
+<p>Note that player 2.1 does not care what player 2.2 does. But player 1.1’s strategy depends on both player 2.1 and player 2.2, which indirectly couples the two players.</p>
+<p>We now show how to find the BNE via the interim strategy.</p>
+<p>First we check for all pure strategy BNE by trying to find a fixed point of BR maps.</p>
+<ul>
+<li>If P1.1 plays <span class="math inline">\(\mathsf{F}\)</span>, BR of P2.1 is <span class="math inline">\(\mathsf{F}\)</span> and BR of P2.2 is $.</li>
+<li>If P2 is playing <span class="math inline">\(\mathsf{FO}\)</span>, BR of P1.1 is <span class="math inline">\(\mathsf{F}\)</span>. Thus, <span class="math inline">\((\mathsf{F}, \mathsf{FO})\)</span> is BNE.</li>
+</ul>
+<!-- -->
+<ul>
+<li>If P1.1 plays <span class="math inline">\(\mathsf{O}\)</span>, BR of P2.1 is <span class="math inline">\(\mathsf{O}\)</span> and BR of P2.2 is $.</li>
+<li>If P2 is playing <span class="math inline">\(\mathsf{FO}\)</span>, BR of P1.1 is <span class="math inline">\(\mathsf{F}\)</span>. Thus, <span class="math inline">\((\mathsf{O}, \mathsf{OF})\)</span> is <strong>not</strong> BNE.</li>
+</ul>
+<p>Now we consider <strong>mixed strategy</strong> BNE. We have two possibilities:</p>
+<p><strong>Case 1</strong> P1 is playing a pure strategy. Then P2.1 and P2.2 will also play pure strategies because their BR are unique. We have already compute the NE in pure strategies.</p>
+<p><strong>Case 2</strong> P2 is playing a mixed strategy <span class="math inline">\(σ_1 = (p, 1-p)\)</span>. Consider mixed strategies <span class="math display">\[
+   σ_{2.1} = (q_1, 1-q_1)
+  \quad\text{and}\quad
+   σ_{2.2} = (q_2, 1-q_2)
+\]</span> of player 2. Note that we have assumed that <span class="math inline">\(p \in (0,1)\)</span> but <span class="math inline">\(q_1, q_2 \in [0, 1]\)</span>.</p>
+<ul>
+<li>if <span class="math inline">\(q_1 \in (0,1)\)</span>, then by the invariance principle, <span class="math display">\[
+  U_{2.1}(σ_1, \mathsf{F}) = U_{2.1}(σ_1, \mathsf{O})
+  \implies p = 2 (1-p) \implies p = \frac 23.
+\]</span></li>
+<li>if <span class="math inline">\(q_2 \in (0,1)\)</span>, then by the invariance principle, <span class="math display">\[
+  U_{2.2}(σ_1, \mathsf{F}) = U_{2.1}(σ_1, \mathsf{O})
+  \implies (1-p) = 2p  \implies p = \frac 13.
+\]</span></li>
+</ul>
+<p>But only one of them can be true. Thus, either</p>
+<ul>
+<li><span class="math inline">\(q_1 \in (0, 1)\)</span> and <span class="math inline">\(q_2 \in \{0, 1\}\)</span>, or</li>
+<li><span class="math inline">\(q_2 \in (0, 1)\)</span> and <span class="math inline">\(q_1 \in \{0, 1\}\)</span>.</li>
+</ul>
+<p>We consider both these cases separately.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -919,13 +1171,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span>
+      <a href="../static-games/continuous-nash.html" class="pagination-link" aria-label="NE in continuous games">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -934,5 +1186,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/bayesian-equilibrium.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/bayesian-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
