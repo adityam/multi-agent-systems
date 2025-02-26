@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-01-05">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>8&nbsp; Bayesian equilibrium – Multi-Agent Systems</title>
+<title>9&nbsp; Bayesian equilibrium – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,12 +40,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5c60770313eeac639f84df3bfd9f1f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bd2b61a4ced222d9eab8d8bfc03d9193.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -120,7 +120,7 @@ window.MathJax = {
 </script>
 
 
-<meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian equilibrium]{.chapter-title}">
+<meta name="citation_title" content="[9]{.chapter-number}&nbsp; [Bayesian equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
 <meta name="citation_publication_date" content="2025-01-05">
 <meta name="citation_cover_date" content="2025-01-05">
@@ -175,6 +175,8 @@ window.MathJax = {
 <meta name="citation_reference" content="citation_title=Population games and evolutionary dynamics;,citation_author=William H. Sandholm;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;">
 <meta name="citation_reference" content="citation_title=Evolutionary stable strategies and game dynamics;,citation_author=Peter D. Taylor;,citation_author=Leo B. Jonker;,citation_publication_date=1978-07;,citation_cover_date=1978-07;,citation_year=1978;,citation_issue=1–2;,citation_doi=10.1016/0025-5564(78)90077-9;,citation_issn=0025-5564;,citation_volume=40;,citation_journal_title=Mathematical Biosciences;,citation_publisher=Elsevier BV;">
 <meta name="citation_reference" content="citation_title=A note on evolutionary stable strategies and game dynamics;,citation_author=J. Hofbauer;,citation_author=P. Schuster;,citation_author=K. Sigmund;,citation_publication_date=1979-12;,citation_cover_date=1979-12;,citation_year=1979;,citation_issue=3;,citation_doi=10.1016/0022-5193(79)90058-4;,citation_issn=0022-5193;,citation_volume=81;,citation_journal_title=Journal of Theoretical Biology;,citation_publisher=Elsevier BV;">
+<meta name="citation_reference" content="citation_title=Games, strategies, and decision making;,citation_author=Jr. Harrington;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=Revue de “recherches sur la théorie mathématique de la richesse” de a. cournot;,citation_author=Joseph Bertrand;,citation_publication_date=1883;,citation_cover_date=1883;,citation_year=1883;,citation_journal_title=Journal des Savants;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -206,7 +208,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -265,20 +267,26 @@ window.MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/ESS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
+  <a href="../static-games/evolutionary-dynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Evolutionary dyanmics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../static-games/continuous-nash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,9 +312,9 @@ window.MathJax = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/bayesian-equilibrium.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></h1>
 </div>
 
 
@@ -912,7 +920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

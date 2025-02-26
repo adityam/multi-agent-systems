@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-02-11">
+<meta name="dcterms.date" content="2025-02-26">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
@@ -59,12 +59,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5c60770313eeac639f84df3bfd9f1f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bd2b61a4ced222d9eab8d8bfc03d9193.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -170,10 +170,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[1]{.chapter-number}&nbsp; [Rationalizable strategies]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-02-11">
-<meta name="citation_cover_date" content="2025-02-11">
+<meta name="citation_publication_date" content="2025-02-26">
+<meta name="citation_cover_date" content="2025-02-26">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-11">
+<meta name="citation_online_date" content="2025-02-26">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -223,6 +223,8 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Population games and evolutionary dynamics;,citation_author=William H. Sandholm;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;">
 <meta name="citation_reference" content="citation_title=Evolutionary stable strategies and game dynamics;,citation_author=Peter D. Taylor;,citation_author=Leo B. Jonker;,citation_publication_date=1978-07;,citation_cover_date=1978-07;,citation_year=1978;,citation_issue=1–2;,citation_doi=10.1016/0025-5564(78)90077-9;,citation_issn=0025-5564;,citation_volume=40;,citation_journal_title=Mathematical Biosciences;,citation_publisher=Elsevier BV;">
 <meta name="citation_reference" content="citation_title=A note on evolutionary stable strategies and game dynamics;,citation_author=J. Hofbauer;,citation_author=P. Schuster;,citation_author=K. Sigmund;,citation_publication_date=1979-12;,citation_cover_date=1979-12;,citation_year=1979;,citation_issue=3;,citation_doi=10.1016/0022-5193(79)90058-4;,citation_issn=0022-5193;,citation_volume=81;,citation_journal_title=Journal of Theoretical Biology;,citation_publisher=Elsevier BV;">
+<meta name="citation_reference" content="citation_title=Games, strategies, and decision making;,citation_author=Jr. Harrington;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=Revue de “recherches sur la théorie mathématique de la richesse” de a. cournot;,citation_author=Joseph Bertrand;,citation_publication_date=1883;,citation_cover_date=1883;,citation_year=1883;,citation_journal_title=Journal des Savants;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -313,20 +315,26 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/ESS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Evolutionarily stable strategies</span></span></a>
+  <a href="../static-games/evolutionary-dynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Evolutionary dyanmics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../static-games/continuous-nash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/correlated-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../static-games/bayesian-equilibrium.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bayesian equilibrium</span></span></a>
   </div>
 </li>
       </ul>
@@ -359,7 +367,7 @@ window.Quarto = {
   <li><a href="#iterative-elimination-of-weakly-dominated-strategies" id="toc-iterative-elimination-of-weakly-dominated-strategies" class="nav-link" data-scroll-target="#iterative-elimination-of-weakly-dominated-strategies"><span class="header-section-number">1.6</span> Iterative elimination of weakly dominated strategies</a></li>
   <li><a href="#second-price-auction" id="toc-second-price-auction" class="nav-link" data-scroll-target="#second-price-auction"><span class="header-section-number">1.7</span> Second price auction</a></li>
   <li><a href="#dominance-by-mixed-strategies" id="toc-dominance-by-mixed-strategies" class="nav-link" data-scroll-target="#dominance-by-mixed-strategies"><span class="header-section-number">1.8</span> Dominance by mixed strategies</a></li>
-  <li><a href="#cournot-competition" id="toc-cournot-competition" class="nav-link" data-scroll-target="#cournot-competition"><span class="header-section-number">1.9</span> Cournot competition</a></li>
+  <li><a href="#sec-cournot" id="toc-sec-cournot" class="nav-link" data-scroll-target="#sec-cournot"><span class="header-section-number">1.9</span> Cournot competition</a></li>
   <li><a href="#beyond-rationalizable-strategies-maxmin-strategies" id="toc-beyond-rationalizable-strategies-maxmin-strategies" class="nav-link" data-scroll-target="#beyond-rationalizable-strategies-maxmin-strategies"><span class="header-section-number">1.10</span> Beyond rationalizable strategies: Maxmin strategies</a></li>
   <li><a href="#relation-between-maxmin-strategies-and-dominant-strategies" id="toc-relation-between-maxmin-strategies-and-dominant-strategies" class="nav-link" data-scroll-target="#relation-between-maxmin-strategies-and-dominant-strategies"><span class="header-section-number">1.11</span> Relation between maxmin strategies and dominant strategies</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
@@ -397,7 +405,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 11, 2025</p>
+      <p class="date">February 26, 2025</p>
     </div>
   </div>
   
@@ -1796,8 +1804,8 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
 
 -->
 </section>
-<section id="cournot-competition" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="cournot-competition"><span class="header-section-number">1.9</span> Cournot competition</h2>
+<section id="sec-cournot" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="sec-cournot"><span class="header-section-number">1.9</span> Cournot competition</h2>
 <p>This is a model from economics and we will study it because of its simplicity. It is based on a model proposed by Cournot in 1839. The model describes the strategic interstrategy between firms in an oligopoly market (i.e., a market where a few sellers serve the entire market; both monopoly and duopoly are special cases of oligopoly). Cournot competition is used to model competition between energy generators in electricity markets, e.g., see <span class="citation" data-cites="Willems2002">Willems (<a href="../references.html#ref-Willems2002" role="doc-biblioref">2002</a>)</span>, <span class="citation" data-cites="Acemoglu2017">Acemoglu et al. (<a href="../references.html#ref-Acemoglu2017" role="doc-biblioref">2017</a>)</span>, <span class="citation" data-cites="Lundin2020">Lundin and Tangerås (<a href="../references.html#ref-Lundin2020" role="doc-biblioref">2020</a>)</span>.</p>
 <p>Formally, the Cournot competition model considers a <em>homogeneous-goods</em> market with <span class="math inline">\(n\)</span> firms. A homogeneous-goods market is a market where all firms produce a homogeneous product which are perfect substitutes (e.g., consider a commodities market such as metal or oil or electricity).</p>
 <p>Each firm decides how much to produce. Let <span class="math inline">\(s_i \in \reals_{\ge 0}\)</span> denote the production of firm <span class="math inline">\(i\)</span> and <span class="math inline">\(a = \sum_{i = 1}^n s_i\)</span> denote aggregate production. The price of the product depends on the aggregate production. We capture this relationship using a generic function <span class="math inline">\(p \colon \reals_{\ge 0} \to \reals_{\ge 0}\)</span>, i.e., price of product is <span class="math inline">\(p(a)\)</span> when the aggregate production is <span class="math inline">\(a\)</span>.</p>
@@ -1838,11 +1846,11 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
     -c, &amp; \text{otherwise}.
   \end{cases}
 \end{align*}\]</span> So, if <span class="math inline">\(s_1 + s_2 &lt; M\)</span>, the BR of firm 1 and firm 2 are: <span class="math display">\[
-  B_1(s_2) = \frac{M - c -s_2}{2}
+  \BR_1(s_2) = \frac{M - c -s_2}{2}
   \quad\text{and}\quad
-  B_2(s_1) = \frac{M - c - s_1}{2}.
+  \BR_2(s_1) = \frac{M - c - s_1}{2}.
 \]</span> We plot the BR relationships below.</p>
-<div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-cournot" class="quarto-figure quarto-figure-center anchored">
 <figure id="cournot" class="figure" style="width=100%">
   <p style="max-width:400px; margin: 0px auto;">
   <svg class="cartesian" viewbox="-100 -400 600 500">
@@ -1987,7 +1995,7 @@ Implication of the model
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that if the firms collude and fix production to <span class="math inline">\((M-c)/4\)</span> (which ensures that the total production is the same as the monopoly level), it will result in a higher price and increased profits. However, this feature depends on the assumptions of the model, some of which are unrealistic. For a more realistic market model, consider the later example of Bertrand competition, where players set prices rather than production levels.</p>
+<p>Note that if the firms collude and fix production to <span class="math inline">\((M-c)/4\)</span> (which ensures that the total production is the same as the monopoly level), it will result in a higher price and increased profits. However, this feature depends on the assumptions of the model, some of which are unrealistic. For a more realistic market model, consider the later example of Bertrand competition (see <a href="continuous-nash.html#sec-bertrand" class="quarto-xref"><span>Section 7.1</span></a>), where players set prices rather than production levels.</p>
 </div>
 </div>
 </section>

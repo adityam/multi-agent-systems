@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-26">
+<meta name="dcterms.date" content="2025-02-26">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>3&nbsp; Jamming Games – Multi-Agent Systems</title>
+<title>7&nbsp; NE in continuous games – Multi-Agent Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +52,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../static-games/fictitious-play.html" rel="next">
-<link href="../static-games/zero-sum-games.html" rel="prev">
+<link href="../static-games/correlated-equilibrium.html" rel="next">
+<link href="../static-games/evolutionary-dynamics.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -163,13 +163,13 @@ window.Quarto = {
 };
 </script>
 
-<meta name="citation_title" content="[3]{.chapter-number}&nbsp; [Jamming Games]{.chapter-title}">
+<meta name="citation_title" content="[7]{.chapter-number}&nbsp; [NE in continuous games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-26">
-<meta name="citation_cover_date" content="2025-01-26">
+<meta name="citation_publication_date" content="2025-02-26">
+<meta name="citation_cover_date" content="2025-02-26">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-26">
-<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/jamming-games.html">
+<meta name="citation_online_date" content="2025-02-26">
+<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/continuous-nash.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
 <meta name="citation_reference" content="citation_title=Correlated equilibrium as an expression of bayesian rationality;,citation_author=Robert J. Aumann;,citation_publication_date=1987-01;,citation_cover_date=1987-01;,citation_year=1987;,citation_issue=1;,citation_doi=10.2307/1911154;,citation_volume=55;,citation_journal_title=Econometrica;,citation_publisher=JSTOR;">
@@ -251,7 +251,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/jamming-games.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Jamming Games</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/continuous-nash.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -292,7 +292,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/jamming-games.html" class="sidebar-item-text sidebar-link active">
+  <a href="../static-games/jamming-games.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Jamming Games</span></span></a>
   </div>
 </li>
@@ -316,7 +316,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../static-games/continuous-nash.html" class="sidebar-item-text sidebar-link">
+  <a href="../static-games/continuous-nash.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></span></a>
   </div>
 </li>
@@ -354,25 +354,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#system-model" id="toc-system-model" class="nav-link active" data-scroll-target="#system-model"><span class="header-section-number">3.1</span> System Model</a></li>
-  <li><a href="#existence-of-value-in-pure-strategies" id="toc-existence-of-value-in-pure-strategies" class="nav-link" data-scroll-target="#existence-of-value-in-pure-strategies"><span class="header-section-number">3.2</span> Existence of value in pure strategies</a></li>
-  <li><a href="#structre-of-optimal-strategies" id="toc-structre-of-optimal-strategies" class="nav-link" data-scroll-target="#structre-of-optimal-strategies"><span class="header-section-number">3.3</span> Structre of optimal strategies</a>
-  <ul class="collapse">
-  <li><a href="#optimal-strategy-of-the-transmitter" id="toc-optimal-strategy-of-the-transmitter" class="nav-link" data-scroll-target="#optimal-strategy-of-the-transmitter"><span class="header-section-number">3.3.1</span> Optimal strategy of the transmitter</a></li>
-  <li><a href="#optimal-strategy-of-the-jammer" id="toc-optimal-strategy-of-the-jammer" class="nav-link" data-scroll-target="#optimal-strategy-of-the-jammer"><span class="header-section-number">3.3.2</span> Optimal strategy of the jammer</a></li>
-  </ul></li>
-  <li><a href="#summary-of-the-solution" id="toc-summary-of-the-solution" class="nav-link" data-scroll-target="#summary-of-the-solution"><span class="header-section-number">3.4</span> Summary of the solution</a></li>
-  <li><a href="#salient-features-of-the-solution" id="toc-salient-features-of-the-solution" class="nav-link" data-scroll-target="#salient-features-of-the-solution"><span class="header-section-number">3.5</span> Salient features of the solution</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#sec-bertrand" id="toc-sec-bertrand" class="nav-link active" data-scroll-target="#sec-bertrand"><span class="header-section-number">7.1</span> Bertrand competition with differentiated products</a></li>
+  <li><a href="#final-offer-arbitration" id="toc-final-offer-arbitration" class="nav-link" data-scroll-target="#final-offer-arbitration"><span class="header-section-number">7.2</span> Final offer arbitration</a></li>
+  <li><a href="#problem-of-the-commons" id="toc-problem-of-the-commons" class="nav-link" data-scroll-target="#problem-of-the-commons"><span class="header-section-number">7.3</span> Problem of the commons</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/jamming-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/continuous-nash.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/jamming-games.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Jamming Games</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/continuous-nash.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Jamming Games</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NE in continuous games</span></h1>
 </div>
 
 
@@ -398,7 +391,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 26, 2025</p>
+      <p class="date">February 26, 2025</p>
     </div>
   </div>
   
@@ -410,299 +403,176 @@ window.Quarto = {
 </header>
 
 
-<p><a href="https://en.wikipedia.org/wiki/Radio_jamming">:Radio frequency (RF) jamming</a> is the act of blocking or causing interference to radio or wireless communication by transmitting noise to decrease the signal to noise ratio. Jamming of radio transmission orginated in World War II and is still used today in military and civilian conflicts.</p>
-<p>We present a simple model of jamming and obtain a solution using tools from ZSG from the previous section.</p>
-<section id="system-model" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="system-model"><span class="header-section-number">3.1</span> System Model</h2>
-<p>Consider a line of sight communication link between a transmitter (Tx) and a receiver (Rx). There is a jammer (Jm) who wants to disrupt this communication link.</p>
-<p>The communication link consists of <span class="math inline">\(m\)</span> orthogonal frequency bands, each of bandwidth <span class="math inline">\(B\)</span>. Let <span class="math inline">\(M \coloneqq \{1, \dots, m\}\)</span> denote the set of bands. For each band <span class="math inline">\(i \in \ALPHABET M\)</span>, let</p>
-<ul>
-<li><span class="math inline">\(σ_i \in \reals_{\ge 0}\)</span> denote the background noise power</li>
-<li><span class="math inline">\(x_i \in \reals_{\ge 0}\)</span> denote the signal power of Tx</li>
-<li><span class="math inline">\(y_i \in \reals_{\ge 0}\)</span> denote the interference power of Jm.</li>
-</ul>
-<p>It is assumed that both the Tx and Jm have constraints on the total power that they can use. In particular, <span class="math display">\[
-  \sum_{i \in \ALPHABET M} x_i \le P_T
+<p>So far, we have restricted attention to computing Nash equilibrium in finite games. In this section, we look at continuous games, i.e., games where the strategy spaces are continuous sets, primarily focusing on the case where the strategy space of each player is a subset of <span class="math inline">\(\reals\)</span>. The examples in this section are adapted from <span class="citation" data-cites="Gibbons1992">Gibbons (<a href="../references.html#ref-Gibbons1992" role="doc-biblioref">1992</a>)</span> and <span class="citation" data-cites="Harrington2014">Harrington (<a href="../references.html#ref-Harrington2014" role="doc-biblioref">2014</a>)</span>.</p>
+<p>Suppose that the utility function is continuous in <span class="math inline">\(\ALPHABET S\)</span> and quasi-concave in <span class="math inline">\(\ALPHABET S_i\)</span>. Then, by <a href="nash-equilibrium.html#thm-NE-pure" class="quarto-xref">Theorem&nbsp;<span>5.4</span></a>, the game has NE in pure strategies. In principle, for games where <span class="math inline">\(\ALPHABET S_i \subseteq \reals\)</span>, finding such a pure strategy NE is straight forward: <span class="text-primary">draw the best response curves of all players and find their point of intersection!</span> In fact, we have already done that without explicitly stating it.</p>
+<p>Recall the game of Cournot competition defined in <a href="strategic-games.html#sec-cournot" class="quarto-xref"><span>Section 1.9</span></a> for <span class="math inline">\(n = 2\)</span> players. In this case, <span class="math inline">\(\ALPHABET S_1 = \ALPHABET S_2 = [0, M]\)</span> and <span class="math display">\[
+  u_i(s_1, s_2) = s_i \cdot (p(s_1 + s_2) - c)
+\]</span> where the price function is <span class="math inline">\(p(a) = \max\{ M - a, 0 \}\)</span>.</p>
+<p>As we had shown in <a href="strategic-games.html#sec-cournot" class="quarto-xref"><span>Section 1.9</span></a>, the best response curves of the two players are <span class="math display">\[
+  \BR_1(s_2) = \frac{M - c -s_2}{2}
   \quad\text{and}\quad
-  \sum_{i \in \ALPHABET M} y_i \le P_J.
-\]</span></p>
-<p>Let <span class="math display">\[\begin{align*}
-  \ALPHABET X &amp;= \biggl\{ x \in \reals^m_{\ge 0} :
-                        \sum_{i \in \ALPHABET M} x_i \le P_T \biggr\},
-  \\
-  \ALPHABET Y &amp;= \biggl\{ y \in \reals^m_{\ge 0} :
-                        \sum_{i \in \ALPHABET M} y_i \le P_J \biggr\}.
-\end{align*}\]</span></p>
-<p>Then the above constraints may be written as <span class="math display">\[
-  x = (x_1, \dots, x_m) \in \ALPHABET X
-  \quad\text{and}\quad
-  y = (y_1, \dots, y_m) \in \ALPHABET Y.
-\]</span></p>
-<p>A basic result from communication theory is that the capacity of a narrowband channel with bandwidth <span class="math inline">\(B\)</span> and signal to noise ratio <span class="math inline">\(\text{SNR}\)</span> is <span class="math display">\[
-  C = B \log(1 + \text{SNR}).
-\]</span></p>
-<p>Using this expression, the capacity of the Tx when the Tx uses power <span class="math inline">\(x \in \ALPHABET X\)</span> and $Jm uses power <span class="math inline">\(y \in \ALPHABET Y\)</span> is <span class="math display">\[
-  u(x,y) = \sum_{i \in M} B \log\left( 1 + \frac{x_i}{y_i + σ_i}\right).
-\]</span> Thus, we can consider a zero-sum jamming game between the Tx and the Jm, where the Tx wants to maximize <span class="math inline">\(u(x,y)\)</span> and the Jm wants to minimize it.</p>
-</section>
-<section id="existence-of-value-in-pure-strategies" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="existence-of-value-in-pure-strategies"><span class="header-section-number">3.2</span> Existence of value in pure strategies</h2>
-<div id="prp-jamming-value" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.1</strong></span> The two player ZSG formulated above has a value in pure strategies and the optimal strategy is unique.</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We will prove the result by showing that the model satisfies the sufficient conditions of <a href="zero-sum-games.html#thm-zsg-existence" class="quarto-xref">Theorem&nbsp;<span>2.7</span></a>.</p>
-<section id="compactness-of-alphabet-x-and-alphabet-y" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="compactness-of-alphabet-x-and-alphabet-y">Compactness of <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span></h4>
-<p>By construction, we can see that <span class="math inline">\(\ALPHABET X\)</span> and <span class="math inline">\(\ALPHABET Y\)</span> are closed and bounded subsets of Eucledian space. Hence, both sets are compact.</p>
-</section>
-<section id="strict-concavity-of-uxy-in-x" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="strict-concavity-of-uxy-in-x">Strict concavity of <span class="math inline">\(u(x,y)\)</span> in <span class="math inline">\(x\)</span></h4>
-<p>Fix <span class="math inline">\(y\)</span> and consider the function <span class="math inline">\(f(x) = u(x,y)\)</span>. Then, <span class="math display">\[
-\frac{∂ f}{∂x_i} = \frac{∂}{∂ x_i}
-  \sum_{j \in \ALPHABET M} B \log\left(1 + \frac{x_j}{y_j + σ_j} \right)
-  = \frac{B}{1 + \dfrac{x_i}{y_i + σ_i}} \cdot \frac{1}{y_i + σ_i}
-  = \frac{B}{x_i + y_i + σ_i}.
-\]</span> Moreover <span class="math display">\[
-\frac{∂^2 f}{∂x_i ∂x_j}
-= \begin{cases}
-    \frac{-B}{(x_i + y_i + σ_i)^2}, &amp; \hbox{if $i = j$} \\
-    0, &amp; \hbox{otherwise}
-  \end{cases}
-\]</span> Thus, the Hessian of <span class="math inline">\(f\)</span> is <span class="math display">\[
-  \GRAD_x f = \def\1#1{\frac{-B}{(x_{#1} + y_{#1} + σ_{#1})^2}}
-  \diag\left( \1{1}, \dots, \1{m} \right)
-\]</span> which is a diagonal matrix with a negative diagonal. Recall that the eigenvalues of a diagonal matrix is the diagonal elements. Thus, all eigenvalues are negative and hence the Hessian is negative definite. Thus, <span class="math inline">\(f\)</span> is strictly concave.</p>
-</section>
-<section id="strict-convexity-of-uxy-in-y" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="strict-convexity-of-uxy-in-y">Strict convexity of <span class="math inline">\(u(x,y)\)</span> in <span class="math inline">\(y\)</span></h4>
-<p>Fix <span class="math inline">\(x\)</span> and consider the function <span class="math inline">\(g(y) = u(x,y)\)</span>. Then, <span class="math display">\[\begin{align*}
-\frac{∂ g}{∂y_i} &amp;= \frac{∂}{∂ y_i}
-  \sum_{j \in \ALPHABET M} B \log\left(1 + \frac{x_j}{y_j + σ_j} \right)
-  \\
-  &amp;= \frac{∂}{∂ y_i} B \log\left(1 + \frac{x_i}{y_i + σ_i} \right)
-  = \frac{∂}{∂ y_i} B \log\left(\frac{x_i + y_i + σ_i}{y_i + σ_i} \right)
-  \\
-  &amp; = \frac{B}{x_i + y_i + σ_i} - \frac{B}{y_i + σ_i}.
-\end{align*}\]</span> Moreover <span class="math display">\[
-\frac{∂^2 g}{∂x_i ∂x_j}
-= \begin{cases}
-    \frac{-B}{(x_i + y_i + σ_i)^2} + \frac{B}{(y_i + σ_i)^2}, &amp; \hbox{if $i = j$} \\
-    0, &amp; \hbox{otherwise}
-  \end{cases}
-\]</span> Observe that <span class="math display">\[
-\frac{-B}{(x_i + y_i + σ_i)^2} + \frac{B}{(y_i + σ_i)^2}
-= \frac{B (x_i^2 + 2x_i y_i + 2x_i σ_i)}{(x_i + y_i + σ_i)^2 (y_i + σ_i)^2}
-\]</span> which is always positive for <span class="math inline">\(x_i, y_i \in \reals_{\ge 0}\)</span>.</p>
-<p>Thus, the Hessian of <span class="math inline">\(f\)</span> is <span class="math display">\[
-  \GRAD_x f = \def\1#1{\frac{-B}{(x_{#1} + y_{#1} + σ_{#1})^2} + \frac{B}{(y_{#1} + σ_{#1})^2}}
-  \diag\left( \1{1}, \dots, \1{m} \right)
-\]</span> which is a diagonal matrix with a positive diagonal. Recall that the eigenvalues of a diagonal matrix is the diagonal elements. Thus, all eigenvalues are positive and hence the Hessian is positive definite. Thus, <span class="math inline">\(g\)</span> is strictly convex.</p>
-</section>
-<section id="existence-of-a-value-in-pure-strategies" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="existence-of-a-value-in-pure-strategies">Existence of a value in pure strategies</h4>
-<p>Since all the conditions of <a href="zero-sum-games.html#thm-zsg-existence" class="quarto-xref">Theorem&nbsp;<span>2.7</span></a> are satisfied. Thus, the game has a value in pure strategies and the optimal strategy is unique.</p>
-</section>
-</div>
-</div>
-</section>
-<section id="structre-of-optimal-strategies" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="structre-of-optimal-strategies"><span class="header-section-number">3.3</span> Structre of optimal strategies</h2>
-<p>Now that we know that the game has a value in pure strategies and the optimal strategy is unique, we search for an optimal solution.</p>
-<section id="optimal-strategy-of-the-transmitter" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="optimal-strategy-of-the-transmitter"><span class="header-section-number">3.3.1</span> Optimal strategy of the transmitter</h3>
-<p>We know that <span class="math display">\[
-v = \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} u(x,y).
-\]</span> Consider the inner optimization problem: for a given <span class="math inline">\(y\)</span> compute <span class="math display">\[
-  \max_{x \in \ALPHABET X} u(x,y)
-\]</span> or <span class="math display">\[
-  \max_{x \in \reals^m} \sum_{i \in \ALPHABET M} B \log\left(1 + \frac{x_i}{y_i + σ_i} \right)
-\]</span> such that <span class="math display">\[\begin{align*}
-  \sum_{i \in \ALPHABET M} x_i &amp;\le P_T, \\
-  x_i &amp;\ge 0, \quad \forall i \in \ALPHABET M
-\end{align*}\]</span> This is a constrained optimization problem with a concave objective and convex constraint set. So, we can find the optimal solution using <a href="https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions">:KKT conditions</a>.</p>
-<p>Let us consider Lagrange multiplier <span class="math inline">\(λ\)</span> for the first constraint and multiplies <span class="math inline">\(α_i\)</span> for the non-negativity constraints. The Lagrange relaxation is <span class="math display">\[
-\sum_{i \in \ALPHABET M} B \log\left(1 + \frac{x_i}{y_i + σ_i}\right)
-- λ \biggl( \sum_{i \in \ALPHABET M} x_i - P_T \biggr)
-+ \sum_{i \in M} α_i x_i.
-\]</span> The KKT conditions are:</p>
-<ul>
-<li><p><strong>Optimality equation</strong> <span class="math display">\[
-\frac{∂ (\hbox{Lagrange relaxation})}{∂x_i}
-= \frac{B}{x_i + y_i + σ_i} - λ + α_i = 0.
-\]</span></p></li>
-<li><p><strong>Complementary slackness conditions</strong> <span class="math display">\[\begin{align*}
-α_i &amp;\ge 0 &amp; \text{and} &amp;&amp; α_i x_i &amp;= 0 \\
-λ &amp; \ge 0  &amp; \text{and} &amp;&amp; λ\biggl( \sum_{i \in \ALPHABET M} x_i - P_T \biggr) &amp;= 0.
-\end{align*}\]</span></p></li>
-</ul>
-<p>The optimality equation implies that <span class="math display">\[
-  α_i = λ - \frac{B}{x_i + y_i + σ_i}.
-\]</span> The first complementary slackness condition requires that <span class="math inline">\(α_i \ge 0\)</span>. Thus, <span class="math display">\[\begin{equation}\label{eq:cond-1}
-  λ \ge \frac{B}{x_i + y_i + σ_i}.
-\end{equation}\]</span> Moreover, since <span class="math inline">\(α_i x_i = 0\)</span>, we have <span class="math display">\[\begin{equation}\label{eq:cond-2}
-  \biggl(λ - \frac{B}{x_i + y_i + σ_i}\biggr) x_i = 0.
-\end{equation}\]</span></p>
-<p>We now consider two cases:</p>
-<ul>
-<li><p><strong>Case 1:</strong> <span class="math inline">\(λ &lt; B/(y_i + σ_i)\)</span>.</p>
-<p>Then <span class="math inline">\(x_i = 0\)</span> is impossible, which we prove by contraction. If <span class="math inline">\(x_i = 0\)</span>, then by <span class="math inline">\(\eqref{eq:cond-1}\)</span> <span class="math display">\[λ \ge \frac{B}{(x_i + y_i + σ_i)} = \frac{B}{(y_i + σ_i)}\]</span> which violates the assumption that <span class="math inline">\(λ &lt; B/(y_i + σ_i)\)</span>.</p>
-<p>Hence, <span class="math inline">\(x_i &gt; 0\)</span>. Then, <span class="math inline">\(\eqref{eq:cond-2}\)</span> implies that <span class="math display">\[
-    λ = \frac{B}{x_i + y_i + σ_i}
-    \implies
-    x_i = λ^{-1} B - y_i - σ_i.
-\]</span></p></li>
-<li><p><strong>Case 2:</strong> <span class="math inline">\(λ \ge B/(y_i + σ_i)\)</span></p>
-<p>Then <span class="math inline">\(x_i &gt; 0\)</span> is impossible, which we prove by contradiction. If <span class="math inline">\(x_i &gt; 0\)</span>, then <span class="math display">\[
-  λ \ge \frac{B}{y_i + σ_i} &gt; \frac{B}{x_i + y_i + σ_i},
-\]</span> which violates <span class="math inline">\(\eqref{eq:cond-1}\)</span>. Then <span class="math inline">\(x_i = 0\)</span>.</p></li>
-</ul>
-<p>Thus, we have <span class="math display">\[\begin{align*}
-  x_i^* &amp;= \begin{cases}
-    λ^{-1}B - y_i - σ_i, &amp; \hbox{if } λ &lt; \frac{B}{y_i + σ_i} \\
-    0, &amp; \hbox{if } λ \ge \frac{B}{y_i + σ_i}
-  \end{cases}
-  \\
-  &amp;= [ λ^{-1}B - y_i - σ_i]^{+}
-\end{align*}\]</span> where the notation <span class="math inline">\([z]^{+}\)</span> means <span class="math inline">\(\max\{z, 0\}\)</span>.</p>
-<p>If <span class="math inline">\(λ &gt; 0\)</span>, then the complementary slackness condition implies that <span class="math display">\[\begin{equation}\label{eq:lambda}
-  \sum_{i \in \ALPHABET M} \big[ λ^{-1} B - y_i - σ_i \bigr]^{+} = P_T.
-\end{equation}\]</span> The LHS is a piecewise linear and increasing in <span class="math inline">\(λ^{-1}\)</span>. So, we can always find a solution.</p>
-<p>As an illustration, suppose the power levels <span class="math inline">\(y_i + σ_i\)</span> are given as in <a href="#fig-waterfilling" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>&nbsp;(a). Let <span class="math inline">\(λ\)</span> denote the solution of <span class="math inline">\(\eqref{eq:lambda}\)</span> which is shown geometrically in <a href="#fig-waterfilling" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>&nbsp;(b). This solution is called a <strong>water filling</strong> solution for the following reason: Suppose a region is divided into <span class="math inline">\(m\)</span> cells (of unit width) and the ground level above cell <span class="math inline">\(i\)</span> is <span class="math inline">\(y_i + σ_i\)</span> and then flood the region with region with a <span class="math inline">\(P_T\)</span> amount of water. Then, the new water level at cell <span class="math inline">\(i\)</span> will be <span class="math inline">\(x_i^*\)</span>.</p>
-<div id="fig-waterfilling" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-waterfilling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/svg/waterfilling1.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-waterfilling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Water-filling solution for the transmitter. Plot (a) shows the “interference” levels <span class="math inline">\(y_i + σ_i\)</span>. In plot (b), the blue shaded region shows the power levels <span class="math inline">\(x_i^*\)</span>.
-</figcaption>
+  \BR_2(s_1) = \frac{M - c - s_1}{2}.
+\]</span> which are plotted below:</p>
+<div id="fig-cournot" class="quarto-figure quarto-figure-center anchored">
+<figure id="cournot" class="figure" style="width=100%">
+  <p style="max-width:400px; margin: 0px auto;">
+  <svg class="cartesian" viewbox="-100 -400 600 500">
+  <defs>
+    <!-- A marker to be used as an arrowhead -->
+    <marker id="arrow" viewbox="0 0 10 10" refx="5" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z"></path>
+    </marker>
+  </defs>
+  <g>
+    <!-- Draw the y-axis -->
+    <line v-for="x in (xmax-xmin)" :x1="(x+xmin)*scale" :y1="ymin*scale" :x2="(x+xmin)*scale" :y2="ymax*scale" stroke="gray" :stroke-width="(x+xmin)%5 == 0 ? 0.75 : 0.25"></line>
+    <!-- Draw the x-axis -->
+    <line v-for="y in (ymax-ymin)" :y1="(y+ymin)*scale" :x1="xmin*scale" :y2="(y+ymin)*scale" :x2="xmax*scale" stroke="gray" :stroke-width="(y+ymin)%5 == 0 ? 0.75 : 0.25"></line>
+    <!-- Draw the axis -->
+    <line :x1="xmin*scale" y1="0" :x2="(xmax-7.5)*scale" y2="0" stroke="black" :stroke-width="2" marker-end="url(#arrow)"></line>
+    <line :y1="ymin*scale" x1="0" :y2="(ymax-7.5)*scale" x2="0" stroke="black" :stroke-width="2" marker-end="url(#arrow)"></line>
+
+    <!-- Plot the BR for P1 -->
+    <line v-if="step === 0" :x1="0" :y1="(M-c)*scale" :x2="(M-c)/2*scale" :y2="0" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step >= 1" :x1="0" :y1="(M-c)*scale" :x2="(M-c)/2*scale" :y2="0" stroke="lightgray" stroke-width="4"></line>
+
+    <line v-if="step === 1" :x1="(M-c)/4*scale" :y1="(M-c)/2*scale" :x2="(M-c)/2*scale" :y2="0*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step === 2" :x1="(M-c)/4*scale" :y1="(M-c)/2*scale" :x2="(M-c)*3/8*scale" :y2="(M-c)/4*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <circle :cx="0*scale" :cy="(M-c)*scale" r="8" fill="#0A0"></circle>
+
+    <circle :cx="(M-c)/2*scale" :cy="0*scale" r="8" fill="#0A0"></circle>
+
+    <foreignobject :x="-4*scale" :y="-(M-c+0.5)*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $M-c$
+        </div>
+    </foreignobject>
+
+    <foreignobject :x="((M-c)/2-2)*scale" :y="-0.5*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $\frac{M-c}{2}$
+        </div>
+    </foreignobject>
+
+    <!-- Plot the BR for P2 -->
+    <line v-if="step === 0" :y1="0" :x1="(M-c)*scale" :y2="(M-c)/2*scale" :x2="0" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step >= 1" :y1="0" :x1="(M-c)*scale" :y2="(M-c)/2*scale" :x2="0" stroke="lightgray" stroke-width="4"></line>
+
+    <line v-if="step === 1" :y1="(M-c)/4*scale" :x1="(M-c)/2*scale" :y2="(M-c)/2*scale" :x2="0*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <line v-if="step === 2" :y1="(M-c)/4*scale" :x1="(M-c)/2*scale" :y2="(M-c)*3/8*scale" :x2="(M-c)/4*scale" stroke="#0A0" stroke-width="4"></line>
+
+    <circle :cy="0*scale" :cx="(M-c)*scale" r="8" fill="#0A0"></circle>
+
+    <circle :cy="(M-c)/2*scale" :cx="0*scale" r="8" fill="#0A0"></circle>
+
+    <foreignobject :x="-4*scale" :y="-((M-c)/2+0.5)*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $\frac{M-c}{2}$
+        </div>
+    </foreignobject>
+
+    <foreignobject :x="((M-c)-2)*scale" :y="-0.5*scale" :width="4*scale" :height="2*scale">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          $M-c$
+        </div>
+    </foreignobject>
+
+    <!-- Clip the range -->
+    <line v-if="step >= 1" :x1="(M-c)/2*scale" :y1="ymin*scale" :x2="(M-c)/2*scale" :y2="(ymax-7.5)*scale" stroke="#A00" :stroke-width="1"></line>
+
+    <line v-if="step >= 1" :y1="(M-c)/2*scale" :x1="xmin*scale" :y2="(M-c)/2*scale" :x2="(xmax-7.5)*scale" stroke="#A00" :stroke-width="1"></line>
+
+    <line v-if="step === 1" :x1="0" :y1="0" :x2="0" :y2="(M-c)/2*scale" stroke="#A00" :stroke-width="3"></line>
+
+    <line v-if="step === 1" :y1="0" :x1="0" :y2="0" :x2="(M-c)/2*scale" stroke="#A00" :stroke-width="3"></line>
+
+    <line v-if="step >= 2" :x1="(M-c)/4*scale" :y1="ymin*scale" :x2="(M-c)/4*scale" :y2="(ymax-7.5)*scale" stroke="#00A" :stroke-width="1"></line>
+
+    <line v-if="step >= 2" :y1="(M-c)/4*scale" :x1="xmin*scale" :y2="(M-c)/4*scale" :x2="(xmax-7.5)*scale" stroke="#00A" :stroke-width="1"></line>
+
+    <line v-if="step === 2" :x1="0" :y1="(M-c)/4*scale" :x2="0" :y2="(M-c)/2*scale" stroke="#00A" :stroke-width="4"></line>
+
+    <line v-if="step === 2" :y1="0" :x1="(M-c)/4*scale" :y2="0" :x2="(M-c)/2*scale" stroke="#00A" :stroke-width="4"></line>
+  </g>
+  </svg>
+  <label>
+   Iteration = {{ step }}
+   <button v-on:click="step=Math.max(step-1,0)">Prev</button>
+   <button v-on:click="step=Math.min(step+1,2)">Next</button>
+  </label>
+  </p>
+  <figcaption class="figure-caption">
+  Figure: Best response curves for Cournot competition.
+  </figcaption>
 </figure>
 </div>
+
+<script>
+  createApp({
+    setup() {
+      const xmin = ref(-10);
+      const xmax = ref(30);
+      const ymin = ref(-10);
+      const ymax = ref(25);
+
+      const scale = ref(20);
+
+      return {
+        xmin,
+        xmax,
+        ymin,
+        ymax,
+        scale,
+      }
+    },
+    data() {
+      return {
+          M: 17,
+          c: 2,
+          step: 0,
+      }
+    },
+  }).mount('#cournot')</script>
+<p>In <a href="strategic-games.html#sec-cournot" class="quarto-xref"><span>Section 1.9</span></a>, we had shown that the intersection point of these two best response curve is the unique rationalizable strategy (and therefore a NE). In general, even when the intersection point of the best response curves is not rationalizable, it is a NE.</p>
+<section id="sec-bertrand" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-bertrand"><span class="header-section-number">7.1</span> Bertrand competition with differentiated products</h2>
+<p>This model, proposed by <span class="citation" data-cites="Bertrand1883">Bertrand (<a href="../references.html#ref-Bertrand1883" role="doc-biblioref">1883</a>)</span>, may be viewed as a generalization of Cournot competition where players set the prices rather than production levels.</p>
+<p>We consider a <em>differentiated product</em> market with two firms. Firm <span class="math inline">\(i \in \{1,2\}\)</span> sets a price <span class="math inline">\(p_i \in \reals_{\ge 0}\)</span> and incurs a has a constant marginal production cost of <span class="math inline">\(c\)</span> (i.e., each firm has a cost of <span class="math inline">\(c\)</span> to produce one unit of goods, and as was the case in cournot competition, we assume that this case is the same for both firms).</p>
+<p>The demand of firm <span class="math inline">\(i\)</span> is a function of the curve and is captured by a demand curve <span class="math inline">\(D_i(p_i, p_j)\)</span>, which is a weakly decreasing function of its own price and a weakly increasing function of the prices of the other firm.</p>
+<p>Thus, the utility of each firm is <span class="math display">\[
+  u_i(p_i, p_j) = (p_i - c) D_i(p_i, p_j).
+\]</span></p>
+<p>For simplicity, we will assume that the demand function is <span class="math display">\[
+  D(p_i, p_j) = \max\{ P - p_i + a p_j, 0 \}
+\]</span> where <span class="math inline">\(P\)</span> is a constant known as market potential. Thus, the utility of each firm is $$ u_i(p_i, p_j) = (p_i - c) { P - p_i + a p_j, 0 }.</p>
+<p>Note that <span class="math inline">\(u_i\)</span> is a continuous function of <span class="math inline">\((p_i, p_j)\)</span> and is quasi-concave in <span class="math inline">\(p_i\)</span>. But, the strategy spaces are not compact. Therefore, <a href="nash-equilibrium.html#thm-NE-pure" class="quarto-xref">Theorem&nbsp;<span>5.4</span></a> is not directly applicable. Nonetheless, it can be shown that the game has a pure strategy NE.</p>
+<p>To find the NE, we look at the best response curves, which are obtained by setting <span class="math inline">\(∂u_i/∂p_i = 0\)</span> (and assuming that <span class="math inline">\(p_i &lt; P + a p_j\)</span>, so that we can ignore the max in the demand function): <span class="math display">\[
+  \BR_i(p_j) = \tfrac 12 ( P + a p_j + c), \quad i, j \in \{1,2\}, i \neq j.
+\]</span> Solving the above system of equations, we get <span class="math display">\[
+  p_1 = p_2 = \frac{P + c}{2 - a}.
+\]</span></p>
 </section>
-<section id="optimal-strategy-of-the-jammer" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="optimal-strategy-of-the-jammer"><span class="header-section-number">3.3.2</span> Optimal strategy of the jammer</h3>
-<p>To find the optimal strategy of the jammer, we reconsider consider the minmax problem <span class="math display">\[
-  v = \min_{y \in \ALPHABET Y} \max_{x \in \ALPHABET X} u(x,y)
-  = \min_{y \in Y} u(x^*, y)
-\]</span> where <span class="math inline">\(x^*_i = [λ^{-1}B - y_i - σ_i]^{+}\)</span>, as determined in the previous step. This optimization problem can be written as <span class="math display">\[
-  \min_{y \in \reals^m}
-    \sum_{i \in \ALPHABET M} B \log\left( 1 + \frac{x_i^*}{y_i + σ_i} \right)
-\]</span> such that <span class="math display">\[\begin{align*}
-  \sum_{i \in \ALPHABET M} y_i &amp;\le P_J \\
-  y_i &amp; \ge 0, \quad \forall i \in \ALPHABET M.
-\end{align*}\]</span> Consider the Lagrange relaxation, were <span class="math inline">\(μ\)</span> is the Lagrange multiplier for the first constraint and <span class="math inline">\(β_i\)</span> is the Lagrange multiplier for the non-negativity constraints. The Lagrange relaxation is <span class="math display">\[
-   \sum_{i \in \ALPHABET M} B \log(x_i^* + y_i + σ_i)
-- \sum_{i \in \ALPHABET M} B \log(        y_i + σ_i)
-+ μ \biggl( \sum_{i \in \ALPHABET M} y_i - P_J \biggr)
-- \sum_{i \in \ALPHABET M} β_i y_i
-\]</span> The KKT conditions are:</p>
-<ul>
-<li><p><strong>Optimality equation:</strong> <span class="math display">\[
-\frac{∂ (\hbox{Lagrange relaxation})}{∂y_i}
-= \frac{B}{x_i^* + y_i + σ_i} - \frac{B}{y_i + σ_i} +  μ - β_i = 0.
-\]</span></p></li>
-<li><p><strong>Complementary slackness:</strong> <span class="math display">\[\begin{align*}
-  β_i &amp;\ge 0 &amp; \text{and} &amp;&amp; β_i y_i &amp;= 0 \\
-  μ &amp; \ge 0  &amp; \text{and} &amp;&amp; μ\biggl( \sum_{i \in \ALPHABET M} y_i - P_J \biggr) &amp;= 0.
-\end{align*}\]</span></p></li>
-</ul>
-<p>Consider a channel where <span class="math inline">\(x_i^* = 0\)</span>. The optimality euqations imply that for such a channel <span class="math inline">\(β_i = μ &gt; 0\)</span>. Thus, complementary slackness condition implies that <span class="math inline">\(y_i^* = 0\)</span>.</p>
-<p>Consider a channel where <span class="math inline">\(x_i^* &gt; 0\)</span>. From the solution of the previous section, we know that for this case <span class="math inline">\(x^*_i = λ^{-1}B - y_i - σ_i\)</span>. Thus, the optimality equation simplifies to <span class="math display">\[
-    λ + μ = β_i + \frac{B}{y_i + σ_i}
-\]</span> The first complementary slackness condition requires that <span class="math inline">\(β_i \ge 0\)</span>. Thus, <span class="math display">\[\begin{equation}\label{eq:cond-3}
-  λ + μ \ge \frac{B}{y_i + σ_i}.
-\end{equation}\]</span>. Moreover, since <span class="math inline">\(β_i y_i = 0\)</span>, we have \begin{equation} ( λ + μ - ) y_i = 0. $$</p>
-<p>We now consider two cases:</p>
-<ul>
-<li><p><strong>Case 1:</strong> <span class="math inline">\(λ + μ &lt; B/σ_i\)</span>.</p>
-<p>Then <span class="math inline">\(y_i = 0\)</span> is impossible, which we prove by contraction. If <span class="math inline">\(y_i = 0\)</span>, then by <span class="math inline">\(\eqref{eq:cond-3}\)</span> we have <span class="math display">\[
-  λ + μ \ge \frac{B}{y_i + σ_i} = \frac{B}{σ_i}
-\]</span> which violates the assumption that <span class="math inline">\(λ + μ &lt; B/σ_i\)</span>.</p>
-<p>Hence, <span class="math inline">\(y_i &gt; 0\)</span>. Then, <span class="math inline">\(\eqref{eq:cond-4}\)</span> implies that <span class="math display">\[
-  λ + μ = \frac{B}{y_i + σ_i} \implies y_i = (λ + μ)^{-1}B - σ_i.
-\]</span></p></li>
-<li><p><strong>Case 2:</strong> <span class="math inline">\(λ + μ \ge B/σ_i\)</span>.</p>
-<p>Then <span class="math inline">\(y_i &gt; 0\)</span> is impossible, which we prove by contraction. If <span class="math inline">\(y_i &gt; 0\)</span>, then <span class="math display">\[
-  β_i = λ + μ - \frac{B}{y_i + σ_i} &gt; λ + μ - \frac{B}{σ_i} &gt; 0.
-\]</span> Then, from complementary slackness conditions, we get that <span class="math inline">\(y_i = 0\)</span>, which contradicts the assumption that <span class="math inline">\(y_i &gt; 0\)</span>. Thus, <span class="math inline">\(y_i\)</span> must be <span class="math inline">\(0\)</span>.</p></li>
-</ul>
-<p>Thus, we have <span class="math display">\[\begin{align*}
-  y_i^* &amp;= \begin{cases}
-    (λ + μ)^{-1}B - σ_i, &amp; \hbox{if } λ + μ &lt; \frac{B}{σ_i} \\
-    0, &amp; \hbox{if } λ + μ \ge \frac{B}{σ_i}.
-  \end{cases}
-  \\
-  &amp;= \bigl[ (λ+μ)^{-1}B - σ_i \bigr]^{+}.
-\end{align*}\]</span></p>
-<p>If <span class="math inline">\(μ &gt; 0\)</span>, then complementary slackness implies that <span class="math display">\[
-  \sum_{i \in \ALPHABET M} \bigl[ (λ + μ)^{-1} B - σ_i \bigr]^{+} = P_J.
-\]</span> As before, we can argue that this equation has a solution, which we can find using water-filling.</p>
+<section id="final-offer-arbitration" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="final-offer-arbitration"><span class="header-section-number">7.2</span> Final offer arbitration</h2>
 </section>
-</section>
-<section id="summary-of-the-solution" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="summary-of-the-solution"><span class="header-section-number">3.4</span> Summary of the solution</h2>
-<p>The main steps of finding the optimal <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are as follows:</p>
-<ol type="1">
-<li><p>Determine <span class="math inline">\((λ + μ)\)</span> which sastisfies <span class="math display">\[
-  \sum_{i \in \ALPHABET M} \bigl[ (λ + μ)^{-1} B - σ_i \bigr]^{+} = P_J.
-\]</span></p></li>
-<li><p>If <span class="math inline">\((λ + μ) &gt; 0\)</span>, set <span class="math inline">\(y_i^* = \big[ (λ+μ)^{-1} B - σ_i \bigr]^{+}\)</span>. Otherwise, set <span class="math inline">\(y_i^* = 0\)</span> for all <span class="math inline">\(i\)</span>.</p></li>
-<li><p>Determine <span class="math inline">\(λ\)</span> which satisfies <span class="math display">\[
-  \sum_{i \in \ALPHABET M} \bigl[ λ^{-1} B - y_i^* - σ_i \bigr]^{+} = P_T.
-\]</span></p></li>
-<li><p>If <span class="math inline">\(λ &gt; 0\)</span>, set <span class="math inline">\(x_i^* = \bigl[ λ^{-1}B - y_i^* - σ_i \bigr]^{+}\)</span>. Otherwise, set <span class="math inline">\(x_i^* = 0\)</span> for all <span class="math inline">\(i\)</span>.</p></li>
-</ol>
-</section>
-<section id="salient-features-of-the-solution" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="salient-features-of-the-solution"><span class="header-section-number">3.5</span> Salient features of the solution</h2>
-<p>The power allocated to a channel depends on the noise power <span class="math inline">\(σ_i\)</span>. We have three cases:</p>
-<ol type="1">
-<li><p><span class="math inline">\(σ_i &gt; λ^{-1} B\)</span> in which case <span class="math inline">\(x_i^* = y_i^* = 0\)</span>.</p>
-<p>This can be interpreted as follows. The channel is very bad. THerefore the transmitter does not transmit on it and consequently the jammer doesn’t jam it.</p></li>
-<li><p><span class="math inline">\((λ + μ)^{-1}B &lt; σ_i &lt; λ^{-1}B\)</span> in which case <span class="math inline">\(x_i^* &gt; 0\)</span> but <span class="math inline">\(y_i^* = 0\)</span>.</p>
-<p>This can be interpreted as follows. The channel is bad enough that the jammer doesn’t need to deteriorate it further (because it is better for the jammer to use its resources elsewhere).</p></li>
-<li><p><span class="math inline">\(σ_i &lt; (λ + μ)^{-1}B\)</span> in wihch case both <span class="math inline">\(x_i^* &gt; 0\)</span> and <span class="math inline">\(y_i^* &gt; 0\)</span>.</p>
-<p>This can be interpreted as follows. The jammer deteriorates the channel but the transmitter still transmits on it.</p></li>
-</ol>
-<p>This situation is illustrated in <a href="#fig-waterfilling-summary" class="quarto-xref">Figure&nbsp;<span>3.2</span></a>.</p>
-<div id="fig-waterfilling-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-waterfilling-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/svg/waterfilling2.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-waterfilling-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Water-filling solution for the transmitter. Plot (a) shows the noise levels <span class="math inline">\(σ_i\)</span>. In plot (b), the red shaded region shows the power levels <span class="math inline">\(y_i^*\)</span> and the blue area shows the power levels <span class="math inline">\(x_i^*\)</span>.
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="notes" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="notes">Notes</h2>
-<p>The material in this section is adapted from <span class="citation" data-cites="Fasoulakis2019">Fasoulakis et al. (<a href="../references.html#ref-Fasoulakis2019" role="doc-biblioref">2019</a>)</span>. For generalizations of this model, see <span class="citation" data-cites="Altman2007">Altman et al. (<a href="../references.html#ref-Altman2007" role="doc-biblioref">2007</a>)</span> and <span class="citation" data-cites="Altman2009">Altman et al. (<a href="../references.html#ref-Altman2009" role="doc-biblioref">2009</a>)</span>. For a computationally efficient algorithm to solve the waterfilling problem, see <span class="citation" data-cites="He2013">He et al. (<a href="../references.html#ref-He2013" role="doc-biblioref">2013</a>)</span>.</p>
+<section id="problem-of-the-commons" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="problem-of-the-commons"><span class="header-section-number">7.3</span> Problem of the commons</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Altman2007" class="csl-entry" role="listitem">
-<span class="smallcaps">Altman, E., Avrachenkov, K., and Garnaev, A.</span> 2007. A jamming game in wireless networks with transmission cost. <em>Network control and optimization: First EuroFGI international conference</em>, Springer Berlin Heidelberg, 1–12. DOI: <a href="https://doi.org/10.1007/978-3-540-72709-5_1">10.1007/978-3-540-72709-5_1</a>.
+<div id="ref-Bertrand1883" class="csl-entry" role="listitem">
+<span class="smallcaps">Bertrand, J.</span> 1883. Revue de <span>“recherches sur la théorie mathématique de la richesse”</span> de a. cournot. <em>Journal des Savants</em>, 499–508.
 </div>
-<div id="ref-Altman2009" class="csl-entry" role="listitem">
-<span class="smallcaps">Altman, E., Avrachenkov, K., and Garnaev, A.</span> 2009. Jamming in wireless networks: The case of several jammers. <em>International conference on game theory for networks</em>, IEEE, 585–592.
+<div id="ref-Gibbons1992" class="csl-entry" role="listitem">
+<span class="smallcaps">Gibbons, R.</span> 1992. <em>Game theory for applied economists</em>. Princeton University Press.
 </div>
-<div id="ref-Fasoulakis2019" class="csl-entry" role="listitem">
-<span class="smallcaps">Fasoulakis, M., Traganitis, A., and Ephremides, A.</span> 2019. Jamming in multiple independent gaussian channels as a game. In: <em>Game theory for networks</em>. Springer International Publishing, 3–8. DOI: <a href="https://doi.org/10.1007/978-3-030-16989-3_1">10.1007/978-3-030-16989-3_1</a>.
-</div>
-<div id="ref-He2013" class="csl-entry" role="listitem">
-<span class="smallcaps">He, P., Zhao, L., Zhou, S., and Niu, Z.</span> 2013. Water-filling: A geometric approach and its application to solve generalized radio resource allocation problems. <em>IEEE Transactions on Wireless Communications</em> <em>12</em>, 7, 3637–3647. DOI: <a href="https://doi.org/10.1109/twc.2013.061713.130278">10.1109/twc.2013.061713.130278</a>.
+<div id="ref-Harrington2014" class="csl-entry" role="listitem">
+<span class="smallcaps">Harrington, Jr., Joseph E.</span> 2014. <em>Games, strategies, and decision making</em>. Worth Publishers.
 </div>
 </div>
 </section>
@@ -1271,13 +1141,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../static-games/zero-sum-games.html" class="pagination-link" aria-label="Zero-sum games">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zero-sum games</span></span>
+      <a href="../static-games/evolutionary-dynamics.html" class="pagination-link" aria-label="Evolutionary dyanmics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Evolutionary dyanmics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../static-games/fictitious-play.html" class="pagination-link" aria-label="Fictitious Play">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fictitious Play</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../static-games/correlated-equilibrium.html" class="pagination-link" aria-label="Correlated equilibrium">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correlated equilibrium</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1286,5 +1156,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/jamming-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/continuous-nash.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
