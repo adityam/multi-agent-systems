@@ -151,9 +151,12 @@ Thus, if we compute the utility function $U_i(s_1, s_2)$ for all pure strategy p
 
 We can write such an **normal-form reduction** of the game as a bimatrix game:
 
+:::{#fig-BoS-normal}
 ```{julia}
-game(S, SS, [2 1 1 1; 0 1//2 1//2 1], [1//2 2//3 0 1; 1//2 0 3//2 1])
+game(S, SS, [2 1 1 1; 0 1//2 1//2 1], [1//2 2//3 0 1; 1//2 0 3//2 1],
+    caption="Normal form reduction of the modified battle of sexes game")
 ```
+:::
 
 We can then identify a BNE of the orginal game by identifying the NE of its normal-form rediction. Although this approach is simple, it is not very attractive because the normal-form reduction has large strategy spaces (exponential in the number of types) and we have already seen that it difficult to compute NE of games with large strategy spaces.
 
@@ -214,9 +217,98 @@ of player 2. Note that we have assumed that $p \in (0,1)$ but $q_1, q_2 \in [0, 
     \implies (1-p) = 2p  \implies p = \frac 13.
   $$
  
-But only one of them can be true. Thus, either
+But $p$ must take a single value so only one of them can be true. Thus, either
 
 - $q_1 \in (0, 1)$ and $q_2 \in \{0, 1\}$, or
 - $q_2 \in (0, 1)$ and $q_1 \in \{0, 1\}$. 
 
 We consider both these cases separately. 
+
+**Case 2.1** $p \in (0,1)$, $q_1 \in (0,1)$, and $q_2 \in \{0, 1\}$. 
+
+As argued before, in this case $p = \tfrac 2/3$. We consider the two values of $q_2$ separately.
+
+- $q_2 = 0$. In this case, the mixed strategy of P2 is
+  $$
+      σ_2 = (0, q_1, 0, 1-q_1).
+  $$
+  By the invariance principle, for P1 to play a mixed strategy, it must be that
+  $$
+    U_1(\mathsf{F}, σ_2) = U_19\mathsf{O}, σ_2)
+    \implies
+    q_1 = \tfrac 12 q_1 + (1 - q_1)
+    \implies 
+    q_1 = \tfrac 23.
+  $$
+  [We also need to check that P2.2 is playing her BR]{.text-danger}, i.e.,
+  $$
+    U_{2.2}(σ_1, \mathsf{F}) \le U_{2.2}(σ_1, \mathsf{O})
+    \iff
+    \tfrac 13 \le \tfrac 43
+  $$
+  which is true. Hence, the following is a mixed strategy NE.
+  $$
+    \bbox[5pt,border: 1px solid]{
+    σ_1 = (\tfrac 23, \tfrac 13),
+    \quad
+    σ_{2.1} = (\tfrac 23, \tfrac 13),
+    \quad
+    σ_{2.2} = (0, 1).
+   }
+  $$
+
+- $q_2 = 1$. In this case, the mixed strategy of P2 is
+  $$
+      σ_2 = (q_1, 0, 1-q_1, 0).
+  $$
+  By the invariance principle, for P1 to play a mixed strategy, it must be that
+  $$
+    U_1(\mathsf{F}, σ_2) = U_1(\mathsf{O}, σ_2)
+    \implies
+    2 q_1 + (1 - q_1) = \tfrac 12 (1 -q_1)
+    \implies 
+    q_1 = -\tfrac 13.
+  $$
+  Thus, there is no feasible solution in this case.
+
+**Case 2.2** $p \in (0,1)$, $q_2 \in (0,1)$, and $q_1 \in \{0, 1\}$. 
+
+As argued before, in this case $p = \tfrac 1/3$. [Just to show the possibility, we solve this case differently from Case 2.1]{.text-primary}
+
+Since we know the strategy of P1, we compute the BR of P2.1. We know that
+$$
+  U_{2.1}(σ_1, \mathsf{F}) = \tfrac 13  
+  \quad\text{and}\quad
+  U_{2.1}(σ_1, \mathsf{O}) = \tfrac 43  
+$$
+Since $U_{2.1}(σ_1, \mathsf{F}) < U_{2.1}(σ_1, \mathsf{O})$, player 2.1 plays $\mathsf{O}$. Thus, from the point of view of P1, P2 is playing the mixed strategy
+$$
+  σ_2 = (0, 0, q_2, 1-q_2).
+$$
+[Unlike Case 2.1, we don't need to consider the other possibility because we have established that P2.1 plays $\mathsf{O}$]{.text-muted}
+
+By the invariance principle, for P1 to play a mixed strategy, it must be that
+$$
+  U_1(\mathsf{F}, σ_2) = U_1(\mathsf{O}, σ_2)
+  \implies
+  q_2 = \tfrac 12 q_2 + (1-q_2)
+  \implies
+  q_2 = \tfrac 23.
+$$
+Hence, the following is a mixed strategy NE.
+  $$
+    \bbox[5pt,border: 1px solid]{
+    σ_1 = (\tfrac 13, \tfrac 23),
+    \quad
+    σ_{2.1} = (1, 0).
+    \quad
+    σ_{2.2} = (\tfrac 23, \tfrac 13),
+   }
+  $$
+
+:::{#exr-verify}
+Using the normal form reduction of @fig-BoS-normal, verify that the following are mixed strategy NE:
+
+- $σ_1 = (\tfrac 23, \tfrac 13)$ and $σ_2 = (0, \tfrac 23, 0, \tfrac 13)$.
+- $σ_1 = (\tfrac 13, \tfrac 23)$ and $σ_2 = (0, 0, \tfrac 23, \tfrac 13)$.
+:::
