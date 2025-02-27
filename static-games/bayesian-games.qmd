@@ -151,12 +151,12 @@ Thus, if we compute the utility function $U_i(s_1, s_2)$ for all pure strategy p
 
 We can write such an **normal-form reduction** of the game as a bimatrix game:
 
-:::{#fig-BoS-normal}
 ```{julia}
-game(S, SS, [2 1 1 1; 0 1//2 1//2 1], [1//2 2//3 0 1; 1//2 0 3//2 1],
-    caption="Normal form reduction of the modified battle of sexes game")
+#| label: fig-BoS-normal
+#| fig-cap: Normal form reduction of the modified battle of sexes game
+
+game(S, SS, [2 1 1 1; 0 1//2 1//2 1], [1//2 2//3 0 1; 1//2 0 3//2 1])
 ```
-:::
 
 We can then identify a BNE of the orginal game by identifying the NE of its normal-form rediction. Although this approach is simple, it is not very attractive because the normal-form reduction has large strategy spaces (exponential in the number of types) and we have already seen that it difficult to compute NE of games with large strategy spaces.
 
