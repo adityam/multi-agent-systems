@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-01-31">
+<meta name="dcterms.date" content="2025-02-27">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>4&nbsp; Fictitious Play – Multi-Agent Systems</title>
@@ -216,10 +216,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[4]{.chapter-number}&nbsp; [Fictitious Play]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-01-31">
-<meta name="citation_cover_date" content="2025-01-31">
+<meta name="citation_publication_date" content="2025-02-27">
+<meta name="citation_cover_date" content="2025-02-27">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-31">
+<meta name="citation_online_date" content="2025-02-27">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/fictitious-play.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -442,7 +442,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 31, 2025</p>
+      <p class="date">February 27, 2025</p>
     </div>
   </div>
   
@@ -454,7 +454,7 @@ window.Quarto = {
 </header>
 
 
-<p>Fictitious play is an iterative algorithm to compute the solution of static game. It was first proposed by <span class="citation" data-cites="Brown1951">Brown (<a href="../references.html#ref-Brown1951" role="doc-biblioref">1951</a>)</span> who conjectured that it could be used to find the optimal solution of two player zero sum games; a result that was soon proved by <span class="citation" data-cites="Robinson1951">Robinson (<a href="../references.html#ref-Robinson1951" role="doc-biblioref">1951</a>)</span>. Later it was shown to converge for <span class="math inline">\(2 × 2\)</span> games <span class="citation" data-cites="Miyasawa1961">(<a href="../references.html#ref-Miyasawa1961" role="doc-biblioref">Miyasawa 1961</a>)</span>, potential games <span class="citation" data-cites="Monderer1996">(<a href="../references.html#ref-Monderer1996" role="doc-biblioref">Monderer and Shapley 1996</a>)</span>, and games with an interior <a href="ESS.qmd">evolutionary stable equilibrium</a> <span class="citation" data-cites="Hofbauer1995">(<a href="../references.html#ref-Hofbauer1995" role="doc-biblioref">Hofbauer 1995</a>)</span>. For a detailed discussion, see <span class="citation" data-cites="Fudenberg1998">Fudenberg and Levine (<a href="../references.html#ref-Fudenberg1998" role="doc-biblioref">1998</a>)</span>.</p>
+<p>Fictitious play is an iterative algorithm to compute the solution of static game. It was first proposed by <span class="citation" data-cites="Brown1951">Brown (<a href="../references.html#ref-Brown1951" role="doc-biblioref">1951</a>)</span> who conjectured that it could be used to find the optimal solution of two player zero sum games; a result that was soon proved by <span class="citation" data-cites="Robinson1951">Robinson (<a href="../references.html#ref-Robinson1951" role="doc-biblioref">1951</a>)</span>. Later it was shown to converge for <span class="math inline">\(2 × 2\)</span> games <span class="citation" data-cites="Miyasawa1961">(<a href="../references.html#ref-Miyasawa1961" role="doc-biblioref">Miyasawa 1961</a>)</span>, potential games <span class="citation" data-cites="Monderer1996">(<a href="../references.html#ref-Monderer1996" role="doc-biblioref">Monderer and Shapley 1996</a>)</span>, and games with an interior <a href="../static-games/evolutionary-dynamics.html">evolutionary stable equilibrium</a> <span class="citation" data-cites="Hofbauer1995">(<a href="../references.html#ref-Hofbauer1995" role="doc-biblioref">Hofbauer 1995</a>)</span>. For a detailed discussion, see <span class="citation" data-cites="Fudenberg1998">Fudenberg and Levine (<a href="../references.html#ref-Fudenberg1998" role="doc-biblioref">1998</a>)</span>.</p>
 <p>In this section, we will describe fictitious play for two player games and present the high level idea of why it converges in the zero sum setting.</p>
 <section id="fictitious-play-for-two-player-zero-sum-games" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="fictitious-play-for-two-player-zero-sum-games"><span class="header-section-number">4.1</span> Fictitious play for two player zero sum games</h2>
@@ -465,7 +465,7 @@ window.Quarto = {
   t_{i,n+1} \in \text{BR}_i(σ_{-i,n})
 \]</span> where <span class="math inline">\(\text{BR}_i(σ_{-i})\)</span> denotes the best response of player <span class="math inline">\(i\)</span> to the other players playing mixed strategy <span class="math inline">\(σ_{-i}\)</span>.</p>
 <p>This is a simple algorithm, which can be implemented as follows.</p>
-<div id="b1bf21a2" class="cell" data-execution_count="2">
+<div id="b1bf21a2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">FP_ZSG</span>(u, N; initial <span class="op">=</span> [<span class="fl">1</span> <span class="fl">1</span>])</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define best response maps</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">BR_row</span>(u, σ) <span class="op">=</span> <span class="fu">argmax</span>(u<span class="op">*</span>σ)[<span class="fl">1</span>]</span>
@@ -503,13 +503,13 @@ window.Quarto = {
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now test it over Rock-Paper-Scissors.</p>
-<div id="8d5f09d8" class="cell" data-execution_count="3">
+<div id="8d5f09d8" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Utility for Rock Paper Scissors</caption><tbody><tr><td></td><td>$\mathsf{R}$</td><td>$\mathsf{P}$</td><td>$\mathsf{S}$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{P}$</td><td>$1$</td><td>$0$</td><td>$-1$</td></tr><tr><td>$\mathsf{S}$</td><td>$-1$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 <p>To fix ideas, we run FP algorithm for <span class="math inline">\(N=4\)</span> starting with the intial strategy of P1 playing rock and P2 playing scissors.</p>
-<div id="148b690c" class="cell" data-execution_count="4">
+<div id="148b690c" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="5">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-align="center">
 <thead>
@@ -555,7 +555,7 @@ window.Quarto = {
 </div>
 </div>
 <p>If we run the algorithm for a longer time, say <span class="math inline">\(N=1000\)</span>, we observe that the beliefs are slowly converging to <span class="math inline">\([1/3, 1/3, 1/3]\)</span>, which is the optimal mixed strategy for both players in this example.</p>
-<div id="21f062c6" class="cell" data-execution_count="5">
+<div id="21f062c6" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-align="center">
 <thead>
@@ -861,7 +861,7 @@ Figure&nbsp;4.1: Rate of convergence of fictitious play for rock paper scissors
   &amp;\stackrel{(a)}=   \max_{σ_1 \in Δ(\ALPHABET S_1)} \min_{σ_2 \in \ALPHABET S_2} U(σ_1, σ_2)
   \\
   &amp;= v
-\end{align*}\]</span> where <span class="math inline">\((a)\)</span> uses the fact that for a fixed <span class="math inline">\(σ_1\)</span>, the term <span class="math inline">\(U(σ_1, σ_2)\)</span> is linear in <span class="math inline">\(σ_2\)</span>, therefore <span class="math inline">\(\min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2) = \min_{s_2 \in \ALPHABET S_2} U(σ_1, s_2)\)</span>. [This is the same idea we used when coming up with <a href="zero-sum-game.qmd#computing-the-value-of-zsg">an algorithm to compute the value of a ZSG</a>.]</p>
+\end{align*}\]</span> where <span class="math inline">\((a)\)</span> uses the fact that for a fixed <span class="math inline">\(σ_1\)</span>, the term <span class="math inline">\(U(σ_1, σ_2)\)</span> is linear in <span class="math inline">\(σ_2\)</span>, therefore <span class="math inline">\(\min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2) = \min_{s_2 \in \ALPHABET S_2} U(σ_1, s_2)\)</span>. [This is the same idea we used when coming up with <a href="../static-games/zero-sum-games.html#computing-the-value-of-zsg">an algorithm to compute the value of a ZSG</a>.]</p>
 <p>By a symmetric argument, we have <span class="math display">\[
   \max_{s_1 \in \ALPHABET S_1} \ge v.
 \]</span> Thus, we have established that <span class="math display">\[
