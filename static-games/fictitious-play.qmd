@@ -9,7 +9,7 @@ execute:
 
 Fictitious play is an iterative algorithm to compute the solution of static game. It was first proposed by @Brown1951 who conjectured that it could be used to find the optimal solution of two player zero sum games; a result that was soon proved by @Robinson1951. Later it was shown to converge for $2 × 2$ games [@Miyasawa1961], potential games [@Monderer1996], and games with an interior [evolutionary stable equilibrium][ESS] [@Hofbauer1995]. For a detailed discussion, see @Fudenberg1998.
 
-[ESS]: ESS.qmd
+[ESS]: evolutionary-dynamics.qmd
 
 In this section, we will describe fictitious play for two player games and present the high level idea of why it converges in the zero sum setting.
 
@@ -198,7 +198,7 @@ Moreover, we have that
   \\
   &= v
 \end{align*}
-where $(a)$ uses the fact that for a fixed $σ_1$, the term $U(σ_1, σ_2)$ is linear in $σ_2$, therefore $\min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2) = \min_{s_2 \in \ALPHABET S_2} U(σ_1, s_2)$. [This is the same idea we used when coming up with [an algorithm to compute the value of a ZSG](zero-sum-game.qmd#computing-the-value-of-zsg).]
+where $(a)$ uses the fact that for a fixed $σ_1$, the term $U(σ_1, σ_2)$ is linear in $σ_2$, therefore $\min_{σ_2 \in Δ(\ALPHABET S_2)} U(σ_1, σ_2) = \min_{s_2 \in \ALPHABET S_2} U(σ_1, s_2)$. [This is the same idea we used when coming up with [an algorithm to compute the value of a ZSG](zero-sum-games.qmd#computing-the-value-of-zsg).]
 
 By a symmetric argument, we have
 $$
