@@ -542,17 +542,19 @@ Figure&nbsp;8.2: A modified battle of sexes game with incomplete information
   \cdots &amp;= \cdots
 \end{align*}\]</span></p>
 <p>We can write such an <strong>normal-form reduction</strong> of the game as a bimatrix game:</p>
-<div id="cell-fig-BoS-normal" class="cell" data-execution_count="4">
-<div id="fig-bos-normal" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div id="fig-BoS-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bos-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-BoS-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="34d11842" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{FF}$</td><td colspan="2">$\mathsf{FO}$</td><td colspan="2">$\mathsf{OF}$</td><td colspan="2">$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$\frac{2}{3}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{3}{2}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bos-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BoS-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.3: Normal form reduction of the modified battle of sexes game
 </figcaption>
 </figure>
-</div>
 </div>
 <p>We can then identify a BNE of the orginal game by identifying the NE of its normal-form rediction. Although this approach is simple, it is not very attractive because the normal-form reduction has large strategy spaces (exponential in the number of types) and we have already seen that it difficult to compute NE of games with large strategy spaces.</p>
 </section>
@@ -702,7 +704,7 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
    }
   \]</span></p>
 <div id="exr-verify" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> Using the normal form reduction of <span class="quarto-unresolved-ref">?fig-BoS-normal</span>, verify that the following are mixed strategy NE:</p>
+<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> Using the normal form reduction of <a href="#fig-BoS-normal" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>, verify that the following are mixed strategy NE:</p>
 <ul>
 <li><span class="math inline">\(σ_1 = (\tfrac 23, \tfrac 13)\)</span> and <span class="math inline">\(σ_2 = (0, \tfrac 23, 0, \tfrac 13)\)</span>.</li>
 <li><span class="math inline">\(σ_1 = (\tfrac 13, \tfrac 23)\)</span> and <span class="math inline">\(σ_2 = (0, 0, \tfrac 23, \tfrac 13)\)</span>.</li>
