@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-02-14">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>2&nbsp; Zero-sum games – Multi-Agent Systems</title>
+<title>Multi-Agent Systems - 2&nbsp; Zero-sum games</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -93,12 +93,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -189,7 +189,7 @@ window.MathJax = {
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -225,7 +225,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2025-02-14">
 <meta name="citation_year" content="2025">
 <meta name="citation_online_date" content="2025-02-14">
-<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/zero-sum-games.html">
+<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems//static-games/zero-sum-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
 <meta name="citation_reference" content="citation_title=Correlated equilibrium as an expression of bayesian rationality;,citation_author=Robert J. Aumann;,citation_publication_date=1987-01;,citation_cover_date=1987-01;,citation_year=1987;,citation_issue=1;,citation_doi=10.2307/1911154;,citation_volume=55;,citation_journal_title=Econometrica;,citation_publisher=JSTOR;">
@@ -285,7 +285,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -296,7 +296,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/adityam/multi-agent-systems" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -304,11 +304,11 @@ window.Quarto = {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/zero-sum-games.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Zero-sum games</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -327,9 +327,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Static Games</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -642,7 +642,7 @@ Solution
   \end{cases}
 \]</span></p>
 <p>The plot of <span class="math inline">\(\min_{y \in [0,1]} u(x,y)\)</span> is shown below in <a href="#fig-maxmin-p1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
-<div id="fig-maxmin-p1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-maxmin-p1" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-maxmin-p1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/games-on-unit-square3.svg" class="img-fluid figure-img">
@@ -672,7 +672,7 @@ Figure&nbsp;2.1: Plot of <span class="math inline">\(\min_{y \in [0,1]} u(x,y)\)
   \end{cases}
 \]</span></p>
 <p>The plot of <span class="math inline">\(\max_{x \in [0,1]} u(x,y)\)</span> is shown below <a href="#fig-maxmin-p2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>.</p>
-<div id="fig-maxmin-p2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-maxmin-p2" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-maxmin-p2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/games-on-unit-square4.svg" class="img-fluid figure-img">
@@ -848,7 +848,7 @@ Solution
   U_1(σ_1, \mathsf{R}) &amp;= 2(1-p) &amp;&amp;= -2p + 2.
 \end{alignat*}\]</span></p>
 <p>The two payoffs are shown in <a href="#fig-2x2-payoffs-p1" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</p>
-<div id="fig-2x2-payoffs-p1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2x2-payoffs-p1" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2x2-payoffs-p1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG1.svg" class="img-fluid figure-img">
@@ -861,7 +861,7 @@ Figure&nbsp;2.3: The payoffs for <a href="#exm-value-2x2" class="quarto-xref">Ex
 <p>We now consider <span class="math display">\[
   \underline v = \max_{p \in [0, 1]} \min \bigl{ 2p + 1, -2p + 2 \bigr\}.
 \]</span> Note that the inner minimization can be easily carried out graphically. The minimization of the two curves is what is called a <strong>lower envelop</strong> which is shown in red in <a href="#fig-2x2-lower" class="quarto-xref">Figure&nbsp;<span>2.4</span></a>.</p>
-<div id="fig-2x2-lower" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2x2-lower" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2x2-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG2.svg" class="img-fluid figure-img">
@@ -883,7 +883,7 @@ Figure&nbsp;2.4: The lower envelop of the two curves of <a href="#fig-2x2-payoff
 <h4 class="unnumbered anchored" data-anchor-id="strategy-for-column-player">Strategy for column player</h4>
 Now, let’s repeat the calculations for the column player. Suppose the column player is playing <span class="math inline">\(σ_2 = (q, 1-q)\)</span>, i.e., it chooses action <span class="math inline">\(\mathsf{L}\)</span> with probability <span class="math inline">\(q\)</span> and action <span class="math inline">\(\mathsf{R}\)</span> with probability <span class="math inline">\(1-q\)</span>. Then,
 <p>The two payoffs are shown in <a href="#fig-2x2-payoffs-p2" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>.</p>
-<div id="fig-2x2-payoffs-p2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2x2-payoffs-p2" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2x2-payoffs-p2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG3.svg" class="img-fluid figure-img">
@@ -896,7 +896,7 @@ Figure&nbsp;2.5: The payoffs for <a href="#exm-value-2x2" class="quarto-xref">Ex
 <p>We now consider <span class="math display">\[
   \bar v = \min_{q \in [0, 1]} \max \bigl\{3q, -q + 2 \bigr\}.
 \]</span> As before, the inner maximization can be easily carried out graphically. The maximization of the two curves is called an <strong>upper envelop</strong> which is shown in red in <a href="#fig-2x2-upper" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>.</p>
-<div id="fig-2x2-upper" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2x2-upper" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2x2-upper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG4.svg" class="img-fluid figure-img">
@@ -945,7 +945,7 @@ Solution
   U_1(σ_1, \mathsf{R}) &amp;= -p + 5(1-p) &amp;&amp;= -6p + 5.
 \end{alignat*}\]</span></p>
 <p>As before, we can plot these functions as shown in <a href="#fig-2x3-lower" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>, where the lower concave envelop is shown in red.</p>
-<div id="fig-2x3-lower" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2x3-lower" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2x3-lower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG5.svg" class="img-fluid figure-img">
@@ -1000,7 +1000,7 @@ U(p^*, \mathsf{C}) &gt; \tfrac 54 = v.
 <p>An implication of <a href="#thm-zsg-support" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> is that in a two player ZSG where one player, say the row player, has <span class="math inline">\(2\)</span> pure strategies and the other player, the column player, has <span class="math inline">\(m\)</span> pure strategies with <span class="math inline">\(m &gt; 2\)</span>, there is an optimal strategy for the column player that puts positive weight on at most two pure strategies. We can find the solution of such <span class="math inline">\(2 × m\)</span> games using the procedure described above. In particular, we have the following:</p>
 <ul>
 <li><p><strong>STEP 1:</strong> Consider <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and for each pure strategy <span class="math inline">\(s_2\)</span> of player&nbsp;2, compute <span class="math inline">\(U(σ_1, s_2)\)</span>. In general, we can have six possibilities as shown in <a href="#fig-zsg-2xm" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>.</p>
-<div id="fig-zsg-2xm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-zsg-2xm" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zsg-2xm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG6.svg" class="img-fluid figure-img">
@@ -1190,7 +1190,7 @@ Solution
   \quad \forall k &gt; 1.
 \]</span></p>
 <p>The payoffs for <span class="math inline">\(K = 4\)</span> are shown in <a href="#fig-zsg-infx2" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>, where the upper convex envelop is shown in red.</p>
-<div id="fig-zsg-infx2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-zsg-infx2" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zsg-infx2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG7.svg" class="img-fluid figure-img">
@@ -1286,7 +1286,7 @@ Solution
   &amp;= \max_{s_1 \in [0,1]} \min_{s_2 \in \{0,1\}} u(s_1, s_2)
   \\ \max_{s_1 \in [0,1]} \min \{ -s_1^2, -(1-s_1)^2 \}.
 \end{align*}\]</span> Although the utility functions are not linear, we can follow the same argument as before: we plot both functions, find the lower envelop, and the find the maxmin value <span class="math inline">\(s_1\)</span>. See <a href="#fig-zsg-cts" class="quarto-xref">Figure&nbsp;<span>2.10</span></a>.</p>
-<div id="fig-zsg-cts" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-zsg-cts" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zsg-cts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/svg/ZSG8.svg" class="img-fluid figure-img">
@@ -1636,7 +1636,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1668,27 +1679,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/adityam\.github\.io\/multi-agent-systems\/");
@@ -1696,7 +1687,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1793,6 +1784,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

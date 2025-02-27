@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-02-26">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
-<title>1&nbsp; Rationalizable strategies – Multi-Agent Systems</title>
+<title>Multi-Agent Systems - 1&nbsp; Rationalizable strategies</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,12 +59,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -152,7 +152,7 @@ window.MathJax = {
   const { createApp, ref } = Vue
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -188,7 +188,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2025-02-26">
 <meta name="citation_year" content="2025">
 <meta name="citation_online_date" content="2025-02-26">
-<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/strategic-games.html">
+<meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems//static-games/strategic-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
 <meta name="citation_reference" content="citation_title=Correlated equilibrium as an expression of bayesian rationality;,citation_author=Robert J. Aumann;,citation_publication_date=1987-01;,citation_cover_date=1987-01;,citation_year=1987;,citation_issue=1;,citation_doi=10.2307/1911154;,citation_volume=55;,citation_journal_title=Econometrica;,citation_publisher=JSTOR;">
@@ -248,7 +248,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -259,7 +259,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/adityam/multi-agent-systems" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -267,11 +267,11 @@ window.Quarto = {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../static-games/strategic-games.html">Static Games</a></li><li class="breadcrumb-item"><a href="../static-games/strategic-games.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Rationalizable strategies</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -290,9 +290,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Static Games</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1047,7 +1047,7 @@ Reduced game <span class="math inline">\(\mathscr{G}_3\)</span>
 </div>
 <p>How will you play this game?</p>
 <p><a href="https://en.wikipedia.org/wiki/Keynesian_beauty_contest">:Beauty contest games</a> were introduced by <span class="citation" data-cites="Keynes1936">Keynes (<a href="../references.html#ref-Keynes1936" role="doc-biblioref">1936</a>)</span>, where all participants have to guess the average. In <span class="math inline">\(p\)</span>-beauty contest games, introduced by <span class="citation" data-cites="Moulin1986">Moulin (<a href="../references.html#ref-Moulin1986" role="doc-biblioref">1986</a>)</span>, participants have to guess closest to <span class="math inline">\(p\)</span> times the average, with <span class="math inline">\(p \in (0, 1)\)</span>. For a discussion of an experimental study of <span class="math inline">\(p\)</span>-beauty contest games, see <span class="citation" data-cites="Nagel1995">Nagel (<a href="../references.html#ref-Nagel1995" role="doc-biblioref">1995</a>)</span>. More recently, NPR’s Planet Money ran the above game. More than 15,000 people participated. The distribution of the answers is shown in <a href="#fig-beauty-contest" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>. Check <a href="https://www.npr.org/sections/money/2011/10/11/141249864/heres-the-winner-in-our-pick-a-number-game">their website</a> for more details.</p>
-<div id="fig-beauty-contest" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-beauty-contest" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-beauty-contest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://media.npr.org/assets/img/2011/10/11/histogram-e3369f686fa1e87e23122d9d26bbf13a374e2f53.jpg" class="img-fluid figure-img">
@@ -1595,6 +1595,7 @@ U_1(σ_1, T) &amp;= -p + (1-p) = 1 - 2p.
 </tbody></table>
 <p>Note that none of the strategies of <span class="math inline">\(P_2\)</span> are dominated. However, if we consider the mixed strategy <span class="math inline">\(σ_2 = (0.5, 0, 0.5)\)</span>, then</p>
 <p><span class="math display">\[ U_2(\cdot, σ_2) = \begin{bmatrix} 1.5 \\ 1.5 \end{bmatrix} \]</span> which dominates <span class="math inline">\(\mathsf{C}\)</span>. So we can eliminate strategy <span class="math inline">\(\mathsf{C}\)</span>.</p>
+<div>
 <!-- Something is missing here
 ## Never best response
 
@@ -1621,7 +1622,7 @@ A pure strategy $s_i$ is never best response if for all mixed strategies $σ_{-i
 Let's reconsider the game discussed above
 
 
-<table class="game caption-top" data-quarto-postprocess="true" data-align="center">
+<table class="game" data-quarto-postprocess="true" data-align="center">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1649,31 +1650,8 @@ Let's reconsider the game discussed above
 </tr>
 </tbody>
 </table>
-
-
-
-Now consider a mixed strategy $σ_1 = (p, 1-p)$ for player 1. Then, the payoff
-to player 2 is
-$$ U_2(σ_1, \cdot) = \begin{bmatrix} 3p & 1 & 3(1-p) \end{bmatrix} $$
-
-Note that $\max\{ 3p, 3(1-p) \} \ge \frac 32$. Thus, for all values of $p$,
-either $\mathsf{L}$ or $\mathsf{R}$ is better than $M$. 
-
-We can generalize IEDS to eliminate neverBR strategies to obtain
-rationalizable strategies (in some cases). 
-
-## Relationship between dominated strategies and never BR strategies
-
-By definition, a strictly dominated strategy is never BR. In general, the
-converse is not true when there are more than 3 players. We illustrate this
-via an example.
-
-Consider the following three player game. Player one is the row player, player
-2 is the column player, and player 3 chooses the game matrix. We only show the
-payoffs for player 3.
-
-
-<table class="caption-top" data-quarto-postprocess="true" style="border:none;" data-align="center">
+Now consider a mixed strategy $σ_1 = (p, 1-p)$ for player 1. Then, the payoff to player 2 is $$ U_2(σ_1, \cdot) = \begin{bmatrix} 3p &amp; 1 &amp; 3(1-p) \end{bmatrix} $$ Note that $\max\{ 3p, 3(1-p) \} \ge \frac 32$. Thus, for all values of $p$, either $\mathsf{L}$ or $\mathsf{R}$ is better than $M$. We can generalize IEDS to eliminate neverBR strategies to obtain rationalizable strategies (in some cases). ## Relationship between dominated strategies and never BR strategies By definition, a strictly dominated strategy is never BR. In general, the converse is not true when there are more than 3 players. We illustrate this via an example. Consider the following three player game. Player one is the row player, player 2 is the column player, and player 3 chooses the game matrix. We only show the payoffs for player 3.
+<table data-quarto-postprocess="true" style="border:none;" data-align="center">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -1682,7 +1660,7 @@ payoffs for player 3.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<td style="padding-right: 1.5em"><table class="game1" data-quarto-postprocess="true" style="display:inline;">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1701,7 +1679,7 @@ payoffs for player 3.
 </tr>
 </tbody>
 </table></td>
-<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<td style="padding-right: 1.5em"><table class="game1" data-quarto-postprocess="true" style="display:inline;">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1720,7 +1698,7 @@ payoffs for player 3.
 </tr>
 </tbody>
 </table></td>
-<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<td style="padding-right: 1.5em"><table class="game1" data-quarto-postprocess="true" style="display:inline;">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1739,7 +1717,7 @@ payoffs for player 3.
 </tr>
 </tbody>
 </table></td>
-<td style="padding-right: 1.5em"><table class="game1 caption-top" data-quarto-postprocess="true" style="display:inline;">
+<td style="padding-right: 1.5em"><table class="game1" data-quarto-postprocess="true" style="display:inline;">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -1817,6 +1795,7 @@ Therefore, Eq. \\eqref{eq:3} cannot be satisfied.
 :::
 
 -->
+</div>
 </section>
 <section id="sec-cournot" class="level2" data-number="1.9">
 <h2 data-number="1.9" class="anchored" data-anchor-id="sec-cournot"><span class="header-section-number">1.9</span> Cournot competition</h2>
@@ -3120,7 +3099,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3152,27 +3142,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/adityam\.github\.io\/multi-agent-systems\/");
@@ -3180,7 +3150,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -3277,6 +3247,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
