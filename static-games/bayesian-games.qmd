@@ -278,7 +278,7 @@ As argued before, in this case $p = \tfrac 23$. We consider the two values of $q
 
 **Case 2.2** $p \in (0,1)$, $q_2 \in (0,1)$, and $q_1 \in \{0, 1\}$. 
 
-As argued before, in this case $p = \tfrac 1/3$. [Just to show the possibility, we solve this case differently from Case 2.1]{.text-primary}
+As argued before, in this case $p = \tfrac 13$. [Just to show the possibility, we solve this case differently from Case 2.1]{.text-primary}
 
 Since we know the strategy of P1, we compute the BR of P2.1. We know that
 $$
