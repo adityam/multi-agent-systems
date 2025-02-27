@@ -1,0 +1,47 @@
+\startluacode
+  function draw_info_structure(options)
+    local nx = options.nx or 2 ;
+    local segments = options.segments or {};
+
+    local rectangle = function(x1, y1, x2, y2)
+      context("draw (%f*sx, %f*sy) -- (%f*sx, %f*sy) -- (%f*sx, %f*sy) -- (%f*sx, %f*sy) -- cycle;", x1, y1, x2, y1, x2, y2, x1, y2)
+    end
+
+    local rectangle_offset = function(x1, y1, x2, y2)
+      context("fill (%f*sx + dx, %f*sy + dy) -- (%f*sx - dx, %f*sy + dy) -- (%f*sx - dx, %f*sy - dy) -- (%f*sx + dx, %f*sy - dy) -- cycle withcolor lightgray withstacking -1;", x1, y1, x2, y1, x2, y2, x1, y2)
+      context("draw (%f*sx + dx, %f*sy + dy) -- (%f*sx - dx, %f*sy + dy) -- (%f*sx - dx, %f*sy - dy) -- (%f*sx + dx, %f*sy - dy) -- cycle dashed evenly withstacking -1;", x1, y1, x2, y1, x2, y2, x1, y2)
+    end
+
+    context.startMPpage({offset="1dk"})
+       context("newnumeric sx, sy;")
+       context("sx = 1cm; sy = 1cm;")
+
+       context("newnumeric dx, dy;")
+       context("dx = 1.5mm; dy = 1.5mm;")
+
+       rectangle(0, 0, nx, 1)
+
+       for i = 1, nx do
+          context("fill fullcircle scaled 3bp shifted ( (%n - 0.5)*sx, 0.5sy); ", i)
+       end
+
+       for i = 1, #segments do
+          local s = segments[i]
+          rectangle_offset(s[1] - 1, 0, s[2], 1) 
+       end
+
+    context("currentpicture := currentpicture scaled 2;")
+    context.stopMPpage()
+  end
+\stopluacode
+
+\starttext
+\startluacode
+  draw_info_structure{nx=2, segments={{1,2}}}
+
+  draw_info_structure{nx=2, segments={{1,1}, {2,2}}}
+\stopluacode
+\stoptext
+
+
+
