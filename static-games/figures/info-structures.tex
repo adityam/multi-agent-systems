@@ -14,7 +14,7 @@
 
     context.startMPpage({offset="1dk"})
        context("newnumeric sx, sy;")
-       context("sx = 1cm; sy = 1cm;")
+       context("sx = 1.5cm; sy = 1.5cm;")
 
        context("newnumeric dx, dy;")
        context("dx = 1.5mm; dy = 1.5mm;")
@@ -23,6 +23,8 @@
 
        for i = 1, nx do
           context("fill fullcircle scaled 3bp shifted ( (%n - 0.5)*sx, 0.5sy); ", i)
+          context("label.bot(\"$ω\\rlap{_{%n}}$\", ((%n - 0.5)*sx, 0.5sy - 1.5bp) );", 
+                  i, i)
        end
 
        for i = 1, #segments do
