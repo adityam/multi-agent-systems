@@ -165,7 +165,7 @@ Normal form reduction of the modified battle of sexes game
 
 We can then identify a BNE of the orginal game by identifying the NE of its normal-form rediction. Although this approach is simple, it is not very attractive because the normal-form reduction has large strategy spaces (exponential in the number of types) and we have already seen that it difficult to compute NE of games with large strategy spaces.
 
-## Method 2: Interim view
+### Method 2: Interim view {-}
 
 According to the interim view, we view the game after nature has played; so each player knows its type. We can consider each player of each time (i.e., each $(i,t_i)$ as a separete player. Thus, the game has $\prod_{i \in \ALPHABET N} |\ALPHABET T_i|$ players.
 
