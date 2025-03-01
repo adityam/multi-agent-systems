@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-02-27">
+<meta name="dcterms.date" content="2025-03-01">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>Multi-Agent Systems - 8&nbsp; Bayesian Games</title>
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-02-27">
-<meta name="citation_cover_date" content="2025-02-27">
+<meta name="citation_publication_date" content="2025-03-01">
+<meta name="citation_cover_date" content="2025-03-01">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-27">
+<meta name="citation_online_date" content="2025-03-01">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems//static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -355,8 +355,9 @@ window.Quarto = {
   <li><a href="#an-illustrative-example" id="toc-an-illustrative-example" class="nav-link active" data-scroll-target="#an-illustrative-example"><span class="header-section-number">8.1</span> An illustrative example</a>
   <ul class="collapse">
   <li><a href="#method-1-ex-ante-view" id="toc-method-1-ex-ante-view" class="nav-link" data-scroll-target="#method-1-ex-ante-view">Method 1: Ex-ante view</a></li>
+  <li><a href="#method-2-interim-view" id="toc-method-2-interim-view" class="nav-link" data-scroll-target="#method-2-interim-view">Method 2: Interim view</a></li>
   </ul></li>
-  <li><a href="#method-2-interim-view" id="toc-method-2-interim-view" class="nav-link" data-scroll-target="#method-2-interim-view"><span class="header-section-number">8.2</span> Method 2: Interim view</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/bayesian-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -391,7 +392,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 27, 2025</p>
+      <p class="date">March 1, 2025</p>
     </div>
   </div>
   
@@ -545,8 +546,8 @@ Figure&nbsp;8.2: A modified battle of sexes game with incomplete information
 <div id="fig-BoS-normal" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-BoS-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="34d11842" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="cfffa945" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="56">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{FF}$</td><td colspan="2">$\mathsf{FO}$</td><td colspan="2">$\mathsf{OF}$</td><td colspan="2">$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$\frac{2}{3}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{3}{2}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
@@ -558,9 +559,8 @@ Figure&nbsp;8.3: Normal form reduction of the modified battle of sexes game
 </div>
 <p>We can then identify a BNE of the orginal game by identifying the NE of its normal-form rediction. Although this approach is simple, it is not very attractive because the normal-form reduction has large strategy spaces (exponential in the number of types) and we have already seen that it difficult to compute NE of games with large strategy spaces.</p>
 </section>
-</section>
-<section id="method-2-interim-view" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="method-2-interim-view"><span class="header-section-number">8.2</span> Method 2: Interim view</h2>
+<section id="method-2-interim-view" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="method-2-interim-view">Method 2: Interim view</h3>
 <p>According to the interim view, we view the game after nature has played; so each player knows its type. We can consider each player of each time (i.e., each <span class="math inline">\((i,t_i)\)</span> as a separete player. Thus, the game has <span class="math inline">\(\prod_{i \in \ALPHABET N} |\ALPHABET T_i|\)</span> players.</p>
 <p>Combing back to our example, we can write the utility function of all the players as follows:</p>
 <div id="fig-bayesian-bos-interim" class="quarto-layout-panel">
@@ -703,12 +703,196 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
     σ_{2.2} = (\tfrac 23, \tfrac 13),
    }
   \]</span></p>
-<div id="exr-verify" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> Using the normal form reduction of <a href="#fig-BoS-normal" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>, verify that the following are mixed strategy NE:</p>
+<div id="exm-verify" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.1</strong></span> Using the normal form reduction of <a href="#fig-BoS-normal" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>, verify that the following are mixed strategy NE:</p>
 <ul>
 <li><span class="math inline">\(σ_1 = (\tfrac 23, \tfrac 13)\)</span> and <span class="math inline">\(σ_2 = (0, \tfrac 23, 0, \tfrac 13)\)</span>.</li>
 <li><span class="math inline">\(σ_1 = (\tfrac 13, \tfrac 23)\)</span> and <span class="math inline">\(σ_2 = (0, 0, \tfrac 23, \tfrac 13)\)</span>.</li>
 </ul>
+</div>
+</section>
+</section>
+<section id="exercises" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
+<div id="exr-Bayes-pure" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> Consider the following Bayesian game</p>
+<div>
+
+</div>
+<div id="9b5611b5" class="cell quarto-layout-panel" data-execution_count="6" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$1$</td><td>$1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{R}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$3$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>where <span class="math display">\[
+  p(ω_1) = p(ω_2) = \tfrac 12
+\]</span> and the information structure is</p>
+<div id="fig-ex-1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-1-a" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-1-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures2.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-1-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-1-b" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-1-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures1.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-1-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.5: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>}
+</figcaption>
+</figure>
+</div>
+<ol type="a">
+<li><p>Write the normal form reduction of the game and use it to find all <strong>pure strategy</strong> BNE.</p></li>
+<li><p>Write the interim form of the game and use it to find all <strong>pure strategy</strong> BNE.</p></li>
+</ol>
+</div>
+<div id="exr-Bayes-mixed" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.2</strong></span> Consider the following Bayesian game</p>
+<div>
+
+</div>
+<div id="52c24a97" class="cell quarto-layout-panel" data-execution_count="7" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$2$</td><td>$4$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$4$</td><td>$-10$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>where <span class="math display">\[
+  p(ω_1) = \tfrac 35
+  \quad\text{and}\quad
+  p(ω_2) = \tfrac 25
+\]</span> and the information structure is</p>
+<div id="fig-ex-2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-2-a" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures2.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-2-b" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures1.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.6: Information structure for <a href="#exr-Bayes-mixed" class="quarto-xref">Exercise&nbsp;<span>8.2</span></a>}
+</figcaption>
+</figure>
+</div>
+<ol type="a">
+<li><p>Write the normal form reduction of the game and use it to find all <strong>mixed strategy</strong> BNE.</p></li>
+<li><p>Write the interim form of the game and use it to find all <strong>mixed strategy</strong> BNE.</p></li>
+</ol>
+</div>
+<div id="exr-Bayes-dominance" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> Consider the following Bayesian game</p>
+<div>
+
+</div>
+<div id="0571bf05" class="cell quarto-layout-panel" data-execution_count="8" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{R}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$4$</td><td>$4$</td><td>$-1$</td><td>$-1$</td></tr><tr><td>$\mathsf{R}$</td><td>$-1$</td><td>$-1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_3$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{R}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>where <span class="math display">\[
+  p(ω_1) = p(ω_2) = p(ω_3) = \tfrac 13
+\]</span> and the information structure is</p>
+<div id="fig-ex-3" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-3" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-3-a" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-3-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures3.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-3">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-3-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-3" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-3-b" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-3-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures4.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-3">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-3-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.7: Information structure for <a href="#exr-Bayes-dominance" class="quarto-xref">Exercise&nbsp;<span>8.3</span></a>}
+</figcaption>
+</figure>
+</div>
+<ol type="a">
+<li>Write the normal form reduction of the game.</li>
+<li>Use iterative elimination of strongly dominated strategies to simplify the reduced game as much as possible.</li>
+<li>Find all pure and mixed strategies of the reduced game obtained in part (b).</li>
+</ol>
 </div>
 
 
