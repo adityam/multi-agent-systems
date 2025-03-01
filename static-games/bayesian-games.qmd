@@ -311,9 +311,95 @@ Hence, the following is a mixed strategy NE.
    }
   $$
 
-:::{#exr-verify}
+:::{#exm-verify}
 Using the normal form reduction of @fig-BoS-normal, verify that the following are mixed strategy NE:
 
 - $σ_1 = (\tfrac 23, \tfrac 13)$ and $σ_2 = (0, \tfrac 23, 0, \tfrac 13)$.
 - $σ_1 = (\tfrac 13, \tfrac 23)$ and $σ_2 = (0, 0, \tfrac 23, \tfrac 13)$.
+:::
+
+## Exercises {-}
+
+:::{#exr-Bayes-pure}
+Consider the following Bayesian game
+
+```{julia}
+#| layout-ncol: 2
+game(["L", "R"], ["T", "B"], [1 0; 0 1], [1 2; 2 1], caption="\$ω_1\$") |> display
+game(["L", "R"], ["T", "B"], [2 0; 4 2], [2 1; 4 3], caption="\$ω_2\$") |> display
+```
+
+where 
+$$
+  p(ω_1) = p(ω_2) = \tfrac 12
+$$
+and the information structure is 
+
+:::{#fig-ex-1 layout-ncol=2}
+![Player 1](figures/svg/info-structures2.svg){#fig-ex-1-a}
+
+![Player 2](figures/svg/info-structures1.svg){#fig-ex-1-b}
+
+Information structure for @exr-Bayes-pure}
+:::
+
+a. Write the normal form reduction of the game and use it to find all **pure strategy** BNE.
+
+b. Write the interim form of the game and use it to find all **pure strategy** BNE.
+
+:::
+
+:::{#exr-Bayes-mixed}
+Consider the following Bayesian game
+```{julia}
+#| layout-ncol: 2
+game(["L", "R"], ["T", "B"], [2 0; 0 4], [4 0; 0 -10], caption="\$ω_1\$.") |> display
+game(["L", "R"], ["T", "B"], [4 0; 0 4], [-10 0; 0 4], caption="\$ω_2\$.") |> display
+```
+where
+$$
+  p(ω_1) = \tfrac 35
+  \quad\text{and}\quad
+  p(ω_2) = \tfrac 25
+$$
+and the information structure is 
+
+:::{#fig-ex-2 layout-ncol=2}
+![Player 1](figures/svg/info-structures2.svg){#fig-ex-2-a}
+
+![Player 2](figures/svg/info-structures1.svg){#fig-ex-2-b}
+
+Information structure for @exr-Bayes-mixed}
+:::
+
+a. Write the normal form reduction of the game and use it to find all **mixed strategy** BNE.
+
+b. Write the interim form of the game and use it to find all **mixed strategy** BNE.
+:::
+
+:::{#exr-Bayes-dominance}
+Consider the following Bayesian game
+```{julia}
+#| layout-ncol: 3
+game(["L", "R"], ["T", "B"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_1\$.") |> display
+game(["L", "R"], ["T", "B"], [4 -1; -1 0], [4 -1; -1 0], caption="\$ω_2\$.") |> display
+game(["L", "R"], ["T", "B"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_3\$.") |> display
+```
+where 
+$$
+  p(ω_1) = p(ω_2) = p(ω_3) = \tfrac 13
+$$
+and the information structure is
+
+:::{#fig-ex-3 layout-ncol=2}
+![Player 1](figures/svg/info-structures3.svg){#fig-ex-3-a}
+
+![Player 2](figures/svg/info-structures4.svg){#fig-ex-3-b}
+
+Information structure for @exr-Bayes-dominance}
+:::
+
+a. Write the normal form reduction of the game.
+b. Use iterative elimination of strongly dominated strategies to simplify the reduced game as much as possible. 
+c. Find all pure and mixed strategies of the reduced game obtained in part (b).
 :::
