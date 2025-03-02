@@ -318,6 +318,78 @@ Using the normal form reduction of @fig-BoS-normal, verify that the following ar
 - $σ_1 = (\tfrac 13, \tfrac 23)$ and $σ_2 = (0, 0, \tfrac 23, \tfrac 13)$.
 :::
 
+## Some examples
+
+We now present some examples to highlight salient features of Bayesian Nash equilibirum
+
+:::{#exm-info-can-hurt}
+#### More information can hurt
+
+Consider the following Bayesian game
+```{julia}
+#| layout-ncol: 2
+game(["T", "B"], ["L", "M", "R"], [1 1 1; 4 0 0], [2 0 3; 4 0 5], caption="\$ω_1\$") |> display
+game(["T", "B"], ["L", "M", "R"], [1 1 1; 4 0 0], [2 3 0; 4 5 0], caption="\$ω_2\$") |> display
+```
+
+where 
+$$
+  p(ω_1) = p(ω_2) = \tfrac 12
+$$
+
+Consider two information structures shown in @fig-info-can-hurt-1 and  @fig-info-can-hurt-2
+
+:::{#fig-info-can-hurt-1 layout-ncol=2}
+![Player 1](figures/svg/info-structures1.svg){#fig-info-can-hurt-1-a}
+
+![Player 2](figures/svg/info-structures1.svg){#fig-info-can-hurt-1-b}
+
+First information structure for @exm-info-can-hurt
+:::
+
+:::{#fig-info-can-hurt-2 layout-ncol=2}
+![Player 1](figures/svg/info-structures1.svg){#fig-info-can-hurt-2-a}
+
+![Player 2](figures/svg/info-structures2.svg){#fig-info-can-hurt-2-b}
+
+Second information structure for @exm-info-can-hurt
+:::
+
+Compute the BNE for both cases.
+
+Note that in the first information structure no player has any information about the state of the nature, while in the second information structure, player 2 has full knowledge of the state of nature. The solution will demonstrate that for each information structure the game has a unique BNE under dominant strategies, but the payoff to both players in the second case are worse than in the first case. Thus more information can hurt! A celebrated example of this phenomenon is [:Braess's paradox](https://en.wikipedia.org/wiki/Braess's_paradox) 
+
+:::
+
+:::{.callout-note}
+#### Solution
+**Case 1.** In this case, no player has any information. The normal form reduction of the game is given as follows. 
+```{julia}
+game(["T", "B"], ["L", "M", "R"], [1 1 1; 4 0 0], [2 1.5 1.5; 4 2.5 2.5]) |> display
+```
+
+Note that for player 2, $\mathsf{L} dominates $\mathsf{M}$ and $\mathsf{R}$. Thus, the reduced game is
+
+```{julia}
+game(["T", "B"], ["L"], [1; 4], [2; 4]) |> display
+```
+
+In this reduced game, for player 1 $\mathsf{B}$ dominates $\mathsf{T}$. Thus, the unique BNE of the game is $(\mathsf{B}, \mathsf{L})$ which **gives a payoff of $(4, 4)$**. 
+
+**Case 2.** In this case, player 2 knows the state of nature. For $ω_1$, action $\mathsf{R}$ is the dominant action, so all other actions can be eliminated. 
+Similarly, for $ω_1$, action $\mathsf{M}$ is the dominant action, so all other actions can be eliminated. The reduced game is given by
+
+```{julia}
+#| layout-ncol: 2
+game(["T", "B"], ["R"], [1; 0], [3; 5], caption="\$ω_1\$") |> display
+game(["T", "B"], ["M"], [1; 0], [3; 5], caption="\$ω_2\$") |> display
+```
+
+In this reduced game, for player 1, action $\mathsf{T}$ dominates $\mathsf{B}$. Thus, the unique BNE is $(\mathsf{T}, \mathsf{RM})$ with a payoff of $(1, (3, 3))$. 
+
+Thus both players are worse off with the additional information.
+:::
+
 ## Exercises {-}
 
 :::{#exr-Bayes-pure}
@@ -325,8 +397,8 @@ Consider the following Bayesian game
 
 ```{julia}
 #| layout-ncol: 2
-game(["L", "R"], ["T", "B"], [1 0; 0 1], [1 2; 2 1], caption="\$ω_1\$") |> display
-game(["L", "R"], ["T", "B"], [2 0; 4 2], [2 1; 4 3], caption="\$ω_2\$") |> display
+game(["T", "B"], ["L", "R"], [1 0; 0 1], [1 2; 2 1], caption="\$ω_1\$") |> display
+game(["T", "B"], ["L", "R"], [2 0; 4 2], [2 1; 4 3], caption="\$ω_2\$") |> display
 ```
 
 where 
@@ -353,8 +425,8 @@ b. Write the interim form of the game and use it to find all **pure strategy** B
 Consider the following Bayesian game
 ```{julia}
 #| layout-ncol: 2
-game(["L", "R"], ["T", "B"], [2 0; 0 4], [4 0; 0 -10], caption="\$ω_1\$.") |> display
-game(["L", "R"], ["T", "B"], [4 0; 0 4], [-10 0; 0 4], caption="\$ω_2\$.") |> display
+game(["T", "B"], ["L", "R"], [2 0; 0 4], [4 0; 0 -10], caption="\$ω_1\$.") |> display
+game(["T", "B"], ["L", "R"], [4 0; 0 4], [-10 0; 0 4], caption="\$ω_2\$.") |> display
 ```
 where
 $$
@@ -381,9 +453,9 @@ b. Write the interim form of the game and use it to find all **mixed strategy** 
 Consider the following Bayesian game
 ```{julia}
 #| layout-ncol: 3
-game(["L", "R"], ["T", "B"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_1\$.") |> display
-game(["L", "R"], ["T", "B"], [4 -1; -1 0], [4 -1; -1 0], caption="\$ω_2\$.") |> display
-game(["L", "R"], ["T", "B"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_3\$.") |> display
+game(["T", "B"], ["L", "R"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_1\$.") |> display
+game(["T", "B"], ["L", "R"], [4 -1; -1 0], [4 -1; -1 0], caption="\$ω_2\$.") |> display
+game(["T", "B"], ["L", "R"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_3\$.") |> display
 ```
 where 
 $$
