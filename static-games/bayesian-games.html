@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-01">
+<meta name="dcterms.date" content="2025-03-02">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>Multi-Agent Systems - 8&nbsp; Bayesian Games</title>
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-01">
-<meta name="citation_cover_date" content="2025-03-01">
+<meta name="citation_publication_date" content="2025-03-02">
+<meta name="citation_cover_date" content="2025-03-02">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-01">
+<meta name="citation_online_date" content="2025-03-02">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems//static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -357,6 +357,7 @@ window.Quarto = {
   <li><a href="#method-1-ex-ante-view" id="toc-method-1-ex-ante-view" class="nav-link" data-scroll-target="#method-1-ex-ante-view">Method 1: Ex-ante view</a></li>
   <li><a href="#method-2-interim-view" id="toc-method-2-interim-view" class="nav-link" data-scroll-target="#method-2-interim-view">Method 2: Interim view</a></li>
   </ul></li>
+  <li><a href="#some-examples" id="toc-some-examples" class="nav-link" data-scroll-target="#some-examples"><span class="header-section-number">8.2</span> Some examples</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/bayesian-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -392,7 +393,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 1, 2025</p>
+      <p class="date">March 2, 2025</p>
     </div>
   </div>
   
@@ -546,8 +547,8 @@ Figure&nbsp;8.2: A modified battle of sexes game with incomplete information
 <div id="fig-BoS-normal" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-BoS-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="cfffa945" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div id="a29e6557" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{FF}$</td><td colspan="2">$\mathsf{FO}$</td><td colspan="2">$\mathsf{OF}$</td><td colspan="2">$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$\frac{2}{3}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{3}{2}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
@@ -712,6 +713,143 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 </div>
 </section>
 </section>
+<section id="some-examples" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="some-examples"><span class="header-section-number">8.2</span> Some examples</h2>
+<p>We now present some examples to highlight salient features of Bayesian Nash equilibirum</p>
+<div id="exm-info-can-hurt" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.2 (More information can hurt)</strong></span> Consider the following Bayesian game</p>
+<div>
+
+</div>
+<div id="d390feb1" class="cell quarto-layout-panel" data-execution_count="6" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td><td>$1$</td><td>$3$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td><td>$0$</td><td>$5$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>where <span class="math display">\[
+  p(ω_1) = p(ω_2) = \tfrac 12
+\]</span></p>
+<p>Consider two information structures shown in <a href="#fig-info-can-hurt-1" class="quarto-xref">Figure&nbsp;<span>8.5</span></a> and <a href="#fig-info-can-hurt-2" class="quarto-xref">Figure&nbsp;<span>8.6</span></a></p>
+<div id="fig-info-can-hurt-1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-info-can-hurt-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-info-can-hurt-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-info-can-hurt-1-a" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-info-can-hurt-1-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures1.svg" class="img-fluid figure-img" data-ref-parent="fig-info-can-hurt-1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-info-can-hurt-1-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-info-can-hurt-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-info-can-hurt-1-b" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-info-can-hurt-1-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures1.svg" class="img-fluid figure-img" data-ref-parent="fig-info-can-hurt-1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-info-can-hurt-1-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-info-can-hurt-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.5: First information structure for <a href="#exm-info-can-hurt" class="quarto-xref">Example&nbsp;<span>8.2</span></a>
+</figcaption>
+</figure>
+</div>
+<div id="fig-info-can-hurt-2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-info-can-hurt-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-info-can-hurt-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-info-can-hurt-2-a" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-info-can-hurt-2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures1.svg" class="img-fluid figure-img" data-ref-parent="fig-info-can-hurt-2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-info-can-hurt-2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-info-can-hurt-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-info-can-hurt-2-b" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-info-can-hurt-2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures2.svg" class="img-fluid figure-img" data-ref-parent="fig-info-can-hurt-2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-info-can-hurt-2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-info-can-hurt-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.6: Second information structure for <a href="#exm-info-can-hurt" class="quarto-xref">Example&nbsp;<span>8.2</span></a>
+</figcaption>
+</figure>
+</div>
+<p>Compute the BNE for both cases.</p>
+<p>Note that in the first information structure no player has any information about the state of the nature, while in the second information structure, player 2 has full knowledge of the state of nature. The solution will demonstrate that for each information structure the game has a unique BNE under dominant strategies, but the payoff to both players in the second case are worse than in the first case. Thus more information can hurt! A celebrated example of this phenomenon is <a href="https://en.wikipedia.org/wiki/Braess's_paradox">:Braess’s paradox</a></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Case 1.</strong> In this case, no player has any information. The normal form reduction of the game is given as follows.</p>
+<div id="9db97e5e" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2.0$</td><td>$1$</td><td>$1.5$</td><td>$1$</td><td>$1.5$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4.0$</td><td>$0$</td><td>$2.5$</td><td>$0$</td><td>$2.5$</td></tr></tbody></table>
+</div>
+</div>
+<p>Note that for player 2, $ dominates <span class="math inline">\(\mathsf{M}\)</span> and <span class="math inline">\(\mathsf{R}\)</span>. Thus, the reduced game is</p>
+<div id="61a63ad5" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
+</div>
+</div>
+<p>In this reduced game, for player 1 <span class="math inline">\(\mathsf{B}\)</span> dominates <span class="math inline">\(\mathsf{T}\)</span>. Thus, the unique BNE of the game is <span class="math inline">\((\mathsf{B}, \mathsf{L})\)</span> which <strong>gives a payoff of <span class="math inline">\((4, 4)\)</span></strong>.</p>
+<p><strong>Case 2.</strong> In this case, player 2 knows the state of nature. For <span class="math inline">\(ω_1\)</span>, action <span class="math inline">\(\mathsf{R}\)</span> is the dominant action, so all other actions can be eliminated. Similarly, for <span class="math inline">\(ω_1\)</span>, action <span class="math inline">\(\mathsf{M}\)</span> is the dominant action, so all other actions can be eliminated. The reduced game is given by</p>
+<div>
+
+</div>
+<div id="c192ab3e" class="cell quarto-layout-panel" data-execution_count="9" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{M}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>In this reduced game, for player 1, action <span class="math inline">\(\mathsf{T}\)</span> dominates <span class="math inline">\(\mathsf{B}\)</span>. Thus, the unique BNE is <span class="math inline">\((\mathsf{T}, \mathsf{RM})\)</span> with a payoff of <span class="math inline">\((1, (3, 3))\)</span>.</p>
+<p>Thus both players are worse off with the additional information.</p>
+</div>
+</div>
+</section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-Bayes-pure" class="theorem exercise">
@@ -719,13 +857,13 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 <div>
 
 </div>
-<div id="9b5611b5" class="cell quarto-layout-panel" data-execution_count="6" data-layout-ncol="2">
+<div id="d77a0fcc" class="cell quarto-layout-panel" data-execution_count="10" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$1$</td><td>$1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{R}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$3$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td><td>$2$</td><td>$3$</td></tr></tbody></table>
 </div>
 </div>
 </div>
@@ -763,7 +901,7 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.5: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>}
+Figure&nbsp;8.7: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>}
 </figcaption>
 </figure>
 </div>
@@ -777,13 +915,13 @@ Figure&nbsp;8.5: Information structure for <a href="#exr-Bayes-pure" class="quar
 <div>
 
 </div>
-<div id="52c24a97" class="cell quarto-layout-panel" data-execution_count="7" data-layout-ncol="2">
+<div id="613edb6f" class="cell quarto-layout-panel" data-execution_count="11" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$2$</td><td>$4$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$4$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr></tbody></table>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$4$</td><td>$-10$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{R}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$4$</td><td>$-10$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
 </div>
@@ -823,7 +961,7 @@ Figure&nbsp;8.5: Information structure for <a href="#exr-Bayes-pure" class="quar
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.6: Information structure for <a href="#exr-Bayes-mixed" class="quarto-xref">Exercise&nbsp;<span>8.2</span></a>}
+Figure&nbsp;8.8: Information structure for <a href="#exr-Bayes-mixed" class="quarto-xref">Exercise&nbsp;<span>8.2</span></a>}
 </figcaption>
 </figure>
 </div>
@@ -837,16 +975,16 @@ Figure&nbsp;8.6: Information structure for <a href="#exr-Bayes-mixed" class="qua
 <div>
 
 </div>
-<div id="0571bf05" class="cell quarto-layout-panel" data-execution_count="8" data-layout-ncol="3">
+<div id="1a6c5b85" class="cell quarto-layout-panel" data-execution_count="12" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{R}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$4$</td><td>$4$</td><td>$-1$</td><td>$-1$</td></tr><tr><td>$\mathsf{R}$</td><td>$-1$</td><td>$-1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$4$</td><td>$4$</td><td>$-1$</td><td>$-1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-1$</td><td>$-1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_3$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{T}$</td><td colspan="2">$\mathsf{B}$</td></tr><tr><td>$\mathsf{L}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{R}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_3$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
@@ -884,7 +1022,7 @@ Figure&nbsp;8.6: Information structure for <a href="#exr-Bayes-mixed" class="qua
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.7: Information structure for <a href="#exr-Bayes-dominance" class="quarto-xref">Exercise&nbsp;<span>8.3</span></a>}
+Figure&nbsp;8.9: Information structure for <a href="#exr-Bayes-dominance" class="quarto-xref">Exercise&nbsp;<span>8.3</span></a>}
 </figcaption>
 </figure>
 </div>
