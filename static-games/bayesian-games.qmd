@@ -390,6 +390,120 @@ In this reduced game, for player 1, action $\mathsf{T}$ dominates $\mathsf{B}$. 
 Thus both players are worse off with the additional information.
 :::
 
+In the examples considered so far, the information structure is trivial: each player either knows everything or knows nothing. We now consider an example where the information structure is non-trivial. [Computing the BNE using the interim approach in this general case requires computing posterior probabilities]{.text-danger}
+
+:::{#exm-inflection}
+#### Inflection
+Consider the following Bayesian game
+```{julia}
+#| layout-ncol: 3
+game(["T", "B"], ["L", "R"], [2 0; 3 1], [2 0; 0 1], caption="\$ω_1\$") |> display
+game(["T", "B"], ["L", "R"], [2 0; 0 1], [2 0; 0 1], caption="\$ω_2\$") |> display
+game(["T", "B"], ["L", "R"], [2 0; 0 1], [2 0; 0 1], caption="\$ω_3\$") |> display
+```
+where 
+$$
+  p(ω_1) = \frac{9}{13}, 
+  \quad
+  p(ω_2) = \frac{3}{13},
+  \quad 
+  p(ω_3) = \frac{1}{13}
+$$
+and the information structure is
+
+:::{#fig-inflection layout-ncol=2}
+![Player 1](figures/svg/info-structures4.svg){#fig-inflection-a}
+
+![Player 2](figures/svg/info-structures3.svg){#fig-inflection-b}
+
+Information structure for @exm-inflection
+:::
+
+The information structure implies that
+
+- At $ω_1$: P1 knows the payoffs. P2 does not know. P1 knows that P2 does not know.
+- At $ω_2$: P1 knows the payoffs. P2 does not know. P1 does know whether P2 knows.
+- At $ω_3$: Both players know the payoffs. P2 knows that P1 knows. P1 does not know that P2 knows.
+
+Find the Bayesian Nash equilibrium of this game.
+:::
+
+:::{.callout-note}
+#### Solution
+
+We will follow the interim approach. Observe that the posterior probabilities of $Ω$ for each player is given as follows:
+\begin{align*}
+  \PR_{1.1}(ω) &= (1, 0, 0), &
+  \PR_{1.2}(ω) &= (0, \tfrac 34, \tfrac 14), \\
+  \PR_{2.1}(ω) &= (\tfrac 34, \tfrac 14, 0), &
+  \PR_{2.2}(ω) &= (0, 0, 1).
+\end{align*}
+
+Based on these posterior probabilities, we can write the interim utility function for each player
+where the notation $\PR_{i.j}$ means the posterior probability of "player $i$ of type $j$".
+
+```{julia}
+#| layout-ncol: 2
+game1(["T", "B"], ["LL", "LR", "RL", "RR"], [2 2 2 0; 3 3 1 1], caption="Player 1.1 (row player)") |> display
+game1(["T", "B"], ["LL", "LR", "RL", "RR"], [2 3//2 1//2 0; 0 1//4 3//4 1], caption="Player 1.2 (row player)") |> display
+
+game1(["TT", "TB", "BT", "BB"], ["L", "R"], [2 0; 3//2 1//4; 1//2 3//4; 0 1], caption="Player 2.1 (col player)") |> display
+game1(["TT", "TB", "BT", "BB"], ["L", "R"], [2 0; 0 1; 2 0; 0 1], caption="Player 2.2 (col player)") |> display
+```
+
+This game can be simplified using IEDS as follows.
+
+**Step 1:** For P1.1, $\mathsf{B}$ dominates $\mathsf{T}$. Removing $\mathsf{T}$ for P1.1, also eliminates $\mathsf{TT}$ and $\mathsf{TB}$ for P2.1 and P2.2. The resulting simplified game is as follows:
+
+```{julia}
+#| layout-ncol: 2
+game1(["B"], ["LL", "LR", "RL", "RR"], [3 3 1 1], caption="Player 1.1 (row player)") |> display
+game1(["T", "B"], ["LL", "LR", "RL", "RR"], [2 3//2 1//2 0; 0 1//4 3//4 1], caption="Player 1.2 (row player)") |> display
+
+game1(["BT", "BB"], ["L", "R"], [1//2 3//4; 0 1], caption="Player 2.1 (col player)") |> display
+game1(["BT", "BB"], ["L", "R"], [2 0; 0 1], caption="Player 2.2 (col player)") |> display
+```
+
+**Step 2:** In this reduced game, for P2.1, $\mathsf{L}$ dominates $\mathsf{R}$. Removing $\mathsf{R}$ for P2.1 also eliminates $\mathsf{RL}$ and $\mathsf{RR}$ for P1.1 and P1.2. The resulting simplified game is as follows:
+
+```{julia}
+#| layout-ncol: 2
+game1(["B"], ["RL", "RR"], [1 1], caption="P1.1") |> display
+game1(["T", "B"], ["RL", "RR"], [1//2 0; 3//4 1], caption="P1.2") |> display
+
+game1(["BT", "BB"], ["R"], [3//4; 1], caption="P2.1") |> display
+game1(["BT", "BB"], ["L", "R"], [2 0; 0 1], caption="P2.2") |> display
+```
+
+**Step 3:** In this reduced game, for P1.2, $\mathsf{B}$ dominates $\mathsf{T}$. Removing $\mathsf{T}$ for P1.2, also eliminates $\mathsf{BT}$ for P2.1 and P2.2. The resulting simplified game is as follows:
+
+```{julia}
+#| layout-ncol: 2
+game1(["B"], ["RL", "RR"], [1 1], caption="P1.1") |> display
+game1(["B"], ["RL", "RR"], [3//4 1], caption="P1.2") |> display
+
+game1(["BB"], ["R"], [1], caption="P2.1") |> display
+game1(["BB"], ["L", "R"], [0 1], caption="P2.2") |> display
+```
+
+**Step 4:** In this reduced game, for P2.2, $\mathsf{R}$ dominates $\mathsf{L}$. Removing $\mathsf{R}$ for P2.2 also eliminates $\mathsf{RR}$ for P1.1 and P1.2. The resulting simplified game is:
+
+```{julia}
+#| layout-ncol: 2
+game1(["B"], ["RL"], [1], caption="P1.1") |> display
+game1(["B"], ["RL"], [3//4], caption="P1.2") |> display
+
+game1(["BB"], ["R"], [1], caption="P2.1") |> display
+game1(["BB"], ["R"], [1], caption="P2.2") |> display
+```
+
+Thus, the unique BNE is: P1.1 plays $\mathsf{B}$; P1.2 plays $\mathsf{B}$, P2.1 plays $\mathsf{R}$ and P2.2 plays $\mathsf{R}$. 
+
+[Observe that for $ω = ω_3$, both plays know the game, but the good outcome $(\mathsf{T}, \mathsf{L})$, which is also the NE of the game corresponding to $ω_3$ has been ruled out!
+:::
+
+
+
 ## Exercises {-}
 
 :::{#exr-Bayes-pure}
@@ -468,7 +582,7 @@ and the information structure is
 
 ![Player 2](figures/svg/info-structures4.svg){#fig-ex-3-b}
 
-Information structure for @exr-Bayes-dominance}
+Information structure for @exr-Bayes-dominance
 :::
 
 a. Write the normal form reduction of the game.
