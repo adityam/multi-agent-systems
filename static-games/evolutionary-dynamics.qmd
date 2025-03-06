@@ -694,6 +694,10 @@ game(["A", "B"], ["A", "B"], ["1" "2"; "x" "3"], ["1" "x"; "2" "3"])
 a. For each possible value of $x$, find all NE of the game and check if they are ESS or not. 
 
 b. The answer to the previous part suggests that the NE is not ESS when the NE uses a _weakly dominated strategy_. Prove the following: Suppose that in the game given below $(\mathsf{A}, \mathsf{A})$ is a NE and strategy $\mathsf{A}$ is weakly dominated. Then $\mathsf{A}$ is not an ESS. 
+
+```{julia}
+game(["A", "B"], ["A", "B"], ["a" "b"; "c" "d"], ["a" "c"; "b" "d"])
+```
 :::
 
 ::: {#exr-negative-definite}
@@ -707,7 +711,7 @@ This is a linear subspace of dimension $m-1$ because $q_m = -(q_1 + \cdots + q_{
 $$
   T = \MATRIX{ I_{(m-1) × (m-1)} \\ -\ONES_{1 \times (m-1) } }_{m \times (m-1)}
 $$
-Then any vector $q \in \reals^m_0$ must be of the form $T x$, where $x \in \reals^m$. 
+Then any vector $q \in \reals^m_0$ must be of the form $T x$, where $x \in \reals^{m-1}$. 
              
 a. Based on the above, argue that a game with matrix $Q$ is negative definite if and only if $T^\TRANS Q T$ is a [negative definite matrix][definite] (i.e., all the eigenvalues are real and negative).
 
