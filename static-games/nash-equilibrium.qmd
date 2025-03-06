@@ -570,7 +570,7 @@ A strategic game $\mathscr{G} = \langle N, (\ALPHABET S_i)_{i \in N}, (u_i)_{i \
 
 Consider the set valued map $\BR \colon \ALPHABET S \rightrightarrows \ALPHABET S$ define by
 $$
-  \BR(s) = \MATRIX{ \BR_1(s_{-1} \\ \vdots \\ B_n(s_{-n}) }.
+  \BR(s) = \MATRIX{ \BR_1(s_{-1} \\ \vdots \\ \BR_n(s_{-n}) }.
 $$
 We verify that $\BR(s)$ satisfies the conditions of Kakutani's fixed point theorem (@thm-Kakutani).
 
