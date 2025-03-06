@@ -19,7 +19,7 @@ jobs:
           # To install LaTeX to build PDF book 
           # tinytex: true 
           # Use the same version as local nix install
-          version: 1.4.554
+          # version: 1.4.554
       
       - name: Fix timestamps
         run:  bash .github/scripts/fix-timestamps

@@ -1,9 +1,5 @@
 ---
 title: Rationalizable strategies
-format:
-  html:
-    include-in-header: 
-     - ../static/html/vue.html
 ---
 
 Multi-agent decision problems are conceptually different from single agent decision problems. In a single agent decision problem, a decision maker has to choose a strategy $s \in \ALPHABET S$ and receives a payoff or **utility** $u(s)$ (or, equivalently, incurs a cost $c(s)$). In multi-agent decision problems, the utility received by an agent may depend on the strategies of other agents. Such settings are called **games**. We start with the simplest setting of two player games. 

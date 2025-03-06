@@ -1,9 +1,5 @@
----
-format:
-  html:
-    include-in-header: 
-     - ../../static/html/vue.html
----
+{{< include /static/html/vue.html >}}
+
 ```{=html}
 <div id="fig-2nd-price" class="quarto-figure quarto-figure-center anchored">
 <figure id="second-price" class="figure" style="width=100%">
