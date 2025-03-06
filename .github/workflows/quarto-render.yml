@@ -15,7 +15,7 @@ jobs:
         
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
+        # with:
           # To install LaTeX to build PDF book 
           # tinytex: true 
           # Use the same version as local nix install
