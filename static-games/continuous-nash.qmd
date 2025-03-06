@@ -1,9 +1,5 @@
 ---
 title: NE in continuous games
-format:
-  html:
-    include-in-header: 
-     - ../static/html/vue.html
 ---
 
 So far, we have restricted attention to computing Nash equilibrium in finite games. In this section, we look at continuous games, i.e., games where the strategy spaces are continuous sets, primarily focusing on the case where the strategy space of each player is a subset of $\reals$. The examples in this section are adapted from @Gibbons1992 and @Harrington2014.
@@ -50,6 +46,7 @@ $$
 where $P$ is a constant known as market potential. Thus, the utility of each firm is
 $$
   u_i(p_i, p_j) = (p_i - c) \max\{ P - p_i + a p_j, 0 \}.
+$$
 
 Note that $u_i$ is a continuous function of $(p_i, p_j)$ and is quasi-concave in $p_i$. But, the strategy spaces are not compact. Therefore, @thm-NE-pure is not directly applicable. Nonetheless, it can be shown that the game has a pure strategy NE.
 
@@ -63,5 +60,65 @@ $$
 $$
 
 ## Final offer arbitration
+
+In this section, we present a model of final offer arbitrary based on @Farber1980. To avoid terminology from labor markets, we model this as a resource allocation problem. 
+
+An arbitrartor wants to split an infinitesimally divisible scalar-valued resource between two players in a fair manner. For the ease of notation, we will assume that the resouce has size 1, but it will be clear from the analysis that the size of the resource does not matter. 
+
+The division of the resource works as follows. Both players simultaneously propose the amount of resource that should be allocated to player 1. Let $s_1$ and $s_2$ denote their proposals. There is an arbitrator, who has its own assessment of a _fair_ allocation to player 1. Let $X$ denote the arbitrators assessment, which is a random variable with CDF $F_X$ (and PDF $f_X$). The arbitrator chooses the proposal (for the allocation to player 1) that is closest to its own assessment. Thus, the allocation to player 1 is
+
+- $s_1$ if $|x - s_1| \le |s_2 - x|$
+- $s_2$ if $|x - s_1| > |s_2 - x|$
+
+We will assume that $s_1 < s_2$ and drop the absolute value signs. Thus, 
+$$
+  \PR(\text{allocation is $s_1$}) = \PR\left( x \le \frac{s_1 + s_2}{2} \right) = F_X\left(\frac{s_1 + s_2}{2} \right).
+$$
+Similarly,
+$$
+  \PR(\text{allocation is $s_2$}) = \PR\left( x > \frac{s_1 + s_2}{2} \right) = 1 - F_X\left(\frac{s_1 + s_2}{2} \right).
+$$
+
+Let $A_1$ denote the allocation to player 1. Then,
+$$
+  \EXP[A_1] = s_1 F_X\left(\frac{s_1 + s_2}{2}\right)
+          + s_2 \left( 1 -  F_X\left(\frac{s_1 + s_2}{2}\right) \right)
+$$
+Since the total resource is 1, the allocation $A_2$ to player 2 is
+$$
+  \EXP[A_2] = 1 - \EXP[A_1].
+$$
+
+Player 1 wants to maximize $\EXP[A_1]$ and player 2 want to maximize $\EXP[A_2]$, where $\EXP[A_1] + \EXP[A_2] = 1$ (which is the size of the resource). Thus, this is constant-sum game and we can treat is as a zero-sum game where player 1 wants to maximize $\EXP[A_1]$ and plyaer 2 wants to minimize $\EXP[A_1]$. 
+
+To find the NE, we look at the best response curves, which are obtained by setting $∂\EXP[A_1]/∂s_1$ and $∂\EXP[A_1]/∂s_2$ to zero:
+\begin{align*}
+  F_X\left(\frac{s_1 + s_2}{2} \right)
+  &= \left( \frac{s_2 - s_1}{2} \right)
+     f_X\left(\frac{s_1 + s_2}{2}\right) \\
+  1 - F_X\left(\frac{s_1 + s_2}{2} \right)
+  &= \left( \frac{s_2 - s_1}{2} \right)
+     f_X\left(\frac{s_1 + s_2}{2}\right) 
+\end{align*}
+Thus, at equilibrium, we must have that
+\begin{align*}
+  s_1 + s_2 &= 2 F^{-1}_X\left(\frac 12 \right) \\
+  s_2 - s_1 &= \frac{1}{f_X\left(\frac{s_1 + s_2}{2}\right)}
+\end{align*}
+Thus,
+\begin{align*}
+  s_1 &= F_X^{-1}\left(\frac{1}{2}\right) 
+  - \frac{1}{2 f_X\left(F_X^{-1}(\tfrac 12)\right)} \\
+  s_2 &= F_X^{-1}\left(\frac{1}{2}\right) 
+  + \frac{1}{2 f_X\left(F_X^{-1}(\tfrac 12)\right)} \\
+\end{align*}
+
+For example, if $X \sim \mathcal{N}(μ, σ^2)$, then the median $F_X^{-1}(0.5)$ is same as the mean (since the distribution is symmetric around the mean). Thus,
+$$
+  s_1 = μ - \sqrt{\frac{π}{2}}\, σ ,
+  \quad
+  s_2 = μ + \sqrt{\frac{π}{2}}\, σ.
+$$
+
 
 ## Problem of the commons
