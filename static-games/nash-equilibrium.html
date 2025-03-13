@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-06">
+<meta name="dcterms.date" content="2025-03-13">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>5&nbsp; Nash equilibrium – Multi-Agent Systems</title>
@@ -63,8 +63,8 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0d4704e64da063c15a9ec8465b0aa66e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-72acda494d293d19e619ee82b67966b0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -182,10 +182,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[5]{.chapter-number}&nbsp; [Nash equilibrium]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-06">
-<meta name="citation_cover_date" content="2025-03-06">
+<meta name="citation_publication_date" content="2025-03-13">
+<meta name="citation_cover_date" content="2025-03-13">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-06">
+<meta name="citation_online_date" content="2025-03-13">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/nash-equilibrium.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -424,7 +424,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2025</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -478,8 +478,8 @@ Informal definition of Nash equilibrium
 <section id="relationship-between-ne-and-dominant-strategy-equilibrium" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="relationship-between-ne-and-dominant-strategy-equilibrium"><span class="header-section-number">5.2.1</span> Relationship between NE and dominant strategy equilibrium</h3>
 <p>Consider prisoner’s dilemma game.</p>
-<div id="1c13dcff" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="3d2e2a8a" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Prisoner's Dilemma</caption><tbody><tr><td></td><td colspan="2">$\mathsf{A}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{A}$</td><td>$-2$</td><td>$-2$</td><td>$0$</td><td>$-3$</td></tr><tr><td>$\mathsf{R}$</td><td>$-3$</td><td>$0$</td><td>$-1$</td><td>$-1$</td></tr></tbody></table>
 </div>
 </div>
@@ -510,8 +510,8 @@ u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*),
 <section id="relationship-between-ne-and-rationalizable-strategies" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="relationship-between-ne-and-rationalizable-strategies"><span class="header-section-number">5.2.2</span> Relationship between NE and rationalizable strategies</h3>
 <p>Recall the following example discussed earlier:</p>
-<div id="d62115bc" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="68ace106" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
@@ -537,8 +537,8 @@ Proof Sketch
 <section id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="relationship-between-ne-and-optimal-strategies-in-zero-sum-games"><span class="header-section-number">5.2.3</span> Relationship between NE and optimal strategies in zero sum games</h3>
 <p>Recall the following example discussed earlier in <a href="zero-sum-games.html#exm-value-zsg" class="quarto-xref">Example&nbsp;<span>2.2</span></a></p>
-<div id="992fdc82" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="f1852ccd" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{C}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$-1$</td><td>$-2$</td></tr><tr><td>$\mathsf{M}$</td><td>$1$</td><td>$0$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-2$</td><td>$-1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -562,23 +562,23 @@ Proof
 <p>The above discussion shows that the concept of Nash equilibrium generalizes all the solution concepts that we have discussed so far. The main advantage of Nash equilibrium is that it exists even when the previously discussed solution concepts do not. For instance, consider the following games.</p>
 <div id="exm-battle-of-sexes" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.1</strong></span> Find all NE (in pure strategies) for Battle of Sexes game.</p>
-<div id="ef70d268" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="1736a262" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <div id="exm-chicken" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.2</strong></span> Find all NE (in pure strategies) for the game of chicken</p>
-<div id="98f2c128" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="f6a2f306" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>The game of chicken</caption><tbody><tr><td></td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{H}$</td></tr><tr><td>$\mathsf{C}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$10$</td></tr><tr><td>$\mathsf{H}$</td><td>$10$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 </div>
 <p>Note that a game may not have an equilibrium in pure strategyes. For example, the game of matching pennies has no equilibrium in pure strategies.</p>
-<div id="ccf25ecc" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="89170510" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Matching pennies game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{T}$</td></tr><tr><td>$\mathsf{H}$</td><td>$1$</td><td>$-1$</td><td>$-1$</td><td>$1$</td></tr><tr><td>$\mathsf{T}$</td><td>$-1$</td><td>$1$</td><td>$1$</td><td>$-1$</td></tr></tbody></table>
 </div>
 </div>
@@ -590,14 +590,14 @@ Proof
 <h2 data-number="5.3" class="anchored" data-anchor-id="computing-ne-in-2-2-games"><span class="header-section-number">5.3</span> Computing NE in <span class="math inline">\(2 × 2\)</span> games</h2>
 <p>We start by a brute-force method to compute NE in <span class="math inline">\(2 × 2\)</span> games. This method is just for illustration. Based on the intuition from this method, we will later present an efficient method to compute NE.</p>
 <p>Consider the game shown below. We can check that the game has no NE in pure strategies.</p>
-<div id="9758a34f" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="f7e5abd8" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Game with no NE in pure strategies</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$-1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
 <p>Let <span class="math inline">\(σ_1 = (p, 1-p)\)</span> and <span class="math inline">\(σ_2 = (q, 1-q)\)</span> be a NE in mixed strategies. Then, the probability distribution of the different actions is shown below:</p>
-<div id="34a6f2ca" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="85a6c874" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Probability of choosing different actions</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$pq$</td><td>$p\left( 1 - q \right)$</td></tr><tr><td>$\mathsf{B}$</td><td>$\left( 1 - p \right) \cdot q$</td><td>$\mathrm{1 - p}\left( 1 - q \right)$</td></tr></tbody></table>
 </div>
 </div>
@@ -760,8 +760,8 @@ Figure&nbsp;5.3: Intersection of the best response curves of the two players. No
 \]</span> This provides a general method of finding the NE for <span class="math inline">\(2 × 2\)</span> games, which we use in general.</p>
 <div id="exm-battle-of-sexes-all" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.3</strong></span> Find all the NE of battle of sexes game.</p>
-<div id="ceb779e3" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="132d9e9e" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Battle of Sexes game</caption><tbody><tr><td></td><td colspan="2">$\mathsf{F}$</td><td colspan="2">$\mathsf{O}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
@@ -859,8 +859,8 @@ Proof
 <p>The difficulty is that we do not know the support of <span class="math inline">\(σ^*_1\)</span> and <span class="math inline">\(σ^*_2\)</span>. So, we need to repeat the above process for each choice of supports. Computing NE by such a brute-force search has an exponential complexity in <span class="math inline">\(\ABS{\ALPHABET S_1}\)</span> and <span class="math inline">\(\ABS{\ALPHABET S_2}\)</span>.</p>
 <div id="exm-NE-2x3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.4</strong></span> Compute all NE of the following game.</p>
-<div id="6a817201" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="150e9415" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="38">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$7$</td><td>$2$</td><td>$2$</td><td>$7$</td><td>$3$</td><td>$6$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$7$</td><td>$7$</td><td>$2$</td><td>$4$</td><td>$5$</td></tr></tbody></table>
 </div>
 </div>
@@ -1009,22 +1009,75 @@ Proof
 <h2 data-number="5.6" class="anchored" data-anchor-id="some-examples"><span class="header-section-number">5.6</span> Some examples</h2>
 <div id="exm-taxation" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.5 (Taxation and Auditing)</strong></span> Consider the following game between a population and a tax auditor.</p>
-<div id="4a734f8a" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="af7c2227" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
 <p>What happens to the equilibrium if the penalty for cheating is increased.</p>
-<div id="ff17088e" class="cell" data-execution_count="13">
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div id="75dff2d5" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="40">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-20$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>
 <p>What happens if we increase the benefit of not getting caught</p>
-<div id="16936490" class="cell" data-execution_count="14">
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="306b5c8d" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{H}$</td><td colspan="2">$\mathsf{C}$</td></tr><tr><td>$\mathsf{A}$</td><td>$2$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr><tr><td>$\mathsf{N}$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$8$</td></tr></tbody></table>
 </div>
+</div>
+</div>
+<div id="exm-ZSG-Nash" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.6 (Zero sum games)</strong></span> Consider the following zero sum game:</p>
+<div id="e7d3844a" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="42">
+<table class="game1" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{0}$</td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td></tr><tr><td>$\mathsf{0}$</td><td>$0$</td><td>$1$</td><td>$-2$</td></tr><tr><td>$\mathsf{1}$</td><td>$1$</td><td>$-2$</td><td>$3$</td></tr><tr><td>$\mathsf{2}$</td><td>$-2$</td><td>$3$</td><td>$-4$</td></tr></tbody></table>
+</div>
+</div>
+<ol type="a">
+<li><p>Find the maxmin and minmax strategies of the players in <em>pure</em> strategies. Does the game have a value in pure strategies?</p></li>
+<li><p>A mixed strategy is called <em>completely mixed</em> if it gives positive weight to all pure strategies. Find the maxmin and minmax strategies of the players in <em>completely mixed</em> strategies. Does the game have a value in complete mixed strategies?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>The maxmin and the minmax values are shown below. There are two maxmin strategies (<span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>) with the maxmin value <span class="math display">\[
+  \underline v = -2
+\]</span> The minmax strategy is <span class="math inline">\(0\)</span> with the minmax value <span class="math display">\[
+  \bar v = 1.
+\]</span> Since <span class="math inline">\(\underline v \neq \bar v\)</span>, the game does not have a value in pure strategies.</li>
+</ol>
+<table class="game1min" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td>$\mathsf{0}$</td><td>$\mathsf{1}$</td><td>$\mathsf{2}$</td><td>$\min_{s_2 \in \ALPHABET S_2} u_1(s_1, s_2)$</td></tr><tr><td>$\mathsf{0}$</td><td>$0$</td><td>$1$</td><td>$-2$</td><td>$-2$</td></tr><tr><td>$\mathsf{1}$</td><td>$1$</td><td>$-2$</td><td>$3$</td><td>$-2$</td></tr><tr><td>$\mathsf{2}$</td><td>$-2$</td><td>$3$</td><td>$-4$</td><td>$-4$</td></tr><tr><td>$\max_{s_1 \in \ALPHABET S_1} u_2(s_1, s_2)$</td><td>$1$</td><td>$3$</td><td>$3$</td><td>$-2$, $1$</td></tr></tbody></table>
+<ol start="2" type="a">
+<li><p>Let <span class="math inline">\(σ_1 = (p_0, p_1, p_2)\)</span> and <span class="math inline">\(σ_2 = (q_0, q_1, q_2)\)</span> be mixed strategies that are completely mixed, i.e., <span class="math inline">\(p_i, q_i &gt; 0\)</span>, <span class="math inline">\(i \in \{0,1,2\}\)</span>. By the irrelevance principle, for player 1 we must have <span class="math display">\[
+  u(0, σ_2) = u(1, σ_2) = u(2, σ_2)
+\]</span> which implies <span class="math display">\[
+  \bar v = q_1 - 2 q_2 = q_0 - 2 q_1 + 3 q_2 = -2 q_0 + 3 q_1 - 4 q_2.
+\]</span> Furthermore, <span class="math display">\[
+  q_0 + q_1 + q_2 = 1.
+\]</span> This gives us four equations in four variables. Solving them we get <span class="math display">\[
+  \bar v = 0, \quad (q_0, q_1, q_2) = (\tfrac 14, \tfrac 12, \tfrac 14).
+\]</span></p>
+<p>Similarly, by the irrelevance principle for player 2 we must have <span class="math display">\[
+u(σ_1, 0) = u(σ_1, 1) = u(σ_1, 2)
+\]</span> which implies <span class="math display">\[
+  \underline v = p_1 - 2 p_2 = p_0 - 2p_1 + 3 p_2 = -2p_0 + 3 p_1 - 4p_2.
+\]</span> Furthermore, <span class="math display">\[
+  p_0 + p_1 + p_2 = 1.
+\]</span> This gives us four equations in four variables. Solving them we get <span class="math display">\[
+  \underline v = 0, \quad (p_0, p_1, p_2) = (\tfrac 14, \tfrac 12, \tfrac 14).
+\]</span></p>
+<p>Since <span class="math inline">\(\underline v = \bar v\)</span>, the game has a value in completely mixed strategies.</p></li>
+</ol>
 </div>
 </div>
 </section>
@@ -1032,7 +1085,7 @@ Proof
 <h2 data-number="5.7" class="anchored" data-anchor-id="games-with-more-than-two-players"><span class="header-section-number">5.7</span> Games with more than two players</h2>
 <p>So far, we have presented examples of games with only two players. The same ideas work for games with more than two players, as is illustrated by the following examples.</p>
 <div id="exm-3player-pure" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.6</strong></span> &nbsp;</p>
+<p><span class="theorem-title"><strong>Example 5.7</strong></span> &nbsp;</p>
 <!-- Taken from Harrington -->
 <p>Consider the following three player game where player 1 chooses the row, player 2 chooses the column and player 3 chooses whether game (a) or game (b) is played.</p>
 <div>
@@ -1040,13 +1093,13 @@ Proof
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div id="86510f34" class="cell quarto-layout-cell" data-execution_count="15" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div id="1b6b282d" class="cell quarto-layout-cell" data-execution_count="18" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <table class="game3" data-quarto-disable-processing="true" align="center"><caption>(a)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
-<div id="93f122eb" class="cell quarto-layout-cell" data-execution_count="16" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="68998cce" class="cell quarto-layout-cell" data-execution_count="19" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <table class="game3" data-quarto-disable-processing="true" align="center"><caption>(b)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
@@ -1093,7 +1146,7 @@ Solution
 </div>
 </div>
 <div id="exm-3player-mixed" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.7</strong></span> &nbsp;</p>
+<p><span class="theorem-title"><strong>Example 5.8</strong></span> &nbsp;</p>
 <!-- Taken from Harrington -->
 <p>Consider the following three player game where player 1 chooses the row, player 2 chooses the column and player 3 chooses whether game (a) or game (b) is played.</p>
 <div>
@@ -1101,13 +1154,13 @@ Solution
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div id="bd7b8bcd" class="cell quarto-layout-cell" data-execution_count="17" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div id="2d5ba29c" class="cell quarto-layout-cell" data-execution_count="20" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <table class="game3" data-quarto-disable-processing="true" align="center"><caption>(a)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$-4$</td><td>$1$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$-4$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$-2$</td></tr></tbody></table>
 </div>
 </div>
-<div id="4aed85b4" class="cell quarto-layout-cell" data-execution_count="18" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div id="9d92bf66" class="cell quarto-layout-cell" data-execution_count="21" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <table class="game3" data-quarto-disable-processing="true" align="center"><caption>(b)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$3$</td><td>$3$</td><td>$-2$</td><td>$1$</td><td>$-4$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$-4$</td><td>$1$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
 </div>
 </div>
@@ -1166,7 +1219,7 @@ Solution
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-NE-2x2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.1</strong></span> For each of the following two-player games, find <strong>all</strong> Nash equilibria.</p>
-<div id="4752fea8" class="cell" data-execution_count="19">
+<div id="bf8343d0" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$1$</td><td>$1$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$5$</td><td>$2$</td><td>$1$</td></tr></tbody></table>
 </div>
@@ -1181,7 +1234,7 @@ Solution
 </div>
 <div id="exr-NE-more-than-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.2</strong></span> For each of the following two-player games, find <strong>all</strong> Nash equilibra.</p>
-<div id="98e52f48" class="cell" data-execution_count="20">
+<div id="09f249d3" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>Game 1</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{C}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$4$</td><td>$5$</td><td>$6$</td><td>$8$</td><td>$7$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$9$</td><td>$6$</td><td>$5$</td><td>$5$</td><td>$1$</td></tr></tbody></table>
 </div>
@@ -1200,13 +1253,13 @@ Solution
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div id="d4b06b4a" class="cell quarto-layout-cell" data-execution_count="21" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div id="c166d93b" class="cell quarto-layout-cell" data-execution_count="24" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <table class="game3" data-quarto-disable-processing="true" align="center"><caption>(a)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$7$</td><td>$1$</td><td>$5$</td><td>$1$</td><td>$2$</td><td>$4$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$2$</td><td>$1$</td><td>$5$</td><td>$3$</td><td>$2$</td></tr></tbody></table>
 </div>
 </div>
-<div id="3e38ac7b" class="cell quarto-layout-cell" data-execution_count="22" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div id="1d83723b" class="cell quarto-layout-cell" data-execution_count="25" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output cell-output-display" data-execution_count="51">
 <table class="game3" data-quarto-disable-processing="true" align="center"><caption>(b)</caption><tbody><tr><td></td><td colspan="3">$\mathsf{L}$</td><td colspan="3">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$5$</td><td>$0$</td><td>$5$</td><td>$3$</td><td>$4$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$3$</td><td>$3$</td><td>$0$</td><td>$5$</td><td>$4$</td></tr></tbody></table>
 </div>
 </div>

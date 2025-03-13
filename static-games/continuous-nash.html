@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-06">
+<meta name="dcterms.date" content="2025-03-13">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>7&nbsp; NE in continuous games – Multi-Agent Systems</title>
@@ -63,8 +63,8 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0d4704e64da063c15a9ec8465b0aa66e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-72acda494d293d19e619ee82b67966b0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -179,10 +179,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[7]{.chapter-number}&nbsp; [NE in continuous games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-06">
-<meta name="citation_cover_date" content="2025-03-06">
+<meta name="citation_publication_date" content="2025-03-13">
+<meta name="citation_cover_date" content="2025-03-13">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-06">
+<meta name="citation_online_date" content="2025-03-13">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/continuous-nash.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -371,7 +371,8 @@ window.Quarto = {
   <ul>
   <li><a href="#sec-bertrand" id="toc-sec-bertrand" class="nav-link active" data-scroll-target="#sec-bertrand"><span class="header-section-number">7.1</span> Bertrand competition with differentiated products</a></li>
   <li><a href="#final-offer-arbitration" id="toc-final-offer-arbitration" class="nav-link" data-scroll-target="#final-offer-arbitration"><span class="header-section-number">7.2</span> Final offer arbitration</a></li>
-  <li><a href="#problem-of-the-commons" id="toc-problem-of-the-commons" class="nav-link" data-scroll-target="#problem-of-the-commons"><span class="header-section-number">7.3</span> Problem of the commons</a></li>
+  <li><a href="#some-examples" id="toc-some-examples" class="nav-link" data-scroll-target="#some-examples"><span class="header-section-number">7.3</span> Some examples</a></li>
+  <li><a href="#problem-of-the-commons" id="toc-problem-of-the-commons" class="nav-link" data-scroll-target="#problem-of-the-commons"><span class="header-section-number">7.4</span> Problem of the commons</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/continuous-nash.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -406,7 +407,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2025</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -621,8 +622,63 @@ window.Quarto = {
   s_2 = μ + \sqrt{\frac{π}{2}}\, σ.
 \]</span></p>
 </section>
-<section id="problem-of-the-commons" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="problem-of-the-commons"><span class="header-section-number">7.3</span> Problem of the commons</h2>
+<section id="some-examples" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="some-examples"><span class="header-section-number">7.3</span> Some examples</h2>
+<div id="exm-quadratic-game" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.1 (Quadratic Games)</strong></span> Consider a two-player game with <span class="math inline">\(\ALPHABET {S}_1 = \ALPHABET {S}_2 = [0, \infty)\)</span>. The utility functions of the players are as follows:<br>
+<span class="math display">\[\begin{align*}
+    u_1(s_1, s_2) &amp;= s_1(s_2 - s_1), \\
+    u_2(s_1, s_2) &amp;= s_2(1 - s_1 - s_2).
+\end{align*}\]</span></p>
+<p>Find <em>all</em> pure strategy Nash equilibria of the game.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Observe that the utility function of both players is continuous and differentiable in ( (s_1, s_2) ) and is convex in their own strategy. So, we try to find the pure strategy NE by looking for the point of intersection of the best responses (BR).</p>
+<p>To find the BR of player 1, we compute ( ∂u_1/∂s_1 ) and set it to zero:<br>
+<span class="math display">\[
+\frac{∂u_1}{∂s_1} = s_2 - 2s_1 = 0
+\implies
+s_1 = \frac{1}{2} s_2.
+\]</span></p>
+<p>Thus,<br>
+<span class="math display">\[ \BR_1(s_2) = \frac{1}{2} s_2. \]</span></p>
+<p>To find the BR of player 2, we compute ( ∂u_2/∂s_2 ) and set it to zero:<br>
+<span class="math display">\[
+\frac{∂u_2}{∂s_2} = 1 - s_1 - 2s_2
+\implies
+s_2 = \frac{1}{2} (1 - s_1).
+\]</span></p>
+<p>Thus, <span class="math display">\[ \BR_2(s_1) = \frac{1}{2} (1 - s_1). \]</span></p>
+<p>Thus, the NE, if it exists, is given by<br>
+<span class="math display">\[
+s_1 = \BR_1(s_2)
+\quad
+s_2 = \BR_2(s_1).
+\]</span></p>
+<p>Thus,<br>
+<span class="math display">\[
+s_1 = \frac{1}{4}(1 - s_1) \implies s_1 = \frac{1}{5}.
+\]</span> and<br>
+<span class="math display">\[
+s_2 = \frac{1}{2}\left(1 - \frac{s_2}{2}\right)
+\implies
+s_2 = \frac{2}{5}.
+\]</span></p>
+<p>Thus, the <strong>unique</strong> NE of the game is <span class="math inline">\((1/5, 2/5)\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="problem-of-the-commons" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="problem-of-the-commons"><span class="header-section-number">7.4</span> Problem of the commons</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

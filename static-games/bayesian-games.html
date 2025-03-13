@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-04">
+<meta name="dcterms.date" content="2025-03-13">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>8&nbsp; Bayesian Games – Multi-Agent Systems</title>
@@ -44,8 +44,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e2598a2e65969a33854c4ed13bc01d9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-51f04e2a00e926e59838c063fc30abce.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0d4704e64da063c15a9ec8465b0aa66e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-72acda494d293d19e619ee82b67966b0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/nutshell-1.0.6/nutshell.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-04">
-<meta name="citation_cover_date" content="2025-03-04">
+<meta name="citation_publication_date" content="2025-03-13">
+<meta name="citation_cover_date" content="2025-03-13">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-04">
+<meta name="citation_online_date" content="2025-03-13">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -394,7 +394,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 4, 2025</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -548,8 +548,8 @@ Figure&nbsp;8.2: A modified battle of sexes game with incomplete information
 <div id="fig-BoS-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-BoS-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="92bfb93e" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="74">
+<div id="67b700d2" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="123">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{FF}$</td><td colspan="2">$\mathsf{FO}$</td><td colspan="2">$\mathsf{OF}$</td><td colspan="2">$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$\frac{2}{3}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{3}{2}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
@@ -564,6 +564,20 @@ Figure&nbsp;8.3: Normal form reduction of the modified battle of sexes game
 <section id="method-2-interim-view" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="method-2-interim-view">Method 2: Interim view</h3>
 <p>According to the interim view, we view the game after nature has played; so each player knows its type. We can consider each player of each time (i.e., each <span class="math inline">\((i,t_i)\)</span> as a separete player. Thus, the game has <span class="math inline">\(\prod_{i \in \ALPHABET N} |\ALPHABET T_i|\)</span> players.</p>
+<p>For a two player game, given an action <span class="math inline">\(a_i\)</span> of player~<span class="math inline">\(i\)</span> and a pure ss_{-i}$ of the player other than~<span class="math inline">\(i\)</span>, the utility of player <span class="math inline">\(i\)</span> of type <span class="math inline">\(t_i\)</span> is given by <span class="math display">\[
+  U_{i.t_i}(a_i, s_{-i})
+  = \sum_{ω \in Ω} \sum_{t_{-i} \in \ALPHABET T_{-i}}
+  p(ω | t_i) u_i(ω, a_i, s_{-i}(t_{-i}(ω))).
+\]</span> Note that the payoff depends on the <strong>belief</strong> of player&nbsp;<span class="math inline">\(i.t_i\)</span> which is given by <span class="math inline">\(p(ω | t_i)\)</span>.</p>
+<p>When player&nbsp;<span class="math inline">\(-i\)</span> is playing a mixed strategy <span class="math inline">\(σ_{-i}\)</span>, then the expected utility is given by <span class="math display">\[
+  U_{i.t_i}(a_i, σ_{-i})
+  = \sum_{s_{-i} \in \ALPHABET S_{-i}} σ_{-i}(s_{-i}) U_{i.t_i}(a_i, s_{-i}).
+\]</span></p>
+<p>In this formulation, a strategy profile <span class="math inline">\(σ^*\)</span> is a <strong>Bayesian Nash equilibrium</strong> if for every player <span class="math inline">\(i\)</span> and every type <span class="math inline">\(t_i \in \ALPHABET T_i\)</span>, we have <span class="math display">\[
+  U_{i.t_i}( σ_i(t_i), σ_{-i}) \ge
+  U_{i.t_i}( a_i,      σ_{-i}), \quad \forall a_i \in \ALPHABET A_i.
+\]</span></p>
+<p>A key result in Bayesian games is that the two definitions of BNE (one for the ex-ante view and the other for the interim view) are equivalent (provided the model is parscimonious, i.e., <span class="math inline">\(p(ω) &gt; 0\)</span> for all <span class="math inline">\(ω\)</span>). In particular, when players are playing BNE, no player has a profitable deviation <em>after</em> knowing his type if and only if he has no profitable deviation <em>before</em> knowing his type.</p>
 <p>Combing back to our example, we can write the utility function of all the players as follows:</p>
 <div id="fig-bayesian-bos-interim" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
@@ -616,12 +630,12 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 <p>We now show how to find the BNE via the interim strategy.</p>
 <p>First we check for all pure strategy BNE by trying to find a fixed point of BR maps.</p>
 <ul>
-<li>If P1.1 plays <span class="math inline">\(\mathsf{F}\)</span>, BR of P2.1 is <span class="math inline">\(\mathsf{F}\)</span> and BR of P2.2 is $.</li>
+<li>If P1.1 plays <span class="math inline">\(\mathsf{F}\)</span>, BR of P2.1 is <span class="math inline">\(\mathsf{F}\)</span> and BR of P2.2 is <span class="math inline">\(\mathsf{O}\)</span>.</li>
 <li>If P2 is playing <span class="math inline">\(\mathsf{FO}\)</span>, BR of P1.1 is <span class="math inline">\(\mathsf{F}\)</span>. Thus, <span class="math inline">\((\mathsf{F}, \mathsf{FO})\)</span> is BNE.</li>
 </ul>
 <!-- -->
 <ul>
-<li>If P1.1 plays <span class="math inline">\(\mathsf{O}\)</span>, BR of P2.1 is <span class="math inline">\(\mathsf{O}\)</span> and BR of P2.2 is $.</li>
+<li>If P1.1 plays <span class="math inline">\(\mathsf{O}\)</span>, BR of P2.1 is <span class="math inline">\(\mathsf{O}\)</span> and BR of P2.2 is <span class="math inline">\(\mathsf{F}\)</span>.</li>
 <li>If P2 is playing <span class="math inline">\(\mathsf{FO}\)</span>, BR of P1.1 is <span class="math inline">\(\mathsf{F}\)</span>. Thus, <span class="math inline">\((\mathsf{O}, \mathsf{OF})\)</span> is <strong>not</strong> BNE.</li>
 </ul>
 <p>Now we consider <strong>mixed strategy</strong> BNE. We have two possibilities:</p>
@@ -653,7 +667,7 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 <li><p><span class="math inline">\(q_2 = 0\)</span>. In this case, the mixed strategy of P2 is <span class="math display">\[
     σ_2 = (0, q_1, 0, 1-q_1).
 \]</span> By the invariance principle, for P1 to play a mixed strategy, it must be that <span class="math display">\[
-  U_1(\mathsf{F}, σ_2) = U_19\mathsf{O}, σ_2)
+  U_1(\mathsf{F}, σ_2) = U_1(\mathsf{O}, σ_2)
   \implies
   q_1 = \tfrac 12 q_1 + (1 - q_1)
   \implies
@@ -722,7 +736,7 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 <div>
 
 </div>
-<div id="f129613d" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="5">
+<div id="ec91b438" class="cell quarto-layout-panel" data-execution_count="6" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
@@ -820,13 +834,13 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Case 1.</strong> In this case, no player has any information. The normal form reduction of the game is given as follows.</p>
-<div id="e1595026" class="cell" data-execution_count="6">
+<div id="f081d1a1" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2.0$</td><td>$1$</td><td>$1.5$</td><td>$1$</td><td>$1.5$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4.0$</td><td>$0$</td><td>$2.5$</td><td>$0$</td><td>$2.5$</td></tr></tbody></table>
 </div>
 </div>
-<p>Note that for player 2, $ dominates <span class="math inline">\(\mathsf{M}\)</span> and <span class="math inline">\(\mathsf{R}\)</span>. Thus, the reduced game is</p>
-<div id="7ad7f78a" class="cell" data-execution_count="7">
+<p>Note that for player 2, <span class="math inline">\(\mathsf{L}\)</span> dominates <span class="math inline">\(\mathsf{M}\)</span> and <span class="math inline">\(\mathsf{R}\)</span>. Thus, the reduced game is</p>
+<div id="a2b10545" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
@@ -836,7 +850,7 @@ Solution
 <div>
 
 </div>
-<div id="3979e197" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="8">
+<div id="f6b4bf6c" class="cell quarto-layout-panel" data-execution_count="9" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
@@ -856,7 +870,7 @@ Solution
 <div>
 
 </div>
-<div id="7bb7b1f7" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="9">
+<div id="567f8757" class="cell quarto-layout-panel" data-execution_count="10" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -935,11 +949,11 @@ Solution
   \PR_{2.1}(ω) &amp;= (\tfrac 34, \tfrac 14, 0), &amp;
   \PR_{2.2}(ω) &amp;= (0, 0, 1).
 \end{align*}\]</span></p>
-<p>Based on these posterior probabilities, we can write the interim utility function for each player where the notation <span class="math inline">\(\PR_{i.j}\)</span> means the posterior probability of “player <span class="math inline">\(i\)</span> of type <span class="math inline">\(j\)</span>”.</p>
+<p>where the notation <span class="math inline">\(\PR_{i.j}\)</span> means the posterior probability of “player <span class="math inline">\(i\)</span> of type <span class="math inline">\(j\)</span>”. Based on these posterior probabilities, we can write the interim utility function for each player:</p>
 <div>
 
 </div>
-<div id="96f0d1af" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="10">
+<div id="7ce79435" class="cell quarto-layout-panel" data-execution_count="11" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Player 1.1 (row player)</caption><tbody><tr><td></td><td>$\mathsf{LL}$</td><td>$\mathsf{LR}$</td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -962,7 +976,7 @@ Solution
 <div>
 
 </div>
-<div id="3f7f8c73" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="11">
+<div id="ad0f99c7" class="cell quarto-layout-panel" data-execution_count="12" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Player 1.1 (row player)</caption><tbody><tr><td></td><td>$\mathsf{LL}$</td><td>$\mathsf{LR}$</td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -984,7 +998,7 @@ Solution
 <div>
 
 </div>
-<div id="dcba37c1" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="12">
+<div id="4181bb7c" class="cell quarto-layout-panel" data-execution_count="13" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -1006,7 +1020,7 @@ Solution
 <div>
 
 </div>
-<div id="a3ab3012" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="13">
+<div id="357331c6" class="cell quarto-layout-panel" data-execution_count="14" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -1028,7 +1042,7 @@ Solution
 <div>
 
 </div>
-<div id="ae598d4e" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="14">
+<div id="e0399dbb" class="cell quarto-layout-panel" data-execution_count="15" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{RL}$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td></tr></tbody></table>
@@ -1050,6 +1064,154 @@ Solution
 <p>[Observe that for <span class="math inline">\(ω = ω_3\)</span>, both plays know the game, but the good outcome <span class="math inline">\((\mathsf{T}, \mathsf{L})\)</span>, which is also the NE of the game corresponding to <span class="math inline">\(ω_3\)</span> has been ruled out!</p>
 </div>
 </div>
+<div id="exm-Bayes-2025" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.4</strong></span> Consider the following Bayesian game</p>
+<div>
+
+</div>
+<div id="3ddfa769" class="cell quarto-layout-panel" data-execution_count="16" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$4$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$3$</td><td>$3$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$1$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>where <span class="math display">\[
+  p(ω_1) = \tfrac 13
+  \quad\text{and}\quad
+  p(ω_2) = \tfrac 23
+\]</span> and the information structure is</p>
+<div id="fig-ex-4" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ex-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-4" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-4-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-4-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures2.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-4">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-4-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Player 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-4" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ex-4-b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ex-4-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/svg/info-structures1.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-4">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-4-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Player 2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.8: Information structure for <a href="#exm-Bayes-2025" class="quarto-xref">Example&nbsp;<span>8.4</span></a>
+</figcaption>
+</figure>
+</div>
+<ol type="a">
+<li>Write the interim form of the game.</li>
+<li>Using the interim form, find all the <em>pure</em> strategy BNE of the game.</li>
+<li>Using the interim form, find all the <em>mixed</em> strategy BNE of the game.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The interim games from the point of player 1.1 and 1.2 are the same as the games corresponding to <span class="math inline">\(ω_1\)</span> and <span class="math inline">\(ω_2\)</span>. So, we only need to compute the interim game corresponding to player 2.1.</p>
+<div>
+
+</div>
+<div id="f7b4232e" class="cell quarto-layout-panel" data-execution_count="17" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.2</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$2$</td><td>$0$</td></tr></tbody></table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<table class="game1" data-quarto-disable-processing="true" align="center"><caption>P2.1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{TT}$</td><td>$2$</td><td>$\frac{5}{3}$</td></tr><tr><td>$\mathsf{TB}$</td><td>$0$</td><td>$\frac{5}{3}$</td></tr><tr><td>$\mathsf{BT}$</td><td>$\frac{10}{3}$</td><td>$\frac{2}{3}$</td></tr><tr><td>$\mathsf{BB}$</td><td>$\frac{4}{3}$</td><td>$\frac{2}{3}$</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p><strong>Pure strategy BNE</strong></p>
+<ul>
+<li>IF P2 plays <span class="math inline">\(\mathsf{L}\)</span>, BR of P1.1 is $ and BR of P1.2 is <span class="math inline">\(\mathsf{B}\)</span>.</li>
+<li>If P1 is playing <span class="math inline">\(\mathsf{TB}\)</span>, then BR of P2.1 is <span class="math inline">\(\mathsf{R}\)</span>. Thus, <span class="math inline">\((\mathsf{TB}, \mathsf{L})\)</span> is <strong>not</strong> BNE.</li>
+</ul>
+<!-- -->
+<ul>
+<li>IF P2 plays <span class="math inline">\(\mathsf{R}\)</span>, BR of P1.1 is $ and BR of P1.2 is <span class="math inline">\(\mathsf{T}\)</span>.</li>
+<li>If P1 is playing <span class="math inline">\(\mathsf{BT}\)</span>, then BR of P2.1 is <span class="math inline">\(\mathsf{L}\)</span>. Thus, <span class="math inline">\((\mathsf{BT}, \mathsf{R})\)</span> is <strong>not</strong> BNE.</li>
+</ul>
+<p>Thus, there is no pure strategy BNE.</p>
+<p><strong>Mixed strategy BNE</strong> Let <span class="math inline">\(σ_{1.1} = (p_1, 1 - p_1)\)</span>, <span class="math inline">\(σ_{1.2} = (p_2, 1 - p_2)\)</span> and <span class="math inline">\(σ_{2.1} = (q, 1-q)\)</span> be a mixed strategy NE.</p>
+<ul>
+<li><p>If <span class="math inline">\(p_1 \in (0, 1)\)</span>, then by the irrelevance principle, we must have <span class="math display">\[
+U_{1.1}(\mathsf{T}, σ_2) = U_{1.1}(\mathsf{B}, σ_2) \implies
+2q = 1 - q \implies q = \frac 13.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(p_2 \in (0, 1)\)</span>, then by the irrelevance principle, we must have <span class="math display">\[
+U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
+3(1 - q) = 2 q \implies q = \frac 35.
+\]</span></p></li>
+</ul>
+<p>But <span class="math inline">\(q\)</span> must take a single value so only one of them can be true. Thus, either</p>
+<ul>
+<li><span class="math inline">\(p_1 \in (0,1)\)</span> and <span class="math inline">\(p_2 \in \{0, 1\}\)</span>, or</li>
+<li><span class="math inline">\(p_2 \in (0,1)\)</span> and <span class="math inline">\(p_1 \in \{0, 1\}\)</span>.</li>
+</ul>
+<p>We consider both these cases separately.</p>
+<p><strong>Case 1.</strong> <span class="math inline">\(p_1 \in (0, 1)\)</span>. In this case, we have already computed that <span class="math inline">\(q = \frac 13\)</span>. Thus, <span class="math display">\[
+  U_{1.2}(\mathsf{T}, σ_2) = 2,
+  \quad
+  U_{1.2}(\mathsf{B}, σ_2) = \frac {2}{3}.
+\]</span> Thus, the BR of P1.2 is <span class="math inline">\(\mathsf{T}\)</span>. Hence <span class="math inline">\(p_2 = 1\)</span>. Consequently, the strategy of P1 as viewed by P2.1 is <span class="math display">\[
+  σ_1 = (p_1, 0, 1-p_1, 0).
+\]</span> Now, by the irrelevance principle, we must have <span class="math display">\[
+  U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
+  \implies
+  2 p_1 + \frac{10}{3}(1-p_1) = \frac{5}{3}p_1 + \frac{2}{3}(1-p_1)
+  \implies p_1 = \frac{8}{7}.
+\]</span> Since <span class="math inline">\(p_1 \not\in [0, 1]\)</span>, this is not a valid probability distribution and hence <strong>not</strong> a BNE.</p>
+<p><strong>Case 2.</strong> <span class="math inline">\(p_2 \in (0,1)\)</span>. In this case, we have already computed that <span class="math inline">\(q = \frac{3}{5}\)</span>. Thus, <span class="math display">\[
+  U_{1.1}(\mathsf{T}, σ_2) = \frac{6}{5},
+  \quad
+  U_{1.1}(\mathsf{B}, σ_2) = \frac {2}{5}.
+\]</span> Thus, the BR of P1.1 is <span class="math inline">\(\mathsf{T}\)</span>. Hence <span class="math inline">\(p_1 = 1\)</span>. Consequently, the strategy of P1 as viewed by P2.1 is <span class="math display">\[
+  σ_1 = (p_2, 1-p_2, 0, 0).
+\]</span> Now, by the irrelevance principle, we must have <span class="math display">\[
+  U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
+  \implies
+  2 p_2 = \frac{5}{3}
+  \implies p_2 = \frac{5}{6}.
+\]</span> Since <span class="math inline">\(p_2 \in [0, 1]\)</span>, this is a valid probability distribution. Hence, the mixed strategy BNE is <span class="math display">\[
+\bbox[5pt,border: 1px solid]{
+  σ_{1.1} = (1, 0), \quad
+  σ_{1.2} = (\tfrac{5}{6}, \tfrac{1}{6}), \quad
+  σ_2 = (\tfrac{3}{5}, \tfrac{2}{5}).
+}
+\]</span></p>
+</div>
+</div>
 </section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
@@ -1058,7 +1220,7 @@ Solution
 <div>
 
 </div>
-<div id="1516ec43" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="15">
+<div id="c30eec76" class="cell quarto-layout-panel" data-execution_count="18" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -1102,7 +1264,7 @@ Solution
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.8: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>}
+Figure&nbsp;8.9: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>}
 </figcaption>
 </figure>
 </div>
@@ -1116,7 +1278,7 @@ Figure&nbsp;8.8: Information structure for <a href="#exr-Bayes-pure" class="quar
 <div>
 
 </div>
-<div id="da25e32d" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="16">
+<div id="249fe8d1" class="cell quarto-layout-panel" data-execution_count="19" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$4$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr></tbody></table>
@@ -1162,75 +1324,13 @@ Figure&nbsp;8.8: Information structure for <a href="#exr-Bayes-pure" class="quar
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.9: Information structure for <a href="#exr-Bayes-mixed" class="quarto-xref">Exercise&nbsp;<span>8.2</span></a>}
+Figure&nbsp;8.10: Information structure for <a href="#exr-Bayes-mixed" class="quarto-xref">Exercise&nbsp;<span>8.2</span></a>
 </figcaption>
 </figure>
 </div>
 <ol type="a">
 <li><p>Write the normal form reduction of the game and use it to find all <strong>mixed strategy</strong> BNE.</p></li>
 <li><p>Write the interim form of the game and use it to find all <strong>mixed strategy</strong> BNE.</p></li>
-</ol>
-</div>
-<div id="exr-Bayes-dominance" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> Consider the following Bayesian game</p>
-<div>
-
-</div>
-<div id="5734ed67" class="cell quarto-layout-panel" data-layout-ncol="3" data-execution_count="17">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_2$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$4$</td><td>$4$</td><td>$-1$</td><td>$-1$</td></tr><tr><td>$\mathsf{B}$</td><td>$-1$</td><td>$-1$</td><td>$0$</td><td>$0$</td></tr></tbody></table>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_3$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td></tr></tbody></table>
-</div>
-</div>
-</div>
-<p>where <span class="math display">\[
-  p(ω_1) = p(ω_2) = p(ω_3) = \tfrac 13
-\]</span> and the information structure is</p>
-<div id="fig-ex-3" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ex-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-3" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-ex-3-a" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-ex-3-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/svg/info-structures3.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-3">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-3-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Player 1
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ex-3" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-ex-3-b" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-ex-3-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/svg/info-structures4.svg" class="img-fluid figure-img" data-ref-parent="fig-ex-3">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ex-3-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Player 2
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.10: Information structure for <a href="#exr-Bayes-dominance" class="quarto-xref">Exercise&nbsp;<span>8.3</span></a>
-</figcaption>
-</figure>
-</div>
-<ol type="a">
-<li>Write the normal form reduction of the game.</li>
-<li>Use iterative elimination of strongly dominated strategies to simplify the reduced game as much as possible.</li>
-<li>Find all pure and mixed strategies of the reduced game obtained in part (b).</li>
 </ol>
 </div>
 
