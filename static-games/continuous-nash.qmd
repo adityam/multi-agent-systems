@@ -120,5 +120,64 @@ $$
   s_2 = μ + \sqrt{\frac{π}{2}}\, σ.
 $$
 
+## Some examples
+
+:::{#exm-quadratic-game}
+### Quadratic Games
+Consider a two-player game with $\ALPHABET {S}_1 = \ALPHABET {S}_2 = [0, \infty)$. The utility functions of the players are as follows:  
+\begin{align*}
+    u_1(s_1, s_2) &= s_1(s_2 - s_1), \\
+    u_2(s_1, s_2) &= s_2(1 - s_1 - s_2).
+\end{align*}
+
+Find *all* pure strategy Nash equilibria of the game.
+:::
+
+:::{.callout-note}
+### Solution
+
+Observe that the utility function of both players is continuous and differentiable in \( (s_1, s_2) \) and is convex in their own strategy. So, we try to find the pure strategy NE by looking for the point of intersection of the best responses (BR).  
+
+To find the BR of player 1, we compute \( ∂u_1/∂s_1 \) and set it to zero:  
+$$
+\frac{∂u_1}{∂s_1} = s_2 - 2s_1 = 0 
+\implies
+s_1 = \frac{1}{2} s_2.
+$$
+
+Thus,  
+$$ \BR_1(s_2) = \frac{1}{2} s_2. $$
+
+To find the BR of player 2, we compute \( ∂u_2/∂s_2 \) and set it to zero:  
+$$
+\frac{∂u_2}{∂s_2} = 1 - s_1 - 2s_2
+\implies
+s_2 = \frac{1}{2} (1 - s_1).
+$$
+
+Thus,
+$$ \BR_2(s_1) = \frac{1}{2} (1 - s_1). $$
+
+Thus, the NE, if it exists, is given by  
+$$
+s_1 = \BR_1(s_2) 
+\quad
+s_2 = \BR_2(s_1).
+$$
+
+Thus,  
+$$
+s_1 = \frac{1}{4}(1 - s_1) \implies s_1 = \frac{1}{5}.
+$$
+and  
+$$
+s_2 = \frac{1}{2}\left(1 - \frac{s_2}{2}\right)
+\implies 
+s_2 = \frac{2}{5}.
+$$
+
+Thus, the **unique** NE of the game is $(1/5, 2/5)$.
+
+:::
 
 ## Problem of the commons
