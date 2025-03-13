@@ -9,7 +9,7 @@
 }
 
 /* Game tables */
-.game td, .game1 td, .game3 td, .gamemin td {
+.game td, .game1 td, .game1min td, .game3 td, .gamemin td {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
 }
@@ -18,18 +18,21 @@
   text-align: right;
 }
 
-.game1 td {
+.game1 td, .game1min td{
   text-align: center;
 }
 
-.game1 tr > td:first-child {
+.game1 tr > td:first-child,
+.game1min tr > td:first-child {
   padding-right: 0.5em;
 }
 
-.gamemin tr:first-child > td:last-child {
+.gamemin tr:first-child > td:last-child,
+.game1min tr:first-child > td:last-child {
 }
 
-.gamemin tr:not(:first-child) > td:last-child {
+.gamemin tr:not(:first-child) > td:last-child ,
+.game1min tr:not(:first-child) > td:last-child {
   text-align:right;
   padding-right: 3em;
 }
@@ -37,6 +40,7 @@
 .game  tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
 .gamemin  tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
 .game1 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
+.game1min tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
 .game3 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)) {
   border-bottom: 1px solid;
 }
@@ -44,6 +48,7 @@
 .game tr:not(:nth-of-type(1)) > td:nth-of-type(1),
 .gamemin tr:not(:nth-of-type(1)) > td:nth-of-type(1),
 .game1 tr:not(:nth-of-type(1)) > td:nth-of-type(1),
+.game1min tr:not(:nth-of-type(1)) > td:nth-of-type(1),
 .game3 tr:not(:nth-of-type(1)) > td:nth-of-type(1) {
   border-right : 1px solid ;
 }
@@ -57,7 +62,8 @@
   border-left: 1px solid;
 }
 
-.game1 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)) {
+.game1 tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)),
+.game1min tr:not(:nth-of-type(1)) > td:not(:nth-of-type(1)) {
   padding-left: 0.5em;
   padding-right: 0.5em;
   border-left: 1px solid;
@@ -81,14 +87,16 @@
 .game tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
 .game3 tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
 .gamemin tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
-.game1 tr:not(:nth-of-type(1)) > td:nth-last-of-type(1) {
+.game1 tr:not(:nth-of-type(1)) > td:nth-last-of-type(1),
+.game1min tr:not(:nth-of-type(1)) > td:nth-last-of-type(1) {
   border-right : 1px solid ;
 }
 
 .game tr:nth-of-type(1) > td:not(:nth-of-type(1)),
 .game3 tr:nth-of-type(1) > td:not(:nth-of-type(1)),
 .gamemin tr:nth-of-type(1) > td:not(:nth-of-type(1)),
-.game1 tr:nth-of-type(1) > td:not(:nth-of-type(1)) {
+.game1 tr:nth-of-type(1) > td:not(:nth-of-type(1)),
+.game1min tr:nth-of-type(1) > td:not(:nth-of-type(1)) {
   text-align: center;
   border-bottom : 1px solid ;
 }
@@ -96,25 +104,29 @@
 .game tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
 .game3 tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
 .gamemin tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
-.game1 tr:nth-last-of-type(1) > td:not(:nth-of-type(1)) {
+.game1 tr:nth-last-of-type(1) > td:not(:nth-of-type(1)),
+.game1min tr:nth-last-of-type(1) > td:not(:nth-of-type(1)) {
   border-bottom : 1px solid ;
 }
 
 
-.game, .game1, .gamemin, .game3 {
+.game, .game1, .gamemin, .game1min, .game3, {
   border-collapse: collapse;
   border: none;
 }
 
-.gamemin tr:not(:first-child):not(:last-child) td:last-child {
+.gamemin tr:not(:first-child):not(:last-child) td:last-child,
+.game1min tr:not(:first-child):not(:last-child) td:last-child {
   background-color: #90ee90;
 }
 
-.gamemin tr:last-child td:not(:first-child) {
+.gamemin tr:last-child td:not(:first-child),
+.game1min tr:last-child td:not(:first-child) {
   background-color: #90ee90;
 }
 
-.gamemin tr:last-child td:last-child {
+.gamemin tr:last-child td:last-child,
+.game1min tr:last-child td:last-child {
   background-color: #eeee90;
 }
 
