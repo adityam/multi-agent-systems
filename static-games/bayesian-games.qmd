@@ -169,6 +169,28 @@ We can then identify a BNE of the orginal game by identifying the NE of its norm
 
 According to the interim view, we view the game after nature has played; so each player knows its type. We can consider each player of each time (i.e., each $(i,t_i)$ as a separete player. Thus, the game has $\prod_{i \in \ALPHABET N} |\ALPHABET T_i|$ players.
 
+For a two player game, given an action $a_i$ of player~$i$ and a pure ss_{-i}$ of the player other than~$i$, the utility of player $i$ of type $t_i$ is given by
+$$
+  U_{i.t_i}(a_i, s_{-i})
+  = \sum_{ω \in Ω} \sum_{t_{-i} \in \ALPHABET T_{-i}}
+  p(ω | t_i) u_i(ω, a_i, s_{-i}(t_{-i}(ω))).
+$$
+Note that the payoff depends on the **belief** of player $i.t_i$ which is given by $p(ω | t_i)$. 
+
+When player $-i$ is playing a mixed strategy $σ_{-i}$, then the expected utility is given by
+$$
+  U_{i.t_i}(a_i, σ_{-i})
+  = \sum_{s_{-i} \in \ALPHABET S_{-i}} σ_{-i}(s_{-i}) U_{i.t_i}(a_i, s_{-i}).
+$$
+
+In this formulation, a strategy profile $σ^*$ is a **Bayesian Nash equilibrium** if for every player $i$ and every type $t_i \in \ALPHABET T_i$, we have
+$$
+  U_{i.t_i}( σ_i(t_i), σ_{-i}) \ge
+  U_{i.t_i}( a_i,      σ_{-i}), \quad \forall a_i \in \ALPHABET A_i.
+$$
+
+A key result in Bayesian games is that the two definitions of BNE (one for the ex-ante view and the other for the interim view) are equivalent (provided the model is parscimonious, i.e., $p(ω) > 0$ for all $ω$). In particular, when players are playing BNE, no player has a profitable deviation _after_ knowing his type if and only if he has no profitable deviation _before_ knowing his type.
+
 Combing back to our example, we can write the utility function of all the players as follows:
 
 ```{julia}
