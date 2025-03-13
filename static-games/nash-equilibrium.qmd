@@ -637,6 +637,75 @@ game(["A", "N"], ["H", "C"], [2 4; 4 0], [0 -10; 0 8])
 ```
 :::
 
+:::{#exm-ZSG-Nash}
+#### Zero sum games
+Consider the following zero sum game:
+
+```{julia}
+game1([0, 1, 2], [0, 1, 2], [0 1 -2; 1 -2 3; -2 3 -4])
+```
+
+a. Find the maxmin and minmax strategies of the players in _pure_ strategies. Does the game have a value in pure strategies?
+
+b. A mixed strategy is called _completely mixed_ if it gives positive weight to all pure strategies. Find the maxmin and minmax strategies of the players in _completely mixed_ strategies. Does the game have a value in complete mixed strategies?
+:::
+
+:::{.callout-note}
+#### Solution
+
+a. The maxmin and the minmax values are shown below. There are two maxmin strategies ($0$ and $1$) with the maxmin value 
+$$
+  \underline v = -2
+$$
+The minmax strategy is $0$ with the minmax value 
+$$
+  \bar v = 1.
+$$
+Since $\underline v \neq \bar v$, the game does not have a value in pure strategies.
+
+  ```{julia}
+  #| output: asis
+  game1([0, 1, 2], [0, 1, 2], [0 1 -2; 1 -2 3; -2 3 -4], minmax=true)
+  ```
+
+b. Let $σ_1 = (p_0, p_1, p_2)$ and $σ_2 = (q_0, q_1, q_2)$ be mixed strategies that are completely mixed, i.e., $p_i, q_i > 0$, $i \in \{0,1,2\}$. By the irrelevance principle, for player 1 we must have
+$$
+  u(0, σ_2) = u(1, σ_2) = u(2, σ_2)
+$$
+which implies
+$$
+  \bar v = q_1 - 2 q_2 = q_0 - 2 q_1 + 3 q_2 = -2 q_0 + 3 q_1 - 4 q_2.
+$$
+Furthermore, 
+$$
+  q_0 + q_1 + q_2 = 1.
+$$
+This gives us four equations in four variables. Solving them we get 
+$$
+  \bar v = 0, \quad (q_0, q_1, q_2) = (\tfrac 14, \tfrac 12, \tfrac 14).
+$$
+
+    Similarly, by the irrelevance principle for player 2 we must have
+$$
+   u(σ_1, 0) = u(σ_1, 1) = u(σ_1, 2)
+$$
+which implies
+$$
+  \underline v = p_1 - 2 p_2 = p_0 - 2p_1 + 3 p_2 = -2p_0 + 3 p_1 - 4p_2.
+$$
+Furthermore,
+$$
+  p_0 + p_1 + p_2 = 1.
+$$
+This gives us four equations in four variables. Solving them we get 
+$$
+  \underline v = 0, \quad (p_0, p_1, p_2) = (\tfrac 14, \tfrac 12, \tfrac 14).
+$$
+
+    Since $\underline v = \bar v$, the game has a value in completely mixed strategies.
+
+:::
+
 ## Games with more than two players
 
 So far, we have presented examples of games with only two players. The same ideas work for games with more than two players, as is illustrated by the following examples.
