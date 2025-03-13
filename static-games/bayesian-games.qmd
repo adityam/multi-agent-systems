@@ -213,12 +213,12 @@ We now show how to find the BNE via the interim strategy.
 
 First we check for all pure strategy BNE by trying to find a fixed point of BR maps.
 
-- If P1.1 plays $\mathsf{F}$, BR of P2.1 is $\mathsf{F}$ and BR of P2.2 is $\mathsf{O}.
+- If P1.1 plays $\mathsf{F}$, BR of P2.1 is $\mathsf{F}$ and BR of P2.2 is $\mathsf{O}$.
 - If P2 is playing $\mathsf{FO}$, BR of P1.1 is $\mathsf{F}$. Thus, $(\mathsf{F}, \mathsf{FO})$ is BNE.
 
 <!-- -->
 
-- If P1.1 plays $\mathsf{O}$, BR of P2.1 is $\mathsf{O}$ and BR of P2.2 is $\mathsf{F}.
+- If P1.1 plays $\mathsf{O}$, BR of P2.1 is $\mathsf{O}$ and BR of P2.2 is $\mathsf{F}$.
 - If P2 is playing $\mathsf{FO}$, BR of P1.1 is $\mathsf{F}$. Thus, $(\mathsf{O}, \mathsf{OF})$ is **not** BNE.
 
 Now we consider **mixed strategy** BNE. We have two possibilities:
@@ -261,7 +261,7 @@ As argued before, in this case $p = \tfrac 23$. We consider the two values of $q
   $$
   By the invariance principle, for P1 to play a mixed strategy, it must be that
   $$
-    U_1(\mathsf{F}, σ_2) = U_19\mathsf{O}, σ_2)
+    U_1(\mathsf{F}, σ_2) = U_1(\mathsf{O}, σ_2)
     \implies
     q_1 = \tfrac 12 q_1 + (1 - q_1)
     \implies 
@@ -390,7 +390,7 @@ Note that in the first information structure no player has any information about
 game(["T", "B"], ["L", "M", "R"], [1 1 1; 4 0 0], [2 1.5 1.5; 4 2.5 2.5]) |> display
 ```
 
-Note that for player 2, $\mathsf{L} dominates $\mathsf{M}$ and $\mathsf{R}$. Thus, the reduced game is
+Note that for player 2, $\mathsf{L}$ dominates $\mathsf{M}$ and $\mathsf{R}$. Thus, the reduced game is
 
 ```{julia}
 game(["T", "B"], ["L"], [1; 4], [2; 4]) |> display
@@ -461,8 +461,8 @@ We will follow the interim approach. Observe that the posterior probabilities of
   \PR_{2.2}(ω) &= (0, 0, 1).
 \end{align*}
 
-Based on these posterior probabilities, we can write the interim utility function for each player
 where the notation $\PR_{i.j}$ means the posterior probability of "player $i$ of type $j$".
+Based on these posterior probabilities, we can write the interim utility function for each player:
 
 ```{julia}
 #| layout-ncol: 2
@@ -524,6 +524,126 @@ Thus, the unique BNE is: P1.1 plays $\mathsf{B}$; P1.2 plays $\mathsf{B}$, P2.1 
 [Observe that for $ω = ω_3$, both plays know the game, but the good outcome $(\mathsf{T}, \mathsf{L})$, which is also the NE of the game corresponding to $ω_3$ has been ruled out!
 :::
 
+:::{#exm-Bayes-2025}
+Consider the following Bayesian game
+```{julia}
+#| layout-ncol: 2
+game(["T", "B"], ["L", "R"], [2 0; 0 1], [0 3; 4 0], caption="\$ω_1\$.") |> display
+game(["T", "B"], ["L", "R"], [0 3; 2 0], [3 1; 0 1], caption="\$ω_2\$.") |> display
+```
+where
+$$
+  p(ω_1) = \tfrac 13
+  \quad\text{and}\quad
+  p(ω_2) = \tfrac 23
+$$
+and the information structure is 
+
+:::{#fig-ex-4 layout-ncol=2}
+![Player 1](figures/svg/info-structures2.svg){#fig-ex-4-a}
+
+![Player 2](figures/svg/info-structures1.svg){#fig-ex-4-b}
+
+Information structure for @exm-Bayes-2025
+:::
+
+a. Write the interim form of the game. 
+b. Using the interim form, find all the _pure_ strategy BNE of the game.
+b. Using the interim form, find all the _mixed_ strategy BNE of the game.
+:::
+
+:::{.callout-note}
+#### Solution
+
+The interim games from the point of player 1.1 and 1.2 are the same as the games corresponding to $ω_1$ and $ω_2$. So, we only need to compute the interim game corresponding to player 2.1. 
+
+```{julia}
+#| layout-ncol: 3
+game1(["T", "B"], ["L", "R"], [2 0; 0 1], caption="P1.1") |> display
+game1(["T", "B"], ["L", "R"], [0 3; 2 0], caption="P1.2") |> display
+game1(["TT", "TB", "BT", "BB"], ["L", "R"], [2 5//3; 0 5//3; 10//3 2//3;4//3 2//3], caption="P2.1") |> display
+```
+
+**Pure strategy BNE** 
+
+- IF P2 plays $\mathsf{L}$, BR of P1.1 is $\mathsf{T} and BR of P1.2 is $\mathsf{B}$.
+- If P1 is playing $\mathsf{TB}$, then BR of P2.1 is $\mathsf{R}$. Thus, $(\mathsf{TB}, \mathsf{L})$ is **not** BNE.
+
+<!-- -->
+
+- IF P2 plays $\mathsf{R}$, BR of P1.1 is $\mathsf{B} and BR of P1.2 is $\mathsf{T}$.
+- If P1 is playing $\mathsf{BT}$, then BR of P2.1 is $\mathsf{L}$. Thus, $(\mathsf{BT}, \mathsf{R})$ is **not** BNE.
+
+Thus, there is no pure strategy BNE.
+
+**Mixed strategy BNE**
+Let $σ_{1.1} = (p_1, 1 - p_1)$, $σ_{1.2} = (p_2, 1 - p_2)$ and $σ_{2.1} = (q, 1-q)$ be a mixed strategy NE. 
+
+- If $p_1 \in (0, 1)$, then by the irrelevance principle, we must have
+$$
+  U_{1.1}(\mathsf{T}, σ_2) = U_{1.1}(\mathsf{B}, σ_2) \implies
+  2q = 1 - q \implies q = \frac 13.
+$$
+
+- If $p_2 \in (0, 1)$, then by the irrelevance principle, we must have
+$$
+  U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
+  3(1 - q) = 2 q \implies q = \frac 35.
+$$
+
+But $q$ must take a single value so only one of them can be true. Thus, either
+
+- $p_1 \in (0,1)$ and $p_2 \in \{0, 1\}$, or
+- $p_2 \in (0,1)$ and $p_1 \in \{0, 1\}$. 
+
+We consider both these cases separately.
+
+**Case 1.** $p_1 \in (0, 1)$. In this case, we have already computed that $q = \frac 13$. Thus,
+$$
+  U_{1.2}(\mathsf{T}, σ_2) = 2,
+  \quad
+  U_{1.2}(\mathsf{B}, σ_2) = \frac {2}{3}.
+$$
+Thus, the BR of P1.2 is $\mathsf{T}$. Hence $p_2 = 1$. Consequently, the strategy of P1 as viewed by P2.1 is
+$$
+  σ_1 = (p_1, 0, 1-p_1, 0).
+$$
+Now, by the irrelevance principle, we must have
+$$
+  U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
+  \implies
+  2 p_1 + \frac{10}{3}(1-p_1) = \frac{5}{3}p_1 + \frac{2}{3}(1-p_1)
+  \implies p_1 = \frac{8}{7}.
+$$
+Since $p_1 \not\in [0, 1]$, this is not a valid probability distribution and hence **not** a BNE.
+
+**Case 2.** $p_2 \in (0,1)$. In this case, we have already computed that $q = \frac{3}{5}$. Thus,
+$$
+  U_{1.1}(\mathsf{T}, σ_2) = \frac{6}{5},
+  \quad
+  U_{1.1}(\mathsf{B}, σ_2) = \frac {2}{5}.
+$$
+Thus, the BR of P1.1 is $\mathsf{T}$. Hence $p_1 = 1$. Consequently, the strategy of P1 as viewed by P2.1 is
+$$
+  σ_1 = (p_2, 1-p_2, 0, 0).
+$$
+Now, by the irrelevance principle, we must have
+$$
+  U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
+  \implies
+  2 p_2 = \frac{5}{3}
+  \implies p_2 = \frac{5}{6}.
+$$
+Since $p_2 \in [0, 1]$, this is a valid probability distribution. Hence, the mixed strategy BNE is
+$$
+\bbox[5pt,border: 1px solid]{
+  σ_{1.1} = (1, 0), \quad
+  σ_{1.2} = (\tfrac{5}{6}, \tfrac{1}{6}), \quad
+  σ_2 = (\tfrac{3}{5}, \tfrac{2}{5}).
+}
+$$
+:::
+
 
 
 ## Exercises {-}
@@ -577,37 +697,10 @@ and the information structure is
 
 ![Player 2](figures/svg/info-structures1.svg){#fig-ex-2-b}
 
-Information structure for @exr-Bayes-mixed}
+Information structure for @exr-Bayes-mixed
 :::
 
 a. Write the normal form reduction of the game and use it to find all **mixed strategy** BNE.
 
 b. Write the interim form of the game and use it to find all **mixed strategy** BNE.
-:::
-
-:::{#exr-Bayes-dominance}
-Consider the following Bayesian game
-```{julia}
-#| layout-ncol: 3
-game(["T", "B"], ["L", "R"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_1\$.") |> display
-game(["T", "B"], ["L", "R"], [4 -1; -1 0], [4 -1; -1 0], caption="\$ω_2\$.") |> display
-game(["T", "B"], ["L", "R"], [0 1; 1 2], [0 1; 1 2], caption="\$ω_3\$.") |> display
-```
-where 
-$$
-  p(ω_1) = p(ω_2) = p(ω_3) = \tfrac 13
-$$
-and the information structure is
-
-:::{#fig-ex-3 layout-ncol=2}
-![Player 1](figures/svg/info-structures3.svg){#fig-ex-3-a}
-
-![Player 2](figures/svg/info-structures4.svg){#fig-ex-3-b}
-
-Information structure for @exr-Bayes-dominance
-:::
-
-a. Write the normal form reduction of the game.
-b. Use iterative elimination of strongly dominated strategies to simplify the reduced game as much as possible. 
-c. Find all pure and mixed strategies of the reduced game obtained in part (b).
 :::
