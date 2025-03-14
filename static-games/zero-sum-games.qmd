@@ -688,7 +688,7 @@ $$
 :::{.callout-warning}
 #### Remarks about the solution
 
-We will later see the notion of [Nash equilibrium](nash-equilibrium.qmd) for general sum games. The optimal strategies for ZSG are also Nash equilibrium. The main idea used in the above solution—if an optimal strategy puts positive weight on multiple pure strategies, then all of them must have the same performance—is true for Nash equilibrium as well. This result is often called **the irrelevance principle** (see @thm-indifference-principle).
+We will later see the notion of [Nash equilibrium](nash-equilibrium.qmd) for general sum games. The optimal strategies for ZSG are also Nash equilibrium. The main idea used in the above solution—if an optimal strategy puts positive weight on multiple pure strategies, then all of them must have the same performance—is true for Nash equilibrium as well. This result is often called **the indifference principle** (see @thm-indifference-principle).
 
 :::
 :::
