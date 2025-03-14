@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-13">
+<meta name="dcterms.date" content="2025-03-14">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>8&nbsp; Bayesian Games – Multi-Agent Systems</title>
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-13">
-<meta name="citation_cover_date" content="2025-03-13">
+<meta name="citation_publication_date" content="2025-03-14">
+<meta name="citation_cover_date" content="2025-03-14">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-13">
+<meta name="citation_online_date" content="2025-03-14">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -394,7 +394,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 13, 2025</p>
+      <p class="date">March 14, 2025</p>
     </div>
   </div>
   
@@ -1165,11 +1165,11 @@ Solution
 <p>Thus, there is no pure strategy BNE.</p>
 <p><strong>Mixed strategy BNE</strong> Let <span class="math inline">\(σ_{1.1} = (p_1, 1 - p_1)\)</span>, <span class="math inline">\(σ_{1.2} = (p_2, 1 - p_2)\)</span> and <span class="math inline">\(σ_{2.1} = (q, 1-q)\)</span> be a mixed strategy NE.</p>
 <ul>
-<li><p>If <span class="math inline">\(p_1 \in (0, 1)\)</span>, then by the irrelevance principle, we must have <span class="math display">\[
+<li><p>If <span class="math inline">\(p_1 \in (0, 1)\)</span>, then by the indifference principle, we must have <span class="math display">\[
 U_{1.1}(\mathsf{T}, σ_2) = U_{1.1}(\mathsf{B}, σ_2) \implies
 2q = 1 - q \implies q = \frac 13.
 \]</span></p></li>
-<li><p>If <span class="math inline">\(p_2 \in (0, 1)\)</span>, then by the irrelevance principle, we must have <span class="math display">\[
+<li><p>If <span class="math inline">\(p_2 \in (0, 1)\)</span>, then by the indifference principle, we must have <span class="math display">\[
 U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
 3(1 - q) = 2 q \implies q = \frac 35.
 \]</span></p></li>
@@ -1186,7 +1186,7 @@ U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
   U_{1.2}(\mathsf{B}, σ_2) = \frac {2}{3}.
 \]</span> Thus, the BR of P1.2 is <span class="math inline">\(\mathsf{T}\)</span>. Hence <span class="math inline">\(p_2 = 1\)</span>. Consequently, the strategy of P1 as viewed by P2.1 is <span class="math display">\[
   σ_1 = (p_1, 0, 1-p_1, 0).
-\]</span> Now, by the irrelevance principle, we must have <span class="math display">\[
+\]</span> Now, by the indifference principle, we must have <span class="math display">\[
   U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
   \implies
   2 p_1 + \frac{10}{3}(1-p_1) = \frac{5}{3}p_1 + \frac{2}{3}(1-p_1)
@@ -1198,7 +1198,7 @@ U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
   U_{1.1}(\mathsf{B}, σ_2) = \frac {2}{5}.
 \]</span> Thus, the BR of P1.1 is <span class="math inline">\(\mathsf{T}\)</span>. Hence <span class="math inline">\(p_1 = 1\)</span>. Consequently, the strategy of P1 as viewed by P2.1 is <span class="math display">\[
   σ_1 = (p_2, 1-p_2, 0, 0).
-\]</span> Now, by the irrelevance principle, we must have <span class="math display">\[
+\]</span> Now, by the indifference principle, we must have <span class="math display">\[
   U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
   \implies
   2 p_2 = \frac{5}{3}
