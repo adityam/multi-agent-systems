@@ -579,13 +579,13 @@ Thus, there is no pure strategy BNE.
 **Mixed strategy BNE**
 Let $σ_{1.1} = (p_1, 1 - p_1)$, $σ_{1.2} = (p_2, 1 - p_2)$ and $σ_{2.1} = (q, 1-q)$ be a mixed strategy NE. 
 
-- If $p_1 \in (0, 1)$, then by the irrelevance principle, we must have
+- If $p_1 \in (0, 1)$, then by the indifference principle, we must have
 $$
   U_{1.1}(\mathsf{T}, σ_2) = U_{1.1}(\mathsf{B}, σ_2) \implies
   2q = 1 - q \implies q = \frac 13.
 $$
 
-- If $p_2 \in (0, 1)$, then by the irrelevance principle, we must have
+- If $p_2 \in (0, 1)$, then by the indifference principle, we must have
 $$
   U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
   3(1 - q) = 2 q \implies q = \frac 35.
@@ -608,7 +608,7 @@ Thus, the BR of P1.2 is $\mathsf{T}$. Hence $p_2 = 1$. Consequently, the strateg
 $$
   σ_1 = (p_1, 0, 1-p_1, 0).
 $$
-Now, by the irrelevance principle, we must have
+Now, by the indifference principle, we must have
 $$
   U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
   \implies
@@ -627,7 +627,7 @@ Thus, the BR of P1.1 is $\mathsf{T}$. Hence $p_1 = 1$. Consequently, the strateg
 $$
   σ_1 = (p_2, 1-p_2, 0, 0).
 $$
-Now, by the irrelevance principle, we must have
+Now, by the indifference principle, we must have
 $$
   U_{2.1}(σ_1, \mathsf{L}) = U_{2.1}(σ_1, \mathsf{R})
   \implies
