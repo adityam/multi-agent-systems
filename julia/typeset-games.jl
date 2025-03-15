@@ -14,7 +14,7 @@ function game1(S1, S2, u; caption="", minmax=false)
     header_cells = [td(strategy(S2[j])) for j in 1:m]
 
     if minmax
-        push!(header_cells, td("\$\\min_{s_2 \\in \\ALPHABET S_2} u_1(s_1, s_2)\$"))
+        push!(header_cells, td("\$\\min_{s_2 \\in \\ALPHABET S_2} u(s_1, s_2)\$"))
     end
     
     # Create data rows
@@ -31,7 +31,7 @@ function game1(S1, S2, u; caption="", minmax=false)
     end
 
     if minmax
-        row_cells = [td("\$\\max_{s_1 \\in \\ALPHABET S_1} u_2(s_1, s_2)\$")]
+        row_cells = [td("\$\\max_{s_1 \\in \\ALPHABET S_1} u(s_1, s_2)\$")]
         for j in 1:m 
             push!(row_cells, td(latexify(maximum(u[:,j]))))
         end
