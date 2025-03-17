@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-14">
+<meta name="dcterms.date" content="2025-03-17">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>8&nbsp; Bayesian Games – Multi-Agent Systems</title>
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-14">
-<meta name="citation_cover_date" content="2025-03-14">
+<meta name="citation_publication_date" content="2025-03-17">
+<meta name="citation_cover_date" content="2025-03-17">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-14">
+<meta name="citation_online_date" content="2025-03-17">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -359,6 +359,8 @@ window.Quarto = {
   <li><a href="#method-2-interim-view" id="toc-method-2-interim-view" class="nav-link" data-scroll-target="#method-2-interim-view">Method 2: Interim view</a></li>
   </ul></li>
   <li><a href="#some-examples" id="toc-some-examples" class="nav-link" data-scroll-target="#some-examples"><span class="header-section-number">8.2</span> Some examples</a></li>
+  <li><a href="#bayesian-games-with-continuous-actions" id="toc-bayesian-games-with-continuous-actions" class="nav-link" data-scroll-target="#bayesian-games-with-continuous-actions"><span class="header-section-number">8.3</span> Bayesian games with continuous actions</a></li>
+  <li><a href="#bayesian-games-with-common-information" id="toc-bayesian-games-with-common-information" class="nav-link" data-scroll-target="#bayesian-games-with-common-information"><span class="header-section-number">8.4</span> Bayesian games with common information</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/adityam/multi-agent-systems/edit/master/static-games/bayesian-games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -394,7 +396,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 14, 2025</p>
+      <p class="date">March 17, 2025</p>
     </div>
   </div>
   
@@ -548,8 +550,8 @@ Figure&nbsp;8.2: A modified battle of sexes game with incomplete information
 <div id="fig-BoS-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-BoS-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="67b700d2" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="123">
+<div id="9bb6f0ab" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{FF}$</td><td colspan="2">$\mathsf{FO}$</td><td colspan="2">$\mathsf{OF}$</td><td colspan="2">$\mathsf{OO}$</td></tr><tr><td>$\mathsf{F}$</td><td>$2$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$\frac{2}{3}$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr><tr><td>$\mathsf{O}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{3}{2}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
 </div>
 </div>
@@ -736,7 +738,7 @@ Figure&nbsp;8.4: Interim-view of battle of sexes game
 <div>
 
 </div>
-<div id="ec91b438" class="cell quarto-layout-panel" data-execution_count="6" data-layout-ncol="2">
+<div id="88236dd7" class="cell quarto-layout-panel" data-execution_count="6" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
@@ -834,13 +836,13 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Case 1.</strong> In this case, no player has any information. The normal form reduction of the game is given as follows.</p>
-<div id="f081d1a1" class="cell" data-execution_count="7">
+<div id="8aac18f1" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{M}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2.0$</td><td>$1$</td><td>$1.5$</td><td>$1$</td><td>$1.5$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4.0$</td><td>$0$</td><td>$2.5$</td><td>$0$</td><td>$2.5$</td></tr></tbody></table>
 </div>
 </div>
 <p>Note that for player 2, <span class="math inline">\(\mathsf{L}\)</span> dominates <span class="math inline">\(\mathsf{M}\)</span> and <span class="math inline">\(\mathsf{R}\)</span>. Thus, the reduced game is</p>
-<div id="a2b10545" class="cell" data-execution_count="8">
+<div id="7980a58f" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <table class="game" data-quarto-disable-processing="true" align="center"><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$4$</td><td>$4$</td></tr></tbody></table>
 </div>
@@ -850,7 +852,7 @@ Solution
 <div>
 
 </div>
-<div id="f6b4bf6c" class="cell quarto-layout-panel" data-execution_count="9" data-layout-ncol="2">
+<div id="1f7ff091" class="cell quarto-layout-panel" data-execution_count="9" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$5$</td></tr></tbody></table>
@@ -870,7 +872,7 @@ Solution
 <div>
 
 </div>
-<div id="567f8757" class="cell quarto-layout-panel" data-execution_count="10" data-layout-ncol="3">
+<div id="b653a578" class="cell quarto-layout-panel" data-execution_count="10" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$0$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -953,7 +955,7 @@ Solution
 <div>
 
 </div>
-<div id="7ce79435" class="cell quarto-layout-panel" data-execution_count="11" data-layout-ncol="2">
+<div id="90a0b2e7" class="cell quarto-layout-panel" data-execution_count="11" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Player 1.1 (row player)</caption><tbody><tr><td></td><td>$\mathsf{LL}$</td><td>$\mathsf{LR}$</td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$2$</td><td>$2$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -976,7 +978,7 @@ Solution
 <div>
 
 </div>
-<div id="ad0f99c7" class="cell quarto-layout-panel" data-execution_count="12" data-layout-ncol="2">
+<div id="2e434c87" class="cell quarto-layout-panel" data-execution_count="12" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>Player 1.1 (row player)</caption><tbody><tr><td></td><td>$\mathsf{LL}$</td><td>$\mathsf{LR}$</td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{B}$</td><td>$3$</td><td>$3$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -998,7 +1000,7 @@ Solution
 <div>
 
 </div>
-<div id="4181bb7c" class="cell quarto-layout-panel" data-execution_count="13" data-layout-ncol="2">
+<div id="a09b1db2" class="cell quarto-layout-panel" data-execution_count="13" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -1020,7 +1022,7 @@ Solution
 <div>
 
 </div>
-<div id="357331c6" class="cell quarto-layout-panel" data-execution_count="14" data-layout-ncol="2">
+<div id="07129c80" class="cell quarto-layout-panel" data-execution_count="14" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{RL}$</td><td>$\mathsf{RR}$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -1042,7 +1044,7 @@ Solution
 <div>
 
 </div>
-<div id="e0399dbb" class="cell quarto-layout-panel" data-execution_count="15" data-layout-ncol="2">
+<div id="29918e97" class="cell quarto-layout-panel" data-execution_count="15" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{RL}$</td></tr><tr><td>$\mathsf{B}$</td><td>$1$</td></tr></tbody></table>
@@ -1069,7 +1071,7 @@ Solution
 <div>
 
 </div>
-<div id="3ddfa769" class="cell quarto-layout-panel" data-execution_count="16" data-layout-ncol="2">
+<div id="c8ba2f52" class="cell quarto-layout-panel" data-execution_count="16" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$3$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$4$</td><td>$1$</td><td>$0$</td></tr></tbody></table>
@@ -1139,7 +1141,7 @@ Solution
 <div>
 
 </div>
-<div id="f7b4232e" class="cell quarto-layout-panel" data-execution_count="17" data-layout-ncol="3">
+<div id="be47aadb" class="cell quarto-layout-panel" data-execution_count="17" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <table class="game1" data-quarto-disable-processing="true" align="center"><caption>P1.1</caption><tbody><tr><td></td><td>$\mathsf{L}$</td><td>$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$1$</td></tr></tbody></table>
@@ -1213,6 +1215,108 @@ U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
 </div>
 </div>
 </section>
+<section id="bayesian-games-with-continuous-actions" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="bayesian-games-with-continuous-actions"><span class="header-section-number">8.3</span> Bayesian games with continuous actions</h2>
+<p>In this section, we provide some examples of Bayesian games with continuous actions. For such games it is difficult to specify the space of all pure strategies of a player. Therefore, we typically restrict attention to a <strong>parameteric family</strong> of strategies. In particular, we follow the interim approach and proceed as follows:</p>
+<ul>
+<li><p>Consider the game from from the point of view of player <span class="math inline">\(i\)</span> of type <span class="math inline">\(t_i\)</span>.</p></li>
+<li><p>Assume that all players other than player&nbsp;<span class="math inline">\(i\)</span> are using a parameteric strategy and write the expression for the expected utility of player&nbsp;<span class="math inline">\(i\)</span> of type&nbsp;<span class="math inline">\(t_i\)</span> as a function of its action and other players’ strategies.</p></li>
+<li><p>By the BR of player&nbsp;<span class="math inline">\(i\)</span> of type&nbsp;<span class="math inline">\(t_i\)</span> (typically by differentiatting its expected utility w.r.t.&nbsp;its action and setting it to zero).</p></li>
+<li><p>The hope is that this BR will belong to the same parametric class. If so, by repeating the argument for all players, we get a system of equations between the parameters of the strategies. Solving them gives a BNE strategy.</p></li>
+</ul>
+<p>Note that there is no guarantee that we will be able to find a BNE within any parameteric class; and identifying the appropriate parameteric class is bit of an art.</p>
+<p>In the examples that we provide below, we will typically look at BNE within the class of linear or affine strategies.</p>
+<div id="exm-Bayes-first-price" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.5 (First price sealed bid auctions)</strong></span> Consider a game where two players present a sealed bid for an object. Let <span class="math inline">\(v_i\)</span> denote the player&nbsp;<span class="math inline">\(i\)</span>’s valuation of the object, <strong>which is private information to the player</strong>.</p>
+<p>We will model this as a Bayesian game with a probability space with <span class="math inline">\(Ω = [0,1]^2\)</span> and <span class="math inline">\(\PR\)</span> being uniform distribution on <span class="math inline">\(Ω\)</span>. Let <span class="math inline">\(ω = (v_1, v_2) \in Ω\)</span> denote the state of the world. The signal received by player <span class="math inline">\(i\)</span> is <span class="math inline">\(v_1\)</span> and the signal received by player&nbsp;2 is <span class="math inline">\(v_2\)</span>.</p>
+<p>Upon seeing their signals, each player chooses a bid <span class="math inline">\(b_i\)</span>. In <strong>first price</strong> autions, the person with the highest bid gets the object and pays the amount equal to his bid. Thus, the utility of the players is: <span class="math display">\[
+  u_i(v_i, v_{-j}, b_{i}, b_{-i}) =
+  \begin{cases}
+    v_i - b_i, &amp; \text{if } b_i &gt; b_j \\
+    \frac{1}{2}(v_i - b_i), &amp; \text{if } b_i = b_j \\
+    0, &amp; \text{if } b_i &lt; b_j.
+  \end{cases}
+\]</span></p>
+<p>Find the BNE of the game within the class of linear strategies, i.e., strategies of the form <span class="math display">\[
+  s_i(v_i) = α_i v_i.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We first compute the interim expected utility of player <span class="math inline">\(i\)</span> of type <span class="math inline">\(v_i\)</span>. For that matter, observe that posterior belief of player <span class="math inline">\(i\)</span> about the type of player <span class="math inline">\(j\)</span> is given by: <span class="math display">\[
+  f(v_j|v_i) = 1, \quad v_j \in [0, 1].
+\]</span> Thus, the interim expected utility is given by <span class="math display">\[\begin{align*}
+  U_{i.v_i}(b_i, s_j) &amp;=
+  \int_{0}^{1} u_i(v_i, v_j, b_i, s_j(v_j) f(v_j|v_i) dv_j \\
+  &amp;= \int_{0}^{(b_i/α_j)^{-}} (v_i - b_i) d v_j
+   + \int_{(b_i/α_j)^{-}}^{(b_i/α_j)^{+}} \tfrac 12 (v_i - b_i) d v_j
+   + \int_{(b_i/α_j)^{+}}^1 0 dv_j
+   \\
+  &amp;= (v_i - b_i) \frac{b_i}{α_j}
+\end{align*}\]</span> which is concave in <span class="math inline">\(b_i\)</span>. Thus, the interim BR is given by <span class="math display">\[
+  \frac{∂}{∂b_i} U_{i.v_i}(b_i, s_j) = 0
+  \implies
+  \bbox[5pt,border: 1px solid]{b_i = \frac{v_i}{2}.}
+\]</span></p>
+</div>
+</div>
+<p>By a similar argument, we can show that in <span class="math inline">\(n\)</span>-player first price auctions, the BNE is to bid <span class="math display">\[
+  b_i = \left(1 - \frac{1}{n}\right) v_i.
+\]</span> Thus, the players shade their bids below their valuation, to balance the profit when the win against the risk of not winning. THe more the players in the auction, thje less they can affort to shade their bid.</p>
+<p>Earlier we had consider second price auctions (<span class="quarto-unresolved-ref">?sec-2nd-price</span>) but we assumed that the valuations of all players were common knowledge. Now we consider the case where the player only knows his own valuation.</p>
+<div id="exm-Bayes-second-price" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.6 (Second price sealed bid auctions)</strong></span> Consider the setup of <a href="#exm-Bayes-first-price" class="quarto-xref">Example&nbsp;<span>8.5</span></a> but with the valuation function <span class="math display">\[
+  u_i(v_i, v_{-j}, b_{i}, b_{-i}) =
+  \begin{cases}
+    v_i - b_j, &amp; \text{if } b_i &gt; b_j \\
+    \frac{1}{2}(v_i - b_j), &amp; \text{if } b_i = b_j \\
+    0, &amp; \text{if } b_i &lt; b_j.
+  \end{cases}
+\]</span> Find the BNE of the game within the class of linear strategies, i.e., strategies of the form <span class="math display">\[
+  s_i(v_i) = α_i v_i.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As before, we note that posterior belief of player <span class="math inline">\(i\)</span> about the type of player <span class="math inline">\(j\)</span> is given by: <span class="math display">\[
+  f(v_j|v_i) = 1, \quad v_j \in [0, 1].
+\]</span> Thus, the interim expected utility of player <span class="math inline">\(i\)</span> of type <span class="math inline">\(v_i\)</span> is given by <span class="math display">\[\begin{align*}
+  U_{i.v_i}(b_i, s_j) &amp;=
+  \int_{0}^{1} u_i(v_i, v_j, b_i, s_j(v_j) f(v_j|v_i) dv_j \\
+  &amp;= \int_{0}^{(b_i/α_j)^{-}} (v_i - α_j v_j ) d v_j
+   + \int_{(b_i/α_j)^{-}}^{(b_i/α_j)^{+}} \tfrac 12 (v_i - α_j v_j ) d v_j
+   + \int_{(b_i/α_j)^{+}}^1 0 dv_j
+   \\
+  &amp;= v_i \frac{b_i}{α_j} - \frac {1}{2} α_j \frac{b_i^2}{α_j^2} \\
+  &amp;= \frac{v_i b_i}{α_j} - \frac{b_i^2}{2 α_j}
+\end{align*}\]</span> which is concave in <span class="math inline">\(b_i\)</span>. Thus, the interim BR is given by <span class="math display">\[
+  \frac{∂}{∂b_i} U_{i.v_i}(b_i, s_j) = 0
+  \implies
+  \bbox[5pt,border: 1px solid]{b_i = v_i.}
+\]</span></p>
+</div>
+</div>
+<p>The above method is analytic. If one has a good guess about the BNE, an alternative method is to argue, as we did earlier in the course, that truthful bidding is a weakly dominant strategy for each player.</p>
+</section>
+<section id="bayesian-games-with-common-information" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="bayesian-games-with-common-information"><span class="header-section-number">8.4</span> Bayesian games with common information</h2>
+</section>
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div id="exr-Bayes-pure" class="theorem exercise">
@@ -1220,7 +1324,7 @@ U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
 <div>
 
 </div>
-<div id="c30eec76" class="cell quarto-layout-panel" data-execution_count="18" data-layout-ncol="2">
+<div id="6f9060c4" class="cell quarto-layout-panel" data-execution_count="18" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$1$</td><td>$1$</td><td>$0$</td><td>$2$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$2$</td><td>$1$</td><td>$1$</td></tr></tbody></table>
@@ -1264,7 +1368,7 @@ U_{1.2}(\mathsf{T}, σ_2) = U_{1.2}(\mathsf{B}, σ_2) \implies
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.9: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>}
+Figure&nbsp;8.9: Information structure for <a href="#exr-Bayes-pure" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a>
 </figcaption>
 </figure>
 </div>
@@ -1278,7 +1382,7 @@ Figure&nbsp;8.9: Information structure for <a href="#exr-Bayes-pure" class="quar
 <div>
 
 </div>
-<div id="249fe8d1" class="cell quarto-layout-panel" data-execution_count="19" data-layout-ncol="2">
+<div id="92bc2c33" class="cell quarto-layout-panel" data-execution_count="19" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <table class="game" data-quarto-disable-processing="true" align="center"><caption>$ω_1$.</caption><tbody><tr><td></td><td colspan="2">$\mathsf{L}$</td><td colspan="2">$\mathsf{R}$</td></tr><tr><td>$\mathsf{T}$</td><td>$2$</td><td>$4$</td><td>$0$</td><td>$0$</td></tr><tr><td>$\mathsf{B}$</td><td>$0$</td><td>$0$</td><td>$4$</td><td>$-10$</td></tr></tbody></table>
