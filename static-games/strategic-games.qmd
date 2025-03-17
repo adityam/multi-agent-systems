@@ -567,7 +567,7 @@ $\mathsf{T}$. Eliminating $\mathsf{B}$, we get
 Note that games $\mathscr{G}_L$ and $\mathscr{G}_R$ cannot be reduced further.
 The resulting payoffs are also different.
 
-## Second price auction 
+## Second price auction #{sec-2nd-price}
 
 We will study auctions in detail later in the course, but here we use the
 concept of dominance to identify a rationalizable strategy in what are

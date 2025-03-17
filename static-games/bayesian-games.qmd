@@ -644,6 +644,126 @@ $$
 $$
 :::
 
+## Bayesian games with continuous actions
+
+In this section, we provide some examples of Bayesian games with continuous actions. For such games it is difficult to specify the space of all pure strategies of a player. Therefore, we typically restrict attention to a **parameteric family** of strategies. In particular, we follow the interim approach and proceed as follows:
+
+- Consider the game from from the point of view of player $i$ of type $t_i$.
+
+- Assume that all players other than player $i$ are using a parameteric strategy and write the expression for the expected utility of player $i$ of type $t_i$ as a function of its action and other players' strategies. 
+
+- By the BR of player $i$ of type $t_i$ (typically by differentiatting its expected utility w.r.t.\ its action and setting it to zero). 
+
+- The hope is that this BR will belong to the same parametric class. If so, by repeating the argument for all players, we get a system of equations between the parameters of the strategies. Solving them gives a BNE strategy.
+
+Note that there is no guarantee that we will be able to find a BNE within any parameteric class; and identifying the appropriate parameteric class is bit of an art. 
+
+In the examples that we provide below, we will typically look at BNE within the class of linear or affine strategies. 
+
+
+:::{#exm-Bayes-first-price}
+#### First price sealed bid auctions
+
+Consider a game where two players present a sealed bid for an object. Let $v_i$ denote the player $i$'s valuation of the object, **which is private information to the player**. 
+
+We will model this as a Bayesian game with a probability space with $Ω = [0,1]^2$ and $\PR$ being uniform distribution on $Ω$. Let $ω = (v_1, v_2) \in Ω$ denote the state of the world. The signal received by player $i$ is $v_1$ and the signal received by player 2 is $v_2$. 
+
+Upon seeing their signals, each player chooses a bid $b_i$. In **first price** autions, the person with the highest bid gets the object and pays the amount equal to his bid. Thus, the utility of the players is:
+$$
+  u_i(v_i, v_{-j}, b_{i}, b_{-i}) =
+  \begin{cases}
+    v_i - b_i, & \text{if } b_i > b_j \\
+    \frac{1}{2}(v_i - b_i), & \text{if } b_i = b_j \\
+    0, & \text{if } b_i < b_j.
+  \end{cases}
+$$
+
+Find the BNE of the game within the class of linear strategies, i.e., strategies of the form
+$$
+  s_i(v_i) = α_i v_i.
+$$
+:::
+
+:::{.callout-note}
+#### Solution
+
+We first compute the interim expected utility of player $i$ of type $v_i$. For that matter, observe that posterior belief of player $i$ about the type of player $j$ is given by:
+$$
+  f(v_j|v_i) = 1, \quad v_j \in [0, 1].
+$$
+Thus, the interim expected utility is given by 
+\begin{align*}
+  U_{i.v_i}(b_i, s_j) &=
+  \int_{0}^{1} u_i(v_i, v_j, b_i, s_j(v_j) f(v_j|v_i) dv_j \\
+  &= \int_{0}^{(b_i/α_j)^{-}} (v_i - b_i) d v_j 
+   + \int_{(b_i/α_j)^{-}}^{(b_i/α_j)^{+}} \tfrac 12 (v_i - b_i) d v_j 
+   + \int_{(b_i/α_j)^{+}}^1 0 dv_j 
+   \\
+  &= (v_i - b_i) \frac{b_i}{α_j}
+\end{align*}
+which is concave in $b_i$. Thus, the interim BR is given by
+$$
+  \frac{∂}{∂b_i} U_{i.v_i}(b_i, s_j) = 0 
+  \implies 
+  \bbox[5pt,border: 1px solid]{b_i = \frac{v_i}{2}.}
+$$
+:::
+
+By a similar argument, we can show that in $n$-player first price auctions, the BNE is to bid
+$$
+  b_i = \left(1 - \frac{1}{n}\right) v_i.
+$$
+Thus, the players shade their bids below their valuation, to balance the profit when the win against the risk of not winning. THe more the players in the auction, thje less they can affort to shade their bid. 
+
+Earlier we had consider second price auctions (@sec-2nd-price) but we assumed that the valuations of all players were common knowledge. Now we consider the case where the player only knows his own valuation. 
+
+:::{#exm-Bayes-second-price}
+#### Second price sealed bid auctions
+
+Consider the setup of @exm-Bayes-first-price but with the valuation function
+$$
+  u_i(v_i, v_{-j}, b_{i}, b_{-i}) =
+  \begin{cases}
+    v_i - b_j, & \text{if } b_i > b_j \\
+    \frac{1}{2}(v_i - b_j), & \text{if } b_i = b_j \\
+    0, & \text{if } b_i < b_j.
+  \end{cases}
+$$
+Find the BNE of the game within the class of linear strategies, i.e., strategies of the form
+$$
+  s_i(v_i) = α_i v_i.
+$$
+:::
+
+:::{.callout-note}
+#### Solution
+
+As before, we note that posterior belief of player $i$ about the type of player $j$ is given by:
+$$
+  f(v_j|v_i) = 1, \quad v_j \in [0, 1].
+$$
+Thus, the interim expected utility of player $i$ of type $v_i$ is given by 
+\begin{align*}
+  U_{i.v_i}(b_i, s_j) &=
+  \int_{0}^{1} u_i(v_i, v_j, b_i, s_j(v_j) f(v_j|v_i) dv_j \\
+  &= \int_{0}^{(b_i/α_j)^{-}} (v_i - α_j v_j ) d v_j 
+   + \int_{(b_i/α_j)^{-}}^{(b_i/α_j)^{+}} \tfrac 12 (v_i - α_j v_j ) d v_j 
+   + \int_{(b_i/α_j)^{+}}^1 0 dv_j 
+   \\
+  &= v_i \frac{b_i}{α_j} - \frac {1}{2} α_j \frac{b_i^2}{α_j^2} \\
+  &= \frac{v_i b_i}{α_j} - \frac{b_i^2}{2 α_j}
+\end{align*}
+which is concave in $b_i$. Thus, the interim BR is given by
+$$
+  \frac{∂}{∂b_i} U_{i.v_i}(b_i, s_j) = 0 
+  \implies 
+  \bbox[5pt,border: 1px solid]{b_i = v_i.}
+$$
+:::
+
+The above method is analytic. If one has a good guess about the BNE, an alternative method is to argue, as we did earlier in the course, that truthful bidding is a weakly dominant strategy for each player. 
+
+## Bayesian games with common information
 
 
 ## Exercises {-}
@@ -668,7 +788,7 @@ and the information structure is
 
 ![Player 2](figures/svg/info-structures1.svg){#fig-ex-1-b}
 
-Information structure for @exr-Bayes-pure}
+Information structure for @exr-Bayes-pure
 :::
 
 a. Write the normal form reduction of the game and use it to find all **pure strategy** BNE.
