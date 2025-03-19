@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-17">
+<meta name="dcterms.date" content="2025-03-19">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>8&nbsp; Bayesian Games – Multi-Agent Systems</title>
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-17">
-<meta name="citation_cover_date" content="2025-03-17">
+<meta name="citation_publication_date" content="2025-03-19">
+<meta name="citation_cover_date" content="2025-03-19">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-17">
+<meta name="citation_online_date" content="2025-03-19">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -396,7 +396,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 17, 2025</p>
+      <p class="date">March 19, 2025</p>
     </div>
   </div>
   
@@ -1313,6 +1313,43 @@ Solution
 </div>
 </div>
 <p>The above method is analytic. If one has a good guess about the BNE, an alternative method is to argue, as we did earlier in the course, that truthful bidding is a weakly dominant strategy for each player.</p>
+<div id="exm-Bayes-common-value" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.7 (First price sealed bid auctions with common value)</strong></span> Consider a variation of the first-price auction where the players observe <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> as before, but the value of the object is <span class="math inline">\(v_1 + v_2\)</span>. Thus, the utility function of the players is <span class="math display">\[
+  u_i(v_i, v_{-j}, b_{i}, b_{-i}) =
+  \begin{cases}
+    v_1 + v_2 - b_i, &amp; \text{if } b_i &gt; b_j \\
+    \frac{1}{2}(v_1 + v_2 - b_i), &amp; \text{if } b_i = b_j \\
+    0, &amp; \text{if } b_i &lt; b_j.
+  \end{cases}
+\]</span></p>
+<p>Find the BNE of the game within the class of linear strategies, i.e., strategies of the form <span class="math display">\[
+  s_i(v_i) = α_i v_i.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As before, we compute <span class="math display">\[\begin{align*}
+  U_{i.v_i}(b_i, s_j) &amp;= \int_{0}^1 u_i(v_i, v_j, b_i, s_j(v_j)) f(v_j \mid v_i) dv_j \\
+  &amp;= \int_{0}^{(b_i/α_j)} (v_i + v_j - b_i) d v_j \\
+  &amp;= (v_i - b_i) \frac{b_i}{α_j} + \frac{1}{2} \frac{b_i^2}{α_j^2}
+\end{align*}\]</span> which is concave in <span class="math inline">\(b_i\)</span>. Thus, the interim BR is given by <span class="math display">\[
+  \frac{∂}{∂b_i} U_{i.v_i}(b_i, s_j) = 0
+  \implies
+  \bbox[5pt,border: 1px solid]{b_i = \frac{α_j}{2 α_j - 1} v_i}
+\]</span></p>
+<p>By symmetry, we get <span class="math display">\[
+  b_j = \frac{α_i}{2 α_i - 1 } v_j.
+\]</span> But, we started by assuming that <span class="math inline">\(b_i = α_i v_i\)</span> and <span class="math inline">\(b_j = α_j v_j\)</span>.</p>
+</div>
+</div>
 </section>
 <section id="bayesian-games-with-common-information" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="bayesian-games-with-common-information"><span class="header-section-number">8.4</span> Bayesian games with common information</h2>
