@@ -763,6 +763,48 @@ $$
 
 The above method is analytic. If one has a good guess about the BNE, an alternative method is to argue, as we did earlier in the course, that truthful bidding is a weakly dominant strategy for each player. 
 
+:::{#exm-Bayes-common-value}
+### First price sealed bid auctions with common value
+
+Consider a variation of the first-price auction where the players observe $v_1$ and $v_2$ as before, but the value of the object is $v_1 + v_2$. Thus, the utility function of the players is
+$$
+  u_i(v_i, v_{-j}, b_{i}, b_{-i}) =
+  \begin{cases}
+    v_1 + v_2 - b_i, & \text{if } b_i > b_j \\
+    \frac{1}{2}(v_1 + v_2 - b_i), & \text{if } b_i = b_j \\
+    0, & \text{if } b_i < b_j.
+  \end{cases}
+$$
+
+Find the BNE of the game within the class of linear strategies, i.e., strategies of the form
+$$
+  s_i(v_i) = α_i v_i.
+$$
+:::
+
+:::{.callout-note}
+#### Solution
+As before, we compute
+\begin{align*}
+  U_{i.v_i}(b_i, s_j) &= \int_{0}^1 u_i(v_i, v_j, b_i, s_j(v_j)) f(v_j \mid v_i) dv_j \\
+  &= \int_{0}^{(b_i/α_j)} (v_i + v_j - b_i) d v_j \\
+  &= (v_i - b_i) \frac{b_i}{α_j} + \frac{1}{2} \frac{b_i^2}{α_j^2}
+\end{align*}
+which is concave in $b_i$. Thus, the interim BR is given by
+$$
+  \frac{∂}{∂b_i} U_{i.v_i}(b_i, s_j) = 0 
+  \implies 
+  \bbox[5pt,border: 1px solid]{b_i = \frac{α_j}{2 α_j - 1} v_i} 
+$$
+
+By symmetry, we get 
+$$
+  b_j = \frac{α_i}{2 α_i - 1 } v_j.
+$$
+But, we started by assuming that $b_i = α_i v_i$ and $b_j = α_j v_j$.
+
+:::
+
 ## Bayesian games with common information
 
 
