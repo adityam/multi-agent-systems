@@ -801,8 +801,22 @@ By symmetry, we get
 $$
   b_j = \frac{α_i}{2 α_i - 1 } v_j.
 $$
-But, we started by assuming that $b_i = α_i v_i$ and $b_j = α_j v_j$.
+But, we started by assuming that $b_i = α_i v_i$ and $b_j = α_j v_j$. Thus, we must have
+$$
+  α_1 = \frac{α_2}{2 α_2 - 1} 
+  \quad\text{and}\quad
+  α_2 = \frac{α_1}{2 α_1 - 1}.
+$$
+Thus, we must have
+$$
+  α_1 + α_2 = 2 α_1 α_2.
+$$
 
+If we look for symmetric solutions, then we have $α_1 = α_2$, which implies $α_1 = α_2 = 1$.
+Thus, the BNE bidding strategy is 
+$$
+  \bbox[5pt,border: 1px solid]{b_i = v_i.}
+$$
 :::
 
 ## Bayesian games with common information
