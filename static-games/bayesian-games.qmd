@@ -880,3 +880,31 @@ a. Write the normal form reduction of the game and use it to find all **mixed st
 
 b. Write the interim form of the game and use it to find all **mixed strategy** BNE.
 :::
+
+:::{#exr-first-price-n-players}
+Consider first price auctions with $3$ players. In particular, each player have a private value $v_i$, which is uniformly distributed in $[0,1]$. The values $v_1$, $v_2$, and $v_3$ of the players are independent. 
+Each player places a bid $b_i = s_i(v_i)$. 
+
+The player with the higest bid wins the object. In case of a tie, the object is given at random to one of the players with the highest bid. The winning player pays the amount that he bid to the seller and receives the object.
+
+Find the BNE of the game within the class of linear strategies, i.e., strategies of the form
+$$
+  s_i(v_i) = α_i v_i.
+$$
+:::
+
+:::{#exr-Cournot-duopoly}
+### Cournot Duopoly with incomplete information
+
+Consider the Cournot competition where two firms produce the same product and competes for the same market of potential customers. The firms simultaneously select production quantity and the price depending on aggregate production. 
+
+Let $a_i \in [0, ∞)$ denote the quantity produced by firm $i$. The total quantity of products in the market is $a_1 + a_2$ and we assume that the price is
+$$
+p(a_1, a_2) = \max\{2 - a_1 - a_2, 0 \}.
+$$
+The per-item production cost for firm 1 is $c_1 = 1$ and is common knowledge among the two firms. The production cost of firm 2 is either $c_L = \frac 34$ (low cost) with probability $\frac 12$ or is $c_H = \frac 54$ (high cost) with probability $\frac 12$. Firm 2 knows its production cost but firm 1 does not. 
+
+a. Model the system as a Bayesian game and identify the Bayesian Nash equilibrium. 
+
+b. Compute the expected equilibrium payoff of each player of each type. Compare this with the payoff obtained when firm 2 does not know its production cost (and therefore assumes that expected production cost of $c_2 = \frac 12 c_L + \frac 12 c_H = 1$, which is the same model as the Cournot duopoly model considered earlier).
+:::
