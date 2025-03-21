@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aditya Mahajan">
-<meta name="dcterms.date" content="2025-03-19">
+<meta name="dcterms.date" content="2025-03-21">
 <meta name="description" content="Course Notes for ECSE 508 (McGill University)">
 
 <title>8&nbsp; Bayesian Games – Multi-Agent Systems</title>
@@ -163,10 +163,10 @@ window.Quarto = {
 
 <meta name="citation_title" content="[8]{.chapter-number}&nbsp; [Bayesian Games]{.chapter-title}">
 <meta name="citation_author" content="Aditya Mahajan">
-<meta name="citation_publication_date" content="2025-03-19">
-<meta name="citation_cover_date" content="2025-03-19">
+<meta name="citation_publication_date" content="2025-03-21">
+<meta name="citation_cover_date" content="2025-03-21">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-03-19">
+<meta name="citation_online_date" content="2025-03-21">
 <meta name="citation_fulltext_html_url" content="https://adityam.github.io/multi-agent-systems/static-games/bayesian-games.html">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Course notes for ECSE 508 (Multi-agent Systems)">
@@ -396,7 +396,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 19, 2025</p>
+      <p class="date">March 21, 2025</p>
     </div>
   </div>
   
@@ -1481,6 +1481,23 @@ Figure&nbsp;8.10: Information structure for <a href="#exr-Bayes-mixed" class="qu
 <ol type="a">
 <li><p>Write the normal form reduction of the game and use it to find all <strong>mixed strategy</strong> BNE.</p></li>
 <li><p>Write the interim form of the game and use it to find all <strong>mixed strategy</strong> BNE.</p></li>
+</ol>
+</div>
+<div id="exr-first-price-n-players" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> Consider first price auctions with <span class="math inline">\(3\)</span> players. In particular, each player have a private value <span class="math inline">\(v_i\)</span>, which is uniformly distributed in <span class="math inline">\([0,1]\)</span>. The values <span class="math inline">\(v_1\)</span>, <span class="math inline">\(v_2\)</span>, and <span class="math inline">\(v_3\)</span> of the players are independent. Each player places a bid <span class="math inline">\(b_i = s_i(v_i)\)</span>.</p>
+<p>The player with the higest bid wins the object. In case of a tie, the object is given at random to one of the players with the highest bid. The winning player pays the amount that he bid to the seller and receives the object.</p>
+<p>Find the BNE of the game within the class of linear strategies, i.e., strategies of the form <span class="math display">\[
+  s_i(v_i) = α_i v_i.
+\]</span></p>
+</div>
+<div id="exr-Cournot-duopoly" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.4 (Cournot Duopoly with incomplete information)</strong></span> Consider the Cournot competition where two firms produce the same product and competes for the same market of potential customers. The firms simultaneously select production quantity and the price depending on aggregate production.</p>
+<p>Let <span class="math inline">\(a_i \in [0, ∞)\)</span> denote the quantity produced by firm <span class="math inline">\(i\)</span>. The total quantity of products in the market is <span class="math inline">\(a_1 + a_2\)</span> and we assume that the price is <span class="math display">\[
+p(a_1, a_2) = \max\{2 - a_1 - a_2, 0 \}.
+\]</span> The per-item production cost for firm&nbsp;1 is <span class="math inline">\(c_1 = 1\)</span> and is common knowledge among the two firms. The production cost of firm&nbsp;2 is either <span class="math inline">\(c_L = \frac 34\)</span> (low cost) with probability <span class="math inline">\(\frac 12\)</span> or is <span class="math inline">\(c_H = \frac 54\)</span> (high cost) with probability <span class="math inline">\(\frac 12\)</span>. Firm 2 knows its production cost but firm&nbsp;1 does not.</p>
+<ol type="a">
+<li><p>Model the system as a Bayesian game and identify the Bayesian Nash equilibrium.</p></li>
+<li><p>Compute the expected equilibrium payoff of each player of each type. Compare this with the payoff obtained when firm 2 does not know its production cost (and therefore assumes that expected production cost of <span class="math inline">\(c_2 = \frac 12 c_L + \frac 12 c_H = 1\)</span>, which is the same model as the Cournot duopoly model considered earlier).</p></li>
 </ol>
 </div>
 
